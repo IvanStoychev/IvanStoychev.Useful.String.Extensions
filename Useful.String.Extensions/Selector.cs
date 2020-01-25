@@ -1,5 +1,4 @@
-﻿using Useful.String.Extensions;
-using System;
+﻿using System;
 
 namespace Useful.String.Extensions
 {

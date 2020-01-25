@@ -1,5 +1,4 @@
 ﻿using Xunit;
-using Useful.String.Extensions;
 using System;
 
 namespace Useful.String.Extensions.Tests
