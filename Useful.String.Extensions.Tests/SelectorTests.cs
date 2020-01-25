@@ -1,8 +1,8 @@
 ﻿using Xunit;
-using String.Extensions.src;
+using Useful.String.Extensions;
 using System;
 
-namespace String.Extensions.Test.src
+namespace Useful.String.Extensions.Tests
 {
     public class SelectorTests
     {

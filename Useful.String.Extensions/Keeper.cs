@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace String.Extensions
+namespace Useful.String.Extensions
 {
 
     public static class Keeper

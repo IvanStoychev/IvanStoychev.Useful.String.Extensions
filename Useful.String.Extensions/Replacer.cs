@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace String.Extensions
+namespace Useful.String.Extensions
 {
     public static class Replacer
     {

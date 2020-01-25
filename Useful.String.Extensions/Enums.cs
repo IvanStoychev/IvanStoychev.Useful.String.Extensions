@@ -1,4 +1,4 @@
-﻿namespace String.Extensions.src
+﻿namespace Useful.String.Extensions
 {
     public enum StringInclusionOptions
     {

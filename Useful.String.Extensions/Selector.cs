@@ -1,7 +1,7 @@
-﻿using String.Extensions.src;
+﻿using Useful.String.Extensions;
 using System;
 
-namespace String.Extensions
+namespace Useful.String.Extensions
 {
     /// <summary>
     /// Contains methods that select substrings and charaters from strings.
