@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Useful.String.Extensions.Tests
 {
-    public class ComparerTest
+    public class ComparerTests
     {
         [Theory]
         [InlineData("Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car", "ham" })]

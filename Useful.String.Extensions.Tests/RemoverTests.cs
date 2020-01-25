@@ -2,7 +2,7 @@
 
 namespace String.Extensions.Test.src
 {
-    public class RemoverTest
+    public class RemoverTests
     {
         [Theory]
         [InlineData("Lorem lorem IPSUM ipsum", "Lorem   ipsum")]

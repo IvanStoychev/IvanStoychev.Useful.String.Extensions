@@ -2,7 +2,7 @@
 
 namespace String.Extensions.Test.src
 {
-    public class KeeperTest
+    public class KeeperTests
     {
         [Theory]
         [InlineData("awd1dkb33aljfo39d109j1082jd", "133391091082")]

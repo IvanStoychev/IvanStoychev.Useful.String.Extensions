@@ -4,7 +4,7 @@ using System;
 
 namespace String.Extensions.Test.src
 {
-    public class SelectorTest
+    public class SelectorTests
     {
         [Theory]
         [InlineData("Don't step on the broken glass.", "step on the ")]

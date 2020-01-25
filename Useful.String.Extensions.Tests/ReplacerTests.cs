@@ -2,7 +2,7 @@
 
 namespace String.Extensions.Test.src
 {
-    public class ReplacerTest
+    public class ReplacerTests
     {
         [Theory]
         [InlineData("t34ROgYYYY2p2TlJ4JYsa2yyyylJts0hLujF72", "t34ROgYYYY2p2TlJ4JYsa2XXXXlJts0hLujF72")]
