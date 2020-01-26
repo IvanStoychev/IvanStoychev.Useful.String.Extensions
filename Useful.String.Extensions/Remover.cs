@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Useful.String.Extensions
 {
@@ -8,9 +10,31 @@ namespace Useful.String.Extensions
         /// Removes all instances of all of the given strings, case-sensitive.
         /// </summary>
         /// <param name="removeStrings">Array of values to be removed.</param>
+        public static string Remove(this string str, IEnumerable<string> removeStrings)
+        {
+            return RemoveStringConsiderCase(str, removeStrings.ToArray());
+        }
+
+        /// <summary>
+        /// Removes all instances of all of the given strings, case-sensitive.
+        /// </summary>
+        /// <param name="removeStrings">Array of values to be removed.</param>
         public static string Remove(this string str, params string[] removeStrings)
         {
             return RemoveStringConsiderCase(str, removeStrings);
+        }
+
+        /// <summary>
+        /// Removes all instances of all of the given string array elements. Case-sensitivity can be specified.
+        /// </summary>
+        /// <param name="ignoreCase">Boolean value indicating if the case of the value to be removed should be ignored.</param>
+        /// <param name="removeStrings">Array of values to be removed.</param>
+        public static string Remove(this string str, bool ignoreCase, IEnumerable<string> removeStrings)
+        {
+            if (ignoreCase)
+                return RemoveStringIgnoreCase(str, removeStrings.ToArray());
+            else
+                return RemoveStringConsiderCase(str, removeStrings.ToArray());
         }
 
         /// <summary>
@@ -43,7 +67,7 @@ namespace Useful.String.Extensions
         }
 
         /// <summary>
-        /// Removes all numbers, keeping letters and special characters.
+        /// Removes all numbers from the original string, keeping letters and special characters.
         /// </summary>
         public static string RemoveNumbers(this string originalString)
         {
@@ -51,7 +75,7 @@ namespace Useful.String.Extensions
         }
 
         /// <summary>
-        /// Removes all special characters, keeping letters and numbers.
+        /// Removes all special characters from the original string, keeping letters and numbers.
         /// </summary>
         public static string RemoveSpecialCharacters(this string originalString)
         {
@@ -59,7 +83,7 @@ namespace Useful.String.Extensions
         }
 
         /// <summary>
-        /// Removes all letters, keeping special characters and numbers.
+        /// Removes all letters from the original string, keeping special characters and numbers.
         /// </summary>
         public static string RemoveLetters(this string originalString)
         {
