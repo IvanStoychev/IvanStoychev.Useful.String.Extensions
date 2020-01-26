@@ -18,8 +18,8 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>English</NeutralLanguage>
-    <PackageReleaseNotes>Fixed namespace across classes.</PackageReleaseNotes>
-    <Version>1.0.1</Version>
+    <PackageReleaseNotes>Added "TrimStart" and "TrimEnd" methods that accept a string with overloads for different comparison options.</PackageReleaseNotes>
+    <Version>1.2.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

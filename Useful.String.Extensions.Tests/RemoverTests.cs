@@ -77,6 +77,30 @@ namespace Useful.String.Extensions.Tests
             Assert.Equal(expected, actual);
         }
 
+        [Theory]
+        [InlineData("If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?", "If the Easter", " Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?")]
+        [InlineData("As he waited for the shower to warm", "As he waited ", "for the shower to warm")]
+        [InlineData("I love eating toasted cheese and tuna sandwiches.", "I lov", "e eating toasted cheese and tuna sandwiches.")]
+        [InlineData("The light in his life was actually a fire burning all around him.", "The light in him", "The light in his life was actually a fire burning all around him.")]
+        public void TrimStart_Test(string testString, string stringToRemove, string expected)
+        {
+            string actual = testString.TrimStart(stringToRemove);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?", "they take your teeth and leave chocolate for you?", "If the Easter Bunny and the Tooth Fairy had babies would ")]
+        [InlineData("As he waited for the shower to warm", "shower to warm", "As he waited for the ")]
+        [InlineData("I love eating toasted cheese and tuna sandwiches.", " and tuna sandwiches.", "I love eating toasted cheese")]
+        [InlineData("The light in his life was actually a fire burning all around him.", "all around her", "The light in his life was actually a fire burning all around him.")]
+        public void TrimEnd_Test(string testString, string stringToRemove, string expected)
+        {
+            string actual = testString.TrimEnd(stringToRemove);
+
+            Assert.Equal(expected, actual);
+        }
+
         public static IEnumerable<object[]> RemoveStringsIEnumTestData_CaseSensetive
         {
             get
