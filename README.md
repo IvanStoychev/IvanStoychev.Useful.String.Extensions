@@ -14,8 +14,21 @@ This is a collection of extension methods that I have been in need of many a tim
 
 Installation
 ------------
-To use the library, either download the package from NuGet by searching for "Useful.String.Extensions" or clone the repo and build in it "Release", which will create a package file in the project's release dir - `~\Useful.String.Extensions\Useful.String.Extensions\bin\Release`. Then you have to install the package file in your project.
+__Long version:__
+<br/>To use the library, either download the package from NuGet by searching for "Useful.String.Extensions" or clone the repo and build in it "Release", which will create a package file in the project's release dir - `~\Useful.String.Extensions\Useful.String.Extensions\bin\Release`. Then you have to install the package file in your project.
 
+__tl;dr:__
+<br/>Install using "Package Manager Console"
+<br/>`Install-Package Useful.String.Extensions -Version 1.1.1`
+<br/>
+<br/>Install using .NET CLI
+<br/>`dotnet add package Useful.String.Extensions --version 1.1.1`
+<br/>
+<br/>Install PackageReference
+<br/>`<PackageReference Include="Useful.String.Extensions" Version="1.1.1" />`
+<br/>
+<br/>Install Paket CLI
+<br/>`paket add Useful.String.Extensions --version 1.1.1`
 
 <br/>
 
