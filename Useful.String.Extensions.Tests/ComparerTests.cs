@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Xunit;
+using Xunit.Extensions;
 
 namespace Useful.String.Extensions.Tests
 {
@@ -227,6 +229,246 @@ namespace Useful.String.Extensions.Tests
             bool actual = testString.Contains(StringComparison.InvariantCulture, keychars);
 
             Assert.False(actual);
+        }
+
+        [Theory, MemberData(nameof(ContainsStrings_PassTestDataCaseSensetive))]
+        public void ContainsStringsIEnum_Pass_Test(string testString, IEnumerable<string> keywords)
+        {
+            bool actual = testString.Contains(keywords);
+
+            Assert.True(actual);
+        }
+
+        [Theory, MemberData(nameof(ContainsStrings_FailTestDataCaseSensetive))]
+        public void ContainsStringsIEnum_Fail_Test(string testString, IEnumerable<string> keywords)
+        {
+            bool actual = testString.Contains(keywords);
+
+            Assert.False(actual);
+        }
+
+        [Theory, MemberData(nameof(ContainsStrings_PassTestDataCaseInsensetive))]
+        public void ContainsStringsIEnum_OrdinalIgnoreCase_Pass_Test(string testString, IEnumerable<string> keywords)
+        {
+            bool actual = testString.Contains(StringComparison.OrdinalIgnoreCase, keywords);
+
+            Assert.True(actual);
+        }
+
+        [Theory, MemberData(nameof(ContainsStrings_FailTestDataCaseInsensetive))]
+        public void ContainsStringsIEnum_OrdinalIgnoreCase_Fail_Test(string testString, IEnumerable<string> keywords)
+        {
+            bool actual = testString.Contains(StringComparison.OrdinalIgnoreCase, keywords);
+
+            Assert.False(actual);
+        }
+
+        [Theory, MemberData(nameof(ContainsStrings_PassTestDataCaseSensetive))]
+        public void ContainsStringsIEnum_Ordinal_Pass_Test(string testString, IEnumerable<string> keywords)
+        {
+            bool actual = testString.Contains(StringComparison.Ordinal, keywords);
+
+            Assert.True(actual);
+        }
+
+        [Theory, MemberData(nameof(ContainsStrings_FailTestDataCaseSensetive))]
+        public void ContainsStringsIEnum_Ordinal_Fail_Test(string testString, IEnumerable<string> keywords)
+        {
+            bool actual = testString.Contains(StringComparison.Ordinal, keywords);
+
+            Assert.False(actual);
+        }
+
+        [Theory, MemberData(nameof(ContainsStrings_PassTestDataCaseSensetive))]
+        public void ContainsStringsIEnum_InvariantCulture_Pass_Test(string testString, IEnumerable<string> keywords)
+        {
+            bool actual = testString.Contains(StringComparison.InvariantCulture, keywords);
+
+            Assert.True(actual);
+        }
+
+        [Theory, MemberData(nameof(ContainsStrings_FailTestDataCaseSensetive))]
+        public void ContainsStringsIEnum_InvariantCulture_Fail_Test(string testString, IEnumerable<string> keywords)
+        {
+            bool actual = testString.Contains(StringComparison.InvariantCulture, keywords);
+
+            Assert.False(actual);
+        }
+
+        [Theory, MemberData(nameof(ContainsChars_PassTestDataCaseSensetive))]
+        public void ContainsCharsIEnum_Pass_Test(string testString, IEnumerable<char> keychars)
+        {
+            bool actual = testString.Contains(keychars);
+
+            Assert.True(actual);
+        }
+
+        [Theory, MemberData(nameof(ContainsChars_FailTestDataCaseSensetive))]
+        public void ContainsCharsIEnum_Fail_Test(string testString, IEnumerable<char> keychars)
+        {
+            bool actual = testString.Contains(keychars);
+
+            Assert.False(actual);
+        }
+
+        [Theory, MemberData(nameof(ContainsChars_PassTestDataCaseInsensetive))]
+        public void ContainsCharsIEnum_OrdinalIgnoreCase_Pass_Test(string testString, IEnumerable<char> keychars)
+        {
+            bool actual = testString.Contains(StringComparison.OrdinalIgnoreCase, keychars);
+
+            Assert.True(actual);
+        }
+
+        [Theory, MemberData(nameof(ContainsChars_FailTestDataCaseInsensetive))]
+        public void ContainsCharsIEnum_OrdinalIgnoreCase_Fail_Test(string testString, IEnumerable<char> keychars)
+        {
+            bool actual = testString.Contains(StringComparison.OrdinalIgnoreCase, keychars);
+
+            Assert.False(actual);
+        }
+
+        [Theory, MemberData(nameof(ContainsChars_PassTestDataCaseSensetive))]
+        public void ContainsCharsIEnum_Ordinal_Pass_Test(string testString, IEnumerable<char> keychars)
+        {
+            bool actual = testString.Contains(StringComparison.Ordinal, keychars);
+
+            Assert.True(actual);
+        }
+
+        [Theory, MemberData(nameof(ContainsChars_FailTestDataCaseSensetive))]
+        public void ContainsCharsIEnum_Ordinal_Fail_Test(string testString, IEnumerable<char> keychars)
+        {
+            bool actual = testString.Contains(StringComparison.Ordinal, keychars);
+
+            Assert.False(actual);
+        }
+
+        [Theory, MemberData(nameof(ContainsChars_PassTestDataCaseSensetive))]
+        public void ContainsCharsIEnum_InvariantCulture_Pass_Test(string testString, IEnumerable<char> keychars)
+        {
+            bool actual = testString.Contains(StringComparison.InvariantCulture, keychars);
+
+            Assert.True(actual);
+        }
+
+        [Theory, MemberData(nameof(ContainsChars_FailTestDataCaseSensetive))]
+        public void ContainsCharsIEnum_InvariantCulture_Fail_Test(string testString, IEnumerable<char> keychars)
+        {
+            bool actual = testString.Contains(StringComparison.InvariantCulture, keychars);
+
+            Assert.False(actual);
+        }
+
+        public static IEnumerable<object[]> ContainsChars_PassTestDataCaseSensetive
+        {
+            get
+            {
+                return new[]
+                {
+                    new object[] { "v027CPSNRo9pwj9f", new char[] { 'z', '7', 'x' } },
+                    new object[] { "tPzglSBMqE6u9bvB", new List<char>() { 'P', '0', 'n' } },
+                    new object[] { "jT5BZRbC8cgwAYu2", new HashSet<char>() { 'x', '3', 'w' } },
+                    new object[] { "U5SVGjk0hIr9Bxz0", new Queue<char>(new char[] { 'U', '4', 'h' }) }
+                };
+            }
+        }
+
+        public static IEnumerable<object[]> ContainsChars_PassTestDataCaseInsensetive
+        {
+            get
+            {
+                return new[]
+                {
+                    new object[] { "v027CPSNRo9pwj9f", new char[] { 'z', '7', 'x' } },
+                    new object[] { "tPzglSBMqE6u9bvB", new List<char>() { 'p', '0', 'n' } },
+                    new object[] { "jT5BZRbC8cgwAYu2", new HashSet<char>() { 'x', '3', 'W' } },
+                    new object[] { "U5SVGjk0hIr9Bxz0", new Queue<char>(new char[] { 'u', '4', 'H' }) }
+                };
+            }
+        }
+
+        public static IEnumerable<object[]> ContainsChars_FailTestDataCaseSensetive
+        {
+            get
+            {
+                return new[]
+                {
+                    new object[] { "v027CPSNRo9pwj9f", new char[] { 'z', '3', 'x' } },
+                    new object[] { "tPzglSBMqE6u9bvB", new List<char>() { 'p', '0', 'n' } },
+                    new object[] { "jT5BZRbC8cgwAYu2", new HashSet<char>() { 'x', '3', 'W' } },
+                    new object[] { "U5SVGjk0hIr9Bxz0", new Queue<char>(new char[] { 'u', '4', 'H' }) }
+                };
+            }
+        }
+
+        public static IEnumerable<object[]> ContainsChars_FailTestDataCaseInsensetive
+        {
+            get
+            {
+                return new[]
+                {
+                    new object[] { "v027CPSNRo9pwj9f", new char[] { 'z', '3', 'x' } },
+                    new object[] { "tPzglSBMqE6u9bvB", new List<char>() { 'i', '0', 'n' } },
+                    new object[] { "jT5BZRbC8cgwAYu2", new HashSet<char>() { 'x', '3', 'h' } },
+                    new object[] { "U5SVGjk0hIr9Bxz0", new Queue<char>(new char[] { 'f', '4', 'q' }) }
+                };
+            }
+        }
+
+        public static IEnumerable<object[]> ContainsStrings_PassTestDataCaseSensetive
+        {
+            get
+            {
+                return new[]
+                {
+                    new object[] { "Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car", "ham" } },
+                    new object[] { "Pulled coming wooded tended it answer remain me be", new List<string>() { "wood", "anybody", "word" } },
+                    new object[] { "So landlord by we unlocked sensible it", new HashSet<string>() { "maids", "people", "unlocked" } },
+                    new object[] { "Fat cannot use denied excuse son law", new Queue<string>(new string[] { "man", "phone", "denied", "rang" }) }
+                };
+            }
+        }
+
+        public static IEnumerable<object[]> ContainsStrings_PassTestDataCaseInsensetive
+        {
+            get
+            {
+                return new[]
+                {
+                    new object[] { "Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car", "HAM" } },
+                    new object[] { "Pulled coming wooded tended it answer remain me be", new List<string>() { "WOOD", "anybody", "word" } },
+                    new object[] { "So landlord by we unlocked sensible it", new HashSet<string>() { "maids", "people", "uNLocked" } },
+                    new object[] { "Fat cannot use denied excuse son law", new Queue<string>(new string[] { "man", "phone", "DeNIeD", "rang" }) }
+                };
+            }
+        }
+
+        public static IEnumerable<object[]> ContainsStrings_FailTestDataCaseSensetive
+        {
+            get
+            {
+                return new[]
+                {
+                    new object[] { "Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car", "HAM" } },
+                    new object[] { "Pulled coming wooded tended it answer remain me be", new List<string>() { "WOOD", "anybody", "word" } },
+                    new object[] { "So landlord by we unlocked sensible it", new HashSet<string>() { "maids", "people", "uNLocked" } },
+                    new object[] { "Fat cannot use denied excuse son law", new Queue<string>(new string[] { "man", "phone", "DeNIeD", "rang" }) }
+                };
+            }
+        }
+
+        public static IEnumerable<object[]> ContainsStrings_FailTestDataCaseInsensetive
+        {
+            get
+            {
+                return new[]
+                {
+                    new object[] { "Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car", "news" } },
+                    new object[] { "Pulled coming wooded tended it answer remain me be", new List<string>() { "hard", "anybody", "word" } },
+                    new object[] { "So landlord by we unlocked sensible it", new HashSet<string>() { "maids", "people", "pig" } },
+                    new object[] { "Fat cannot use denied excuse son law", new Queue<string>(new string[] { "man", "phone", "rang" }) }
+                };
+            }
         }
     }
 }
