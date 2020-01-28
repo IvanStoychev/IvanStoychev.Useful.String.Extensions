@@ -66,7 +66,7 @@ namespace Useful.String.Extensions
 
         /// <summary>
         /// Retrieves a substring from this instance. The substring starts at the first
-        /// occurence of a specified string position and has a specified length.
+        /// occurrence of the given startString and has the specified length.
         /// </summary>
         /// <param name="str">The instance from which to extract a substring.</param>
         /// <param name="startString">The string which marks the start of the substring.</param>
@@ -74,7 +74,7 @@ namespace Useful.String.Extensions
         /// <param name="inclusive">A boolean indicating whether the substring should include the given startString.</param>
         /// <returns>
         /// A string that is equivalent to the substring of length "length" that begins at
-        /// the first instance of "startString" in this string instance
+        /// the first instance of "startString" in this string instance.
         /// </returns>
         public static string Substring(this string str, string startString, int length, bool inclusive)
         {

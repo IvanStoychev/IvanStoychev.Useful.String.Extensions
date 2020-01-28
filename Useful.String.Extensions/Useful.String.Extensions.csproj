@@ -18,9 +18,14 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>English</NeutralLanguage>
-    <PackageReleaseNotes>Retrofitted library for .Net Core 3.0.
-Added "TrimStart" and "TrimEnd" methods that accept a string with overloads for different comparison options.</PackageReleaseNotes>
-    <Version>1.2.0</Version>
+    <PackageReleaseNotes>Added new "Replace" methods to "Replacer" class.
+
+Swapped places of "oldStrings" and "newString"  parameters of all methods in "Replacer" class to more closely match the framework "Replace" method.
+
+Moved "ignoreCase" parameter in "Replacer" class methods to be last in most cases.
+
+Improved the summary of method "Substring(string startString, int length, bool inclusive)" a bit.</PackageReleaseNotes>
+    <Version>1.3.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
