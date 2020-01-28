@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xunit;
-using Xunit.Extensions;
 
 namespace Useful.String.Extensions.Tests
 {
