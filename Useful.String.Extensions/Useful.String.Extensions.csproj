@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
     <Authors>Ivan Stoychev</Authors>
     <Title>Useful String Extensions</Title>
     <Language>English</Language>
@@ -18,7 +18,8 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>English</NeutralLanguage>
-    <PackageReleaseNotes>Added "TrimStart" and "TrimEnd" methods that accept a string with overloads for different comparison options.</PackageReleaseNotes>
+    <PackageReleaseNotes>Retrofitted library for .Net Core 3.0.
+Added "TrimStart" and "TrimEnd" methods that accept a string with overloads for different comparison options.</PackageReleaseNotes>
     <Version>1.2.0</Version>
   </PropertyGroup>
 

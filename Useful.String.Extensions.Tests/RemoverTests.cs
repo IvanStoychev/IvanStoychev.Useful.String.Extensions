@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using Xunit;
 using Xunit.Extensions;
 
@@ -90,6 +92,30 @@ namespace Useful.String.Extensions.Tests
         }
 
         [Theory]
+        [InlineData("If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?", "iF the Easter", " Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?")]
+        [InlineData("As he waited for the shower to warm", "As HE waited ", "for the shower to warm")]
+        [InlineData("I love eating toasted cheese and tuna sandwiches.", "i LOV", "e eating toasted cheese and tuna sandwiches.")]
+        [InlineData("The light in his life was actually a fire burning all around him.", "The liGht in him", "The light in his life was actually a fire burning all around him.")]
+        public void TrimStartStringComparison_Test(string testString, string stringToRemove, string expected)
+        {
+            string actual = testString.TrimStart(stringToRemove, StringComparison.OrdinalIgnoreCase);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?", "iF the Easter", " Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?")]
+        [InlineData("As he waited for the shower to warm", "As HE waited ", "for the shower to warm")]
+        [InlineData("I love eating toasted cheese and tuna sandwiches.", "i LOV", "e eating toasted cheese and tuna sandwiches.")]
+        [InlineData("The light in his life was actually a fire burning all around him.", "The liGht in him", "The light in his life was actually a fire burning all around him.")]
+        public void TrimStartCultureInfo_Test(string testString, string stringToRemove, string expected)
+        {
+            string actual = testString.TrimStart(stringToRemove, true, CultureInfo.InvariantCulture);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
         [InlineData("If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?", "they take your teeth and leave chocolate for you?", "If the Easter Bunny and the Tooth Fairy had babies would ")]
         [InlineData("As he waited for the shower to warm", "shower to warm", "As he waited for the ")]
         [InlineData("I love eating toasted cheese and tuna sandwiches.", " and tuna sandwiches.", "I love eating toasted cheese")]
@@ -97,6 +123,30 @@ namespace Useful.String.Extensions.Tests
         public void TrimEnd_Test(string testString, string stringToRemove, string expected)
         {
             string actual = testString.TrimEnd(stringToRemove);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?", "they take your teeth AND leave chocolate for you?", "If the Easter Bunny and the Tooth Fairy had babies would ")]
+        [InlineData("As he waited for the shower to warm", "shower TO warm", "As he waited for the ")]
+        [InlineData("I love eating toasted cheese and tuna sandwiches.", " AND tuna sandwiches.", "I love eating toasted cheese")]
+        [InlineData("The light in his life was actually a fire burning all around him.", "all around HER", "The light in his life was actually a fire burning all around him.")]
+        public void TrimEndStringComparison_Test(string testString, string stringToRemove, string expected)
+        {
+            string actual = testString.TrimEnd(stringToRemove, StringComparison.OrdinalIgnoreCase);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?", "they take your teeth AND leave chocolate for you?", "If the Easter Bunny and the Tooth Fairy had babies would ")]
+        [InlineData("As he waited for the shower to warm", "shower TO warm", "As he waited for the ")]
+        [InlineData("I love eating toasted cheese and tuna sandwiches.", " AND tuna sandwiches.", "I love eating toasted cheese")]
+        [InlineData("The light in his life was actually a fire burning all around him.", "all around HER", "The light in his life was actually a fire burning all around him.")]
+        public void TrimEndCultureInfo_Test(string testString, string stringToRemove, string expected)
+        {
+            string actual = testString.TrimEnd(stringToRemove, true, CultureInfo.InvariantCulture);
 
             Assert.Equal(expected, actual);
         }

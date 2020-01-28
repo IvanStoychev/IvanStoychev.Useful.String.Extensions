@@ -159,7 +159,7 @@ namespace Useful.String.Extensions
                 result = result.Substring(trimString.Length);
 
             return result;
-        }
+        }//there are two method here with no test coverage and you need to write two more for the "TrimEnd" method
 
         /// <summary>
         /// Removes the trailing occurrence of a specified string from the current string.
@@ -177,6 +177,54 @@ namespace Useful.String.Extensions
 
             string result = target;
             if (result.EndsWith(trimString))
+                result = result.Substring(0, result.Length - trimString.Length);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Removes the trailing occurrence of a specified string from the current string.
+        /// </summary>
+        /// <param name="target">The string to remove occurrences from.</param>
+        /// <param name="trimString">The string to remove.</param>
+        /// <param name="stringComparison">One of the enumeration values that determines how this string and value are compared.</param>
+        /// <returns>
+        /// The string that remains after the occurrence of the trimString string is removed
+        /// from the end of the current string. If no characters can be trimmed from the
+        /// current instance, the method returns the current instance unchanged.
+        /// </returns>
+        public static string TrimEnd(this string target, string trimString, StringComparison stringComparison)
+        {
+            if (string.IsNullOrEmpty(trimString)) return target;
+
+            string result = target;
+            if (result.EndsWith(trimString, stringComparison))
+                result = result.Substring(0, result.Length - trimString.Length);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Removes the trailing occurrence of a specified string from the current string.
+        /// </summary>
+        /// <param name="target">The string to remove occurrences from.</param>
+        /// <param name="trimString">The string to remove.</param>
+        /// <param name="ignoreCase">"true" to ignore case during the comparison; otherwise, "false".</param>
+        /// <param name="culture">
+        /// Cultural information that determines how this string and "trimString" are compared.
+        /// If culture is null, the current culture is used.
+        /// </param>
+        /// <returns>
+        /// The string that remains after the occurrence of the trimString string is removed
+        /// from the end of the current string. If no characters can be trimmed from the
+        /// current instance, the method returns the current instance unchanged.
+        /// </returns>
+        public static string TrimEnd(this string target, string trimString, bool ignoreCase, CultureInfo culture)
+        {
+            if (string.IsNullOrEmpty(trimString)) return target;
+
+            string result = target;
+            if (result.EndsWith(trimString, ignoreCase, culture))
                 result = result.Substring(0, result.Length - trimString.Length);
 
             return result;
