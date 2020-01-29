@@ -24,12 +24,12 @@ Swapped places of "oldStrings" and "newString"  parameters of all methods in "Re
 
 Moved "ignoreCase" parameter in "Replacer" class methods to be last in most cases.
 
-Improved the summary of method "Substring(string startString, int length, bool inclusive)" a bit.</PackageReleaseNotes>
+Improved some summaries.</PackageReleaseNotes>
     <Version>1.3.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>J:\Users\Administrator\Source\Repos\Useful.String.Extensions\Useful.String.Extensions\bin\Release\netcoreapp3.1\Useful.String.Extensions.xml</DocumentationFile>
+    <DocumentationFile>J:\Users\Administrator\Source\Repos\Useful.String.Extensions\Useful.String.Extensions\bin\Release\netcoreapp3.0\Useful.String.Extensions.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
