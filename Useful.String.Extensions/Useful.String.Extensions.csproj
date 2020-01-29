@@ -20,9 +20,7 @@
     <NeutralLanguage>English</NeutralLanguage>
     <PackageReleaseNotes>Added new "Replace" methods to "Replacer" class.
 
-Swapped places of "oldStrings" and "newString"  parameters of all methods in "Replacer" class to more closely match the framework "Replace" method.
-
-Moved "ignoreCase" parameter in "Replacer" class methods to be last in most cases.
+Swapped places of "oldStrings" and "newString"  parameters of all methods in "Replacer" class to more closely match the framework "Replace" method. Place of "ignoreCase" parameter also moved in one method.
 
 Improved some summaries.</PackageReleaseNotes>
     <Version>1.3.0</Version>
