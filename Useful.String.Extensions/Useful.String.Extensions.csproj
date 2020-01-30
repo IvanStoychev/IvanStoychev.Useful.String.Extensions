@@ -7,7 +7,7 @@
     <Language>English</Language>
     <Description>A .Net Core class library collection of useful extension methods for the "string" class in C#.</Description>
     <Summary>A .Net Core class library collection of useful extension methods for the "string" class in C#.</Summary>
-    <PackageProjectUrl>https://github.com/IvanStoychev/Useful.String.Extensions</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/IvanStoychev/Useful.String.Extensions/wiki</PackageProjectUrl>
     <RepositoryUrl>https://github.com/IvanStoychev/Useful.String.Extensions</RepositoryUrl>
     <PackageTags>c#, string, useful, extension</PackageTags>
     <RepositoryType>git</RepositoryType>
