@@ -94,39 +94,43 @@ namespace Useful.String.Extensions.Tests
         }
 
         [Fact]
-        public void Substring_TEST_ArgumentOutOfRangeException_MissingStart()
+        public void Substring_string_bool_ArgumentOutOfRange_Exception_TEST()
         {
-            const string testString = "A whole lotta nothin'.";
-            Action action = () => testString.Substring("NotPresentInString", "nothin", StringInclusionOptions.IncludeAll);
-
-            Assert.Throws<ArgumentOutOfRangeException>(action);
+            string testString = "Test.";
+            string expectedMessage = "The string given for 'startString' was not found in the original string. (Parameter 'startString')";
+            Action action = () => testString.Substring("Not present", false);
+            Exception ex = Assert.Throws<ArgumentOutOfRangeException>(action);
+            Assert.Equal(expectedMessage, ex.Message);
         }
 
         [Fact]
-        public void Substring_TEST_ArgumentOutOfRangeException_MissingEnd()
+        public void Substring_string_int_bool_ArgumentOutOfRange_Exception_TEST()
         {
-            const string testString = "A whole lotta nothin'.";
-            Action action = () => testString.Substring("whole", "NotPresentInString", StringInclusionOptions.IncludeAll);
-
-            Assert.Throws<ArgumentOutOfRangeException>(action);
+            string testString = "Test.";
+            string expectedMessage = "The string given for 'startString' was not found in the original string. (Parameter 'startString')";
+            Action action = () => testString.Substring("Not present", 3, false);
+            Exception ex = Assert.Throws<ArgumentOutOfRangeException>(action);
+            Assert.Equal(expectedMessage, ex.Message);
         }
 
         [Fact]
-        public void Substring_TEST_ArgumentOutOfRangeException()
+        public void Substring_string_string_StringInclusionOptions_ArgumentOutOfRange_Exception_startString_TEST()
         {
-            const string testString = "A whole lotta nothin'.";
-            Action action = () => testString.Substring("NotPresentInString", false);
-
-            Assert.Throws<ArgumentOutOfRangeException>(action);
+            string testString = "Test.";
+            string expectedMessage = "The string given for 'startString' was not found in the original string. (Parameter 'startString')";
+            Action action = () => testString.Substring("Not present", "Test", StringInclusionOptions.IncludeAll);
+            Exception ex = Assert.Throws<ArgumentOutOfRangeException>(action);
+            Assert.Equal(expectedMessage, ex.Message);
         }
 
         [Fact]
-        public void Substring_Length_TEST_ArgumentOutOfRangeException()
+        public void Substring_string_string_StringInclusionOptions_ArgumentOutOfRange_Exception_endString_TEST()
         {
-            const string testString = "A whole lotta nothin'.";
-            Action action = () => testString.Substring("NotPresentInString", 3, false);
-
-            Assert.Throws<ArgumentOutOfRangeException>(action);
+            string testString = "Test.";
+            string expectedMessage = "The string given for 'endString' was not found in the original string. (Parameter 'endString')";
+            Action action = () => testString.Substring("Test", "Not present", StringInclusionOptions.IncludeAll);
+            Exception ex = Assert.Throws<ArgumentOutOfRangeException>(action);
+            Assert.Equal(expectedMessage, ex.Message);
         }
     }
 }

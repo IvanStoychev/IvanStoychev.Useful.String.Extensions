@@ -18,9 +18,8 @@ namespace Useful.String.Extensions
         /// <returns>A string representing the part of the original string, located between the startString and endString.</returns>
         public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions)
         {
-            // These are precaution calls, meant to throw an "ArgumentOutOfRangeException" exception if needed.
-            str.Substring(str.IndexOf(startString));
-            str.Substring(str.IndexOf(endString));
+            tryExeption(str, startString, nameof(startString));
+            tryExeption(str, endString, nameof(endString));
 
             int startStringIndex = str.IndexOf(startString);
             int endStringIndex = str.IndexOf(endString);
@@ -56,8 +55,7 @@ namespace Useful.String.Extensions
         /// <returns>A string representing the part of the original string, located from startString to the end of the original instance.</returns>
         public static string Substring(this string str, string startString, bool inclusive)
         {
-            // This is a precaution call, meant to throw an "ArgumentOutOfRangeException" exception if needed.
-            str.Substring(str.IndexOf(startString));
+            tryExeption(str, startString, nameof(startString));
 
             int startStringIndex = str.IndexOf(startString) + startString.Length * Convert.ToInt32(!inclusive);
 
@@ -78,12 +76,24 @@ namespace Useful.String.Extensions
         /// </returns>
         public static string Substring(this string str, string startString, int length, bool inclusive)
         {
-            // This is a precaution call, meant to throw an "ArgumentOutOfRangeException" exception if needed.
-            str.Substring(str.IndexOf(startString));
+            tryExeption(str, startString, nameof(startString));
 
             int startStringIndex = str.IndexOf(startString) + startString.Length * Convert.ToInt32(!inclusive);
 
             return str.Substring(startStringIndex, length);
+        }
+
+        /// <summary>
+        /// Gets the index of "substring" in "originalString" and throws an <see cref="ArgumentOutOfRangeException"/>
+        /// with a specific, descriptive message, if the index is -1.
+        /// </summary>
+        /// <param name="originalString">The instance which to check for "substring".</param>
+        /// <param name="substring">The string to search in "originalString".</param>
+        /// <param name="argumentName">The name of the argument in the original method that is supposed to cause the exception.</param>
+        static void tryExeption(string originalString, string substring, string argumentName)
+        {
+            if (originalString.IndexOf(substring) == -1)
+                throw new ArgumentOutOfRangeException($"{argumentName}", $"The string given for '{argumentName}' was not found in the original string.");
         }
     }
 }

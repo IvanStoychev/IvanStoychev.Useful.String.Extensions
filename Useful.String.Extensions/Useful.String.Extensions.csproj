@@ -18,8 +18,8 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>English</NeutralLanguage>
-    <PackageReleaseNotes>Added license file.</PackageReleaseNotes>
-    <Version>1.3.1</Version>
+    <PackageReleaseNotes>Added more descriptive "ArgumentOutOfRange" exception messages for all "Substring" methods.</PackageReleaseNotes>
+    <Version>1.4.0</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
@@ -33,6 +33,10 @@
       <PackagePath></PackagePath>
     </None>
     <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="strong.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
