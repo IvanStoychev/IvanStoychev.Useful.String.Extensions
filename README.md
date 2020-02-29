@@ -23,7 +23,7 @@ __tl;dr:__
 <br/>
 <br/>*Install using .NET CLI*
 <br/>1. Download the project.
-<br/>2. Open a command line and navigate to "<project download location>\Useful.String.Extensions\".
+<br/>2. Open a command line and navigate to "\<project download location>\Useful.String.Extensions\".
 <br/>3. Run the command "*dotnet add package Useful.String.Extensions*".
 <br/>
 <br/>*Install using PackageReference*
