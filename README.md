@@ -15,22 +15,22 @@ This is a collection of extension methods that I have been in need of many a tim
 Installation
 ------------
 __Long version:__
-<br/>To use the library, either download the package from NuGet by searching for "Useful.String.Extensions" or clone the repo and build in it "Release", which will create a package file in the project's release dir - `~\Useful.String.Extensions\Useful.String.Extensions\bin\Release`. Then you have to install the package file in your project.
+<br/>To use the library, either download the package from NuGet by searching for "Useful.String.Extensions" or clone the repo and build in it "Release", which will create a package file in the project's release dir - "~\Useful.String.Extensions\Useful.String.Extensions\bin\Release". Then you have to install the package file in your project.
 
 __tl;dr:__
 <br/>Install using "Package Manager Console"
-<br/>1. Run this command in the "Package Manager Console" `Install-Package Useful.String.Extensions`
+<br/>1. Run this command in the "Package Manager Console" "Install-Package Useful.String.Extensions"
 <br/>
 <br/>Install using .NET CLI
 <br/>1. Download the project.
-<br/>2. Open a command line and navigate to `<project download location>\Useful.String.Extensions\`.
-<br/>3. Run the command `dotnet add package Useful.String.Extensions`.
+<br/>2. Open a command line and navigate to "<project download location>\Useful.String.Extensions\".
+<br/>3. Run the command "dotnet add package Useful.String.Extensions".
 <br/>
 <br/>Install using PackageReference
-<br/>1. Add this line, in an `<ItemGroup>`, to your .csproj file `<PackageReference Include="Useful.String.Extensions" Version="1.4.0" />`
+<br/>1. Add this line, in an "<ItemGroup>", to your .csproj file "<PackageReference Include="Useful.String.Extensions" Version="1.4.0" />"
 <br/>
 <br/>Install using Paket CLI
-<br/>`paket add Useful.String.Extensions`
+<br/>"paket add Useful.String.Extensions"
 
 <br/>
 
