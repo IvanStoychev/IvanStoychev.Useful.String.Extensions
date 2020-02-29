@@ -19,16 +19,18 @@ __Long version:__
 
 __tl;dr:__
 <br/>Install using "Package Manager Console"
-<br/>`Install-Package Useful.String.Extensions -Version 1.1.1`
+<br/>1. Run this command in the "Package Manager Console" `Install-Package Useful.String.Extensions`
 <br/>
 <br/>Install using .NET CLI
-<br/>`dotnet add package Useful.String.Extensions --version 1.1.1`
+<br/>1. Download the project.
+<br/>2. Open a command line and navigate to `<project download location>\Useful.String.Extensions\`.
+<br/>3. Run the command `dotnet add package Useful.String.Extensions`.
 <br/>
-<br/>Install PackageReference
-<br/>`<PackageReference Include="Useful.String.Extensions" Version="1.1.1" />`
+<br/>Install using PackageReference
+<br/>1. Add this line, in an `<ItemGroup>`, to your .csproj file `<PackageReference Include="Useful.String.Extensions" Version="1.4.0" />`
 <br/>
-<br/>Install Paket CLI
-<br/>`paket add Useful.String.Extensions --version 1.1.1`
+<br/>Install using Paket CLI
+<br/>`paket add Useful.String.Extensions`
 
 <br/>
 
