@@ -27,7 +27,7 @@ __tl;dr:__
 <br/>3. Run the command "*dotnet add package Useful.String.Extensions*".
 <br/>
 <br/>*Install using PackageReference*
-<br/>1. Add this line, in an "*<ItemGroup>*", to your .csproj file "*<PackageReference Include="Useful.String.Extensions" Version="1.4.0" />*".
+<br/>1. Add this line, in an "*\<ItemGroup>*", to your .csproj file "*\<PackageReference Include="Useful.String.Extensions" Version="1.4.0" />*".
 <br/>
 <br/>*Install using Paket CLI*
 <br/>1. Run the command "*paket add Useful.String.Extensions*".
