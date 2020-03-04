@@ -1,5 +1,5 @@
 # Useful.String.Extensions
-A .Net Core class library collection of extension methods for the "string" class in C#.
+A collection of methods designed to make your life easier.
 
 This repo uses [Semantic Versioning 2.0.0][1]
 
