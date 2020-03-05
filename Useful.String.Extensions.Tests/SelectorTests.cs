@@ -5,6 +5,60 @@ namespace Useful.String.Extensions.Tests
 {
     public class SelectorTests
     {
+        public void Substring_TEST(string testString, string expected)
+        {
+
+        }
+
+        [Theory]
+        [InlineData("I started sweating.", "started sweating.")]
+        [InlineData("Now I have to start all over again.", "start all over again.")]
+        [InlineData("He was told that he'd be fired if he didn't start taking his job seriously.", "start taking his job seriously.")]
+        public void Substring_TEST_Inclusive(string testString, string expected)
+        {
+            string result = testString.Substring("start", true);
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("His true character is starting to show through.", "ing to show through.")]
+        [InlineData("Export of the product will start soon.", " soon.")]
+        [InlineData("I'm starting to lose my patience.", "ing to lose my patience.")]
+        public void Substring_TEST_Exclusive(string testString, string expected)
+        {
+            string result = testString.Substring("start", false);
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("His true character is starting to show through.", "starting to show through.")]
+        [InlineData("Export of the product will start soon.", "start soon.")]
+        [InlineData("I'm starting to lose my patience.", "starting to lose my patience.")]
+        public void Substring_LengthTEST_Inclusive(string testString, string expected)
+        {
+            string result = testString.Substring("start", true);
+
+            Assert.Equal(expected, result);
+        }
+
+        public void SubstringEnd_TEST(string testString, string expected)
+        {
+
+        }
+
+        [Theory]
+        [InlineData("His true character is starting to show through.", "ing to show through.")]
+        [InlineData("Export of the product will start soon.", " soon.")]
+        [InlineData("I'm starting to lose my patience.", "ing to lose my patience.")]
+        public void Substring_LengthTEST_Exclusive(string testString, string expected)
+        {
+            string result = testString.Substring("start", false);
+
+            Assert.Equal(expected, result);
+        }
+        
         [Theory]
         [InlineData("Don't step on the broken glass.", "step on the ")]
         [InlineData("He didn’t step on the dentist, yet he broken anyway.", "step on the dentist, yet he ")]
@@ -45,50 +99,6 @@ namespace Useful.String.Extensions.Tests
         public void Substring_TEST_IncludeNone(string testString, string expected)
         {
             string result = testString.Substring("snatch", "virus", StringInclusionOptions.IncludeNone);
-
-            Assert.Equal(expected, result);
-        }
-
-        [Theory]
-        [InlineData("I started sweating.", "started sweating.")]
-        [InlineData("Now I have to start all over again.", "start all over again.")]
-        [InlineData("He was told that he'd be fired if he didn't start taking his job seriously.", "start taking his job seriously.")]
-        public void Substring_TEST_Inclusive(string testString, string expected)
-        {
-            string result = testString.Substring("start", true);
-
-            Assert.Equal(expected, result);
-        }
-
-        [Theory]
-        [InlineData("His true character is starting to show through.", "ing to show through.")]
-        [InlineData("Export of the product will start soon.", " soon.")]
-        [InlineData("I'm starting to lose my patience.", "ing to lose my patience.")]
-        public void Substring_TEST_Exclusive(string testString, string expected)
-        {
-            string result = testString.Substring("start", false);
-
-            Assert.Equal(expected, result);
-        }
-
-        [Theory]
-        [InlineData("His true character is starting to show through.", "starting to show through.")]
-        [InlineData("Export of the product will start soon.", "start soon.")]
-        [InlineData("I'm starting to lose my patience.", "starting to lose my patience.")]
-        public void Substring_LengthTEST_Inclusive(string testString, string expected)
-        {
-            string result = testString.Substring("start", true);
-
-            Assert.Equal(expected, result);
-        }
-
-        [Theory]
-        [InlineData("His true character is starting to show through.", "ing to show through.")]
-        [InlineData("Export of the product will start soon.", " soon.")]
-        [InlineData("I'm starting to lose my patience.", "ing to lose my patience.")]
-        public void Substring_LengthTEST_Exclusive(string testString, string expected)
-        {
-            string result = testString.Substring("start", false);
 
             Assert.Equal(expected, result);
         }
