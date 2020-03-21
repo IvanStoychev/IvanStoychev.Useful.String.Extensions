@@ -7,7 +7,7 @@ This repo uses [Semantic Versioning 2.0.0][1]
 
 Introduction
 ------------
-This is a collection of extension methods that I have been in need of many a time, so I finally wrote them in a nuget package and published the code here. They are designed to be "ease-of-life" and "generally making your life easier" methods.
+This is a collection of string extension methods that I have been in need of many a time, so I finally wrote them in a nuget package and published the code here. They are designed to be "ease-of-life" and "generally making your life easier" methods.
 
 
 <br/>
