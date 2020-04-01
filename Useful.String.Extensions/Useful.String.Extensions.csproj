@@ -16,7 +16,6 @@
     <PackageLicenseExpression></PackageLicenseExpression>
     <Copyright>Copyright (c) 2020 Ivan Stoychev. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>English</NeutralLanguage>
     <PackageReleaseNotes>Added more descriptive "ArgumentOutOfRange" exception messages for all "Substring" methods.</PackageReleaseNotes>
     <Version>1.4.0</Version>
