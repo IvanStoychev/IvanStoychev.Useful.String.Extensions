@@ -15,10 +15,10 @@
     <Copyright>Copyright (c) 2020 Ivan Stoychev. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <NeutralLanguage>English</NeutralLanguage>
-    <PackageReleaseNotes>Nothing added.
+    <PackageReleaseNotes>Nothing added - test release.
 
-Test release.</PackageReleaseNotes>
-    <Version>1.4.2</Version>
+Do not download.</PackageReleaseNotes>
+    <Version>1.4.5</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
