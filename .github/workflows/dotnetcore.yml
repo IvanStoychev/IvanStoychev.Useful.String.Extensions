@@ -24,5 +24,7 @@ jobs:
         PROJECT_FILE_PATH: Useful.String.Extensions/Useful.String.Extensions.csproj
         TAG_COMMIT: false
         NUGET_KEY: ${{ secrets.NugetAPIKey }}
-    - name: asd
+    - name: asd1
       run: pwd #find / -name "*.nupkg" art 2>/dev/null
+    - name: asd2
+      run: ls #find / -name "*.nupkg" art 2>/dev/null
