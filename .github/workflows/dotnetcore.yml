@@ -25,4 +25,4 @@ jobs:
         TAG_COMMIT: false
         NUGET_KEY: ${{ secrets.NugetAPIKey }}
     - name: asd
-      run: find / -name "Useful.String.Extensions*.nupkg"
+      run: find / -name "Useful.String.Extensions*.nupkg" | grep -v "Permission denied"
