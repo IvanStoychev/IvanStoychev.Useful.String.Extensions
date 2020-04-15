@@ -9,7 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core
@@ -21,16 +20,27 @@ jobs:
     - name: Publish NuGet
       uses: rohith/publish-nuget@v2.2.1
       with:
+        # Filepath of the project to be packaged, relative to root of repository
         PROJECT_FILE_PATH: Useful.String.Extensions/Useful.String.Extensions.csproj
+        # Whether to create a tag when there's a version change
         TAG_COMMIT: false
         NUGET_KEY: ${{ secrets.NugetAPIKey }}
-    - name: asd1
-      run: pwd #find / -name "*.nupkg" art 2>/dev/null
-    - name: asd2
-      run: ls #find / -name "*.nupkg" art 2>/dev/null
-    - name: asd3
-      run: find /home/runner/work/ -name "*nupkg"
-    - name: asd4
-      run: find /home/runner/work/ -name "Useful.String.Extensions"
-    - name: asd5
-      run: ls output
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.CreateReleaseToken }}
+      with:
+        tag_name: cat Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Po '(?<=Version>).*(?=</Version>)'
+        release_name: cat Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Po '(?<=Version>).*(?=</Version>)'
+        body: cat Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Pzo '(?<=PackageReleaseNotes>)(.|\n)*(?=</PackageReleaseNotes>)'
+    - name: Upload Release Asset
+      id: upload-release-asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.CreateReleaseToken }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: output/$(ls output/)
+        asset_name: $(ls output/)
+        asset_content_type: application/zip
