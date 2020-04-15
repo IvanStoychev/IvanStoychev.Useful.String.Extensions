@@ -34,5 +34,5 @@ jobs:
         #run: Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Pzo '(?<=PackageReleaseNotes>)(.|\n)*(?=</PackageReleaseNotes>)'
       - name: asd3
         run: ls
-      - name: asd3
-        run: ls Useful.String.Extensions
+      - name: asd4
+        run: pwd
