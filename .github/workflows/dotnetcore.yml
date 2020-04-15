@@ -25,4 +25,4 @@ jobs:
         TAG_COMMIT: false
         NUGET_KEY: ${{ secrets.NugetAPIKey }}
     - name: asd
-      run: find / -name "*.nupkg" art 2>/dev/null
+      run: pwd #find / -name "*.nupkg" art 2>/dev/null
