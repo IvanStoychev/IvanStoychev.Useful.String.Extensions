@@ -33,9 +33,7 @@ jobs:
         # Regex (with version in a capturing group) to extract the version from `VERSION_FILE_PATH`
         #VERSION_REGEX: # optional, default is <Version>(.*)<\/Version>
         # Whether to create a tag when there's a version change
-        TAG_COMMIT: true
-        # Format of the tag, `*` is the placeholder for actual version
-        TAG_FORMAT: v* # unfortunately, must contain at least one letter
+        TAG_COMMIT: false
         # API key for the NuGet feed
         NUGET_KEY: ${{ secrets.NugetAPIKey }}
         # NuGet package name, required when it's different from the project name
