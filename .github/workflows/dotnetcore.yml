@@ -35,7 +35,7 @@ jobs:
         # Whether to create a tag when there's a version change
         TAG_COMMIT: true
         # Format of the tag, `*` is the placeholder for actual version
-        TAG_FORMAT: * # unfortunately, must contain at least one letter
+        TAG_FORMAT: v* # unfortunately, must contain at least one letter
         # API key for the NuGet feed
         NUGET_KEY: ${{ secrets.NugetAPIKey }}
         # NuGet package name, required when it's different from the project name
