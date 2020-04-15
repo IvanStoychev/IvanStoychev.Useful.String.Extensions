@@ -16,8 +16,8 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
-    ##- name: Build
-      ##run: dotnet pack --configuration Release -o output
+    - name: Build
+      run: dotnet pack --configuration Release -o output
     - name: Publish NuGet
       uses: rohith/publish-nuget@v2.2.1
       with:
@@ -32,3 +32,5 @@ jobs:
       run: find /home/runner/work/ -name "*nupkg"
     - name: asd4
       run: find /home/runner/work/ -name "Useful.String.Extensions"
+    - name: asd5
+      run: ls output
