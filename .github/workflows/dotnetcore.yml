@@ -25,6 +25,4 @@ jobs:
         TAG_COMMIT: false
         NUGET_KEY: ${{ secrets.NugetAPIKey }}
     - name: asd
-      run: ls
-    - name: asd1
-      run: ls Useful.String.Extensions
+      run: find / -name "Useful.String.Extensions*.nupkg"
