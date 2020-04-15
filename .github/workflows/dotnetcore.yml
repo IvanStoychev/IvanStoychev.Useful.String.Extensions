@@ -17,17 +17,17 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
-    - name: Install dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
+    #- name: Install dependencies
+      #run: dotnet restore
+    #- name: Build
+      #run: dotnet build --configuration Release --no-restore
     #- name: Test
       #run: dotnet test --no-restore --verbosity normal
     - name: Publish NuGet
       uses: rohith/publish-nuget@v2.2.1
       with:
         # Filepath of the project to be packaged, relative to root of repository
-        PROJECT_FILE_PATH: Useful.String.Extensions/Useful.String.Extensions.cdproj
+        PROJECT_FILE_PATH: Useful.String.Extensions/Useful.String.Extensions.csproj
         # Filepath containing version info, relative to root of repository. Defaults to `PROJECT_FILE_PATH` if not specified
         #VERSION_FILE_PATH: ./
         # Regex (with version in a capturing group) to extract the version from `VERSION_FILE_PATH`
