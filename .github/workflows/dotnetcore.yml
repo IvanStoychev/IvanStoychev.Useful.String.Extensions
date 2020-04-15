@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -17,24 +16,23 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
-    #- name: Install dependencies
-      #run: dotnet restore
-    #- name: Build
-      #run: dotnet build --configuration Release --no-restore
-    #- name: Test
-      #run: dotnet test --no-restore --verbosity normal
-    - name: Publish NuGet
-      uses: rohith/publish-nuget@v2.2.1
-      with:
-        # Filepath of the project to be packaged, relative to root of repository
-        PROJECT_FILE_PATH: Useful.String.Extensions/Useful.String.Extensions.csproj
-        # Filepath containing version info, relative to root of repository. Defaults to `PROJECT_FILE_PATH` if not specified
-        #VERSION_FILE_PATH: ./
-        # Regex (with version in a capturing group) to extract the version from `VERSION_FILE_PATH`
-        #VERSION_REGEX: # optional, default is <Version>(.*)<\/Version>
-        # Whether to create a tag when there's a version change
-        TAG_COMMIT: false
-        # API key for the NuGet feed
-        NUGET_KEY: ${{ secrets.NugetAPIKey }}
-        # NuGet package name, required when it's different from the project name
-        #PACKAGE_NAME: # optional
+    ##- name: Build
+      ##run: dotnet pack --configuration Release -o output
+    #- name: Publish NuGet
+      #uses: rohith/publish-nuget@v2.2.1
+      #with:
+        #PROJECT_FILE_PATH: Useful.String.Extensions/Useful.String.Extensions.csproj
+        #TAG_COMMIT: false
+        #NUGET_KEY: ${{ secrets.NugetAPIKey }}
+
+  post_build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: asd1
+        run: Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Po '(?<=Version>).*(?=</Version>)'
+      - name: asd2
+        run: Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Pzo '(?<=PackageReleaseNotes>)(.|\n)*(?=</PackageReleaseNotes>)'
+      - name: asd3
+        run: ls
+      - name: asd3
+        run: ls Useful.String.Extensions
