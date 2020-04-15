@@ -16,16 +16,15 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
-    - name: asd1
-      run: cat Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Po '(?<=Version>).*(?=</Version>)'
-    - name: asd2
-      run: cat Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Pzo '(?<=PackageReleaseNotes>)(.|\n)*(?=</PackageReleaseNotes>)'
-
     ##- name: Build
       ##run: dotnet pack --configuration Release -o output
-    #- name: Publish NuGet
-      #uses: rohith/publish-nuget@v2.2.1
-      #with:
-        #PROJECT_FILE_PATH: Useful.String.Extensions/Useful.String.Extensions.csproj
-        #TAG_COMMIT: false
-        #NUGET_KEY: ${{ secrets.NugetAPIKey }}
+    - name: Publish NuGet
+      uses: rohith/publish-nuget@v2.2.1
+      with:
+        PROJECT_FILE_PATH: Useful.String.Extensions/Useful.String.Extensions.csproj
+        TAG_COMMIT: false
+        NUGET_KEY: ${{ secrets.NugetAPIKey }}
+    - name: asd
+      run: ls
+    - name: asd1
+      run: ls Useful.String.Extensions
