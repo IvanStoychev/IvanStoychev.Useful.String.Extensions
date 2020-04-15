@@ -28,10 +28,10 @@ jobs:
   post_build:
     runs-on: ubuntu-latest
     steps:
-      - name: asd1
-        run: Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Po '(?<=Version>).*(?=</Version>)'
-      - name: asd2
-        run: Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Pzo '(?<=PackageReleaseNotes>)(.|\n)*(?=</PackageReleaseNotes>)'
+      #- name: asd1
+        #run: Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Po '(?<=Version>).*(?=</Version>)'
+      #- name: asd2
+        #run: Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Pzo '(?<=PackageReleaseNotes>)(.|\n)*(?=</PackageReleaseNotes>)'
       - name: asd3
         run: ls
       - name: asd3
