@@ -28,3 +28,7 @@ jobs:
       run: pwd #find / -name "*.nupkg" art 2>/dev/null
     - name: asd2
       run: ls #find / -name "*.nupkg" art 2>/dev/null
+    - name: asd3
+      run: find /home/runner/work/ -name "*nupkg"
+    - name: asd4
+      run: find /home/runner/work/ -name "Useful.String.Extensions"
