@@ -31,7 +31,7 @@ jobs:
 
     - id: get-version-number
       name: Get version number
-      run: cat Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Po '(?<=Version>).*(?=</Version>)' #echo ::set-env name=GITHUB_SHA_SHORT::$(cat Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Po '(?<=Version>).*(?=</Version>)')
+      run: echo ::set-env name=TAG_NAME::$(cat Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Po '(?<=Version>).*(?=</Version>)')
 
     - name: test
-      run: echo ${{steps.get-version-number.outputs.result}}
+      run: echo ${{ env.TAG_NAME }}
