@@ -31,12 +31,12 @@ jobs:
 
     - id: get-version-number
       name: Get version number
-      run: echo ::set-env name=TAG_NAME::$(cat Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Po '(?<=Version>).*(?=</Version>)')
+      run: echo ::set-env name=TAG_NAME::$(grep -Po '(?<=Version>).*(?=</Version>)' Useful.String.Extensions/Useful.String.Extensions.csproj)
 
     - id: get-release-notes
       name: Get release notes
       run: |
-        echo ::set-env name=RELEASE_NOTES::$(cat Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Pzo '(?<=PackageReleaseNotes>)(.|\n)*(?=</PackageReleaseNotes>)')
+        echo ::set-env name=RELEASE_NOTES::$(grep -Pzo '(?<=PackageReleaseNotes>)(.|\n)*(?=</PackageReleaseNotes>)' Useful.String.Extensions/Useful.String.Extensions.csproj)
 
     - name: test
       run: |
