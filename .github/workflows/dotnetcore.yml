@@ -35,7 +35,7 @@ jobs:
 
     - id: get-release-notes
       name: Get release notes
-      run: REL = "asd"
+      run: REL="asd"
         #echo RELEASE_NOTES
         #RELEASE_NOTES = ${RELEASE_NOTES//$'\n'/'%0A'}
         #RELEASE_NOTES = ${RELEASE_NOTES//$'\r'/'%0D'}
