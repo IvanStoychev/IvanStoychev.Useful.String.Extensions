@@ -10,11 +10,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.101
+    #- uses: actions/checkout@v2
+    #- name: Setup .NET Core
+      #uses: actions/setup-dotnet@v1
+      #with:
+        #dotnet-version: 3.1.101
 
     #- name: Build
       #run: dotnet pack --configuration Release -o output
@@ -29,13 +29,13 @@ jobs:
         #NUGET_KEY: ${{ secrets.NugetAPIKey }}
 
 
-    - id: get-version-number
-      name: Get version number
-      run: echo ::set-env name=TAG_NAME::$(grep -Po '(?<=Version>).*(?=</Version>)' Useful.String.Extensions/Useful.String.Extensions.csproj)
+    #- id: get-version-number
+      #name: Get version number
+      #run: echo ::set-env name=TAG_NAME::$(grep -Po '(?<=Version>).*(?=</Version>)' Useful.String.Extensions/Useful.String.Extensions.csproj)
 
     - id: get-release-notes
       name: Get release notes
-      run: RELEASE_NOTES = $(grep -Pzo '(?<=PackageReleaseNotes>)(.|\n)*(?=</PackageReleaseNotes>)' Useful.String.Extensions/Useful.String.Extensions.csproj)
+      run: RELEASE_NOTES = "$(grep -Pzo '(?<=PackageReleaseNotes>)(.|\n)*(?=</PackageReleaseNotes>)' Useful.String.Extensions/Useful.String.Extensions.csproj)"
         #echo RELEASE_NOTES
         #RELEASE_NOTES = ${RELEASE_NOTES//$'\n'/'%0A'}
         #RELEASE_NOTES = ${RELEASE_NOTES//$'\r'/'%0D'}
