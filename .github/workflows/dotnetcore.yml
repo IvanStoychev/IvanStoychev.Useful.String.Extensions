@@ -31,11 +31,9 @@ jobs:
 
     - id: get-version-number
       name: Get version number
-      uses: actions/github-script@0.2.0
+      uses: jcblw/bash@master
       with:
-        github-token: ${{github.token}}
-        result-encoding: string
-        script: cat Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Po '(?<=Version>).*(?=</Version>)'
+        args: "cat Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Po '(?<=Version>).*(?=</Version>)'"
 
     - name: test
       run: echo ${{steps.get-release-name.outputs.result}}
