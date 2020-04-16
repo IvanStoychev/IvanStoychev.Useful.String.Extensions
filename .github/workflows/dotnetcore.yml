@@ -37,10 +37,10 @@ jobs:
       name: Get release notes
       run: | 
         RELEASE_NOTES = $(grep -Pzo '(?<=PackageReleaseNotes>)(.|\n)*(?=</PackageReleaseNotes>)' Useful.String.Extensions/Useful.String.Extensions.csproj)
-        echo RELEASE_NOTES
-        RELEASE_NOTES = ${RELEASE_NOTES//$'\n'/'%0A'}
-        RELEASE_NOTES = ${RELEASE_NOTES//$'\r'/'%0D'}
-        echo ::set-env name=RELEASE_NOTES::$RELEASE_NOTES
+        #echo RELEASE_NOTES
+        #RELEASE_NOTES = ${RELEASE_NOTES//$'\n'/'%0A'}
+        #RELEASE_NOTES = ${RELEASE_NOTES//$'\r'/'%0D'}
+        #echo ::set-env name=RELEASE_NOTES::$RELEASE_NOTES
 
     - name: test
       run: echo ${{ env.RELEASE_NOTES }}
