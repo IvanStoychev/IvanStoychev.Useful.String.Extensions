@@ -16,8 +16,8 @@ jobs:
       with:
         dotnet-version: 3.1.101
 
-    - name: Build
-      run: dotnet pack --configuration Release -o output
+    #- name: Build
+      #run: dotnet pack --configuration Release -o output
 
     #- name: Publish NuGet
       #uses: rohith/publish-nuget@v2.2.1
@@ -33,5 +33,9 @@ jobs:
       name: Get version number
       run: echo ::set-env name=TAG_NAME::$(cat Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Po '(?<=Version>).*(?=</Version>)')
 
+    - id: get-release-notes
+      name: Get release notes
+      run: echo ::set-env name=RELEASE_NOTES::$(cat Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Pzo '(?<=PackageReleaseNotes>)(.|\n)*(?=</PackageReleaseNotes>)')
+
     - name: test
-      run: echo ${{ env.TAG_NAME }}
+      run: echo ${{ env.RELEASE_NOTES }}
