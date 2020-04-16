@@ -39,4 +39,5 @@ jobs:
         echo ::set-env name=RELEASE_NOTES::$(cat Useful.String.Extensions/Useful.String.Extensions.csproj | grep -Pzo '(?<=PackageReleaseNotes>)(.|\n)*(?=</PackageReleaseNotes>)')
 
     - name: test
-      run: echo ${{ env.RELEASE_NOTES }}
+      run: |
+        echo ${{ env.RELEASE_NOTES }}
