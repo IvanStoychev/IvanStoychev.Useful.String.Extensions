@@ -20,16 +20,6 @@ jobs:
       run: dotnet pack --configuration Release -o output
 
 
-    - name: Publish NuGet
-      uses: rohith/publish-nuget@v2.2.1
-      with:
-        # Filepath of the project to be packaged, relative to root of repository
-        PROJECT_FILE_PATH: Useful.String.Extensions/Useful.String.Extensions.csproj
-        # Whether to create a tag when there's a version change
-        TAG_COMMIT: false
-        NUGET_KEY: ${{ secrets.NugetAPIKey }}
-
-
     - id: get-version-number
       name: Get version number
       run: |
@@ -55,6 +45,21 @@ jobs:
         FILE_NAME=$(ls output/)
         echo "Name of nuget package is '${FILE_NAME}'."
         echo "::set-env name=FILE_NAME::$FILE_NAME"
+
+
+    - name: Publish NuGet
+      run: dotnet nuget push "output/${{ env.FILE_NAME }}" -k ${{ secrets.NugetAPIKey }} -s https://api.nuget.org/v3/index.json
+      #uses: rohith/publish-nuget@v2.2.1
+      #with:
+        ## Filepath of the project to be packaged, relative to root of repository
+        #PROJECT_FILE_PATH: Useful.String.Extensions/Useful.String.Extensions.csproj
+        ## Whether to create a tag when there's a version change
+        #TAG_COMMIT: false
+        #NUGET_KEY: ${{ secrets.NugetAPIKey }}
+
+
+    - name: Publish Github package
+      run: dotnet nuget push "output/${{ env.FILE_NAME }}" --source "github"
 
 
     - name: Create Release
