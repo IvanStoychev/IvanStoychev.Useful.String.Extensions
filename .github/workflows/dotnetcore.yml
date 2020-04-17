@@ -35,7 +35,7 @@ jobs:
       run: |
         PACKAGE_VERSION=$(grep -Po '(?<=Version>).*(?=</Version>)' Useful.String.Extensions/Useful.String.Extensions.csproj)
         echo "Package version is '${PACKAGE_VERSION}'"
-        echo ::set-env name=VERSION::$PACKAGE_VERSION
+        echo ::set-env name=PACKAGE_VERSION::$PACKAGE_VERSION
 
 
     - id: get-release-notes
