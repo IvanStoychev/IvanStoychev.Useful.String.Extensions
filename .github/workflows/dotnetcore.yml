@@ -47,19 +47,27 @@ jobs:
         echo "::set-env name=FILE_NAME::$FILE_NAME"
 
 
-    #- name: Publish NuGet
-      #run: dotnet nuget push "output/${{ env.FILE_NAME }}" -k ${{ secrets.NugetAPIKey }} -s https://api.nuget.org/v3/index.json
-      #uses: rohith/publish-nuget@v2.2.1
-      #with:
-        ## Filepath of the project to be packaged, relative to root of repository
-        #PROJECT_FILE_PATH: Useful.String.Extensions/Useful.String.Extensions.csproj
-        ## Whether to create a tag when there's a version change
-        #TAG_COMMIT: false
-        #NUGET_KEY: ${{ secrets.NugetAPIKey }}
+    - name: Publish NuGet
+      uses: rohith/publish-nuget@v2.2.1
+      with:
+        # Filepath of the project to be packaged, relative to root of repository
+        PROJECT_FILE_PATH: Useful.String.Extensions/Useful.String.Extensions.csproj
+        # Whether to create a tag when there's a version change
+        TAG_COMMIT: false
+        NUGET_KEY: ${{ secrets.NugetAPIKey }}
 
 
-    - name: Publish Github package
-      run: dotnet nuget push "output/${{ env.FILE_NAME }}" --source "github"
+    - name: Push Nupkg to GitHub Packages
+      uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
+      with:
+        # Path of NuPkg
+        nupkg-path: "output/${{ env.FILE_NAME }}"
+        # package repository owner
+        repo-owner: "IvanStoychev"
+        # user account
+        gh-user: "IvanStoychev"
+        # access token
+        token: ${{ secrets.GITHUB_TOKEN }}
 
 
     - name: Create Release
