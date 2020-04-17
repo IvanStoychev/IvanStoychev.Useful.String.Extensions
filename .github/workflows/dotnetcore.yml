@@ -49,7 +49,7 @@ jobs:
       run: |
         echo $(ls output/)
         TEST=$(ls output/)
-        TEST="output/"+TEST
+        TEST="output/"+$TEST
         echo $TEST
         #echo "::set-env name=RELEASE_NOTES::$RELEASE_NOTES"
 
