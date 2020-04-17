@@ -58,7 +58,7 @@ jobs:
 
 
     - name: Push Nupkg to GitHub Packages
-      run: dotnet nuget push "output/${{ env.FILE_NAME }}" --source "github"
+      run: dotnet nuget push "output/${{ env.FILE_NAME }}" --source github
       #uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
       #with:
         ## Path of NuPkg
