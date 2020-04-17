@@ -43,4 +43,4 @@ jobs:
         echo ::set-env name=RELEASE_NOTES::$RELEASE_NOTES
 
     - name: test
-      run: echo ${{ env.RELEASE_NOTES }}
+      run: echo "${{ env.RELEASE_NOTES }}"
