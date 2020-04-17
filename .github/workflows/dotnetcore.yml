@@ -59,7 +59,7 @@ jobs:
 
     - name: Push Nupkg to GitHub Packages
       run: |
-        nuget sources add -name "github" -Source https://nuget.pkg.github.com/IvanStoychev/index.json -Username IvanStoychev -Password ${{ secrets.GITHUB_TOKEN }}
+        dotnet nuget sources add -name "github" -Source https://nuget.pkg.github.com/IvanStoychev/index.json -Username IvanStoychev -Password ${{ secrets.GITHUB_TOKEN }}
         dotnet nuget push output/Useful.String.Extensions.1.4.6.nupkg --source "github" --skip-duplicate
       #uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
       #with:
