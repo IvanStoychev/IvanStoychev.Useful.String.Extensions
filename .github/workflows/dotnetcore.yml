@@ -53,7 +53,6 @@ jobs:
       name: Get file name
       run: |
         FILE_NAME=$(ls output/)
-        #FILE_PATH="output/${FILE_PATH}"
         echo "Name of nuget package is '${FILE_NAME}'."
         echo "::set-env name=FILE_NAME::$FILE_NAME"
 
