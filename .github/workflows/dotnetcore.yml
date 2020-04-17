@@ -32,7 +32,10 @@ jobs:
 
     - id: get-version-number
       name: Get version number
-      run: echo ::set-env name=VERSION::$(grep -Po '(?<=Version>).*(?=</Version>)' Useful.String.Extensions/Useful.String.Extensions.csproj)
+      run: |
+        PACKAGE_VERSION=$(grep -Po '(?<=Version>).*(?=</Version>)' Useful.String.Extensions/Useful.String.Extensions.csproj)
+        echo "Package version is '${PACKAGE_VERSION}'"
+        echo ::set-env name=VERSION::$PACKAGE_VERSION
 
 
     - id: get-release-notes
@@ -41,37 +44,38 @@ jobs:
         RELEASE_NOTES="$(grep -Pzo '(?<=PackageReleaseNotes>)(.|\n)*(?=</PackageReleaseNotes>)' Useful.String.Extensions/Useful.String.Extensions.csproj)"
         RELEASE_NOTES="${RELEASE_NOTES//$'\n'/'%0A'}"
         RELEASE_NOTES="${RELEASE_NOTES//$'\r'/'%0D'}"
+        echo "Release notes are:"
+        echo ${RELEASE_NOTES}
         echo "::set-env name=RELEASE_NOTES::$RELEASE_NOTES"
 
 
     - id: get-file-name
       name: Get file name
       run: |
-        echo $(ls output/)
-        TEST=$(ls output/)
-        TEST="output/"+$TEST
-        echo $TEST
-        #echo "::set-env name=RELEASE_NOTES::$RELEASE_NOTES"
+        FILE_NAME=$(ls output/)
+        #FILE_PATH="output/${FILE_PATH}"
+        echo "Name of nuget package is '${FILE_NAME}'."
+        echo "::set-env name=FILE_NAME::$FILE_NAME"
 
 
-    #- name: Create Release
-      #id: create_release
-      #uses: actions/create-release@v1
-      #env:
-        #GITHUB_TOKEN: ${{ secrets.CreateReleaseToken }}
-      #with:
-        #tag_name: ${{ env.VERSION }}
-        #release_name: ${{ env.VERSION }}
-        #body: ${{ env.RELEASE_NOTES }}
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.CreateReleaseToken }}
+      with:
+        tag_name: ${{ env.PACKAGE_VERSION }}
+        release_name: ${{ env.PACKAGE_VERSION }}
+        body: ${{ env.RELEASE_NOTES }}
 
 
-    #- name: Upload Release Asset
-      #id: upload-release-asset
-      #uses: actions/upload-release-asset@v1
-      #env:
-        #GITHUB_TOKEN: ${{ secrets.CreateReleaseToken }}
-      #with:
-        #upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        #asset_path: ./my-artifact.zip
-        #asset_name: my-artifact.zip
-        #asset_content_type: application/zip
+    - name: Upload Release Asset
+      id: upload-release-asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.CreateReleaseToken }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: "output/${{ env.FILE_NAME }}"
+        asset_name: ${{ env.FILE_NAME }}
+        asset_content_type: application/zip
