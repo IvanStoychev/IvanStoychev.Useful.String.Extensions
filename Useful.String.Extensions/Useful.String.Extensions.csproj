@@ -12,14 +12,13 @@
     <PackageTags>c#, string, useful, extension</PackageTags>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>strong.png</PackageIcon>
-    <PackageIconUrl />
-    <PackageLicenseExpression></PackageLicenseExpression>
     <Copyright>Copyright (c) 2020 Ivan Stoychev. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>English</NeutralLanguage>
-    <PackageReleaseNotes>Added "SubstringEnd" methods to compliment the functionality of the "Substring" methods.</PackageReleaseNotes>
-    <Version>1.5.0</Version>
+    <PackageReleaseNotes>Nothing added - test release.
+
+Do not download.</PackageReleaseNotes>
+    <Version>1.4.6</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
