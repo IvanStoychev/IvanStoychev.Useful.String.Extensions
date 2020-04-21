@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
+using System.Text.RegularExpressions;
 
 namespace Useful.String.Extensions
 {
@@ -275,14 +276,7 @@ namespace Useful.String.Extensions
             int selectLength = endStringIndex - startStringIndex;
 
             return str.Substring(startStringIndex, selectLength);
-
-            // Gets the number of times the given substring occurrs within the original string.
-            int OccurrencesNumber(string original, string substring)
-            {
-                string[] array = original.Split(substring);
-                return array.Length - 1;
-            }
-
+                        
             // Checks if the given occurrence of the substring isn't larger than
             // the total amount of times it occurs in the original string.
             void CheckOccurrenceNumber(string original, string substring, string argumentName, int targetOccurrence)
@@ -292,6 +286,42 @@ namespace Useful.String.Extensions
                 if (totalOccurrences < targetOccurrence)
                     throw new ArgumentOutOfRangeException(argumentName, $"The substring '{substring}' does not occur {targetOccurrence} times in '{original}'. It only occurs {totalOccurrences} times.");
             }
+        }
+
+        /// <summary>
+        /// Returns the number of times the given "substring" occurs in this instance. Case sensetive.
+        /// </summary>
+        /// <param name="str">The instance from which to extract a substring.</param>
+        /// <param name="substring">The string </param>
+        /// <returns>The amount of times "substring" can be found in this string.</returns>
+        public static int GetOccurrencesNumber(this string str, string substring)
+        {
+            string[] array = str.Split(substring);
+            return array.Length - 1;
+        }
+
+        /// <summary>
+        /// Returns the number of times the given "substring" occurs in this instance.
+        /// </summary>
+        /// <param name="str">The instance from which to extract a substring.</param>
+        /// <param name="substring">The string </param>
+        /// <param name="caseSensetive">Boolean indicating whether the string comparison should be case sensetive.</param>
+        /// <returns>The amount of times "substring" can be found in this string.</returns>
+        public static int GetOccurrencesNumber(this string str, string substring, bool caseSensetive)
+        {
+            int occurrences = 0;
+
+            if (caseSensetive)
+            {
+                occurrences = str.GetOccurrencesNumber(substring);
+            }
+            else
+            {
+                string[] array = Regex.Split(str, substring, RegexOptions.IgnoreCase);
+                occurrences = array.Length - 1;
+            }
+
+            return occurrences;
         }
 
         /// <summary>
