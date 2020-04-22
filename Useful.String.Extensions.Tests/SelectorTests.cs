@@ -5,11 +5,6 @@ namespace Useful.String.Extensions.Tests
 {
     public class SelectorTests
     {
-        public void Substring_TEST(string testString, string expected)
-        {
-
-        }
-
         [Theory]
         [InlineData("I started sweating.", "started sweating.")]
         [InlineData("Now I have to start all over again.", "start all over again.")]

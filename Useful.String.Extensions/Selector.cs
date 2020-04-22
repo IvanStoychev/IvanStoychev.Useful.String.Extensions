@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Diagnostics.Contracts;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace Useful.String.Extensions
@@ -169,8 +169,11 @@ namespace Useful.String.Extensions
         /// </exception>
         public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions)
         {
+            // Check if substrings exist in instance.
             tryArgumentOutOfRangeException(str, startString, nameof(startString));
             tryArgumentOutOfRangeException(str, endString, nameof(endString));
+
+            // Check if "endString" doesn't occur before "startString".
             tryArgumentException(str, startString, endString, nameof(startString), nameof(endString));
 
             int startStringIndex = str.IndexOf(startString);
@@ -231,10 +234,17 @@ namespace Useful.String.Extensions
         /// </exception>
         public static string Substring(this string str, string startString, int startStringOccurrence, string endString, int endStringOccurrence, StringInclusionOptions stringInclusionOptions)
         {
+            // Check if substrings exist in instance.
             tryArgumentOutOfRangeException(str, startString, nameof(startString));
             tryArgumentOutOfRangeException(str, endString, nameof(endString));
-            tryArgumentOutOfRangeException(startStringOccurrence, nameof(startStringOccurrence), 0, int.MaxValue);
-            tryArgumentOutOfRangeException(endStringOccurrence, nameof(endStringOccurrence), 0, int.MaxValue);
+
+            // Get total number of substring occurrences in instance and check if "startStringOccurrence" and "endStringOccurrence" are in range.
+            int startStringTotalOccurrences = str.GetOccurrencesTotal(startString);
+            int endStringTotalOccurrences = str.GetOccurrencesTotal(endString);
+            tryArgumentOutOfRangeException(startStringOccurrence, nameof(startStringOccurrence), 0, startStringTotalOccurrences);
+            tryArgumentOutOfRangeException(endStringOccurrence, nameof(endStringOccurrence), 0, endStringTotalOccurrences);
+
+            // Check if the desired occurrence of "endString" isn't before "startString".
             tryArgumentException(str, startString, endString, nameof(startString), nameof(endString));
 
             int startStringIndex = 0, endStringIndex = 0;
@@ -244,18 +254,14 @@ namespace Useful.String.Extensions
             else if (startStringOccurrence == 1)
                 startStringIndex = str.IndexOf(startString);
             else
-            {
-                CheckOccurrenceNumber(str, startString, nameof(startStringOccurrence), startStringOccurrence);
-            }
+                startStringIndex = GetGivenOccurrenceIndex(str, startString, startStringOccurrence);
 
             if (endStringOccurrence == 0)
                 endStringIndex = str.LastIndexOf(endString);
             else if (endStringOccurrence == 1)
                 endStringIndex = str.IndexOf(endString);
             else
-            {
-                CheckOccurrenceNumber(str, endString, nameof(endStringOccurrence), endStringOccurrence);
-            }
+                endStringIndex = GetGivenOccurrenceIndex(str, endString, endStringOccurrence);
 
             switch (stringInclusionOptions)
             {
@@ -276,16 +282,6 @@ namespace Useful.String.Extensions
             int selectLength = endStringIndex - startStringIndex;
 
             return str.Substring(startStringIndex, selectLength);
-                        
-            // Checks if the given occurrence of the substring isn't larger than
-            // the total amount of times it occurs in the original string.
-            void CheckOccurrenceNumber(string original, string substring, string argumentName, int targetOccurrence)
-            {
-                string exMessage = "";
-                int totalOccurrences = OccurrencesNumber(original, substring);
-                if (totalOccurrences < targetOccurrence)
-                    throw new ArgumentOutOfRangeException(argumentName, $"The substring '{substring}' does not occur {targetOccurrence} times in '{original}'. It only occurs {totalOccurrences} times.");
-            }
         }
 
         /// <summary>
@@ -294,7 +290,7 @@ namespace Useful.String.Extensions
         /// <param name="str">The instance from which to extract a substring.</param>
         /// <param name="substring">The string </param>
         /// <returns>The amount of times "substring" can be found in this string.</returns>
-        public static int GetOccurrencesNumber(this string str, string substring)
+        public static int GetOccurrencesTotal(this string str, string substring)
         {
             string[] array = str.Split(substring);
             return array.Length - 1;
@@ -307,13 +303,13 @@ namespace Useful.String.Extensions
         /// <param name="substring">The string </param>
         /// <param name="caseSensetive">Boolean indicating whether the string comparison should be case sensetive.</param>
         /// <returns>The amount of times "substring" can be found in this string.</returns>
-        public static int GetOccurrencesNumber(this string str, string substring, bool caseSensetive)
+        public static int GetOccurrencesTotal(this string str, string substring, bool caseSensetive)
         {
             int occurrences = 0;
 
             if (caseSensetive)
             {
-                occurrences = str.GetOccurrencesNumber(substring);
+                occurrences = str.GetOccurrencesTotal(substring);
             }
             else
             {
@@ -322,6 +318,26 @@ namespace Useful.String.Extensions
             }
 
             return occurrences;
+        }
+
+        /// <summary>
+        /// Returns the index of the "occurrenceNumber"-ieth occurrence of the given substring in the original string.
+        /// </summary>
+        /// <param name="originalString">The string in which to search.</param>
+        /// <param name="substring">String to look for.</param>
+        /// <param name="occurrenceNumber">The occurrence whose index to get.</param>
+        /// <returns>An integer signifying the index in "originalString" where the desired occurrence of "substring" starts.</returns>
+        static int GetGivenOccurrenceIndex(string originalString, string substring, int occurrenceNumber)
+        {
+            List<int> indexes = new List<int>();
+            for (int index = 0; ; index += substring.Length)
+            {
+                index = originalString.IndexOf(substring, index);
+                if (index == -1) break;
+                indexes.Add(index);
+            }
+
+            return indexes[occurrenceNumber - 1];
         }
 
         /// <summary>
@@ -357,7 +373,7 @@ namespace Useful.String.Extensions
                 throw new ArgumentOutOfRangeException(parameterName, $"The number given for '{parameterName}' (\"{parameter}\") is less than the minimum allowed value of \"{minValue}\".");
 
             if (parameter > maxValue)
-                throw new ArgumentOutOfRangeException(parameterName, $"The number given for '{parameterName}' (\"{parameter}\") is greater than the maximum allowed value of \"{maxValue}\".");
+                throw new ArgumentOutOfRangeException(parameterName, $"The number given for '{parameterName}' (\"{parameter}\") is greater than its total number of occurrences (\"{maxValue}\") in the original string.");
         }
 
         /// <summary>
