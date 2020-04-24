@@ -147,12 +147,12 @@ namespace Useful.String.Extensions
         }
 
         /// <summary>
-        /// Retrieves a substring from this instance that is located between the specified occurrences of the
+        /// Retrieves a substring from this instance that is located between the first occurrences of the
         /// given start and end strings.
         /// </summary>
         /// <param name="str">The instance from which to extract a substring.</param>
-        /// <param name="startString">The string which marks the start of the substring to be extracted.</param>
-        /// <param name="endString">The string which marks the end of the substring.</param>
+        /// <param name="startString">The string which marks the start of the substring to be extracted. Case sensetive.</param>
+        /// <param name="endString">The string which marks the end of the substring. Case sensetive.</param>
         /// <param name="stringInclusionOptions">
         /// A StringInclusionOptions enum value, indicating whether "startString" and/or
         /// "endString" should be included in the result.
@@ -205,12 +205,12 @@ namespace Useful.String.Extensions
         /// given start and end strings.
         /// </summary>
         /// <param name="str">The instance from which to extract a substring.</param>
-        /// <param name="startString">The string which marks the start of the substring to be extracted.</param>
+        /// <param name="startString">The string which marks the start of the substring to be extracted. Case sensetive.</param>
         /// <param name="startStringOccurrence">
         /// Which occurrence of "startString" to use to mark the start the substring. Use zero to specify the last occurrence.
         /// An exception will be thrown if the given number is larger than the total occurrences of "startString" in this instance.
         /// </param>
-        /// <param name="endString">The string which marks the end of the substring.</param>
+        /// <param name="endString">The string which marks the end of the substring. Case sensetive.</param>
         /// <param name="endStringOccurrence">
         /// Which occurrence of "endString" to use to mark the end of the substring. Use zero to specify the last occurrence.
         /// An exception will be thrown if the given number is larger than the total occurrences of "endString" in this instance.
@@ -244,7 +244,8 @@ namespace Useful.String.Extensions
             tryArgumentOutOfRangeException(startStringOccurrence, nameof(startStringOccurrence), 0, startStringTotalOccurrences);
             tryArgumentOutOfRangeException(endStringOccurrence, nameof(endStringOccurrence), 0, endStringTotalOccurrences);
 
-            // Check if the desired occurrence of "endString" isn't before "startString".
+            // Check if the index of the desired occurrence of "endString" isn't before the
+            // index of the desired occurrence of "startString".
             tryArgumentException(str, startString, endString, nameof(startString), nameof(endString));
 
             int startStringIndex = 0, endStringIndex = 0;
