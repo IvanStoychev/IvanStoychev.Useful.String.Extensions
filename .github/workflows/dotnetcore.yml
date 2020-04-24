@@ -2,9 +2,9 @@ name: .NET Core
 
 on:
   push:
-    #branches: [ master ]
+    branches: [ master ]
   pull_request:
-    #branches: [ master ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -55,6 +55,12 @@ jobs:
         # Whether to create a tag when there's a version change
         TAG_COMMIT: false
         NUGET_KEY: ${{ secrets.NugetAPIKey }}
+        
+        
+    - name: Edit csproj
+      uses: Mudlet/xmlstarlet-action@v1.1
+      with:
+        args: ed --inplace -u //Description -v ${{ env.RELEASE_NOTES }} Useful.String.Extensions/Useful.String.Extensions.csproj
 
 
     - name: Push Nupkg to GitHub Packages
