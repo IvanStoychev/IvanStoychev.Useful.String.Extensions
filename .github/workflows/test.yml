@@ -26,6 +26,6 @@ jobs:
     - name: Edit XML
       uses: Mudlet/xmlstarlet-action@v1.1
       with:
-        args: ed -u //Description -v "asd" Useful.String.Extensions/Useful.String.Extensions.csproj
+        args: ed --inplace -u //Description -v "asd" Useful.String.Extensions/Useful.String.Extensions.csproj
     - name: lol
       run: cat Useful.String.Extensions/Useful.String.Extensions.csproj
