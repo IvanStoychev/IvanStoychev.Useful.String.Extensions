@@ -7,7 +7,7 @@ This repo uses [Semantic Versioning 2.0.0][1]
 
 Introduction
 ------------
-This is a collection of string extension methods that I have been in need of many a time, so I finally wrote them in a nuget package and published the code here. They are designed to be "ease-of-life" and "generally making your life easier" methods.
+This is a collection of string extension methods that I have been in need of many a time, so I wrote them in a nuget package and published the code here. They are designed to be "ease-of-life" and "generally making your life easier" methods with user comfort in mind, which is why there are numerious overloads, designed for every case I could think of.
 
 
 <br/>
@@ -49,6 +49,12 @@ After that simply call any desired method on any string.
 Documentation
 -------------
 The methods in the package and project have ample summary information, you can also consult the [Wiki][3].
+
+<br/>
+
+Contribution
+-------------
+Feel free to make issues and pull requests about anything.
 
 
   [1]: https://semver.org/#semantic-versioning-200
