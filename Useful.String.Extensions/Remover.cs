@@ -52,22 +52,6 @@ namespace Useful.String.Extensions
                 return RemoveStringConsiderCase(str, removeStrings);
         }
 
-        private static string RemoveStringConsiderCase(this string value, string[] toRemove)
-        {
-            foreach (var item in toRemove)
-                value = value.Replace(item, string.Empty);
-
-            return value;
-        }
-
-        private static string RemoveStringIgnoreCase(this string value, string[] toRemove)
-        {
-            foreach (var item in toRemove)
-                value = Regex.Replace(value, Regex.Escape(item), string.Empty, RegexOptions.IgnoreCase);
-
-            return value;
-        }
-
         /// <summary>
         /// Removes all numbers from the original string, keeping letters and special characters.
         /// </summary>
@@ -228,6 +212,22 @@ namespace Useful.String.Extensions
                 result = result.Substring(0, result.Length - trimString.Length);
 
             return result;
+        }
+
+        private static string RemoveStringConsiderCase(this string value, string[] toRemove)
+        {
+            foreach (var item in toRemove)
+                value = value.Replace(item, string.Empty);
+
+            return value;
+        }
+
+        private static string RemoveStringIgnoreCase(this string value, string[] toRemove)
+        {
+            foreach (var item in toRemove)
+                value = Regex.Replace(value, Regex.Escape(item), string.Empty, RegexOptions.IgnoreCase);
+
+            return value;
         }
     }
 }
