@@ -248,21 +248,8 @@ namespace Useful.String.Extensions
             // index of the desired occurrence of "startString".
             tryArgumentException(str, startString, endString, nameof(startString), nameof(endString));
 
-            int startStringIndex = 0, endStringIndex = 0;
-
-            if (startStringOccurrence == 0)
-                startStringIndex = str.LastIndexOf(startString);
-            else if (startStringOccurrence == 1)
-                startStringIndex = str.IndexOf(startString);
-            else
-                startStringIndex = GetGivenOccurrenceIndex(str, startString, startStringOccurrence);
-
-            if (endStringOccurrence == 0)
-                endStringIndex = str.LastIndexOf(endString);
-            else if (endStringOccurrence == 1)
-                endStringIndex = str.IndexOf(endString);
-            else
-                endStringIndex = GetGivenOccurrenceIndex(str, endString, endStringOccurrence);
+            int startStringIndex = GetSubstringOccurrenceIndex(str, startString, startStringOccurrence);
+            int endStringIndex = GetSubstringOccurrenceIndex(str, endString, endStringOccurrence);
 
             switch (stringInclusionOptions)
             {
@@ -319,6 +306,30 @@ namespace Useful.String.Extensions
             }
 
             return occurrences;
+        }
+
+        /// <summary>
+        /// Gets the index of the given occurrence of the substring from the original string.
+        /// </summary>
+        /// <param name="original">String which to search for occurrences of substring.</param>
+        /// <param name="substring">String to look for in the original string.</param>
+        /// <param name="occurrence">The occurrence whose index to get.</param>
+        /// <returns>
+        /// Integer, signifying the index of the first character of the given occurrence
+        /// of the given substring in the original string.
+        /// </returns>
+        static int GetSubstringOccurrenceIndex(string original, string substring, int occurrence)
+        {
+            int index = 0;
+
+            if (occurrence == 0)
+                index = original.LastIndexOf(substring);
+            else if (occurrence == 1)
+                index = original.IndexOf(substring);
+            else
+                index = GetGivenOccurrenceIndex(original, substring, occurrence);
+
+            return index;
         }
 
         /// <summary>
