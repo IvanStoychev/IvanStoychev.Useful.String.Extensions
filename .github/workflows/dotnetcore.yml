@@ -18,16 +18,16 @@ jobs:
 
     - name: Build
       run: dotnet pack --configuration Release -o output
-#
-#
-#    - id: get-version-number
-#      name: Get version number
-#      run: |
-#        PACKAGE_VERSION=$(grep -Po '(?<=Version>).*(?=</Version>)' Useful.String.Extensions/Useful.String.Extensions.csproj)
-#        echo "Package version is '${PACKAGE_VERSION}'"
-#        echo ::set-env name=PACKAGE_VERSION::$PACKAGE_VERSION
-#
-#
+
+
+    - id: get-version-number
+      name: Get version number
+      run: |
+        PACKAGE_VERSION=$(grep -Po '(?<=Version>).*(?=</Version>)' Useful.String.Extensions/Useful.String.Extensions.csproj)
+        echo "Package version is '${PACKAGE_VERSION}'"
+        echo ::set-env name=PACKAGE_VERSION::$PACKAGE_VERSION
+
+
     - id: get-release-notes
       name: Get release notes
       run: |
@@ -37,67 +37,63 @@ jobs:
         echo "Release notes are:"
         echo ${RELEASE_NOTES}
         echo "::set-env name=RELEASE_NOTES::$RELEASE_NOTES"
-#
-#
-#    - id: get-file-name
-#      name: Get file name
-#      run: |
-#        FILE_NAME=$(ls output/)
-#        echo "Name of nuget package is '${FILE_NAME}'."
-#        echo "::set-env name=FILE_NAME::$FILE_NAME"
-#
-#
-#    - name: Publish NuGet
-#      uses: rohith/publish-nuget@v2.2.1
-#      with:
-#        # Filepath of the project to be packaged, relative to root of repository
-#        PROJECT_FILE_PATH: Useful.String.Extensions/Useful.String.Extensions.csproj
-#        # Whether to create a tag when there's a version change
-#        TAG_COMMIT: false
-#        NUGET_KEY: ${{ secrets.NugetAPIKey }}
-#
-#        
-    - name: Edit csproj
+
+
+    - id: get-file-name
+      name: Get file name
+      run: |
+        FILE_NAME=$(ls output/)
+        echo "Name of nuget package is '${FILE_NAME}'."
+        echo "::set-env name=FILE_NAME::$FILE_NAME"
+
+
+    - name: Publish NuGet
+      uses: rohith/publish-nuget@v2.2.1
+      with:
+        # Filepath of the project to be packaged, relative to root of repository
+        PROJECT_FILE_PATH: Useful.String.Extensions/Useful.String.Extensions.csproj
+        # Whether to create a tag when there's a version change
+        TAG_COMMIT: false
+        NUGET_KEY: ${{ secrets.NugetAPIKey }}
+
+        
+    - name: Edit csproj description
       uses: Mudlet/xmlstarlet-action@v1.1
       with:
         args: ed --inplace -u //Description -x //PackageReleaseNotes/text() Useful.String.Extensions/Useful.String.Extensions.csproj
-      
-    - name: lol
-      run: cat Useful.String.Extensions/Useful.String.Extensions.csproj
-#
-#
-#    - name: Push Nupkg to GitHub Packages
-#      uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
-#      with:
-#        # Path of NuPkg
-#        nupkg-path: "output/${{ env.FILE_NAME }}"
-#        # package repository owner
-#        repo-owner: "IvanStoychev"
-#        # user account
-#        gh-user: "IvanStoychev"
-#        # access token
-#        token: ${{ secrets.GITHUB_TOKEN }}
-#
-#
-#    - name: Create Release
-#      id: create_release
-#      uses: actions/create-release@v1
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.CreateReleaseToken }}
-#      with:
-#        tag_name: ${{ env.PACKAGE_VERSION }}
-#        release_name: ${{ env.PACKAGE_VERSION }}
-#        body: ${{ env.RELEASE_NOTES }}
-#
-#
-#    - name: Upload Release Asset
-#      id: upload-release-asset
-#      uses: actions/upload-release-asset@v1
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.CreateReleaseToken }}
-#      with:
-#        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-#        asset_path: "output/${{ env.FILE_NAME }}"
-#        asset_name: ${{ env.FILE_NAME }}
-#        asset_content_type: application/zip
-#
+
+
+    - name: Push Nupkg to GitHub Packages
+      uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
+      with:
+        # Path of NuPkg
+        nupkg-path: "output/${{ env.FILE_NAME }}"
+        # package repository owner
+        repo-owner: "IvanStoychev"
+        # user account
+        gh-user: "IvanStoychev"
+        # access token
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.CreateReleaseToken }}
+      with:
+        tag_name: ${{ env.PACKAGE_VERSION }}
+        release_name: ${{ env.PACKAGE_VERSION }}
+        body: ${{ env.RELEASE_NOTES }}
+
+
+    - name: Upload Release Asset
+      id: upload-release-asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.CreateReleaseToken }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: "output/${{ env.FILE_NAME }}"
+        asset_name: ${{ env.FILE_NAME }}
+        asset_content_type: application/zip
