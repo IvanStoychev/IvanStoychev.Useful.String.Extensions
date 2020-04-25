@@ -55,14 +55,15 @@ jobs:
 #        # Whether to create a tag when there's a version change
 #        TAG_COMMIT: false
 #        NUGET_KEY: ${{ secrets.NugetAPIKey }}
-#        
-    - name: asd
-      run: printf ${{ env.RELEASE_NOTES }} >> asd.txt
+#
 #        
     - name: Edit csproj
       uses: Mudlet/xmlstarlet-action@v1.1
       with:
-        args: ed --inplace -u //Description -v $(cat asd.txt) Useful.String.Extensions/Useful.String.Extensions.csproj
+        args: ed --inplace -u //Description -x //PackageReleaseNotes/text() Useful.String.Extensions/Useful.String.Extensions.csproj
+      
+    - name: lol
+      run: cat Useful.String.Extensions/Useful.String.Extensions.csproj
 #
 #
 #    - name: Push Nupkg to GitHub Packages
