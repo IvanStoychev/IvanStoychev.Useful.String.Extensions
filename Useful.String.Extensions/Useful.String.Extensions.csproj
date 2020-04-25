@@ -18,7 +18,7 @@
     <PackageReleaseNotes>- Added "Remove" methods that accept collections of char values.
 - Added "Trim(String)" method that trims a specified string from the begining and end of the original string.
 - Added "SubstringEnd" methods, which select a substring from the end of the original string.
-- Added powerful "Substring" methods, which allow you to specify which occurrence(s) of a substring(s) to use as the start or end of an extraction.</PackageReleaseNotes>
+- Added powerful "Substring" methods, which allow you to specify which occurrence(s) of a substring(s) to use as the start or end of an extraction and what comparison rules to use.</PackageReleaseNotes>
     <Version>1.5.0</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
