@@ -16,7 +16,7 @@ jobs:
       with:
         dotnet-version: 3.1.101
 
-    - name: Build
+    - name: Pack
       run: dotnet pack --configuration Release -o output
 
 
@@ -61,6 +61,10 @@ jobs:
       uses: Mudlet/xmlstarlet-action@v1.1
       with:
         args: ed --inplace -u //Description -x //PackageReleaseNotes/text() Useful.String.Extensions/Useful.String.Extensions.csproj
+
+
+    - name: Pack with new description
+      run: dotnet pack --configuration Release -o output
 
 
     - name: Push Nupkg to GitHub Packages
