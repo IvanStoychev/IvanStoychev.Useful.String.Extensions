@@ -637,8 +637,8 @@ namespace Useful.String.Extensions
         /// <param name="originalString">The instance which to check.</param>
         /// <param name="startString">The string which marks the start of the substring to be extracted from "originalString".</param>
         /// <param name="endString">The string which marks the end of the substring to be extracted from "originalString".</param>
-        /// <param name="startStringArgumentName">The name of the "startString" argument in the original method.</param>
-        /// <param name="endStringArgumentName">The name of the "endString" argument in the original method.</param>
+        /// <param name="startStringArgumentName">The name of the "startString" parameter in the calling method.</param>
+        /// <param name="endStringArgumentName">The name of the "endString" parameter in the calling method.</param>
         /// <param name="stringComparison">The <see cref="StringComparison"/> rules to be used when searching for "startString" and "endString".</param>
         /// <exception cref="ArgumentException">
         /// Thrown when "endString" occurs before "startString" in the "originalString" instance.
@@ -662,8 +662,8 @@ namespace Useful.String.Extensions
         /// <param name="startStringComparison">The <see cref="StringComparison"/> to use when searching for "startString".</param>
         /// <param name="endString">The string which marks the end of the substring to be extracted from "originalString".</param>
         /// <param name="endStringComparison">The <see cref="StringComparison"/> to use when searching for "endString".</param>
-        /// <param name="startStringArgumentName">The name of the "startString" argument in the original method.</param>
-        /// <param name="endStringArgumentName">The name of the "endString" argument in the original method.</param>
+        /// <param name="startStringArgumentName">The name of the "startString" parameter in the calling method.</param>
+        /// <param name="endStringArgumentName">The name of the "endString" parameter in the calling method.</param>
         /// <exception cref="ArgumentException">
         /// Thrown when "endString" occurs before "startString" in the "originalString" instance.
         /// </exception>
@@ -684,8 +684,8 @@ namespace Useful.String.Extensions
         /// <param name="originalString">The instance which to check.</param>
         /// <param name="startString">The string which marks the start of the substring to be extracted from "originalString".</param>
         /// <param name="endString">The string which marks the end of the substring to be extracted from "originalString".</param>
-        /// <param name="startStringArgumentName">The name of the "startString" argument in the original method.</param>
-        /// <param name="endStringArgumentName">The name of the "endString" argument in the original method.</param>
+        /// <param name="startStringArgumentName">The name of the "startString" argument in the calling method.</param>
+        /// <param name="endStringArgumentName">The name of the "endString" argument in the calling method.</param>
         /// <param name="stringComparison">The <see cref="StringComparison"/> rules to be used when searching for "startString" and "endString".</param>
         /// <exception cref="ArgumentException">
         /// Thrown when "endString" occurs before "startString" in the "originalString" instance.
@@ -709,8 +709,8 @@ namespace Useful.String.Extensions
         /// <param name="startStringComparison">The <see cref="StringComparison"/> to use when searching for "startString".</param>
         /// <param name="endString">The string which marks the end of the substring to be extracted from "originalString".</param>
         /// <param name="endStringComparison">The <see cref="StringComparison"/> to use when searching for "endString".</param>
-        /// <param name="startStringArgumentName">The name of the "startString" argument in the original method.</param>
-        /// <param name="endStringArgumentName">The name of the "endString" argument in the original method.</param>
+        /// <param name="startStringArgumentName">The name of the "startString" parameter in the calling method.</param>
+        /// <param name="endStringArgumentName">The name of the "endString" parameter in the calling method.</param>
         /// <exception cref="ArgumentException">
         /// Thrown when "endString" occurs before "startString" in the "originalString" instance.
         /// </exception>
