@@ -35,6 +35,27 @@ namespace Useful.String.Extensions
         /// </summary>
         /// <param name="str">The instance from which to extract a substring.</param>
         /// <param name="startString">The string which marks the start of the substring.</param>
+        /// <param name="stringComparison">The <see cref="StringComparison"/> to use when searching for "startString".</param>
+        /// <returns>
+        /// A string representing the part of the original string, located from
+        /// "startString" to the end of the original instance.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// Thrown when "startString" does not exist within this instance.
+        /// </exception>
+        public static string Substring(this string str, string startString, StringComparison stringComparison)
+        {
+            tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
+
+            return str.Substring(startString, false, stringComparison);
+        }
+
+        /// <summary>
+        /// Retrieves the substring starting from the first instance of
+        /// the given string to the end of this instance.
+        /// </summary>
+        /// <param name="str">The instance from which to extract a substring.</param>
+        /// <param name="startString">The string which marks the start of the substring.</param>
         /// <param name="inclusive">A boolean indicating whether the substring should include the given "startString".</param>
         /// <returns>
         /// A string representing the part of the original string, located from "startString"
@@ -48,6 +69,30 @@ namespace Useful.String.Extensions
             tryArgumentOutOfRangeException(str, startString, nameof(startString));
 
             int startStringIndex = str.IndexOf(startString) + startString.Length * Convert.ToInt32(!inclusive);
+
+            return str.Substring(startStringIndex);
+        }
+
+        /// <summary>
+        /// Retrieves the substring starting from the first instance of
+        /// the given string to the end of this instance.
+        /// </summary>
+        /// <param name="str">The instance from which to extract a substring.</param>
+        /// <param name="startString">The string which marks the start of the substring.</param>
+        /// <param name="inclusive">A boolean indicating whether the substring should include the given "startString".</param>
+        /// <param name="stringComparison">The <see cref="StringComparison"/> to use when searching for "startString".</param>
+        /// <returns>
+        /// A string representing the part of the original string, located from "startString"
+        /// to the end of the original instance.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// Thrown when "startString" does not exist within this instance.
+        /// </exception>
+        public static string Substring(this string str, string startString, bool inclusive, StringComparison stringComparison)
+        {
+            tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
+
+            int startStringIndex = str.IndexOf(startString, stringComparison) + startString.Length * Convert.ToInt32(!inclusive);
 
             return str.Substring(startStringIndex);
         }
@@ -73,6 +118,32 @@ namespace Useful.String.Extensions
             tryArgumentOutOfRangeException(str, startString, nameof(startString));
 
             int startIndex = str.IndexOf(startString) + startString.Length * Convert.ToInt32(!inclusive);
+
+            return str.Substring(startIndex, length);
+        }
+
+        /// <summary>
+        /// Retrieves a substring from this instance. The substring starts at the first
+        /// occurrence of the given "startString" and has the specified length.
+        /// </summary>
+        /// <param name="str">The instance from which to extract a substring.</param>
+        /// <param name="startString">The string which marks the start of the substring.</param>
+        /// <param name="length">The number of characters to return.</param>
+        /// <param name="inclusive">A boolean indicating whether the substring should include the given "startString".</param>
+        /// <param name="stringComparison">The <see cref="StringComparison"/> to use when searching for "startString".</param>
+        /// <returns>
+        /// A string that is equivalent to the substring of length "length" that begins at
+        /// the first instance of "startString" in this string instance.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// Thrown when "startString" plus length indicates a position not within this instance
+        /// or length is less than zero or "startString" does not exist within this instance.
+        /// </exception>
+        public static string Substring(this string str, string startString, int length, bool inclusive, StringComparison stringComparison)
+        {
+            tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
+
+            int startIndex = str.IndexOf(startString, stringComparison) + startString.Length * Convert.ToInt32(!inclusive);
 
             return str.Substring(startIndex, length);
         }
