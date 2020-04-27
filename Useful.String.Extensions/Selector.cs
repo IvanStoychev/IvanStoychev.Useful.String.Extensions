@@ -533,10 +533,7 @@ namespace Useful.String.Extensions
 
             // Check if the index of the desired occurrence of "endString" isn't before the
             // index of the desired occurrence of "startString".
-            if (endStringIndex < startStringIndex)
-                throw new ArgumentException($"The string given for 'endString' (\"{endString}\") occurs before the string given for 'startString' (\"{startString}\") in the original string. " +
-                    $"The argument provided for 'endString' must exist in the original string and occur after the argument provided for 'startString'.");
-            
+            tryArgumentException(nameof(startString), startStringIndex, nameof(endString), endStringIndex);
 
             switch (stringInclusionOptions)
             {
@@ -613,6 +610,24 @@ namespace Useful.String.Extensions
 
             if (parameter > maxValue)
                 throw new ArgumentOutOfRangeException(parameterName, parameter, $"The number given for '{parameterName}' (\"{parameter}\") is greater than its total number of occurrences (\"{maxValue}\") in the original string.");
+        }
+
+        /// <summary>
+        /// Compares "startStringIndex" and "endStringIndex" and throws an <see cref="ArgumentException"/>
+        /// with a specific, descriptive message if "endStringIndex" is less than "startStringIndex".
+        /// </summary>
+        /// <param name="startStringParameterName">The name of the "startString" parameter in the calling method.</param>
+        /// <param name="startStringIndex">The index which marks the start of the substring to be extracted in the calling method.</param>
+        /// <param name="endStringParameterName">The name of the "endString" parameter in the calling method.</param>
+        /// <param name="endStringIndex">The index which marks the end of the substring to be extracted in the calling method.</param>
+        /// <exception cref="ArgumentException">
+        /// Thrown when "endStringIndex" is less than "startStringIndex".
+        /// </exception>
+        static void tryArgumentException(string startStringParameterName, int startStringIndex, string endStringParameterName, int endStringIndex)
+        {
+            if (endStringIndex < startStringIndex)
+                throw new ArgumentException($"The string given for '{endStringParameterName}' (\"{endStringIndex}\") occurs before the string given for '{startStringParameterName}' (\"{startStringIndex}\") in the original string." +
+                    Environment.NewLine + $"The argument provided for '{endStringParameterName}' must exist in the original string and occur after the argument provided for '{startStringParameterName}'.");
         }
 
         /// <summary>
