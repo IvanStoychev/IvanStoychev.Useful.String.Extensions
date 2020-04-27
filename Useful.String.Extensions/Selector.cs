@@ -159,11 +159,11 @@ namespace Useful.String.Extensions
         public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions, StringComparison stringComparison)
         {
             // Check if substrings exist in instance.
-            tryArgumentOutOfRangeException(str, startString, nameof(startString));
-            tryArgumentOutOfRangeException(str, endString, nameof(endString));
+            tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
+            tryArgumentOutOfRangeException(str, endString, nameof(endString), stringComparison);
 
             // Check if "endString" doesn't occur before "startString".
-            tryArgumentException(str, startString, nameof(startString), endString, nameof(endString));
+            tryArgumentException(str, startString, nameof(startString), endString, nameof(endString), stringComparison);
 
             int startStringIndex = str.IndexOf(startString, stringComparison);
             int endStringIndex = str.IndexOf(endString, stringComparison);
@@ -342,7 +342,7 @@ namespace Useful.String.Extensions
             tryArgumentOutOfRangeException(str, endString, nameof(endString));
 
             // Check if "endString" doesn't occur before "startString".
-            tryArgumentException(str, startString, nameof(startString), endString, nameof(endString));
+            tryArgumentExceptionEnd(str, startString, nameof(startString), endString, nameof(endString));
 
             int startStringIndex = str.LastIndexOf(startString);
             int endStringIndex = str.LastIndexOf(endString);
@@ -400,7 +400,7 @@ namespace Useful.String.Extensions
             tryArgumentOutOfRangeException(str, endString, nameof(endString), stringComparison);
 
             // Check if "endString" doesn't occur before "startString".
-            tryArgumentException(str, startString, nameof(startString), endString, nameof(endString), stringComparison);
+            tryArgumentExceptionEnd(str, startString, nameof(startString), endString, nameof(endString), stringComparison);
 
             int startStringIndex = str.LastIndexOf(startString, stringComparison);
             int endStringIndex = str.LastIndexOf(endString, stringComparison);
@@ -456,7 +456,7 @@ namespace Useful.String.Extensions
             tryArgumentOutOfRangeException(str, endString, nameof(endString), endStringComparison);
 
             // Check if "endString" doesn't occur before "startString".
-            tryArgumentException(str, startString, startStringComparison, nameof(startString), endString, endStringComparison, nameof(endString));
+            tryArgumentExceptionEnd(str, startString, startStringComparison, nameof(startString), endString, endStringComparison, nameof(endString));
 
             int startStringIndex = str.LastIndexOf(startString, startStringComparison);
             int endStringIndex = str.LastIndexOf(endString, endStringComparison);
@@ -592,7 +592,7 @@ namespace Useful.String.Extensions
         static void tryArgumentOutOfRangeException(string originalString, string substring, string parameterName, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             if (originalString.IndexOf(substring, stringComparison) == -1)
-                throw new ArgumentOutOfRangeException(parameterName, substring, $"The string given for '{parameterName}' was not found in the original string.");
+                throw new ArgumentOutOfRangeException(parameterName, substring, $"The string given for '{parameterName}' (\"{substring}\") was not found in the original string.");
         }
 
         /// <summary>
