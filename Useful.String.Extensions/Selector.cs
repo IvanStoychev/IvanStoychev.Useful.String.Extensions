@@ -555,7 +555,161 @@ namespace Useful.String.Extensions
 
             return str.Substring(startStringIndex, selectLength);
         }
-        
+
+        /// <summary>
+        /// Retrieves a substring from this instance that is located between the specified occurrences of the
+        /// given start and end strings.
+        /// </summary>
+        /// <param name="str">The instance from which to extract a substring.</param>
+        /// <param name="startString">The string which marks the start of the substring to be extracted. Case sensetive.</param>
+        /// <param name="startStringOccurrence">
+        /// Which occurrence of "startString" to use to mark the start the substring. Use zero to specify the last occurrence.
+        /// An exception will be thrown if the given number is larger than the total occurrences of "startString" in this instance.
+        /// </param>
+        /// <param name="endString">The string which marks the end of the substring. Case sensetive.</param>
+        /// <param name="endStringOccurrence">
+        /// Which occurrence of "endString" to use to mark the end of the substring. Use zero to specify the last occurrence.
+        /// An exception will be thrown if the given number is larger than the total occurrences of "endString" in this instance.
+        /// </param>
+        /// <param name="stringInclusionOptions">
+        /// A StringInclusionOptions enum value, indicating whether "startString" and/or
+        /// "endString" should be included in the result.
+        /// </param>
+        /// <param name="stringComparison">
+        /// The <see cref="StringComparison"/> rules to be used when searching
+        /// for "startString" and "endString".
+        /// </param>
+        /// <returns>
+        /// A string representing the part of the original string, located between
+        /// the "startString" and "endString".
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// Thrown when "startString" or "endString" do not exist within this instance. 
+        /// - or - 
+        /// "startString" does not occur "startStringOccurrence" times or "endString" does not occur "endStringOccurrence"
+        /// times in the original instance.
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// Thrown when "endString" occurs before "startString" in the "originalString" instance.
+        /// </exception>
+        public static string Substring(this string str, string startString, int startStringOccurrence, string endString, int endStringOccurrence, StringInclusionOptions stringInclusionOptions, StringComparison stringComparison)
+        {
+            // Check if substrings exist in instance.
+            tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
+            tryArgumentOutOfRangeException(str, endString, nameof(endString), stringComparison);
+
+            // Get total number of substring occurrences in instance and check if "startStringOccurrence" and "endStringOccurrence" are in range.
+            List<int> startStringIndexesList = GetAllOccurrencesList(str, startString, stringComparison);
+            List<int> endStringIndexesList = GetAllOccurrencesList(str, endString, stringComparison);
+            int startStringTotalOccurrences = startStringIndexesList.Count;
+            int endStringTotalOccurrences = endStringIndexesList.Count;
+            tryArgumentOutOfRangeException(startStringOccurrence, nameof(startStringOccurrence), 0, startStringTotalOccurrences);
+            tryArgumentOutOfRangeException(endStringOccurrence, nameof(endStringOccurrence), 0, endStringTotalOccurrences);
+
+            int startStringIndex = startStringIndexesList[startStringOccurrence];
+            int endStringIndex = endStringIndexesList[endStringOccurrence];
+
+            // Check if the index of the desired occurrence of "endString" isn't before the
+            // index of the desired occurrence of "startString".
+            tryArgumentException(nameof(startString), startStringIndex, nameof(endString), endStringIndex);
+
+            switch (stringInclusionOptions)
+            {
+                case StringInclusionOptions.IncludeNone:
+                    startStringIndex += startString.Length;
+                    break;
+                case StringInclusionOptions.IncludeStart:
+                    break;
+                case StringInclusionOptions.IncludeEnd:
+                    startStringIndex += startString.Length;
+                    endStringIndex += endString.Length;
+                    break;
+                case StringInclusionOptions.IncludeAll:
+                    endStringIndex += endString.Length;
+                    break;
+            }
+
+            int selectLength = endStringIndex - startStringIndex;
+
+            return str.Substring(startStringIndex, selectLength);
+        }
+
+        /// <summary>
+        /// Retrieves a substring from this instance that is located between the specified occurrences of the
+        /// given start and end strings.
+        /// </summary>
+        /// <param name="str">The instance from which to extract a substring.</param>
+        /// <param name="startString">The string which marks the start of the substring to be extracted. Case sensetive.</param>
+        /// <param name="startStringComparison">The <see cref="StringComparison"/> to use when searching for "startString".</param>
+        /// <param name="startStringOccurrence">
+        /// Which occurrence of "startString" to use to mark the start the substring. Use zero to specify the last occurrence.
+        /// An exception will be thrown if the given number is larger than the total occurrences of "startString" in this instance.
+        /// </param>
+        /// <param name="endString">The string which marks the end of the substring. Case sensetive.</param>
+        /// <param name="endStringComparison">The <see cref="StringComparison"/> to use when searching for "endString".</param>
+        /// <param name="endStringOccurrence">
+        /// Which occurrence of "endString" to use to mark the end of the substring. Use zero to specify the last occurrence.
+        /// An exception will be thrown if the given number is larger than the total occurrences of "endString" in this instance.
+        /// </param>
+        /// <param name="stringInclusionOptions">
+        /// A StringInclusionOptions enum value, indicating whether "startString" and/or
+        /// "endString" should be included in the result.
+        /// </param>
+        /// <returns>
+        /// A string representing the part of the original string, located between
+        /// the "startString" and "endString".
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// Thrown when "startString" or "endString" do not exist within this instance. 
+        /// - or - 
+        /// "startString" does not occur "startStringOccurrence" times or "endString" does not occur "endStringOccurrence"
+        /// times in the original instance.
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// Thrown when "endString" occurs before "startString" in the "originalString" instance.
+        /// </exception>
+        public static string Substring(this string str, string startString, StringComparison startStringComparison, int startStringOccurrence, string endString, StringComparison endStringComparison, int endStringOccurrence, StringInclusionOptions stringInclusionOptions)
+        {
+            // Check if substrings exist in instance.
+            tryArgumentOutOfRangeException(str, startString, nameof(startString), startStringComparison);
+            tryArgumentOutOfRangeException(str, endString, nameof(endString), endStringComparison);
+
+            // Get total number of substring occurrences in instance and check if "startStringOccurrence" and "endStringOccurrence" are in range.
+            List<int> startStringIndexesList = GetAllOccurrencesList(str, startString, startStringComparison);
+            List<int> endStringIndexesList = GetAllOccurrencesList(str, endString, endStringComparison);
+            int startStringTotalOccurrences = startStringIndexesList.Count;
+            int endStringTotalOccurrences = endStringIndexesList.Count;
+            tryArgumentOutOfRangeException(startStringOccurrence, nameof(startStringOccurrence), 0, startStringTotalOccurrences);
+            tryArgumentOutOfRangeException(endStringOccurrence, nameof(endStringOccurrence), 0, endStringTotalOccurrences);
+
+            int startStringIndex = startStringIndexesList[startStringOccurrence];
+            int endStringIndex = endStringIndexesList[endStringOccurrence];
+
+            // Check if the index of the desired occurrence of "endString" isn't before the
+            // index of the desired occurrence of "startString".
+            tryArgumentException(nameof(startString), startStringIndex, nameof(endString), endStringIndex);
+
+            switch (stringInclusionOptions)
+            {
+                case StringInclusionOptions.IncludeNone:
+                    startStringIndex += startString.Length;
+                    break;
+                case StringInclusionOptions.IncludeStart:
+                    break;
+                case StringInclusionOptions.IncludeEnd:
+                    startStringIndex += startString.Length;
+                    endStringIndex += endString.Length;
+                    break;
+                case StringInclusionOptions.IncludeAll:
+                    endStringIndex += endString.Length;
+                    break;
+            }
+
+            int selectLength = endStringIndex - startStringIndex;
+
+            return str.Substring(startStringIndex, selectLength);
+        }
+
         /// <summary>
         /// Returns a list of the indexes of all occurrences of the given substring in the original string.
         /// </summary>
