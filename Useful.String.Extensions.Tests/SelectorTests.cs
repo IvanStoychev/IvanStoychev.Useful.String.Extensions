@@ -38,11 +38,6 @@ namespace Useful.String.Extensions.Tests
             Assert.Equal(expected, result);
         }
 
-        public void SubstringEnd_TEST(string testString, string expected)
-        {
-
-        }
-
         [Theory]
         [InlineData("His true character is starting to show through.", "ing to show through.")]
         [InlineData("Export of the product will start soon.", " soon.")]
