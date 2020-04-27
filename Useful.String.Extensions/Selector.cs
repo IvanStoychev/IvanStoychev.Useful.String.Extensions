@@ -342,6 +342,27 @@ namespace Useful.String.Extensions
         /// </summary>
         /// <param name="str">The instance from which to extract a substring.</param>
         /// <param name="endString">The string which marks the end of the substring.</param>
+        /// <param name="stringComparison">The <see cref="StringComparison"/> to use when searching for "endString".</param>
+        /// <returns>
+        /// A string representing the part of the original string located from the start
+        /// of the original instance to the first occurrence of "endString".
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// Thrown when "endString" does not exist within this instance.
+        /// </exception>
+        public static string SubstringEnd(this string str, string endString, StringComparison stringComparison)
+        {
+            tryArgumentOutOfRangeException(str, endString, nameof(endString), stringComparison);
+
+            return str.SubstringEnd(endString, false, stringComparison);
+        }
+
+        /// <summary>
+        /// Retrieves the substring starting from the start of this instance
+        /// to the first instance of the given string.
+        /// </summary>
+        /// <param name="str">The instance from which to extract a substring.</param>
+        /// <param name="endString">The string which marks the end of the substring.</param>
         /// <param name="inclusive">A boolean indicating whether the substring should include the given "endString".</param>
         /// <returns>
         /// A string representing the part of the original string located from the start
@@ -360,7 +381,31 @@ namespace Useful.String.Extensions
         }
 
         /// <summary>
-        /// Retrieves a substring of length "length" that ends at
+        /// Retrieves the substring starting from the start of this instance
+        /// to the first instance of the given string.
+        /// </summary>
+        /// <param name="str">The instance from which to extract a substring.</param>
+        /// <param name="endString">The string which marks the end of the substring.</param>
+        /// <param name="inclusive">A boolean indicating whether the substring should include the given "endString".</param>
+        /// <param name="stringComparison">The <see cref="StringComparison"/> to use when searching for "endString".</param>
+        /// <returns>
+        /// A string representing the part of the original string located from the start
+        /// of the original instance to the first occurrence of "endString".
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// Thrown when "endString" does not exist within this instance.
+        /// </exception>
+        public static string SubstringEnd(this string str, string endString, bool inclusive, StringComparison stringComparison)
+        {
+            tryArgumentOutOfRangeException(str, endString, nameof(endString), stringComparison);
+
+            int length = str.IndexOf(endString, stringComparison) + endString.Length * Convert.ToInt32(!inclusive);
+
+            return str.Substring(0, length);
+        }
+
+        /// <summary>
+        /// Retrieves a substring of the given length that ends at
         /// the first instance of "endString" in this string instance.
         /// </summary>
         /// <param name="str">The instance from which to extract a substring.</param>
@@ -380,9 +425,36 @@ namespace Useful.String.Extensions
             tryArgumentOutOfRangeException(str, endString, nameof(endString));
 
             int startIndex = str.IndexOf(endString) - length;
-            int finalLength = length + endString.Length * Convert.ToInt32(!inclusive);
+            int resultLength = length + endString.Length * Convert.ToInt32(!inclusive);
 
-            return str.Substring(startIndex, finalLength);
+            return str.Substring(startIndex, resultLength);
+        }
+
+        /// <summary>
+        /// Retrieves a substring of the given length that ends at
+        /// the first instance of "endString" in this string instance.
+        /// </summary>
+        /// <param name="str">The instance from which to extract a substring.</param>
+        /// <param name="endString">The string which marks the end of the substring.</param>
+        /// <param name="length">The length of the substring to return.</param>
+        /// <param name="inclusive">A boolean indicating whether the substring should include the given "endString".</param>
+        /// <param name="stringComparison">The <see cref="StringComparison"/> to use when searching for "endString".</param>
+        /// <returns>
+        /// A string that is equivalent to the substring of length "length" that ends at
+        /// the first instance of "endString" in this string instance.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// Thrown when "endString" plus length indicates a position not within this instance
+        /// or length is less than zero or "endString" does not exist within this instance.
+        /// </exception>
+        public static string SubstringEnd(this string str, string endString, int length, bool inclusive, StringComparison stringComparison)
+        {
+            tryArgumentOutOfRangeException(str, endString, nameof(endString), stringComparison);
+
+            int startIndex = str.IndexOf(endString, stringComparison) - length;
+            int resultLength = length + endString.Length * Convert.ToInt32(!inclusive);
+
+            return str.Substring(startIndex, resultLength);
         }
 
         /// <summary>
