@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Useful.String.Extensions
+namespace IvanStoychev.StringExtensions
 {
     public static class Comparer
     {

@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace Useful.String.Extensions
+namespace IvanStoychev.StringExtensions
 {
     public static class Remover
     {

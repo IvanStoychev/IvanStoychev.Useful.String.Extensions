@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace Useful.String.Extensions.Tests
+namespace IvanStoychev.StringExtensions.Tests
 {
     public class KeeperTests
     {

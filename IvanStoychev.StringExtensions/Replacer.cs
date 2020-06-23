@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace Useful.String.Extensions
+namespace IvanStoychev.StringExtensions
 {
     public static class Replacer
     {

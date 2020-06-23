@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using Xunit;
 
-namespace Useful.String.Extensions.Tests
+namespace IvanStoychev.StringExtensions.Tests
 {
     public class RemoverTests
     {
