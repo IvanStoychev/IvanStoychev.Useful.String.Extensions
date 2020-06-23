@@ -14,7 +14,7 @@ This is a collection of string extension methods that I have been in need of man
 
 Installation
 ------------
-*Install manually*
+__*Install manually*__
 <br/>1.a. Download the package from [NuGet][4], [Github packages][5] or the [Releases][2] page.
 <br/>-or-
 <br/>1.b. Clone the repo and build in it "Release" mode, which will produce a package file in the project's release dir - "~\Useful.String.Extensions\Useful.String.Extensions\bin\Release".
@@ -23,15 +23,16 @@ Installation
 <br/>where:
 <br/>*\<PROJECT\>* is the path to the \*.csproj file to which you want to add the package (if it is located in the command line's working directory you can omit this parameter).
 <br/>*\<PACKAGE\>* is the path to the package you have downloaded.
-<br/>*Install using "Package Manager Console"*
+<br/>
+<br/>__*Install using "Package Manager Console"*__
 <br/>1. Run this command in the "Package Manager Console": `Install-Package Useful.String.Extensions`.
 <br/>
-<br/>*Install using PackageReference*
+<br/>__*Install using PackageReference*__
 <br/>1. Add this line, in an "*\<ItemGroup>*", to your .csproj file "`<PackageReference Include="Useful.String.Extensions" Version="VersionNumber"/>`".
 <br/>where:
 <br/>*VersionNumber* is the version of the package you wish to use, e.g. `1.4.0`.
 <br/>
-<br/>*Install using Paket CLI*
+<br/>__*Install using Paket CLI*__
 <br/>1. Run the command "`paket add Useful.String.Extensions`".
 
 <br/>
