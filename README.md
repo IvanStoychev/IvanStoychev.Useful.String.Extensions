@@ -14,7 +14,7 @@ This is a collection of string extension methods that I have been in need of man
 
 Installation
 ------------
-<br/>*Install manually*
+*Install manually*
 <br/>1.a. Download the package from [NuGet][4], [Github packages][5] or the [Releases][2] page.
 <br/>-or-
 <br/>1.b. Clone the repo and build in it "Release" mode, which will produce a package file in the project's release dir - "~\Useful.String.Extensions\Useful.String.Extensions\bin\Release".
