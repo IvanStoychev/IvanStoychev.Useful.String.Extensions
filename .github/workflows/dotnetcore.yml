@@ -17,10 +17,14 @@ jobs:
         dotnet-version: 3.1.101
 
     - name: Pack
-      run: |
-        dotnet pack --configuration Release -o output
-        dotnet build --configuration Release
+      run: dotnet pack --configuration Release -o output
 
+    - id: test
+      name: test
+      run: |
+        ls IvanStoychev.StringExtensions
+        ls IvanStoychev.StringExtensions\IvanStoychev.StringExtensions
+        ls IvanStoychev.StringExtensions\IvanStoychev.StringExtensions\IvanStoychev.StringExtensions
 
     - id: get-version-number
       name: Get version number
