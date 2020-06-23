@@ -1,4 +1,4 @@
-# Useful.String.Extensions
+# IvanStoychev.StringExtensions
 A collection of methods designed to make your life easier.
 
 This repo uses [Semantic Versioning 2.0.0][1]
@@ -17,7 +17,7 @@ Installation
 __*Install manually*__
 <br/>1.a. Download the package from [NuGet][4], [Github packages][5] or the [Releases][2] page.
 <br/>-or-
-<br/>1.b. Clone the repo and build in it "Release" mode, which will produce a package file in the project's release dir - "~\Useful.String.Extensions\Useful.String.Extensions\bin\Release".
+<br/>1.b. Clone the repo and build in it "Release" mode, which will produce a package file in the project's release dir - "~\IvanStoychev.StringExtensions\IvanStoychev.StringExtensions\bin\Release".
 <br/>2. Make sure you have the .NET CLI installed.
 <br/>3. Open a command line and Run the command `dotnet add <PROJECT> package <PACKAGE>`.
 <br/>where:
@@ -25,21 +25,21 @@ __*Install manually*__
 <br/>*\<PACKAGE\>* is the path to the package you have downloaded.
 <br/>
 <br/>__*Install using "Package Manager Console"*__
-<br/>1. Run this command in the "Package Manager Console": `Install-Package Useful.String.Extensions`.
+<br/>1. Run this command in the "Package Manager Console": `Install-Package IvanStoychev.StringExtensions`.
 <br/>
 <br/>__*Install using PackageReference*__
-<br/>1. Add this line, in an "*\<ItemGroup>*", to your .csproj file `<PackageReference Include="Useful.String.Extensions" Version="VersionNumber"/>`.
+<br/>1. Add this line, in an "*\<ItemGroup>*", to your .csproj file `<PackageReference Include="IvanStoychev.StringExtensions" Version="VersionNumber"/>`.
 <br/>where:
-<br/>*VersionNumber* is the version of the package you wish to use, e.g. `1.4.0`.
+<br/>*VersionNumber* is the version of the package you wish to use, e.g. `1.0.0`.
 <br/>
 <br/>__*Install using Paket CLI*__
-<br/>1. Run the command `paket add Useful.String.Extensions`.
+<br/>1. Run the command `paket add IvanStoychev.StringExtensions`.
 
 <br/>
 
 How to use
 ----------
-Since the functionality, added by this project, is all extension methods, it would be best to add the using statment "`using Useful.String.Extensions;`" to your code, as Intellisense usually doesn't pick it up.
+Since the functionality, added by this project, is all extension methods, it would be best to add the using statment "`using IvanStoychev.StringExtensions;`" to your code, as Intellisense usually doesn't pick it up.
 
 After that simply call any desired method on any string.
 
@@ -57,7 +57,7 @@ Feel free to make issues and pull requests about anything.
 
 
   [1]: https://semver.org/#semantic-versioning-200
-  [2]: https://github.com/IvanStoychev/Useful.String.Extensions/releases
-  [3]: https://github.com/IvanStoychev/Useful.String.Extensions/wiki/
-  [4]: https://www.nuget.org/packages/Useful.String.Extensions/
-  [5]: https://github.com/IvanStoychev/Useful.String.Extensions/packages
+  [2]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/releases
+  [3]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/wiki/
+  [4]: https://www.nuget.org/packages/IvanStoychev.StringExtensions/
+  [5]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/packages
