@@ -17,7 +17,9 @@ jobs:
         dotnet-version: 3.1.101
 
     - name: Pack
-      run: dotnet pack --configuration Release -o output
+      run: |
+        dotnet pack --configuration Release -o output
+        dotnet build --configuration Release
 
 
     - id: get-version-number
