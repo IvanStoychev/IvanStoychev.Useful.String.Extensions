@@ -23,7 +23,7 @@ jobs:
     - id: get-version-number
       name: Get version number
       run: |
-        PACKAGE_VERSION=$(grep -Po '(?<=Version>).*(?=</Version>)' Useful.String.Extensions/Useful.String.Extensions.csproj)
+        PACKAGE_VERSION=$(grep -Po '(?<=Version>).*(?=</Version>)' IvanStoychev.StringExtensions/IvanStoychev.StringExtensions.csproj)
         echo "Package version is '${PACKAGE_VERSION}'"
         echo ::set-env name=PACKAGE_VERSION::$PACKAGE_VERSION
 
@@ -31,7 +31,7 @@ jobs:
     - id: get-release-notes
       name: Get release notes
       run: |
-        RELEASE_NOTES="$(grep -Pzo '(?<=PackageReleaseNotes>)(.|\n)*(?=</PackageReleaseNotes>)' Useful.String.Extensions/Useful.String.Extensions.csproj)"
+        RELEASE_NOTES="$(grep -Pzo '(?<=PackageReleaseNotes>)(.|\n)*(?=</PackageReleaseNotes>)' IvanStoychev.StringExtensions/IvanStoychev.StringExtensions.csproj)"
         RELEASE_NOTES="${RELEASE_NOTES//$'\n'/'%0A'}"
         RELEASE_NOTES="${RELEASE_NOTES//$'\r'/'%0D'}"
         echo "Release notes are:"
@@ -51,7 +51,7 @@ jobs:
       uses: rohith/publish-nuget@v2.2.1
       with:
         # Filepath of the project to be packaged, relative to root of repository
-        PROJECT_FILE_PATH: Useful.String.Extensions/Useful.String.Extensions.csproj
+        PROJECT_FILE_PATH: IvanStoychev.StringExtensions/IvanStoychev.StringExtensions.csproj
         # Whether to create a tag when there's a version change
         TAG_COMMIT: false
         NUGET_KEY: ${{ secrets.NugetAPIKey }}
@@ -60,7 +60,7 @@ jobs:
     - name: Edit csproj description
       uses: Mudlet/xmlstarlet-action@v1.1
       with:
-        args: ed --inplace -u //Description -x //PackageReleaseNotes/text() Useful.String.Extensions/Useful.String.Extensions.csproj
+        args: ed --inplace -u //Description -x //PackageReleaseNotes/text() IvanStoychev.StringExtensions/IvanStoychev.StringExtensions.csproj
 
 
     - name: Pack with new description
