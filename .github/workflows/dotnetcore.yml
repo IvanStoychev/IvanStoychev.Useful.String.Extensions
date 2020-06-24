@@ -16,9 +16,6 @@ jobs:
       with:
         dotnet-version: 3.1.101
 
-    - name: bild
-      run: dotnet build --configuration Release
-
     - name: Pack
       run: dotnet pack --configuration Release -o output
 
