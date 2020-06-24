@@ -19,13 +19,6 @@ jobs:
     - name: bild
       run: dotnet build --configuration Release
 
-    - id: test
-      name: test
-      run: |
-        ls IvanStoychev.StringExtensions
-        ls IvanStoychev.StringExtensions\IvanStoychev.StringExtensions
-        ls IvanStoychev.StringExtensions\IvanStoychev.StringExtensions\IvanStoychev.StringExtensions
-
     - name: Pack
       run: dotnet pack --configuration Release -o output
 
