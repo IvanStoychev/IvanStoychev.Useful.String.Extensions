@@ -7,6 +7,7 @@ This repo uses [Semantic Versioning 2.0.0][1]
 
 # Join the community
 [![GitQ](https://gitq.com/badge.svg)](https://gitq.com/IvanStoychev/IvanStoychev.StringExtensions)
+[![Gitter](https://badges.gitter.im/IvanStoychev-StringExtensions/community.svg)](https://gitter.im/IvanStoychev-StringExtensions/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 <br/>
 
