@@ -1,6 +1,14 @@
 ![IvanStoychev.StringExtensions](https://imgur.com/8bTHOdq.png)
 
 # IvanStoychev.StringExtensions
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/IvanStoychev/IvanStoychev.StringExtensions?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/IvanStoychev/IvanStoychev.StringExtensions?style=plastic)
+![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/IvanStoychev/IvanStoychev.StringExtensions/latest?style=plastic)
+
+![Nuget](https://img.shields.io/nuget/v/IvanStoychev.StringExtensions?style=plastic)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/IvanStoychev/IvanStoychev.StringExtensions?style=plastic)
+![GitHub](https://img.shields.io/github/license/IvanStoychev/IvanStoychev.StringExtensions?style=plastic)
+<br/>
 A collection of methods designed to make your life easier.
 
 This repo uses [Semantic Versioning 2.0.0][1]
