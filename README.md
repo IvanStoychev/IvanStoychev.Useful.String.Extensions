@@ -1,3 +1,5 @@
+![alt text](https://imgur.com/8bTHOdq.png)
+
 # IvanStoychev.StringExtensions
 A collection of methods designed to make your life easier.
 
