@@ -17,6 +17,22 @@ Introduction
 ------------
 This is a collection of string extension methods that I have been in need of many a time, so I bundled them in a nuget package and published the code here. They are designed to be "ease-of-life" and "generally making your life easier" methods with user comfort in mind, which is why there are numerious overloads, designed for every case I could think of.
 
+<br/>
+
+Features
+------------
+* `Remove` methods that take a series of strings or characters and clear all their occurrences from the string with a single method call.
+  * Ex. `"Lorem ipsum dolor Lorem ipsum sit amet".Remove("Lorem ", "ipsum ", "t")` will return `"dolor si ame"`.
+* Methods to keep or remove all special characters, letters and digits from a string.
+  * Ex. `"!#%&lorem^@ipsum!@%".KeepOnlyLetters()` will return `"loremipsum"`.
+* `Contains` methods that check if a string contains any of a series of provided values.
+  * Ex. `"brake wheel icon number stoic".Contains("keen", "wild", "icon")` will return `true`.
+* `TrimStart` and `TrimEnd` methods that take a string and remove it from the start or end of the original string.
+  * Ex. `"In the beginning there was an end".TrimStart("In the beginning ")` will return `"there was an end"`, while `"In the beginning there was an end".TrimEnd(" an end")` will produce `"In the beginning there was"`.
+* `Replace` methods that take a series of strings or characters and replace all their occurrences in the original string with a provided value.
+  * Ex. `"Cucumbers, oranges and apples are vegetables.".Replace("tomatoes", "oranges", "apples")` will return `"Cucumbers, tomatoes and tomatoes are vegetables."`.
+* `Substring` methods that use string arguments to determine a substring's position, instead of a starting index.
+  * Ex. `"This is the start bla bladdy blah.".Substring("start ", false)` will return `"bla bladdy blah."`, while `"This is the start bla bladdy blah and this is the end.".Substring("start ", "blah", StringInclusionOptions.IncludeNone)` will return `"bla bladdy "`.
 
 <br/>
 
