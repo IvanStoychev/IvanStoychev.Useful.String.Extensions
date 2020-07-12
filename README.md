@@ -21,17 +21,17 @@ This is a collection of string extension methods that I have been in need of man
 
 Features
 ------------
-* [`Remove`][6] methods that take a series of strings or characters and clear all their occurrences from the string with a single method call.
-  * Ex. `"Lorem ipsum dolor Lorem ipsum sit amet".Remove("Lorem ", "ipsum ", "t")` will return `"dolor si ame"`.
 * Methods to keep or remove all special characters, letters and digits from a string.
   * Ex. `"!#%&lorem^@ipsum!@%".KeepOnlyLetters()` will return `"loremipsum"`.
-* `Contains` methods that check if a string contains any of a series of provided values.
+* [`Remove`][6] methods that take a series of strings or characters and clear all their occurrences from the string with a single method call.
+  * Ex. `"Lorem ipsum dolor Lorem ipsum sit amet".Remove("Lorem ", "ipsum ", "t")` will return `"dolor si ame"`.
+* [`Contains`][7] methods that check if a string contains any of a series of provided values.
   * Ex. `"brake wheel icon number stoic".Contains("keen", "wild", "icon")` will return `true`.
-* `TrimStart` and `TrimEnd` methods that take a string and remove it from the start or end of the original string.
+* [`TrimStart`][6] and [`TrimEnd`][6] methods that take a string and remove it from the start or end of the original string.
   * Ex. `"In the beginning there was an end".TrimStart("In the beginning ")` will return `"there was an end"`, while `"In the beginning there was an end".TrimEnd(" an end")` will produce `"In the beginning there was"`.
-* `Replace` methods that take a series of strings or characters and replace all their occurrences in the original string with a provided value.
+* [`Replace`][8] methods that take a series of strings or characters and replace all their occurrences in the original string with a provided value.
   * Ex. `"Cucumbers, oranges and apples are vegetables.".Replace("tomatoes", "oranges", "apples")` will return `"Cucumbers, tomatoes and tomatoes are vegetables."`.
-* `Substring` methods that use string arguments to determine a substring's position, instead of a starting index.
+* [`Substring`][9] methods that use string arguments to determine a substring's position, instead of a starting index.
   * Ex. `"This is the start bla bladdy blah.".Substring("start ", false)` will return `"bla bladdy blah."`, while `"This is the start bla bladdy blah and this is the end.".Substring("start ", "blah", StringInclusionOptions.IncludeNone)` will return `"bla bladdy "`.
 
 <br/>
@@ -86,3 +86,6 @@ Feel free to make issues and pull requests about anything.
   [4]: https://www.nuget.org/packages/IvanStoychev.StringExtensions/
   [5]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/packages
   [6]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/wiki/Remover
+  [7]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/wiki/Comparer
+  [8]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/wiki/Replacer
+  [9]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/wiki/Selector
