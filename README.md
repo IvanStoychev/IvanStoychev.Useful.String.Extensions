@@ -14,7 +14,7 @@ This repo uses [Semantic Versioning 2.0.0][1]
 <br/>
 
 # Support the project
-[![Support me on Patreon](https://camo.githubusercontent.com/6446a7907a4d4f8de024ec85750feb07d7914658/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f70617472656f6e2d646f6e6174652d79656c6c6f772e737667)](https://www.patreon.com/IvanStoychev)
+[![Support me on Patreon](https://img.shields.io/badge/Patreon-support-orange)](https://www.patreon.com/IvanStoychev)
 
 <br/>
 
