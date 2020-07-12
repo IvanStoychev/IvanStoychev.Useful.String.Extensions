@@ -35,7 +35,7 @@
 </p>
 
 <h4 align="center">A collection of methods designed to make your life easier.</h4>
-<h5 align="center">This repo uses [Semantic Versioning 2.0.0][1]</h5>
+<h5 align="center">This repo uses <a href="https://semver.org/#semantic-versioning-200">Semantic Versioning 2.0.0</a></h5>
 
 <p align="center">
   <a href="#join-the-community">Community</a> •
@@ -128,7 +128,6 @@ Contribution
 Feel free to make issues and pull requests about anything.
 
 
-  [1]: https://semver.org/#semantic-versioning-200
   [2]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/releases
   [3]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/wiki/
   [4]: https://www.nuget.org/packages/IvanStoychev.StringExtensions/
