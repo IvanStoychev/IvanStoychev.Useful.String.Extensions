@@ -1,4 +1,4 @@
-![alt text](https://imgur.com/8bTHOdq.png)
+![IvanStoychev.StringExtensions](https://imgur.com/8bTHOdq.png)
 
 # IvanStoychev.StringExtensions
 A collection of methods designed to make your life easier.
@@ -21,7 +21,7 @@ This is a collection of string extension methods that I have been in need of man
 
 Features
 ------------
-* `Remove` methods that take a series of strings or characters and clear all their occurrences from the string with a single method call.
+* [`Remove`][6] methods that take a series of strings or characters and clear all their occurrences from the string with a single method call.
   * Ex. `"Lorem ipsum dolor Lorem ipsum sit amet".Remove("Lorem ", "ipsum ", "t")` will return `"dolor si ame"`.
 * Methods to keep or remove all special characters, letters and digits from a string.
   * Ex. `"!#%&lorem^@ipsum!@%".KeepOnlyLetters()` will return `"loremipsum"`.
@@ -85,3 +85,4 @@ Feel free to make issues and pull requests about anything.
   [3]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/wiki/
   [4]: https://www.nuget.org/packages/IvanStoychev.StringExtensions/
   [5]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/packages
+  [6]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/wiki/Remover
