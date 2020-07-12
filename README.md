@@ -13,6 +13,11 @@ This repo uses [Semantic Versioning 2.0.0][1]
 
 <br/>
 
+# Support the project
+![Support me on Patreon](https://img.shields.io/badge/Patreon-support-orange)
+
+<br/>
+
 Introduction
 ------------
 This is a collection of string extension methods that I have been in need of many a time, so I bundled them in a nuget package and published the code here. They are designed to be "ease-of-life" and "generally making your life easier" methods with user comfort in mind, which is why there are numerious overloads, designed for every case I could think of.
