@@ -1,7 +1,7 @@
 ![IvanStoychev.StringExtensions](https://imgur.com/8bTHOdq.png)
 
 # IvanStoychev.StringExtensions
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/IvanStoychev/IvanStoychev.StringExtensions?style=plastic&foo=bar)](https://github.com/IvanStoychev/IvanStoychev.StringExtensions/graphs/commit-activity)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/IvanStoychev/IvanStoychev.StringExtensions?style=plastic)](https://github.com/IvanStoychev/IvanStoychev.StringExtensions/graphs/commit-activity)
 [![GitHub last commit](https://img.shields.io/github/last-commit/IvanStoychev/IvanStoychev.StringExtensions?style=plastic)](https://github.com/IvanStoychev/IvanStoychev.StringExtensions/branches)
 [![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/IvanStoychev/IvanStoychev.StringExtensions/latest?style=plastic)](https://github.com/IvanStoychev/IvanStoychev.StringExtensions/graphs/commit-activity)
 
