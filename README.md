@@ -1,17 +1,52 @@
-![IvanStoychev.StringExtensions](https://imgur.com/8bTHOdq.png)
+<h1 align="center">
+  <br>
+  <a href="https://www.nuget.org/packages/IvanStoychev.StringExtensions"><img src="https://imgur.com/8bTHOdq.png" alt="Markdownify"></a>
+  <br>
+  IvanStoychev.StringExtensions
+  <br>
+</h1>
 
-# IvanStoychev.StringExtensions
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/IvanStoychev/IvanStoychev.StringExtensions?style=plastic)](https://github.com/IvanStoychev/IvanStoychev.StringExtensions/graphs/commit-activity)
-[![GitHub last commit](https://img.shields.io/github/last-commit/IvanStoychev/IvanStoychev.StringExtensions?style=plastic)](https://github.com/IvanStoychev/IvanStoychev.StringExtensions/branches)
-[![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/IvanStoychev/IvanStoychev.StringExtensions/latest?style=plastic)](https://github.com/IvanStoychev/IvanStoychev.StringExtensions/graphs/commit-activity)
+<p align="center">
+  <a href="https://github.com/IvanStoychev/IvanStoychev.StringExtensions/graphs/commit-activity">
+    <img src="https://img.shields.io/github/commit-activity/m/IvanStoychev/IvanStoychev.StringExtensions?style=plastic"
+         alt="GitHub commit activity">
+  </a>
+  <a href="https://github.com/IvanStoychev/IvanStoychev.StringExtensions/branches">
+    <img src="https://img.shields.io/github/last-commit/IvanStoychev/IvanStoychev.StringExtensions?style=plastic"
+         alt="GitHub last commit">
+  </a>
+  <a href="https://github.com/IvanStoychev/IvanStoychev.StringExtensions/graphs/commit-activity">
+    <img src="https://img.shields.io/github/commits-since/IvanStoychev/IvanStoychev.StringExtensions/latest?style=plastic"
+         alt="GitHub commits since latest release (by date)">
+  </a>
+ <br> 
+  <a href="https://www.nuget.org/packages/IvanStoychev.StringExtensions">
+    <img src="https://img.shields.io/nuget/v/IvanStoychev.StringExtensions?style=plastic"
+         alt="Nuget latest version">
+  </a>
+  <a href="https://github.com/IvanStoychev/IvanStoychev.StringExtensions/releases">
+    <img src="https://img.shields.io/github/v/release/IvanStoychev/IvanStoychev.StringExtensions?style=plastic"
+         alt="GitHub latest release">
+  </a>
+  <a href="https://github.com/IvanStoychev/IvanStoychev.StringExtensions/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/IvanStoychev/IvanStoychev.StringExtensions?style=plastic"
+         alt="Project license">
+  </a>
+</p>
 
-[![Nuget](https://img.shields.io/nuget/v/IvanStoychev.StringExtensions?style=plastic)](https://www.nuget.org/packages/IvanStoychev.StringExtensions/)
-[![GitHub latest release](https://img.shields.io/github/v/release/IvanStoychev/IvanStoychev.StringExtensions?style=plastic)](https://github.com/IvanStoychev/IvanStoychev.StringExtensions/releases)
-![GitHub](https://img.shields.io/github/license/IvanStoychev/IvanStoychev.StringExtensions?style=plastic)
-<br/>
-A collection of methods designed to make your life easier.
+<h4 align="center">A collection of methods designed to make your life easier.</h4>
+<h5 align="center">This repo uses [Semantic Versioning 2.0.0][1]</h5>
 
-This repo uses [Semantic Versioning 2.0.0][1]
+<p align="center">
+  <a href="#join-the-community">Community</a> •
+  <a href="#support-the-project">Support</a> •
+  <a href="#introduction">Introduction</a> •
+  <a href="#features">Features</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#how-to-use">How to use</a> •
+  <a href="#documentation">Documentation</a> •
+  <a href="#contribution">Contribution</a>
+</p>
 
 <br/>
 
