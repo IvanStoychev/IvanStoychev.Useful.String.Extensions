@@ -1,12 +1,12 @@
 ![IvanStoychev.StringExtensions](https://imgur.com/8bTHOdq.png)
 
 # IvanStoychev.StringExtensions
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/IvanStoychev/IvanStoychev.StringExtensions?style=plastic&foo=bar)
-![GitHub last commit](https://img.shields.io/github/last-commit/IvanStoychev/IvanStoychev.StringExtensions?style=plastic)
-![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/IvanStoychev/IvanStoychev.StringExtensions/latest?style=plastic)
+[![GitHub commit activity](https://github.com/IvanStoychev/IvanStoychev.StringExtensions/graphs/commit-activity)](https://img.shields.io/github/commit-activity/m/IvanStoychev/IvanStoychev.StringExtensions?style=plastic&foo=bar)
+[![GitHub last commit](https://github.com/IvanStoychev/IvanStoychev.StringExtensions/branches)](https://img.shields.io/github/last-commit/IvanStoychev/IvanStoychev.StringExtensions?style=plastic)
+[![GitHub commits since latest release (by date)]((https://github.com/IvanStoychev/IvanStoychev.StringExtensions/graphs/commit-activity))](https://img.shields.io/github/commits-since/IvanStoychev/IvanStoychev.StringExtensions/latest?style=plastic)
 
-![Nuget](https://img.shields.io/nuget/v/IvanStoychev.StringExtensions?style=plastic)
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/IvanStoychev/IvanStoychev.StringExtensions?style=plastic)
+[![Nuget](https://www.nuget.org/packages/IvanStoychev.StringExtensions/)](https://img.shields.io/nuget/v/IvanStoychev.StringExtensions?style=plastic)
+[![GitHub latest release](https://github.com/IvanStoychev/IvanStoychev.StringExtensions/releases)](https://img.shields.io/github/v/release/IvanStoychev/IvanStoychev.StringExtensions?style=plastic)
 ![GitHub](https://img.shields.io/github/license/IvanStoychev/IvanStoychev.StringExtensions?style=plastic)
 <br/>
 A collection of methods designed to make your life easier.
