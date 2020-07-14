@@ -86,6 +86,26 @@ Features
 
 Installation
 ------------
+__*Install using "NuGet Package Manager" in Visual Studio*__
+<br/>1. Open the solution to which you wish to add the library.
+<br/>2. Open the "_NuGet Package Manager_".
+
+* Option 1 (allows installation to multiple projects in the solution)
+<br/>In "_Solution Explorer_" right-click the solution and choose "_Manage NuGet Packages for Solution..._".
+* Option 2 (allows installation to multiple projects in the solution)
+<br/>Click the "_Tools_" menu bar item, navigate to "_NuGet Package Manager_" and select "_Manage NuGet Packages for Solution..._".
+* Option 3 (allows installation only to a single project)
+<br/>Right-click the project, to which you wish to add the library, and choose "_Manage NuGet Packages..._".
+
+<br/>3. Make sure your "_Package source:_" (found in the upper-right corner) is pointing to a nuget source that has the library in its catalogue, for example "_nuget.org_". 
+<br/>4. Make sure you're in the "_Browse_" section (located in the upper-left corner).
+<br/>5. Enter "_IvanStoychev.StringExtensions_" in the search box.
+<br/>6. Select the "_IvanStoychev.StringExtensions_" package and choose a version to intall.
+<br/>6.1. If you've opened the Package Manager using option 1 or 2 you can select which projects to install the library to.
+<br/>7. Click the "_Install_" button and read the licence terms. Choose whether you agree to them or not.
+
+<br/>
+
 __*Install manually*__
 <br/>1.a. Download the package from [NuGet][4], [Github packages][5] or the [Releases][2] page.
 <br/>-or-
