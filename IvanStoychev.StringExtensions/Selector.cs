@@ -23,11 +23,13 @@ namespace IvanStoychev.StringExtensions
         /// </exception>
         public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions)
         {
-            tryExeption(str, startString, nameof(startString));
-            tryExeption(str, endString, nameof(endString));
+            tryArgumentOutOfRangeException(str, startString, nameof(startString));
+            tryArgumentOutOfRangeException(str, endString, nameof(endString));
 
             int startStringIndex = str.IndexOf(startString);
             int endStringIndex = str.IndexOf(endString);
+
+            tryArgumentException(nameof(startString), startStringIndex, nameof(endString), endStringIndex);
 
             switch (stringInclusionOptions)
             {
@@ -60,7 +62,7 @@ namespace IvanStoychev.StringExtensions
         /// <returns>A string representing the part of the original string, located from startString to the end of the original instance.</returns>
         public static string Substring(this string str, string startString, bool inclusive)
         {
-            tryExeption(str, startString, nameof(startString));
+            tryArgumentOutOfRangeException(str, startString, nameof(startString));
 
             int startStringIndex = str.IndexOf(startString) + startString.Length * Convert.ToInt32(!inclusive);
 
@@ -81,7 +83,7 @@ namespace IvanStoychev.StringExtensions
         /// </returns>
         public static string Substring(this string str, string startString, int length, bool inclusive)
         {
-            tryExeption(str, startString, nameof(startString));
+            tryArgumentOutOfRangeException(str, startString, nameof(startString));
 
             int startStringIndex = str.IndexOf(startString) + startString.Length * Convert.ToInt32(!inclusive);
 
@@ -94,11 +96,34 @@ namespace IvanStoychev.StringExtensions
         /// </summary>
         /// <param name="originalString">The instance which to check for "substring".</param>
         /// <param name="substring">The string to search in "originalString".</param>
-        /// <param name="argumentName">The name of the argument in the original method that is supposed to cause the exception.</param>
-        static void tryExeption(string originalString, string substring, string argumentName)
+        /// <param name="argumentName">
+        /// The name of the argument in the original method that is supposed to cause the exception.
+        /// </param>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// Thrown when the index of the first occurrence of "substring" in "originalString" is -1.
+        /// </exception>
+        static void tryArgumentOutOfRangeException(string originalString, string substring, string argumentName)
         {
             if (originalString.IndexOf(substring) == -1)
                 throw new ArgumentOutOfRangeException($"{argumentName}", $"The string given for '{argumentName}' was not found in the original string.");
+        }
+
+        /// <summary>
+        /// Compares "startStringIndex" and "endStringIndex" and throws an <see cref="ArgumentException"/>
+        /// with a specific, descriptive message if "endStringIndex" is less than "startStringIndex".
+        /// </summary>
+        /// <param name="startStringParameterName">The name of the "startString" parameter in the calling method.</param>
+        /// <param name="startStringIndex">The index which marks the start of the substring to be extracted in the calling method.</param>
+        /// <param name="endStringParameterName">The name of the "endString" parameter in the calling method.</param>
+        /// <param name="endStringIndex">The index which marks the end of the substring to be extracted in the calling method.</param>
+        /// <exception cref="ArgumentException">
+        /// Thrown when "endStringIndex" is less than "startStringIndex".
+        /// </exception>
+        static void tryArgumentException(string startStringParameterName, int startStringIndex, string endStringParameterName, int endStringIndex)
+        {
+            if (endStringIndex < startStringIndex)
+                throw new ArgumentException($"The string given for '{endStringParameterName}' (\"{endStringIndex}\") occurs before the string given for '{startStringParameterName}' (\"{startStringIndex}\") in the original string." +
+                    Environment.NewLine + $"The argument provided for '{endStringParameterName}' must exist in the original string and occur after the argument provided for '{startStringParameterName}'.");
         }
     }
 }
