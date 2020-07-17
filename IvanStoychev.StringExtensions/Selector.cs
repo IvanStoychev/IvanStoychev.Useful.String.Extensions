@@ -15,7 +15,12 @@ namespace IvanStoychev.StringExtensions
         /// <param name="startString">The string which marks the start of the substring to be extracted.</param>
         /// <param name="endString">The string which marks the end of the substring.</param>
         /// <param name="stringInclusionOptions">A StringInclusionOptions enum, indicating whether startString and/or endString should be included in the result.</param>
-        /// <returns>A string representing the part of the original string, located between the startString and endString.</returns>
+        /// <returns>
+        /// A string representing the part of the original string, located between the startString and endString.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// Thrown when either "startString" or "endString" are not found in the original string.
+        /// </exception>
         public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions)
         {
             tryExeption(str, startString, nameof(startString));
