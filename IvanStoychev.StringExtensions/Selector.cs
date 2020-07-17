@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace Useful.String.Extensions
+namespace IvanStoychev.StringExtensions
 {
     /// <summary>
     /// Contains methods that select substrings and charaters from strings.

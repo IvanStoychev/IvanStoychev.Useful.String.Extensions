@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <Authors>Ivan Stoychev</Authors>
+    <Title>Ivan Stoychev's String Extensions</Title>
+    <Language>English</Language>
+    <Description>A .Net Core library of useful extension methods for the "string" class in C#.</Description>
+    <Summary>A .Net Core class library collection of useful extension methods for the "string" class in C#.</Summary>
+    <PackageProjectUrl>https://github.com/IvanStoychev/IvanStoychev.StringExtensions/wiki</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/IvanStoychev/IvanStoychev.StringExtensions</RepositoryUrl>
+    <PackageTags>c#, useful, string, extension, efficient</PackageTags>
+    <RepositoryType>git</RepositoryType>
+    <PackageIcon>IvanStoychev.StringExtensionsIcon.png</PackageIcon>
+    <Copyright>Copyright (c) 2020 Ivan Stoychev. All rights reserved.</Copyright>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <NeutralLanguage>English</NeutralLanguage>
+    <PackageReleaseNotes>- First release of renamed package.
+- Identical to Useful.String.Extensions 1.4.0.
+- Please report any problems as issues in https://github.com/IvanStoychev/IvanStoychev.StringExtensions/issues , thank you!</PackageReleaseNotes>
+    <Version>1.0.0</Version>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <PackageIconUrl />
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>J:\Users\Administrator\Source\Repos\IvanStoychev.StringExtensions\IvanStoychev.StringExtensions\bin\Release\netcoreapp3.0\IvanStoychev.StringExtensions.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="IvanStoychev.StringExtensionsIcon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
