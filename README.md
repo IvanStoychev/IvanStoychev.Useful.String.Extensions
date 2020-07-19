@@ -50,24 +50,24 @@
 
 <br/>
 
-# Join the community :speech_balloon:
+# :speech_balloon: Join the community
 [![Check out the discussion at https://gitq.com/IvanStoychev/IvanStoychev.StringExtensions](https://gitq.com/badge.svg)](https://gitq.com/IvanStoychev/IvanStoychev.StringExtensions)
 [![Gitter](https://badges.gitter.im/IvanStoychev-StringExtensions/community.svg)](https://gitter.im/IvanStoychev-StringExtensions/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 <br/>
 
-# Support the project :sparkling_heart:
+# :sparkling_heart: Support the project
 [![Support me on Patreon](https://img.shields.io/badge/Patreon-support-orange)](https://www.patreon.com/IvanStoychev)
 
 <br/>
 
-Introduction :mega:
+:mega: Introduction
 ------------
 This is a collection of string extension methods that I have been in need of many a time, so I bundled them in a nuget package and published the code here. They are designed to be "ease-of-life" and "generally making your life easier" methods with user comfort in mind, which is why there are numerious overloads, designed for every case I could think of.
 
 <br/>
 
-Features :newspaper:
+:newspaper: Features
 ------------
 * Methods to keep or remove all special characters, letters and digits from a string.
   * Ex. `"!#%&lorem^@ipsum!@%".KeepOnlyLetters()` will return `"loremipsum"`.
@@ -84,7 +84,7 @@ Features :newspaper:
 
 <br/>
 
-Installation :construction_worker:
+:construction_worker: Installation
 ------------
 __*Install using "NuGet Package Manager" in Visual Studio*__
 <br/>1. Open the solution to which you wish to add the library.
@@ -129,7 +129,7 @@ __*Install manually*__
 
 <br/>
 
-How to use :information_source:
+:information_source: How to use
 ----------
 Since the functionality, added by this project, is all extension methods, it would be best to add the using statment "`using IvanStoychev.StringExtensions;`" to your code, as Intellisense usually doesn't pick it up.
 
@@ -137,13 +137,13 @@ After that simply call any desired method on any string.
 
 <br/>
 
-Documentation :scroll:
+:scroll: Documentation
 -------------
 The methods in the package and project have ample summary information, you can also consult the [Wiki][3].
 
 <br/>
 
-Contribution :heavy_plus_sign:
+:heavy_plus_sign: Contribution
 -------------
 Feel free to make issues and pull requests about anything.
 
