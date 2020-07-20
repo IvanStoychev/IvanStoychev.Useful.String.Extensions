@@ -65,6 +65,20 @@ namespace IvanStoychev.StringExtensions.Tests
             Assert.Equal(expected, actual);
         }
 
+        /// <summary>
+        /// Tests whether the method will work as expected when the "startString" and "endString" are the same.
+        /// </summary>
+        [Theory]
+        [InlineData("The hand sanitizer was actually hand glue.", "hand", "hand sanitizer was actually hand")]
+        [InlineData("Plans for this weekend include turning Plans into water.", "Plans", "Plans for this weekend include turning Plans")]
+        [InlineData("Please tell me you don't tell in a morgue.", "tell", "tell me you don't tell")]
+        public void Substring__string_string_StringInclusionOptions__SameString_Pass(string testString, string substring, string expected)
+        {
+            string actual = testString.Substring(substring, substring, StringInclusionOptions.IncludeAll);
+
+            Assert.Equal(expected, actual);
+        }
+
         #endregion Substring(string, string, StringInclusionOptions)
 
         #region Substring(string, bool)
@@ -139,6 +153,8 @@ namespace IvanStoychev.StringExtensions.Tests
 
         #region "Exception" tests section
 
+        #region Substring(string, bool)
+
         /// <summary>
         /// Tests if an <see cref="ArgumentOutOfRangeException"/> exception, with an appropriate message,
         /// is thrown when the given "startString" is not present in the original string.
@@ -153,6 +169,10 @@ namespace IvanStoychev.StringExtensions.Tests
             Assert.Equal(expectedMessage, ex.Message);
         }
 
+        #endregion Substring(string, bool)
+
+        #region Substring(string, int, bool)
+
         /// <summary>
         /// Tests if an <see cref="ArgumentOutOfRangeException"/> exception, with an appropriate message,
         /// is thrown when the given "startString" is not present in the original string.
@@ -166,6 +186,10 @@ namespace IvanStoychev.StringExtensions.Tests
             Exception ex = Assert.Throws<ArgumentOutOfRangeException>(action);
             Assert.Equal(expectedMessage, ex.Message);
         }
+
+        #endregion Substring(string, int, bool)
+
+        #region Substring(string, string, StringInclusionOptions)
 
         /// <summary>
         /// Tests if an <see cref="ArgumentOutOfRangeException"/> exception, with an appropriate message,
@@ -194,6 +218,8 @@ namespace IvanStoychev.StringExtensions.Tests
             Exception ex = Assert.Throws<ArgumentOutOfRangeException>(action);
             Assert.Equal(expectedMessage, ex.Message);
         }
+
+        #endregion Substring(string, string, StringInclusionOptions)
 
         #endregion "Exception" tests section
     }
