@@ -15,14 +15,21 @@ namespace IvanStoychev.StringExtensions
         /// <param name="startString">The string which marks the start of the substring to be extracted.</param>
         /// <param name="endString">The string which marks the end of the substring.</param>
         /// <param name="stringInclusionOptions">A StringInclusionOptions enum, indicating whether startString and/or endString should be included in the result.</param>
-        /// <returns>A string representing the part of the original string, located between the startString and endString.</returns>
+        /// <returns>
+        /// A string representing the part of the original string, located between the startString and endString.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// Thrown when either "startString" or "endString" are not found in the original string.
+        /// </exception>
         public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions)
         {
-            tryExeption(str, startString, nameof(startString));
-            tryExeption(str, endString, nameof(endString));
+            tryArgumentOutOfRangeException(str, startString, nameof(startString));
 
             int startStringIndex = str.IndexOf(startString);
-            int endStringIndex = str.IndexOf(endString);
+            tryArgumentOutOfRangeException(str.Substring(startStringIndex + startString.Length), endString, nameof(endString));
+
+            int endStringIndex = str.IndexOf(endString, startStringIndex + startString.Length);
+
 
             switch (stringInclusionOptions)
             {
@@ -55,7 +62,7 @@ namespace IvanStoychev.StringExtensions
         /// <returns>A string representing the part of the original string, located from startString to the end of the original instance.</returns>
         public static string Substring(this string str, string startString, bool inclusive)
         {
-            tryExeption(str, startString, nameof(startString));
+            tryArgumentOutOfRangeException(str, startString, nameof(startString));
 
             int startStringIndex = str.IndexOf(startString) + startString.Length * Convert.ToInt32(!inclusive);
 
@@ -76,7 +83,7 @@ namespace IvanStoychev.StringExtensions
         /// </returns>
         public static string Substring(this string str, string startString, int length, bool inclusive)
         {
-            tryExeption(str, startString, nameof(startString));
+            tryArgumentOutOfRangeException(str, startString, nameof(startString));
 
             int startStringIndex = str.IndexOf(startString) + startString.Length * Convert.ToInt32(!inclusive);
 
@@ -84,16 +91,22 @@ namespace IvanStoychev.StringExtensions
         }
 
         /// <summary>
-        /// Gets the index of "substring" in "originalString" and throws an <see cref="ArgumentOutOfRangeException"/>
-        /// with a specific, descriptive message, if the index is -1.
+        /// Gets the index of "substring" in "originalString" and, if the index is -1, throws an
+        /// <see cref="ArgumentOutOfRangeException"/> that informs the user the value "substring" of
+        /// argument "parameterName" is not found in said string.
         /// </summary>
         /// <param name="originalString">The instance which to check for "substring".</param>
         /// <param name="substring">The string to search in "originalString".</param>
-        /// <param name="argumentName">The name of the argument in the original method that is supposed to cause the exception.</param>
-        static void tryExeption(string originalString, string substring, string argumentName)
+        /// <param name="parameterName">
+        /// The name of the parameter in the original method that is supposed to cause the exception.
+        /// </param>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// Thrown when the index of the first occurrence of "substring" in "originalString" is -1.
+        /// </exception>
+        static void tryArgumentOutOfRangeException(string originalString, string substring, string parameterName)
         {
             if (originalString.IndexOf(substring) == -1)
-                throw new ArgumentOutOfRangeException($"{argumentName}", $"The string given for '{argumentName}' was not found in the original string.");
+                throw new ArgumentOutOfRangeException($"{parameterName}", $"The string given for '{parameterName}' (\"{substring}\") was not found in the original string.");
         }
     }
 }

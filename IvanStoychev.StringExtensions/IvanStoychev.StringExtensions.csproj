@@ -15,13 +15,12 @@
     <Copyright>Copyright (c) 2020 Ivan Stoychev. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <NeutralLanguage>English</NeutralLanguage>
-    <PackageReleaseNotes>- First release of renamed package.
-- Identical to Useful.String.Extensions 1.4.0.
-- Please report any problems as issues in https://github.com/IvanStoychev/IvanStoychev.StringExtensions/issues , thank you!</PackageReleaseNotes>
-    <Version>1.0.0</Version>
+    <PackageReleaseNotes>Fixed Issue #2, the "Substring(string startString, string endString, StringInclusionOptions stringInclusionOptions)" method throwing an exception when the "startString" and "endString" arguments were the same.
+Now the method will look for the "endString" argument after the occurrence of the "startString" one.</PackageReleaseNotes>
+    <Version>1.0.1</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
     <PackageIconUrl />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
