@@ -58,6 +58,8 @@
 
 # :sparkling_heart: Support the project
 [![Support me on Patreon](https://img.shields.io/badge/Patreon-support-orange)](https://www.patreon.com/IvanStoychev)
+[![Fund me on Liberapay](https://img.shields.io/badge/Liberapay-donate-green)](https://liberapay.com/IvanStoychev/donate)
+[![Buy me a ko-fi](https://img.shields.io/badge/Buy%20me%20a-Ko--fi-blue)](https://ko-fi.com/U7U31XQ28)
 
 <br/>
 
