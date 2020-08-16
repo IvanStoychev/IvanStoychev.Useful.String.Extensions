@@ -8,4 +8,4 @@ tidelift: # Replace with a single Tidelift platform-name/package-name e.g., npm/
 community_bridge: # Replace with a single Community Bridge project-name e.g., cloud-foundry
 issuehunt: # Replace with a single IssueHunt username
 otechie: # Replace with a single Otechie username
-custom: https://www.paypal.com/paypalme/IvanStoychevProjects
+custom: [https://www.paypal.com/paypalme/IvanStoychevProjects, https://www.buymeacoffee.com/IvanStoychev]
