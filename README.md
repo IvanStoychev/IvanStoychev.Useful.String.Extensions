@@ -58,7 +58,7 @@
 
 # :sparkling_heart: Support the project
 [![Support me on Patreon](https://img.shields.io/badge/Patreon-support-orange)](https://www.patreon.com/IvanStoychev)
-[![Buy me a ko-fi](https://img.shields.io/badge/Buy%20me%20a-Ko--fi-red)](https://ko-fi.com/U7U31XQ28)
+[![Buy me a ko-fi](https://img.shields.io/badge/Buy%20me%20a-Ko--fi-green)](https://ko-fi.com/U7U31XQ28)
 [![Sponsor me with PayPal](https://img.shields.io/badge/PayPal-sponsor-blue)](https://www.paypal.com/paypalme/IvanStoychevProjects)
 
 <br/>
