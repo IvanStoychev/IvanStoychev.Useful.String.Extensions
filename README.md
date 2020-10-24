@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://github.com/IvanStoychev/IvanStoychev.StringExtensions/graphs/commit-activity">
-    <img src="https://img.shields.io/github/commit-activity/m/IvanStoychev/IvanStoychev.StringExtensions?style=plastic"
+    <img src="https://img.shields.io/github/commit-activity/y/IvanStoychev/IvanStoychev.StringExtensions?style=plastic"
          alt="GitHub commit activity">
   </a>
   <a href="https://github.com/IvanStoychev/IvanStoychev.StringExtensions/branches">
