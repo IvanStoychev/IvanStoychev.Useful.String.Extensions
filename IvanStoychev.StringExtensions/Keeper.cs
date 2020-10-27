@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics.Contracts;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace IvanStoychev.StringExtensions
@@ -9,6 +10,7 @@ namespace IvanStoychev.StringExtensions
         /// <summary>
         /// Keeps all numbers from the original string, removing letters and special characters.
         /// </summary>
+        [Pure]
         public static string KeepOnlyNumbers(this string originalString)
         {
             return Regex.Replace(originalString, @"[^\d]", "");
@@ -17,6 +19,7 @@ namespace IvanStoychev.StringExtensions
         /// <summary>
         /// Keeps all special characters from the original string, removing letters and numbers.
         /// </summary>
+        [Pure]
         public static string KeepOnlySpecialCharacters(this string originalString)
         {
             string specialCharacters = string.Empty;
@@ -30,6 +33,7 @@ namespace IvanStoychev.StringExtensions
         /// <summary>
         /// Keeps all alphabetical letters from the original string, removing special characters and numbers.
         /// </summary>
+        [Pure]
         public static string KeepOnlyLetters(this string originalString)
         {        
             return Regex.Replace(originalString, @"[^a-zA-Z]", string.Empty);

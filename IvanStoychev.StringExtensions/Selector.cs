@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 
 namespace IvanStoychev.StringExtensions
 {
@@ -21,6 +22,7 @@ namespace IvanStoychev.StringExtensions
         /// <exception cref="ArgumentOutOfRangeException">
         /// Thrown when either "startString" or "endString" are not found in the original string.
         /// </exception>
+        [Pure]
         public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions)
         {
             tryArgumentOutOfRangeException(str, startString, nameof(startString));
@@ -60,6 +62,7 @@ namespace IvanStoychev.StringExtensions
         /// <param name="startString">The string which marks the start of the substring.</param>
         /// <param name="inclusive">A boolean indicating whether the substring should include the given startString.</param>
         /// <returns>A string representing the part of the original string, located from startString to the end of the original instance.</returns>
+        [Pure]
         public static string Substring(this string str, string startString, bool inclusive)
         {
             tryArgumentOutOfRangeException(str, startString, nameof(startString));
@@ -81,6 +84,7 @@ namespace IvanStoychev.StringExtensions
         /// A string that is equivalent to the substring of length "length" that begins at
         /// the first instance of "startString" in this string instance.
         /// </returns>
+        [Pure]
         public static string Substring(this string str, string startString, int length, bool inclusive)
         {
             tryArgumentOutOfRangeException(str, startString, nameof(startString));

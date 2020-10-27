@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -12,6 +13,7 @@ namespace IvanStoychev.StringExtensions
         /// Removes all instances of all of the given strings, case-sensitive.
         /// </summary>
         /// <param name="removeStrings">Array of values to be removed.</param>
+        [Pure]
         public static string Remove(this string str, IEnumerable<string> removeStrings)
         {
             return RemoveStringConsiderCase(str, removeStrings.ToArray());
@@ -21,6 +23,7 @@ namespace IvanStoychev.StringExtensions
         /// Removes all instances of all of the given strings, case-sensitive.
         /// </summary>
         /// <param name="removeStrings">Values to be removed.</param>
+        [Pure]
         public static string Remove(this string str, params string[] removeStrings)
         {
             return RemoveStringConsiderCase(str, removeStrings);
@@ -31,6 +34,7 @@ namespace IvanStoychev.StringExtensions
         /// </summary>
         /// <param name="ignoreCase">Boolean value indicating if the case of the value to be removed should be ignored.</param>
         /// <param name="removeStrings">Array of values to be removed.</param>
+        [Pure]
         public static string Remove(this string str, bool ignoreCase, IEnumerable<string> removeStrings)
         {
             if (ignoreCase)
@@ -44,6 +48,7 @@ namespace IvanStoychev.StringExtensions
         /// </summary>
         /// <param name="ignoreCase">Boolean value indicating if the case of the value to be removed should be ignored.</param>
         /// <param name="removeStrings">Values to be removed.</param>
+        [Pure]
         public static string Remove(this string str, bool ignoreCase, params string[] removeStrings)
         {
             if (ignoreCase)
@@ -52,25 +57,10 @@ namespace IvanStoychev.StringExtensions
                 return RemoveStringConsiderCase(str, removeStrings);
         }
 
-        private static string RemoveStringConsiderCase(this string value, string[] toRemove)
-        {
-            foreach (var item in toRemove)
-                value = value.Replace(item, string.Empty);
-
-            return value;
-        }
-
-        private static string RemoveStringIgnoreCase(this string value, string[] toRemove)
-        {
-            foreach (var item in toRemove)
-                value = Regex.Replace(value, Regex.Escape(item), string.Empty, RegexOptions.IgnoreCase);
-
-            return value;
-        }
-
         /// <summary>
         /// Removes all numbers from the original string, keeping letters and special characters.
         /// </summary>
+        [Pure]
         public static string RemoveNumbers(this string originalString)
         {
             return Regex.Replace(originalString, @"[\d-]", string.Empty);
@@ -79,6 +69,7 @@ namespace IvanStoychev.StringExtensions
         /// <summary>
         /// Removes all special characters from the original string, keeping letters and numbers.
         /// </summary>
+        [Pure]
         public static string RemoveSpecialCharacters(this string originalString)
         {
             return Regex.Replace(originalString, "[^0-9A-Za-z]+", string.Empty);
@@ -87,6 +78,7 @@ namespace IvanStoychev.StringExtensions
         /// <summary>
         /// Removes all letters from the original string, keeping special characters and numbers.
         /// </summary>
+        [Pure]
         public static string RemoveLetters(this string originalString)
         {
             return Regex.Replace(originalString, "[A-Za-z]", string.Empty);
@@ -102,6 +94,7 @@ namespace IvanStoychev.StringExtensions
         /// from the start of the current string. If no characters can be trimmed from the
         /// current instance, the method returns the current instance unchanged.
         /// </returns>
+        [Pure]
         public static string TrimStart(this string target, string trimString)
         {
             if (string.IsNullOrEmpty(trimString)) return target;
@@ -124,6 +117,7 @@ namespace IvanStoychev.StringExtensions
         /// from the start of the current string. If no characters can be trimmed from the
         /// current instance, the method returns the current instance unchanged.
         /// </returns>
+        [Pure]
         public static string TrimStart(this string target, string trimString, StringComparison stringComparison)
         {
             if (string.IsNullOrEmpty(trimString)) return target;
@@ -150,6 +144,7 @@ namespace IvanStoychev.StringExtensions
         /// from the start of the current string. If no characters can be trimmed from the
         /// current instance, the method returns the current instance unchanged.
         /// </returns>
+        [Pure]
         public static string TrimStart(this string target, string trimString, bool ignoreCase, CultureInfo culture)
         {
             if (string.IsNullOrEmpty(trimString)) return target;
@@ -171,6 +166,7 @@ namespace IvanStoychev.StringExtensions
         /// from the end of the current string. If no characters can be trimmed from the
         /// current instance, the method returns the current instance unchanged.
         /// </returns>
+        [Pure]
         public static string TrimEnd(this string target, string trimString)
         {
             if (string.IsNullOrEmpty(trimString)) return target;
@@ -193,6 +189,7 @@ namespace IvanStoychev.StringExtensions
         /// from the end of the current string. If no characters can be trimmed from the
         /// current instance, the method returns the current instance unchanged.
         /// </returns>
+        [Pure]
         public static string TrimEnd(this string target, string trimString, StringComparison stringComparison)
         {
             if (string.IsNullOrEmpty(trimString)) return target;
@@ -219,6 +216,7 @@ namespace IvanStoychev.StringExtensions
         /// from the end of the current string. If no characters can be trimmed from the
         /// current instance, the method returns the current instance unchanged.
         /// </returns>
+        [Pure]
         public static string TrimEnd(this string target, string trimString, bool ignoreCase, CultureInfo culture)
         {
             if (string.IsNullOrEmpty(trimString)) return target;
@@ -228,6 +226,22 @@ namespace IvanStoychev.StringExtensions
                 result = result.Substring(0, result.Length - trimString.Length);
 
             return result;
+        }
+
+        private static string RemoveStringConsiderCase(this string value, string[] toRemove)
+        {
+            foreach (var item in toRemove)
+                value = value.Replace(item, string.Empty);
+
+            return value;
+        }
+
+        private static string RemoveStringIgnoreCase(this string value, string[] toRemove)
+        {
+            foreach (var item in toRemove)
+                value = Regex.Replace(value, Regex.Escape(item), string.Empty, RegexOptions.IgnoreCase);
+
+            return value;
         }
     }
 }

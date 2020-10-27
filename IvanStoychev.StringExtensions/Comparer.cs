@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Contracts;
 using System.Linq;
 
 namespace IvanStoychev.StringExtensions
@@ -15,6 +17,8 @@ namespace IvanStoychev.StringExtensions
         /// "true" if any of the strings occur within this string, or if "keywords" is the empty
         /// string (""); otherwise, "false".
         /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown when "keywords" is null.</exception>
+        [Pure]
         public static bool Contains(this string str, IEnumerable<string> keywords)
         {
             return str.Contains(keywords.ToArray());
@@ -29,6 +33,8 @@ namespace IvanStoychev.StringExtensions
         /// "true" if any of the keywords parameters occurs within this string, or if "keywords" is the empty
         /// string (""); otherwise, "false".
         /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown when "keywords" is null.</exception>
+        [Pure]
         public static bool Contains(this string str, params string[] keywords)
         {
             foreach (string word in keywords)
@@ -45,6 +51,8 @@ namespace IvanStoychev.StringExtensions
         /// <returns>
         /// "true" if any of the characters occur within this string; otherwise, "false".
         /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown when "keychars" is null.</exception>
+        [Pure]
         public static bool Contains(this string str, IEnumerable<char> keychars)
         {
             return str.Contains(keychars.ToArray());
@@ -58,6 +66,8 @@ namespace IvanStoychev.StringExtensions
         /// <returns>
         /// "true" if any of the keychars parameters occurs within this string; otherwise, "false".
         /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown when "keychars" is null.</exception>
+        [Pure]
         public static bool Contains(this string str, params char[] keychars)
         {
             foreach (char ch in keychars)
@@ -77,6 +87,8 @@ namespace IvanStoychev.StringExtensions
         /// "true" if any of the strings occur within this string, or if "keywords" is the empty
         /// string (""); otherwise, "false".
         /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown when "keywords" is null.</exception>
+        [Pure]
         public static bool Contains(this string str, StringComparison comparison, IEnumerable<string> keywords)
         {
             return str.Contains(comparison, keywords.ToArray());
@@ -93,6 +105,8 @@ namespace IvanStoychev.StringExtensions
         /// "true" if any of the keywords parameters occurs within this string, or if value is the empty
         /// string (""); otherwise, "false".
         /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown when "keywords" is null.</exception>
+        [Pure]
         public static bool Contains(this string str, StringComparison comparison, params string[] keywords)
         {
             foreach (string word in keywords)
@@ -110,6 +124,8 @@ namespace IvanStoychev.StringExtensions
         /// <returns>
         /// "true" if any of the characters occur within this string; otherwise, "false".
         /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown when "keychars" is null.</exception>
+        [Pure]
         public static bool Contains(this string str, StringComparison comparison, IEnumerable<char> keychars)
         {
             return str.Contains(comparison, keychars.ToArray());
@@ -125,6 +141,8 @@ namespace IvanStoychev.StringExtensions
         /// <returns>
         /// "true" if any of the keychars parameters occurs within this string; otherwise, "false".
         /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown when "keychars" is null.</exception>
+        [Pure]
         public static bool Contains(this string str, StringComparison comparison, params char[] keychars)
         {
             foreach (char ch in keychars)
