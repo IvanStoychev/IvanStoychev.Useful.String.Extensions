@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Contracts;
 using System.Text.RegularExpressions;
 
 namespace IvanStoychev.StringExtensions
@@ -12,7 +13,8 @@ namespace IvanStoychev.StringExtensions
         /// <param name="newString">The string to replace all occurances of "oldStrings".</param>
         /// <param name="oldStrings">Strings to be replaced.</param>
         /// <returns>A string with all instances of "oldStrings" replaced by "newString".</returns>
-        public static string Replace(this string str, string newString, params string[] oldStrings)
+        [Pure]
+        public static string Replace([NotNull] this string str, [NotNull] string newString, [NotNull] params string[] oldStrings)
         {
             return ReplaceStringConsiderCase(str, oldStrings, newString);
         }
@@ -24,7 +26,8 @@ namespace IvanStoychev.StringExtensions
         /// <param name="newString">The string to replace all occurances of "oldStrings".</param>
         /// <param name="oldStrings">Strings to be replaced.</param>
         /// <returns>A string with all instances of "oldStrings" replaced by "newString".</returns>
-        public static string Replace(this string str, bool ignoreCase, string newString, params string[] oldStrings)
+        [Pure]
+        public static string Replace([NotNull] this string str, bool ignoreCase, [NotNull] string newString, [NotNull] params string[] oldStrings)
         {
             if (ignoreCase)
                 return ReplaceStringIgnoreCase(str, oldStrings, newString);
@@ -38,7 +41,8 @@ namespace IvanStoychev.StringExtensions
         /// <param name="newString">The string to replace all occurances of "oldStrings".</param>
         /// <param name="oldStrings">Collection of strings to be replaced.</param>
         /// <returns>A string with all instances of "oldStrings" replaced by "newString".</returns>
-        public static string Replace(this string str, IEnumerable<string> oldStrings, string newString)
+        [Pure]
+        public static string Replace([NotNull] this string str, [NotNull] IEnumerable<string> oldStrings, [NotNull] string newString)
         {
             return ReplaceStringConsiderCase(str, oldStrings, newString);
         }
@@ -50,7 +54,8 @@ namespace IvanStoychev.StringExtensions
         /// <param name="newString">The string to replace all occurances of "oldStrings".</param>
         /// <param name="oldStrings">Collection of strings to be replaced.</param>
         /// <returns>A string with all instances of "oldStrings" replaced by "newString".</returns>
-        public static string Replace(this string str, IEnumerable<string> oldStrings, string newString, bool ignoreCase)
+        [Pure]
+        public static string Replace([NotNull] this string str, [NotNull] IEnumerable<string> oldStrings, [NotNull] string newString, bool ignoreCase)
         {
             if (ignoreCase)
                 return ReplaceStringIgnoreCase(str, oldStrings, newString);
