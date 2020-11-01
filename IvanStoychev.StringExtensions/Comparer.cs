@@ -12,12 +12,14 @@ namespace IvanStoychev.StringExtensions
         /// Returns a boolean indicating whether any of the strings in the given IEnumerable occur in this string.
         /// </summary>
         /// <param name="str">The string to check.</param>
-        /// <param name="keywords">An IEnumerable of strings to seek.</param>
+        /// <param name="keywords">A collection of strings to seek.</param>
         /// <returns>
-        /// "true" if any of the strings occur within this string, or if "keywords" is the empty
-        /// string (""); otherwise, "false".
+        /// "true" if any of the "keywords" members occur within this string, or if any of them
+        /// are the empty string (""); otherwise, "false".
         /// </returns>
-        /// <exception cref="ArgumentNullException">Thrown when "keywords" is null.</exception>
+        /// <exception cref="ArgumentNullException">
+        /// The "keywords" collection or any of its memebers are null.
+        /// </exception>
         [Pure]
         public static bool Contains([NotNull] this string str, [NotNull] IEnumerable<string> keywords)
         {
@@ -30,10 +32,12 @@ namespace IvanStoychev.StringExtensions
         /// <param name="str">The string to check.</param>
         /// <param name="keywords">The strings to seek.</param>
         /// <returns>
-        /// "true" if any of the keywords parameters occurs within this string, or if "keywords" is the empty
-        /// string (""); otherwise, "false".
+        /// "true" if any of the "keywords" parameters occur within this string, or if any of them
+        /// are the empty string (""); otherwise, "false".
         /// </returns>
-        /// <exception cref="ArgumentNullException">Thrown when "keywords" is null.</exception>
+        /// <exception cref="ArgumentNullException">
+        /// The "keywords" collection or any of its memebers are null.
+        /// </exception>
         [Pure]
         public static bool Contains([NotNull] this string str, [NotNull] params string[] keywords)
         {
@@ -47,11 +51,13 @@ namespace IvanStoychev.StringExtensions
         /// Returns a boolean indicating whether any of the characters in the given IEnumerable occur in this string.
         /// </summary>
         /// <param name="str">The string to check.</param>
-        /// <param name="keychars">An IEnumerable of characters to seek.</param>
+        /// <param name="keychars">A collection of characters to seek.</param>
         /// <returns>
         /// "true" if any of the characters occur within this string; otherwise, "false".
         /// </returns>
-        /// <exception cref="ArgumentNullException">Thrown when "keychars" is null.</exception>
+        /// <exception cref="ArgumentNullException">
+        /// "keychars" is null.
+        /// </exception>
         [Pure]
         public static bool Contains([NotNull] this string str, [NotNull] IEnumerable<char> keychars)
         {
@@ -64,9 +70,11 @@ namespace IvanStoychev.StringExtensions
         /// <param name="str">The string to check.</param>
         /// <param name="keychars">The characters to seek.</param>
         /// <returns>
-        /// "true" if any of the keychars parameters occurs within this string; otherwise, "false".
+        /// "true" if any of the "keychars" parameters occurs within this string; otherwise, "false".
         /// </returns>
-        /// <exception cref="ArgumentNullException">Thrown when "keychars" is null.</exception>
+        /// <exception cref="ArgumentNullException">
+        /// "keychars" is null.
+        /// </exception>
         [Pure]
         public static bool Contains([NotNull] this string str, [NotNull] params char[] keychars)
         {
@@ -82,12 +90,14 @@ namespace IvanStoychev.StringExtensions
         /// </summary>
         /// <param name="str">The string to check.</param>
         /// <param name="comparison">One of the enumeration values that specifies the rules to use in the comparison.</param>
-        /// <param name="keywords">An IEnumerable of strings to seek.</param>
+        /// <param name="keywords">A collection of strings to seek.</param>
         /// <returns>
-        /// "true" if any of the strings occur within this string, or if "keywords" is the empty
-        /// string (""); otherwise, "false".
+        /// "true" if any of the "keywords" members occur within this string, or if any of them
+        /// are the empty string (""); otherwise, "false".
         /// </returns>
-        /// <exception cref="ArgumentNullException">Thrown when "keywords" is null.</exception>
+        /// <exception cref="ArgumentNullException">
+        /// "keywords" is null.
+        /// </exception>
         [Pure]
         public static bool Contains([NotNull] this string str, StringComparison comparison, [NotNull] IEnumerable<string> keywords)
         {
@@ -102,10 +112,12 @@ namespace IvanStoychev.StringExtensions
         /// <param name="comparison">One of the enumeration values that specifies the rules to use in the comparison.</param>
         /// <param name="keywords">The strings to seek.</param>
         /// <returns>
-        /// "true" if any of the keywords parameters occurs within this string, or if value is the empty
-        /// string (""); otherwise, "false".
+        /// "true" if any of the "keywords" parameters occur within this string, or if any of them
+        /// are the empty string (""); otherwise, "false".
         /// </returns>
-        /// <exception cref="ArgumentNullException">Thrown when "keywords" is null.</exception>
+        /// <exception cref="ArgumentNullException">
+        /// "keywords" is null.
+        /// </exception>
         [Pure]
         public static bool Contains([NotNull] this string str, StringComparison comparison, [NotNull] params string[] keywords)
         {
@@ -120,11 +132,13 @@ namespace IvanStoychev.StringExtensions
         /// </summary>
         /// <param name="str">The string to check.</param>
         /// <param name="comparison">One of the enumeration values that specifies the rules to use in the comparison.</param>
-        /// <param name="keychars">An IEnumerable of characters to seek.</param>
+        /// <param name="keychars">A collection of characters to seek.</param>
         /// <returns>
         /// "true" if any of the characters occur within this string; otherwise, "false".
         /// </returns>
-        /// <exception cref="ArgumentNullException">Thrown when "keychars" is null.</exception>
+        /// <exception cref="ArgumentNullException">
+        /// "keychars" is null.
+        /// </exception>
         [Pure]
         public static bool Contains([NotNull] this string str, StringComparison comparison, [NotNull] IEnumerable<char> keychars)
         {
@@ -139,9 +153,11 @@ namespace IvanStoychev.StringExtensions
         /// <param name="comparison">One of the enumeration values that specifies the rules to use in the comparison.</param>
         /// <param name="keychars">The characters to seek.</param>
         /// <returns>
-        /// "true" if any of the keychars parameters occurs within this string; otherwise, "false".
+        /// "true" if any of the "keychars" parameters occurs within this string; otherwise, "false".
         /// </returns>
-        /// <exception cref="ArgumentNullException">Thrown when "keychars" is null.</exception>
+        /// <exception cref="ArgumentNullException">
+        /// "keychars" is null.
+        /// </exception>
         [Pure]
         public static bool Contains([NotNull] this string str, StringComparison comparison, [NotNull] params char[] keychars)
         {
