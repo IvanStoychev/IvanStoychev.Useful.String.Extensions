@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Ivan Stoychev</Authors>
     <Title>Ivan Stoychev's String Extensions</Title>
     <Language>English</Language>
@@ -15,18 +15,21 @@
     <Copyright>Copyright (c) 2020 Ivan Stoychev. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <NeutralLanguage>English</NeutralLanguage>
-    <PackageReleaseNotes>Fixed Issue #2, the "Substring(string startString, string endString, StringInclusionOptions stringInclusionOptions)" method throwing an exception when the "startString" and "endString" arguments were the same.
-Now the method will look for the "endString" argument after the occurrence of the "startString" one.</PackageReleaseNotes>
-    <Version>1.0.1</Version>
+    <PackageReleaseNotes>Updated summaries and added possible thrown exceptions to them.</PackageReleaseNotes>
+    <Version>1.1.0</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
     <PackageIconUrl />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>J:\Users\Administrator\Source\Repos\IvanStoychev.StringExtensions\IvanStoychev.StringExtensions\bin\Release\netcoreapp3.0\IvanStoychev.StringExtensions.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

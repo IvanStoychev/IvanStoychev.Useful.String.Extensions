@@ -117,7 +117,7 @@ namespace IvanStoychev.StringExtensions
         }
 
         /// <summary>
-        /// Uses a regular expression to remove all unicode digits (in any script) from the current string.
+        /// Uses a regular expression to return a new string in which all occurrences of all unicode digits (in any script) in the current instance are removed.
         /// </summary>
         /// <param name="originalString">The instance to remove digits from.</param>
         /// <returns>
@@ -135,7 +135,7 @@ namespace IvanStoychev.StringExtensions
         }
 
         /// <summary>
-        /// Uses a regular expression to remove all special characters from the current string.
+        /// Uses a regular expression to return a new string in which all occurrences of all special characters in the current instance are removed.
         /// </summary>
         /// <param name="originalString">The instance to remove special characters from.</param>
         /// <returns>
@@ -153,7 +153,7 @@ namespace IvanStoychev.StringExtensions
         }
 
         /// <summary>
-        /// Uses a regular expression to remove all latin letters from the current string.
+        /// Uses a regular expression to return a new string in which all occurrences of all latin letters in the current instance are removed.
         /// </summary>
         /// <param name="originalString">The instance to remove latin letters from.</param>
         /// <returns>
@@ -240,7 +240,7 @@ namespace IvanStoychev.StringExtensions
                 result = result.Substring(trimString.Length);
 
             return result;
-        }//there are two method here with no test coverage and you need to write two more for the "TrimEnd" method
+        }
 
         /// <summary>
         /// Removes the trailing occurrence of a specified string from the current instance.
