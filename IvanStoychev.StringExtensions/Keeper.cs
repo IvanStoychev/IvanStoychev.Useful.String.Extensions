@@ -9,17 +9,27 @@ namespace IvanStoychev.StringExtensions
     public static class Keeper
     {
         /// <summary>
-        /// Keeps all numbers from the original string, removing letters and special characters.
+        /// Uses a regular expression to return a new string containing all occurrences of all unicode digits (in any script) in the current instance.
         /// </summary>
+        /// <returns>
+        /// A string containing all occurrences of all unicode digits (in any script) in the current instance.
+        /// </returns>
+        /// <exception cref="RegexMatchTimeoutException">
+        /// Thrown if the execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
+        /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
+        /// </exception>
         [Pure]
         public static string KeepOnlyNumbers([NotNull] this string originalString)
         {
-            return Regex.Replace(originalString, @"[^\d]", "");
+            return Regex.Replace(originalString, @"[^\d]", string.Empty);
         }
 
         /// <summary>
-        /// Keeps all special characters from the original string, removing letters and numbers.
+        /// Returns a new string containing all occurrences of all special characters in the current instance.
         /// </summary>
+        /// <returns>
+        /// A string containing all occurrences of all special characters in the current instance.
+        /// </returns>
         [Pure]
         public static string KeepOnlySpecialCharacters([NotNull] this string originalString)
         {
@@ -32,8 +42,15 @@ namespace IvanStoychev.StringExtensions
         }
 
         /// <summary>
-        /// Keeps all alphabetical letters from the original string, removing special characters and numbers.
+        /// Uses a regular expression to return a new string containing all occurrences of all latin letters in the current instance.
         /// </summary>
+        /// <returns>
+        /// A string containing all occurrences of all latin letters in the current instance.
+        /// </returns>
+        /// <exception cref="RegexMatchTimeoutException">
+        /// Thrown if the execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
+        /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
+        /// </exception>
         [Pure]
         public static string KeepOnlyLetters([NotNull] this string originalString)
         {        
