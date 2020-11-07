@@ -5,7 +5,9 @@ using System.Text.RegularExpressions;
 
 namespace IvanStoychev.StringExtensions
 {
-
+    /// <summary>
+    /// Contains methods that remove all but a specified set of characters from a string.
+    /// </summary>
     public static class Keeper
     {
         /// <summary>

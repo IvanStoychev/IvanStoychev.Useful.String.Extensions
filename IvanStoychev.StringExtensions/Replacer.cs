@@ -6,6 +6,9 @@ using System.Text.RegularExpressions;
 
 namespace IvanStoychev.StringExtensions
 {
+    /// <summary>
+    /// Contains methods that replace given substrings with a new, specified string.
+    /// </summary>
     public static class Replacer
     {
         /// <summary>
