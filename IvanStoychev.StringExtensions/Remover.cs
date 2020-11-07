@@ -8,6 +8,9 @@ using System.Text.RegularExpressions;
 
 namespace IvanStoychev.StringExtensions
 {
+    /// <summary>
+    /// Contains methods that remove substrings.
+    /// </summary>
     public static class Remover
     {
         /// <summary>
