@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace IvanStoychev.StringExtensions
 {
+    /// <summary>
+    /// Contains methods for determining if a substring is contained in another string.
+    /// </summary>
     public static class Comparer
     {
         /// <summary>
