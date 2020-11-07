@@ -56,7 +56,7 @@ namespace IvanStoychev.StringExtensions
 
         /// <summary>
         /// Returns a new string in which all occurrences of all members of a given IEnumerable in the current instance are removed.
-        /// Occurrences are removed in the same order as the IEnumerable's members, case-sensitivity can be specified.
+        /// Occurrences are removed in the same order as the IEnumerable's members, using the specified case-sensitivity.
         /// If case is ignored a regular expression is used internally.
         /// </summary>
         /// <param name="str">The instance to remove strings from.</param>
@@ -87,7 +87,7 @@ namespace IvanStoychev.StringExtensions
 
         /// <summary>
         /// Returns a new string in which all occurrences of all given strings in the current instance are removed.
-        /// Occurrences are removed in the same order as they are given, case-sensitivity can be specified.
+        /// Occurrences are removed in the same order as they are given, using the specified case-sensitivity.
         /// If case is ignored a regular expression is used internally.
         /// </summary>
         /// <param name="str">The instance to remove strings from.</param>
@@ -216,7 +216,7 @@ namespace IvanStoychev.StringExtensions
         }
 
         /// <summary>
-        /// Removes the leading occurrence of a specified string from the current instance, comparing using the provided cultural information.
+        /// Removes the leading occurrence of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
         /// </summary>
         /// <param name="target">The string to remove occurrences from.</param>
         /// <param name="trimString">The string to remove.</param>
@@ -288,7 +288,7 @@ namespace IvanStoychev.StringExtensions
         }
 
         /// <summary>
-        /// Removes the trailing occurrence of a specified string from the current instance, comparing using the provided cultural information.
+        /// Removes the trailing occurrence of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
         /// </summary>
         /// <param name="target">The string to remove occurrences from.</param>
         /// <param name="trimString">The string to remove.</param>
