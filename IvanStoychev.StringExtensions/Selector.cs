@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Contracts;
 
 namespace IvanStoychev.StringExtensions
 {
@@ -19,9 +21,13 @@ namespace IvanStoychev.StringExtensions
         /// A string representing the part of the original string, located between the startString and endString.
         /// </returns>
         /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown when either "startString" or "endString" are not found in the original string.
+        /// "startString" or "endString" are not found in the original instance.
         /// </exception>
-        public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions)
+        /// <exception cref="ArgumentNullException">
+        /// "startString" or "endString" are null.
+        /// </exception>
+        [Pure]
+        public static string Substring([NotNull] this string str, [NotNull] string startString, [NotNull] string endString, StringInclusionOptions stringInclusionOptions)
         {
             tryArgumentOutOfRangeException(str, startString, nameof(startString));
 
@@ -60,7 +66,14 @@ namespace IvanStoychev.StringExtensions
         /// <param name="startString">The string which marks the start of the substring.</param>
         /// <param name="inclusive">A boolean indicating whether the substring should include the given startString.</param>
         /// <returns>A string representing the part of the original string, located from startString to the end of the original instance.</returns>
-        public static string Substring(this string str, string startString, bool inclusive)
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// "startString" is not found in the original instance.
+        /// </exception>
+        /// <exception cref="ArgumentNullException">
+        /// "startString" is null.
+        /// </exception>
+        [Pure]
+        public static string Substring([NotNull] this string str, [NotNull] string startString, bool inclusive)
         {
             tryArgumentOutOfRangeException(str, startString, nameof(startString));
 
@@ -81,7 +94,15 @@ namespace IvanStoychev.StringExtensions
         /// A string that is equivalent to the substring of length "length" that begins at
         /// the first instance of "startString" in this string instance.
         /// </returns>
-        public static string Substring(this string str, string startString, int length, bool inclusive)
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// "startString" is not found in the original instance or "length" is less than zero or the index of "startString" plus "length" indicates
+        /// a position not within this instance.
+        /// </exception>
+        /// <exception cref="ArgumentNullException">
+        /// "startString" is null.
+        /// </exception>
+        [Pure]
+        public static string Substring([NotNull] this string str, [NotNull] string startString, int length, bool inclusive)
         {
             tryArgumentOutOfRangeException(str, startString, nameof(startString));
 
@@ -101,7 +122,7 @@ namespace IvanStoychev.StringExtensions
         /// The name of the parameter in the original method that is supposed to cause the exception.
         /// </param>
         /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown when the index of the first occurrence of "substring" in "originalString" is -1.
+        /// "substring" is not found in "originalString".
         /// </exception>
         static void tryArgumentOutOfRangeException(string originalString, string substring, string parameterName)
         {
