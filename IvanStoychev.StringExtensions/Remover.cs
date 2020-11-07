@@ -60,7 +60,7 @@ namespace IvanStoychev.StringExtensions
         /// If case is ignored a regular expression is used internally.
         /// </summary>
         /// <param name="str">The instance to remove strings from.</param>
-        /// <param name="ignoreCase">Boolean value indicating if the case of the value to be removed should be ignored.</param>
+        /// <param name="ignoreCase">"true" to ignore casing when trimming, "false" otherwise.</param>
         /// <param name="removeStrings">Array of values to be removed.</param>
         /// <returns>
         /// A string that is equivalent to the current string except that all instances of all members of the given collection are removed.
@@ -91,7 +91,7 @@ namespace IvanStoychev.StringExtensions
         /// If case is ignored a regular expression is used internally.
         /// </summary>
         /// <param name="str">The instance to remove strings from.</param>
-        /// <param name="ignoreCase">Boolean value indicating if the case of the value to be removed should be ignored.</param>
+        /// <param name="ignoreCase">"true" to ignore casing when trimming, "false" otherwise.</param>
         /// <param name="removeStrings">Values to be removed.</param>
         /// <returns>
         /// A string that is equivalent to the current string except that all instances of all members of the given collection are removed.
@@ -220,7 +220,7 @@ namespace IvanStoychev.StringExtensions
         /// </summary>
         /// <param name="target">The string to remove occurrences from.</param>
         /// <param name="trimString">The string to remove.</param>
-        /// <param name="ignoreCase">"true" to ignore case during the comparison; otherwise, "false".</param>
+        /// <param name="ignoreCase">"true" to ignore casing when trimming, "false" otherwise.</param>
         /// <param name="culture">
         /// Cultural information that determines how the start of this instance and "trimString" are compared.
         /// If culture is null, the current culture is used.
@@ -292,7 +292,7 @@ namespace IvanStoychev.StringExtensions
         /// </summary>
         /// <param name="target">The string to remove occurrences from.</param>
         /// <param name="trimString">The string to remove.</param>
-        /// <param name="ignoreCase">"true" to ignore case during the comparison; otherwise, "false".</param>
+        /// <param name="ignoreCase">"true" to ignore casing when trimming, "false" otherwise.</param>
         /// <param name="culture">
         /// Cultural information that determines how the end of this instance and "trimString" are compared.
         /// If culture is null, the current culture is used.
