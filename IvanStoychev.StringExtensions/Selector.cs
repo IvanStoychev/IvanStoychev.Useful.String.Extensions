@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 
 namespace IvanStoychev.StringExtensions
@@ -27,7 +26,7 @@ namespace IvanStoychev.StringExtensions
         /// "startString" or "endString" are null.
         /// </exception>
         [Pure]
-        public static string Substring([NotNull] this string str, [NotNull] string startString, [NotNull] string endString, StringInclusionOptions stringInclusionOptions)
+        public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions)
         {
             tryArgumentOutOfRangeException(str, startString, nameof(startString));
 
@@ -73,7 +72,7 @@ namespace IvanStoychev.StringExtensions
         /// "startString" is null.
         /// </exception>
         [Pure]
-        public static string Substring([NotNull] this string str, [NotNull] string startString, bool inclusive)
+        public static string Substring(this string str, string startString, bool inclusive)
         {
             tryArgumentOutOfRangeException(str, startString, nameof(startString));
 
@@ -102,7 +101,7 @@ namespace IvanStoychev.StringExtensions
         /// "startString" is null.
         /// </exception>
         [Pure]
-        public static string Substring([NotNull] this string str, [NotNull] string startString, int length, bool inclusive)
+        public static string Substring(this string str, string startString, int length, bool inclusive)
         {
             tryArgumentOutOfRangeException(str, startString, nameof(startString));
 

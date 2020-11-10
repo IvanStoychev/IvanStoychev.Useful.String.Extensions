@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Text.RegularExpressions;
 
@@ -24,7 +23,7 @@ namespace IvanStoychev.StringExtensions
         /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
         /// </exception>
         [Pure]
-        public static string Replace([NotNull] this string str, string newString, [NotNull] params string[] oldStrings)
+        public static string Replace(this string str, string newString, params string[] oldStrings)
         {
             return ReplaceStringConsiderCase(str, oldStrings, newString);
         }
@@ -44,7 +43,7 @@ namespace IvanStoychev.StringExtensions
         /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
         /// </exception>
         [Pure]
-        public static string Replace([NotNull] this string str, bool ignoreCase, [NotNull] string newString, [NotNull] params string[] oldStrings)
+        public static string Replace(this string str, bool ignoreCase, string newString, params string[] oldStrings)
         {
             if (ignoreCase)
                 return ReplaceStringIgnoreCase(str, oldStrings, newString);
@@ -66,7 +65,7 @@ namespace IvanStoychev.StringExtensions
         /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
         /// </exception>
         [Pure]
-        public static string Replace([NotNull] this string str, [NotNull] IEnumerable<string> oldStrings, [NotNull] string newString)
+        public static string Replace(this string str, IEnumerable<string> oldStrings, string newString)
         {
             return ReplaceStringConsiderCase(str, oldStrings, newString);
         }
@@ -86,7 +85,7 @@ namespace IvanStoychev.StringExtensions
         /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
         /// </exception>
         [Pure]
-        public static string Replace([NotNull] this string str, [NotNull] IEnumerable<string> oldStrings, [NotNull] string newString, bool ignoreCase)
+        public static string Replace(this string str, IEnumerable<string> oldStrings, string newString, bool ignoreCase)
         {
             if (ignoreCase)
                 return ReplaceStringIgnoreCase(str, oldStrings, newString);
@@ -100,7 +99,7 @@ namespace IvanStoychev.StringExtensions
         /// Thrown if the execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
         /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
         /// </exception>
-        private static string ReplaceStringConsiderCase(this string value, [NotNull] IEnumerable<string> oldStrings, string newString)
+        private static string ReplaceStringConsiderCase(this string value, IEnumerable<string> oldStrings, string newString)
         {
             foreach (var item in oldStrings)
                 value = Regex.Replace(value, Regex.Escape(item), newString, RegexOptions.None);

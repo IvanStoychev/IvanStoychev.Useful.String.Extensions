@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Linq;
 
@@ -24,7 +23,7 @@ namespace IvanStoychev.StringExtensions
         /// The "keywords" collection or any of its memebers are null.
         /// </exception>
         [Pure]
-        public static bool Contains([NotNull] this string str, [NotNull] IEnumerable<string> keywords)
+        public static bool Contains(this string str, IEnumerable<string> keywords)
         {
             return str.Contains(keywords.ToArray());
         }
@@ -42,7 +41,7 @@ namespace IvanStoychev.StringExtensions
         /// The "keywords" collection or any of its memebers are null.
         /// </exception>
         [Pure]
-        public static bool Contains([NotNull] this string str, [NotNull] params string[] keywords)
+        public static bool Contains(this string str, params string[] keywords)
         {
             foreach (string word in keywords)
                 if (str.Contains(word)) return true;
@@ -62,7 +61,7 @@ namespace IvanStoychev.StringExtensions
         /// "keychars" is null.
         /// </exception>
         [Pure]
-        public static bool Contains([NotNull] this string str, [NotNull] IEnumerable<char> keychars)
+        public static bool Contains(this string str, IEnumerable<char> keychars)
         {
             return str.Contains(keychars.ToArray());
         }
@@ -79,7 +78,7 @@ namespace IvanStoychev.StringExtensions
         /// "keychars" is null.
         /// </exception>
         [Pure]
-        public static bool Contains([NotNull] this string str, [NotNull] params char[] keychars)
+        public static bool Contains(this string str, params char[] keychars)
         {
             foreach (char ch in keychars)
                 if (str.Contains(ch)) return true;
@@ -102,7 +101,7 @@ namespace IvanStoychev.StringExtensions
         /// "keywords" is null.
         /// </exception>
         [Pure]
-        public static bool Contains([NotNull] this string str, StringComparison comparison, [NotNull] IEnumerable<string> keywords)
+        public static bool Contains(this string str, StringComparison comparison, IEnumerable<string> keywords)
         {
             return str.Contains(comparison, keywords.ToArray());
         }
@@ -122,7 +121,7 @@ namespace IvanStoychev.StringExtensions
         /// "keywords" is null.
         /// </exception>
         [Pure]
-        public static bool Contains([NotNull] this string str, StringComparison comparison, [NotNull] params string[] keywords)
+        public static bool Contains(this string str, StringComparison comparison, params string[] keywords)
         {
             foreach (string word in keywords)
                 if (str.Contains(word, comparison)) return true;
@@ -143,7 +142,7 @@ namespace IvanStoychev.StringExtensions
         /// "keychars" is null.
         /// </exception>
         [Pure]
-        public static bool Contains([NotNull] this string str, StringComparison comparison, [NotNull] IEnumerable<char> keychars)
+        public static bool Contains(this string str, StringComparison comparison, IEnumerable<char> keychars)
         {
             return str.Contains(comparison, keychars.ToArray());
         }
@@ -162,7 +161,7 @@ namespace IvanStoychev.StringExtensions
         /// "keychars" is null.
         /// </exception>
         [Pure]
-        public static bool Contains([NotNull] this string str, StringComparison comparison, [NotNull] params char[] keychars)
+        public static bool Contains(this string str, StringComparison comparison, params char[] keychars)
         {
             foreach (char ch in keychars)
                 if (str.Contains(ch, comparison)) return true;

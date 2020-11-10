@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Linq;
@@ -30,7 +29,7 @@ namespace IvanStoychev.StringExtensions
         /// The "removeStrings" collection or any of its members are null.
         /// </exception>
         [Pure]
-        public static string Remove([NotNull] this string str, [NotNull] IEnumerable<string> removeStrings)
+        public static string Remove(this string str, IEnumerable<string> removeStrings)
         {
             return RemoveStringConsiderCase(str, removeStrings.ToArray());
         }
@@ -52,7 +51,7 @@ namespace IvanStoychev.StringExtensions
         /// The "removeStrings" collection or any of its members are null.
         /// </exception>
         [Pure]
-        public static string Remove([NotNull] this string str, [NotNull] params string[] removeStrings)
+        public static string Remove(this string str, params string[] removeStrings)
         {
             return RemoveStringConsiderCase(str, removeStrings);
         }
@@ -80,7 +79,7 @@ namespace IvanStoychev.StringExtensions
         /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
         /// </exception>
         [Pure]
-        public static string Remove([NotNull] this string str, bool ignoreCase, [NotNull] IEnumerable<string> removeStrings)
+        public static string Remove(this string str, bool ignoreCase, IEnumerable<string> removeStrings)
         {
             if (ignoreCase)
                 return RemoveStringIgnoreCase(str, removeStrings.ToArray());
@@ -111,7 +110,7 @@ namespace IvanStoychev.StringExtensions
         /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
         /// </exception>
         [Pure]
-        public static string Remove([NotNull] this string str, bool ignoreCase, [NotNull] params string[] removeStrings)
+        public static string Remove(this string str, bool ignoreCase, params string[] removeStrings)
         {
             if (ignoreCase)
                 return RemoveStringIgnoreCase(str, removeStrings);
@@ -132,7 +131,7 @@ namespace IvanStoychev.StringExtensions
         /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
         /// </exception>
         [Pure]
-        public static string RemoveNumbers([NotNull] this string originalString)
+        public static string RemoveNumbers(this string originalString)
         {
             return Regex.Replace(originalString, @"[\d-]", string.Empty);
         }
@@ -150,7 +149,7 @@ namespace IvanStoychev.StringExtensions
         /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
         /// </exception>
         [Pure]
-        public static string RemoveSpecialCharacters([NotNull] this string originalString)
+        public static string RemoveSpecialCharacters(this string originalString)
         {
             return Regex.Replace(originalString, "[^0-9A-Za-z]+", string.Empty);
         }
@@ -168,7 +167,7 @@ namespace IvanStoychev.StringExtensions
         /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
         /// </exception>
         [Pure]
-        public static string RemoveLetters([NotNull] this string originalString)
+        public static string RemoveLetters(this string originalString)
         {
             return Regex.Replace(originalString, "[A-Za-z]", string.Empty);
         }
@@ -184,7 +183,7 @@ namespace IvanStoychev.StringExtensions
         /// current instance the method returns the current instance unchanged.
         /// </returns>
         [Pure]
-        public static string TrimStart([NotNull] this string target, string trimString)
+        public static string TrimStart(this string target, string trimString)
         {
             if (string.IsNullOrEmpty(trimString)) return target;
 
@@ -207,7 +206,7 @@ namespace IvanStoychev.StringExtensions
         /// current instance the method returns the current instance unchanged.
         /// </returns>
         [Pure]
-        public static string TrimStart([NotNull] this string target, string trimString, StringComparison stringComparison)
+        public static string TrimStart(this string target, string trimString, StringComparison stringComparison)
         {
             if (string.IsNullOrEmpty(trimString)) return target;
 
@@ -234,7 +233,7 @@ namespace IvanStoychev.StringExtensions
         /// current instance the method returns the current instance unchanged.
         /// </returns>
         [Pure]
-        public static string TrimStart([NotNull] this string target, string trimString, bool ignoreCase, CultureInfo culture)
+        public static string TrimStart(this string target, string trimString, bool ignoreCase, CultureInfo culture)
         {
             if (string.IsNullOrEmpty(trimString)) return target;
 
@@ -243,7 +242,8 @@ namespace IvanStoychev.StringExtensions
                 result = result.Substring(trimString.Length);
 
             return result;
-        }
+        }// TODO: there are two method here with no test coverage and you need to write two more for the "TrimEnd" method
+        // TODO: Improve "Trim" methods by putting the "result" string allocation in the "if" block.
 
         /// <summary>
         /// Removes the trailing occurrence of a specified string from the current instance.
@@ -256,7 +256,7 @@ namespace IvanStoychev.StringExtensions
         /// current instance the method returns the current instance unchanged.
         /// </returns>
         [Pure]
-        public static string TrimEnd([NotNull] this string target, string trimString)
+        public static string TrimEnd(this string target, string trimString)
         {
             if (string.IsNullOrEmpty(trimString)) return target;
 
@@ -279,7 +279,7 @@ namespace IvanStoychev.StringExtensions
         /// current instance the method returns the current instance unchanged.
         /// </returns>
         [Pure]
-        public static string TrimEnd([NotNull] this string target, string trimString, StringComparison stringComparison)
+        public static string TrimEnd(this string target, string trimString, StringComparison stringComparison)
         {
             if (string.IsNullOrEmpty(trimString)) return target;
 
@@ -306,7 +306,7 @@ namespace IvanStoychev.StringExtensions
         /// current instance the method returns the current instance unchanged.
         /// </returns>
         [Pure]
-        public static string TrimEnd([NotNull] this string target, string trimString, bool ignoreCase, CultureInfo culture)
+        public static string TrimEnd(this string target, string trimString, bool ignoreCase, CultureInfo culture)
         {
             if (string.IsNullOrEmpty(trimString)) return target;
 

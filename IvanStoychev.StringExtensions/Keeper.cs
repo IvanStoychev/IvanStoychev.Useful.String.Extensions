@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Diagnostics.Contracts;
+﻿using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -21,7 +20,7 @@ namespace IvanStoychev.StringExtensions
         /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
         /// </exception>
         [Pure]
-        public static string KeepOnlyNumbers([NotNull] this string originalString)
+        public static string KeepOnlyNumbers(this string originalString)
         {
             return Regex.Replace(originalString, @"[^\d]", string.Empty);
         }
@@ -33,7 +32,7 @@ namespace IvanStoychev.StringExtensions
         /// A string containing all occurrences of all special characters in the current instance.
         /// </returns>
         [Pure]
-        public static string KeepOnlySpecialCharacters([NotNull] this string originalString)
+        public static string KeepOnlySpecialCharacters(this string originalString)
         {
             string specialCharacters = string.Empty;
 
@@ -54,7 +53,7 @@ namespace IvanStoychev.StringExtensions
         /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
         /// </exception>
         [Pure]
-        public static string KeepOnlyLetters([NotNull] this string originalString)
+        public static string KeepOnlyLetters(this string originalString)
         {        
             return Regex.Replace(originalString, @"[^a-zA-Z]", string.Empty);
         }
