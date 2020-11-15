@@ -140,13 +140,13 @@ After that simply call any desired method on any string.
 
 <br/>
 
-:scroll: Documentation
+📖 Documentation
 -------------
 The methods in the package and project have ample summary information, you can also consult the [Wiki][3].
 
 <br/>
 
-:heavy_plus_sign: Contribution
+🧙‍ Contribution
 -------------
 Feel free to make issues and pull requests about anything.
 
