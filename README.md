@@ -52,7 +52,7 @@
 
 # :speech_balloon: Join the community
 [![Check out the discussion at https://gitq.com/IvanStoychev/IvanStoychev.StringExtensions](https://gitq.com/badge.svg)](https://gitq.com/IvanStoychev/IvanStoychev.StringExtensions)
-[![Gitter](https://badges.gitter.im/IvanStoychev-StringExtensions/community.svg)](https://gitter.im/IvanStoychev-StringExtensions/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Join the chat at https://gitter.im/IvanStoychev-StringExtensions/community](https://badges.gitter.im/IvanStoychev-StringExtensions/community.svg)](https://gitter.im/IvanStoychev-StringExtensions)
 
 <br/>
 
