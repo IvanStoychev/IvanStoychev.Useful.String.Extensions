@@ -44,8 +44,8 @@
   <a href="#newspaper-features">Features</a> •
   <a href="#construction_worker-installation">Installation</a> •
   <a href="#information_source-how-to-use">How to use</a> •
-  <a href="#scroll-documentation">Documentation</a> •
-  <a href="#heavy_plus_signcontribution">Contribution</a>
+  <a href="#-documentation">Documentation</a> •
+  <a href="#-contribution">Contribution</a>
 </p>
 
 <br/>
