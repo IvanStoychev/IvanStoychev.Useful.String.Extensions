@@ -38,12 +38,12 @@
 <h5 align="center">This repo uses <a href="https://semver.org/#semantic-versioning-200">Semantic Versioning 2.0.0</a></h5>
 
 <p align="center">
-  <a href="#speech_balloon-join-the-community">Community</a> •
+  <a href="#-join-the-community">Community</a> •
   <a href="#sparkling_heart-support-the-project">Support</a> •
-  <a href="#mega-introduction">Introduction</a> •
-  <a href="#newspaper-features">Features</a> •
-  <a href="#construction_worker-installation">Installation</a> •
-  <a href="#information_source-how-to-use">How to use</a> •
+  <a href="#-introduction">Introduction</a> •
+  <a href="#-features">Features</a> •
+  <a href="#-installation">Installation</a> •
+  <a href="#-how-to-use">How to use</a> •
   <a href="#-documentation">Documentation</a> •
   <a href="#-contribution">Contribution</a>
 </p>
