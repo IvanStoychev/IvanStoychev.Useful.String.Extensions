@@ -50,7 +50,7 @@
 
 <br/>
 
-# :speech_balloon: Join the community
+# 💬 Join the community
 [![Check out the discussion at https://gitq.com/IvanStoychev/IvanStoychev.StringExtensions](https://gitq.com/badge.svg)](https://gitq.com/IvanStoychev/IvanStoychev.StringExtensions)
 [![Join the chat at https://gitter.im/IvanStoychev-StringExtensions/community](https://badges.gitter.im/IvanStoychev-StringExtensions/community.svg)](https://gitter.im/IvanStoychev-StringExtensions)
 
@@ -64,13 +64,13 @@
 
 <br/>
 
-:mega: Introduction
+📣 Introduction
 ------------
 This is a collection of string extension methods that I have been in need of many a time, so I bundled them in a nuget package and published the code here. They are designed to be "ease-of-life" and "generally making your life easier" methods with user comfort in mind, which is why there are numerious overloads, designed for every case I could think of.
 
 <br/>
 
-:newspaper: Features
+📰 Features
 ------------
 * Methods to keep or remove all special characters, letters and digits from a string.
   * Ex. `"!#%&lorem^@ipsum!@%".KeepOnlyLetters()` will return `"loremipsum"`.
@@ -87,7 +87,7 @@ This is a collection of string extension methods that I have been in need of man
 
 <br/>
 
-:construction_worker: Installation
+🏗 Installation
 ------------
 __*Install using "NuGet Package Manager" in Visual Studio*__
 <br/>1. Open the solution to which you wish to add the library.
@@ -132,7 +132,7 @@ __*Install manually*__
 
 <br/>
 
-:information_source: How to use
+ℹ How to use
 ----------
 Since the functionality, added by this project, is all extension methods, it would be best to add the using statment "`using IvanStoychev.StringExtensions;`" to your code, as Intellisense usually doesn't pick it up.
 
