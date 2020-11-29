@@ -43,7 +43,7 @@
   <a href="#-introduction">Introduction</a> •
   <a href="#-features">Features</a> •
   <a href="#-installation">Installation</a> •
-  <a href="#-how-to-use">How to use</a> •
+  <a href="#ℹ-how-to-use">How to use</a> •
   <a href="#-documentation">Documentation</a> •
   <a href="#-contribution">Contribution</a>
 </p>
