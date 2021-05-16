@@ -9,7 +9,33 @@ namespace IvanStoychev.StringExtensions
     public static class Selector
     {
         /// <summary>
-        /// Retrieves the substring starting from the first instance of the given string to the end of this instance.
+        /// Retrieves the substring from the start of this instance to the first occurrence of the given <paramref name="endString"/>.
+        /// </summary>
+        /// <param name="str">The instance from which to extract a substring.</param>
+        /// <param name="endString">The string which marks the end of the substring.</param>
+        /// <param name="inclusive">A boolean indicating whether the substring should include the given <paramref name="endString"/>.</param>
+        /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
+        /// <returns>
+        /// A string representing the part of the original string, located from the start of the original instance to the first occurrence of <paramref name="endString"/>.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="endString"/> is not found in the original instance.
+        /// </exception>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="endString"/> is null.
+        /// </exception>
+        [Pure]
+        public static string SubstringStart(this string str, string endString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
+        {
+            tryArgumentOutOfRangeException(str, endString, nameof(endString), stringComparison);
+
+            int endStringIndex = str.IndexOf(endString, stringComparison) + endString.Length * Convert.ToInt32(!inclusive);
+
+            return str.Substring(0, endStringIndex);
+        }
+
+        /// <summary>
+        /// Retrieves the substring starting from the first occurrence of the given <paramref name="startString"/> to the end of this instance.
         /// </summary>
         /// <param name="str">The instance from which to extract a substring.</param>
         /// <param name="startString">The string which marks the start of the substring.</param>
