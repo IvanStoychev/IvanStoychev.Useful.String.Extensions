@@ -29,7 +29,8 @@ namespace IvanStoychev.StringExtensions
         {
             tryArgumentOutOfRangeException(str, endString, nameof(endString), stringComparison);
 
-            int endStringIndex = str.IndexOf(endString, stringComparison) + endString.Length * Convert.ToInt32(!inclusive);
+            int endStringIndex = str.IndexOf(endString, stringComparison);
+            endStringIndex = OffsetIndexBySubstringLength(endStringIndex, endString, inclusive);
 
             return str.Substring(0, endStringIndex);
         }
@@ -53,7 +54,8 @@ namespace IvanStoychev.StringExtensions
         {
             tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
 
-            int startStringIndex = str.IndexOf(startString, stringComparison) + startString.Length * Convert.ToInt32(!inclusive);
+            int startStringIndex = str.IndexOf(startString, stringComparison);
+            startStringIndex = OffsetIndexBySubstringLength(startStringIndex, startString, inclusive);
 
             return str.Substring(startStringIndex);
         }
@@ -82,7 +84,8 @@ namespace IvanStoychev.StringExtensions
         {
             tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
 
-            int startStringIndex = str.IndexOf(startString, stringComparison) + startString.Length * Convert.ToInt32(!inclusive);
+            int startStringIndex = str.IndexOf(startString, stringComparison);
+            startStringIndex = OffsetIndexBySubstringLength(startStringIndex, startString, inclusive);
 
             return str.Substring(startStringIndex, length);
         }
@@ -156,7 +159,8 @@ namespace IvanStoychev.StringExtensions
         {
             tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
 
-            int startStringIndex = str.LastIndexOf(startString, stringComparison) + startString.Length * Convert.ToInt32(!inclusive);
+            int startStringIndex = str.LastIndexOf(startString, stringComparison);
+            startStringIndex = OffsetIndexBySubstringLength(startStringIndex, startString, inclusive);
 
             return str.Substring(startStringIndex);
         }
@@ -185,10 +189,30 @@ namespace IvanStoychev.StringExtensions
         {
             tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
 
-            int startStringIndex = str.LastIndexOf(startString, stringComparison) + startString.Length * Convert.ToInt32(!inclusive);
+            int startStringIndex = str.LastIndexOf(startString, stringComparison);
+            startStringIndex = OffsetIndexBySubstringLength(startStringIndex, startString, inclusive);
 
             return str.Substring(startStringIndex, length);
         }
+
+        /// <summary>
+        /// Adds the length of <paramref name="substring"/> to the given <paramref name="index"/> if <paramref name="doNotOffset"/> is <see langword="false"/>.
+        /// </summary>
+        /// <remarks>
+        /// When <paramref name="index"/> is the index at which <paramref name="substring"/> starts in another string, offsetting <paramref name="index"/>
+        /// by <paramref name="substring"/>'s length will actually omit <paramref name="substring"/> in any result which selects everything from the offsetted index onward.
+        /// <br/><paramref name="doNotOffset"/>'s parameter name and function were chosen so that the "inclusive" boolean arguments of the various "Substring" methods
+        /// can be passed to this method as they are.
+        /// </remarks>
+        /// <param name="index">Integer, signifying the start of <paramref name="substring"/> in a parent string.</param>
+        /// <param name="substring">String that starts at the given <paramref name="index"/> in a parent string.</param>
+        /// <param name="doNotOffset">Whether the length of <paramref name="substring"/> should NOT be added to <paramref name="index"/>.</param>
+        /// <returns>Integer, signifying the index in a string where the part, significant to the user, starts.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="substring"/> is null.
+        /// </exception>
+        static int OffsetIndexBySubstringLength(int index, string substring, bool doNotOffset) =>
+            doNotOffset ? index : index += substring.Length;
 
         /// <summary>
         /// Gets the index of <paramref name="substring"/> in <paramref name="originalString"/> and, if the index is -1, throws an
