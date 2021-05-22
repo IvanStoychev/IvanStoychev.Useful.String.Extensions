@@ -78,7 +78,7 @@ namespace IvanStoychev.StringExtensions
         /// <paramref name="startString"/> is null.
         /// </exception>
         [Pure]
-        public static string Substring(this string str, string startString, int length, bool inclusive, StringComparison stringComparison = StringComparison.CurrentCulture)
+        public static string Substring(this string str, string startString, int length, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
 
@@ -194,7 +194,7 @@ namespace IvanStoychev.StringExtensions
         /// Gets the index of <paramref name="substring"/> in <paramref name="originalString"/> and, if the index is -1, throws an
         /// <see cref="ArgumentOutOfRangeException"/> that informs the user the value "<paramref name="substring"/>" of
         /// argument <paramref name="parameterName"/> is not found in said string. If the value of <paramref name="substring"/> is longer
-        /// than 10 characters, it will be truncated to 10.
+        /// than 10 characters, the exception display value will be truncated to 10.
         /// </summary>
         /// <param name="originalString">The instance which to check for "substring".</param>
         /// <param name="substring">The string to search in "originalString".</param>
@@ -217,7 +217,8 @@ namespace IvanStoychev.StringExtensions
         /// <summary>
         /// Gets the index of <paramref name="endString"/> in <paramref name="substringStartStringOnwards"/> and, if the index is -1, throws an
         /// <see cref="ArgumentOutOfRangeException"/> that informs the user the value of <paramref name="endString"/> was not found after <paramref name="startString"/>
-        /// in said string. If the value of either <paramref name="startString"/> or <paramref name="endString"/> is longer than 10 characters, it will be truncated to 10.
+        /// in said string. If the value of either <paramref name="startString"/> or <paramref name="endString"/> is longer than 10 characters,
+        /// the exception display value will be truncated to 10.
         /// </summary>
         /// <param name="substringStartStringOnwards">The part of the original instance after <paramref name="startString"/>.</param>
         /// <param name="startString">The value used for the start of the substring in the calling method.</param>
