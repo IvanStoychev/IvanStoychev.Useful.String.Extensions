@@ -77,7 +77,7 @@ namespace IvanStoychev.StringExtensions
         /// the first instance of <paramref name="startString"/> in this string instance.
         /// </returns>
         /// <exception cref="ArgumentOutOfRangeException">
-        /// <paramref name="startString"/> is not found in the original instance or <paramref name="length"/> is less than zero or the index of <paramref name="startString"/> plus "length" indicates
+        /// <paramref name="startString"/> is not found in the original instance or the index of <paramref name="startString"/> plus <paramref name="length"/> indicates
         /// a position not within this instance.
         /// </exception>
         /// <exception cref="ArgumentNullException">
@@ -96,7 +96,7 @@ namespace IvanStoychev.StringExtensions
         }
 
         /// <summary>
-        /// Locates he first occurrence of <paramref name="startString"/>, in the original instance, and returns the string situated between it and the first occurrence
+        /// Locates he first occurrence of <paramref name="startString"/> in the original instance and returns the string situated between it and the first occurrence
         /// of <paramref name="endString"/>, located after <paramref name="startString"/>. Whether <paramref name="startString"/> and/or <paramref name="endString"/>,
         /// themselves, are returned is controlled by the <paramref name="stringInclusionOptions"/> argument.
         /// </summary>
