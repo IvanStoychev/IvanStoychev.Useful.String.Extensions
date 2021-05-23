@@ -30,7 +30,7 @@ namespace IvanStoychev.StringExtensions
             tryArgumentOutOfRangeException(str, endString, nameof(endString), stringComparison);
 
             int endStringIndex = str.IndexOf(endString, stringComparison);
-            endStringIndex = OffsetIndexBySubstringLength(endStringIndex, endString, inclusive);
+            endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
 
             return str.Substring(0, endStringIndex);
         }
@@ -55,17 +55,21 @@ namespace IvanStoychev.StringExtensions
             tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
 
             int startStringIndex = str.IndexOf(startString, stringComparison);
-            startStringIndex = OffsetIndexBySubstringLength(startStringIndex, startString, inclusive);
+            startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 
             return str.Substring(startStringIndex);
         }
 
         /// <summary>
-        /// Retrieves a substring from this instance. The substring starts at the first occurrence of the given <paramref name="startString"/> and has the specified length.
+        /// Retrieves a substring from this instance. The substring starts at the first occurrence of the given <paramref name="startString"/> and has the specified <paramref name="length"/>.
+        /// The retrieved substring can contain <paramref name="startString"/> in it if <paramref name="inclusive"/> is <see langword="true"/>. In that case the length
+        /// will be counted from the end of <paramref name="startString"/>.
         /// </summary>
         /// <param name="str">The instance from which to extract a substring.</param>
         /// <param name="startString">The string which marks the start of the substring.</param>
-        /// <param name="length">The number of characters to return.</param>
+        /// <param name="length">
+        /// The number of characters to return. If <paramref name="inclusive"/> is <see langword="true"/> characters will be counted from the end of <paramref name="startString"/>.
+        /// </param>
         /// <param name="inclusive">A boolean indicating whether the substring should include the given <paramref name="startString"/>.</param>
         /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
         /// <returns>
@@ -85,9 +89,10 @@ namespace IvanStoychev.StringExtensions
             tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
 
             int startStringIndex = str.IndexOf(startString, stringComparison);
-            startStringIndex = OffsetIndexBySubstringLength(startStringIndex, startString, inclusive);
+            startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
+            int offsetlength = AddSubstringLengthConditional(length, startString, !inclusive);
 
-            return str.Substring(startStringIndex, length);
+            return str.Substring(startStringIndex, offsetlength);
         }
 
         /// <summary>
@@ -110,7 +115,7 @@ namespace IvanStoychev.StringExtensions
         /// <paramref name="startString"/> or <paramref name="endString"/> are null.
         /// </exception>
         [Pure]
-        public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions, StringComparison stringComparison = StringComparison.CurrentCulture)
+        public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions = StringInclusionOptions.IncludeNone, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
 
@@ -160,7 +165,7 @@ namespace IvanStoychev.StringExtensions
             tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
 
             int startStringIndex = str.LastIndexOf(startString, stringComparison);
-            startStringIndex = OffsetIndexBySubstringLength(startStringIndex, startString, inclusive);
+            startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 
             return str.Substring(startStringIndex);
         }
@@ -190,9 +195,10 @@ namespace IvanStoychev.StringExtensions
             tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
 
             int startStringIndex = str.LastIndexOf(startString, stringComparison);
-            startStringIndex = OffsetIndexBySubstringLength(startStringIndex, startString, inclusive);
+            startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
+            int offsetlength = AddSubstringLengthConditional(length, startString, !inclusive);
 
-            return str.Substring(startStringIndex, length);
+            return str.Substring(startStringIndex, offsetlength);
         }
 
         /// <summary>
@@ -211,8 +217,8 @@ namespace IvanStoychev.StringExtensions
         /// <exception cref="ArgumentNullException">
         /// <paramref name="substring"/> is null.
         /// </exception>
-        static int OffsetIndexBySubstringLength(int index, string substring, bool doNotOffset) =>
-            doNotOffset ? index : index += substring.Length;
+        static int AddSubstringLengthConditional(int index, string substring, bool doNotOffset)
+            => doNotOffset ? index : index += substring.Length;
 
         /// <summary>
         /// Gets the index of <paramref name="substring"/> in <paramref name="originalString"/> and, if the index is -1, throws an
