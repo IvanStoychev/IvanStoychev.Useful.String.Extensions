@@ -27,7 +27,7 @@ namespace IvanStoychev.StringExtensions
         [Pure]
         public static string SubstringStart(this string str, string endString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
-            tryArgumentOutOfRangeException(str, endString, nameof(endString), stringComparison);
+            TryArgumentOutOfRangeException(str, endString, nameof(endString), stringComparison);
 
             int endStringIndex = str.IndexOf(endString, stringComparison);
             endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
@@ -50,9 +50,9 @@ namespace IvanStoychev.StringExtensions
         /// <paramref name="startString"/> is null.
         /// </exception>
         [Pure]
-        public static string Substring(this string str, string startString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
+        public static string SubstringEnd(this string str, string startString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
-            tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
+            TryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
 
             int startStringIndex = str.IndexOf(startString, stringComparison);
             startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
@@ -86,7 +86,7 @@ namespace IvanStoychev.StringExtensions
         [Pure]
         public static string Substring(this string str, string startString, int length, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
-            tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
+            TryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
 
             int startStringIndex = str.IndexOf(startString, stringComparison);
             startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
@@ -117,11 +117,11 @@ namespace IvanStoychev.StringExtensions
         [Pure]
         public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions = StringInclusionOptions.IncludeNone, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
-            tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
+            TryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
 
             int startStringIndex = str.IndexOf(startString, stringComparison);
             string substringStartStringOnwards = str.Substring(startStringIndex + startString.Length);
-            tryArgumentOutOfRangeExceptionEndString(substringStartStringOnwards, startString, endString, stringComparison);
+            TryArgumentOutOfRangeExceptionEndString(substringStartStringOnwards, startString, endString, stringComparison);
 
             int endStringIndex = str.IndexOf(endString, startStringIndex + startString.Length, stringComparison);
 
@@ -160,9 +160,9 @@ namespace IvanStoychev.StringExtensions
         /// <paramref name="startString"/> is null.
         /// </exception>
         [Pure]
-        public static string SubstringEnd(this string str, string startString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
+        public static string SubstringEndLast(this string str, string startString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
-            tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
+            TryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
 
             int startStringIndex = str.LastIndexOf(startString, stringComparison);
             startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
@@ -190,9 +190,9 @@ namespace IvanStoychev.StringExtensions
         /// <paramref name="startString"/> is null.
         /// </exception>
         [Pure]
-        public static string SubstringEnd(this string str, string startString, int length, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
+        public static string SubstringEndLast(this string str, string startString, int length, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
-            tryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
+            TryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
 
             int startStringIndex = str.LastIndexOf(startString, stringComparison);
             startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
@@ -235,7 +235,7 @@ namespace IvanStoychev.StringExtensions
         /// <exception cref="ArgumentOutOfRangeException">
         /// "substring" is not found in "originalString".
         /// </exception>
-        static void tryArgumentOutOfRangeException(string originalString, string substring, string parameterName, StringComparison stringComparison = StringComparison.CurrentCulture)
+        static void TryArgumentOutOfRangeException(string originalString, string substring, string parameterName, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             if (originalString.IndexOf(substring, stringComparison) == -1)
             {
@@ -257,7 +257,7 @@ namespace IvanStoychev.StringExtensions
         /// <exception cref="ArgumentOutOfRangeException">
         /// <paramref name="endString"/> is not found in <paramref name="substringStartStringOnwards"/>.
         /// </exception>
-        static void tryArgumentOutOfRangeExceptionEndString(string substringStartStringOnwards, string startString, string endString, StringComparison stringComparison = StringComparison.CurrentCulture)
+        static void TryArgumentOutOfRangeExceptionEndString(string substringStartStringOnwards, string startString, string endString, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             if (substringStartStringOnwards.IndexOf(endString, stringComparison) == -1)
             {
