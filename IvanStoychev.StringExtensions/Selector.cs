@@ -27,7 +27,7 @@ namespace IvanStoychev.StringExtensions
         [Pure]
         public static string SubstringStart(this string str, string endString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
-            TryArgumentOutOfRangeException(str, endString, nameof(endString), stringComparison);
+            Validator.CheckSubstringIndex(str, endString, nameof(endString), stringComparison);
 
             int endStringIndex = str.IndexOf(endString, stringComparison);
             endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
@@ -52,7 +52,7 @@ namespace IvanStoychev.StringExtensions
         [Pure]
         public static string SubstringEnd(this string str, string startString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
-            TryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
+            Validator.CheckSubstringIndex(str, startString, nameof(startString), stringComparison);
 
             int startStringIndex = str.IndexOf(startString, stringComparison);
             startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
@@ -86,7 +86,7 @@ namespace IvanStoychev.StringExtensions
         [Pure]
         public static string Substring(this string str, string startString, int length, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
-            TryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
+            Validator.CheckSubstringIndex(str, startString, nameof(startString), stringComparison);
 
             int startStringIndex = str.IndexOf(startString, stringComparison);
             startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
@@ -117,11 +117,10 @@ namespace IvanStoychev.StringExtensions
         [Pure]
         public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions = StringInclusionOptions.IncludeNone, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
-            TryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
+            Validator.CheckSubstringIndex(str, startString, nameof(startString), stringComparison);
 
             int startStringIndex = str.IndexOf(startString, stringComparison);
-            string substringStartStringOnwards = str.Substring(startStringIndex + startString.Length);
-            TryArgumentOutOfRangeExceptionEndString(substringStartStringOnwards, startString, endString, stringComparison);
+            Validator.CheckEndStringIndex(str, startString, endString, stringComparison);
 
             int endStringIndex = str.IndexOf(endString, startStringIndex + startString.Length, stringComparison);
 
@@ -162,7 +161,7 @@ namespace IvanStoychev.StringExtensions
         [Pure]
         public static string SubstringEndLast(this string str, string startString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
-            TryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
+            Validator.CheckSubstringIndex(str, startString, nameof(startString), stringComparison);
 
             int startStringIndex = str.LastIndexOf(startString, stringComparison);
             startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
@@ -192,7 +191,7 @@ namespace IvanStoychev.StringExtensions
         [Pure]
         public static string SubstringEndLast(this string str, string startString, int length, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
-            TryArgumentOutOfRangeException(str, startString, nameof(startString), stringComparison);
+            Validator.CheckSubstringIndex(str, startString, nameof(startString), stringComparison);
 
             int startStringIndex = str.LastIndexOf(startString, stringComparison);
             startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
@@ -219,52 +218,5 @@ namespace IvanStoychev.StringExtensions
         /// </exception>
         static int AddSubstringLengthConditional(int index, string substring, bool doNotOffset)
             => doNotOffset ? index : index += substring.Length;
-
-        /// <summary>
-        /// Gets the index of <paramref name="substring"/> in <paramref name="originalString"/> and, if the index is -1, throws an
-        /// <see cref="ArgumentOutOfRangeException"/> that informs the user the value "<paramref name="substring"/>" of
-        /// argument <paramref name="parameterName"/> is not found in said string. If the value of <paramref name="substring"/> is longer
-        /// than 10 characters, the exception display value will be truncated to 10.
-        /// </summary>
-        /// <param name="originalString">The instance which to check for "substring".</param>
-        /// <param name="substring">The string to search in "originalString".</param>
-        /// <param name="parameterName">
-        /// The name of the parameter in the original method that is supposed to cause the exception.
-        /// </param>
-        /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// "substring" is not found in "originalString".
-        /// </exception>
-        static void TryArgumentOutOfRangeException(string originalString, string substring, string parameterName, StringComparison stringComparison = StringComparison.CurrentCulture)
-        {
-            if (originalString.IndexOf(substring, stringComparison) == -1)
-            {
-                if (substring.Length > 10) substring = substring.Substring(0, 10) + "...";
-                throw new ArgumentOutOfRangeException($"{parameterName}", $"The string given for '{parameterName}' (\"{substring}\") was not found in the original instance.");
-            }
-        }
-
-        /// <summary>
-        /// Gets the index of <paramref name="endString"/> in <paramref name="substringStartStringOnwards"/> and, if the index is -1, throws an
-        /// <see cref="ArgumentOutOfRangeException"/> that informs the user the value of <paramref name="endString"/> was not found after <paramref name="startString"/>
-        /// in said string. If the value of either <paramref name="startString"/> or <paramref name="endString"/> is longer than 10 characters,
-        /// the exception display value will be truncated to 10.
-        /// </summary>
-        /// <param name="substringStartStringOnwards">The part of the original instance after <paramref name="startString"/>.</param>
-        /// <param name="startString">The value used for the start of the substring in the calling method.</param>
-        /// <param name="endString">The string to search in <paramref name="substringStartStringOnwards"/>.</param>
-        /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// <paramref name="endString"/> is not found in <paramref name="substringStartStringOnwards"/>.
-        /// </exception>
-        static void TryArgumentOutOfRangeExceptionEndString(string substringStartStringOnwards, string startString, string endString, StringComparison stringComparison = StringComparison.CurrentCulture)
-        {
-            if (substringStartStringOnwards.IndexOf(endString, stringComparison) == -1)
-            {
-                if (endString.Length > 10) endString = endString.Substring(0, 10) + "...";
-                if (startString.Length > 10) startString = startString.Substring(0, 10) + "...";
-                throw new ArgumentOutOfRangeException($"endString", $"The string given for 'endString' (\"{endString}\") was not found after the given 'startString' (\"{startString}\") in the original instance.");
-            }
-        }
     }
 }
