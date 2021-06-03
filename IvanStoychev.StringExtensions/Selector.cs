@@ -35,30 +35,6 @@ namespace IvanStoychev.StringExtensions
         }
 
         /// <summary>
-        /// Retrieves the substring starting from the first occurrence of the given <paramref name="startString"/> to the end of this instance.
-        /// </summary>
-        /// <param name="str">The instance from which to extract a substring.</param>
-        /// <param name="startString">The string which marks the start of the substring.</param>
-        /// <param name="inclusive">A boolean indicating whether the substring should include the given <paramref name="startString"/>.</param>
-        /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
-        /// <returns>A string representing the part of the original string, located from <paramref name="startString"/> to the end of the original instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// <paramref name="startString"/> is not found in the original instance.
-        /// </exception>
-        /// <exception cref="ArgumentNullException">
-        /// <paramref name="startString"/> is null.
-        /// </exception>
-        [Pure]
-        public static string SubstringEnd(this string str, string startString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
-        {
-            Validator.CheckSubstringIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
-
-            startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
-
-            return str.Substring(startStringIndex);
-        }
-
-        /// <summary>
         /// Retrieves a substring from this instance. The substring starts at the first occurrence of the given <paramref name="startString"/> and has the specified <paramref name="length"/>.
         /// The retrieved substring can contain <paramref name="startString"/> in it if <paramref name="inclusive"/> is <see langword="true"/>. In that case the length
         /// will be counted from the end of <paramref name="startString"/>.
@@ -133,6 +109,30 @@ namespace IvanStoychev.StringExtensions
             int selectLength = endStringIndex - startStringIndex;
 
             return str.Substring(startStringIndex, selectLength);
+        }
+
+        /// <summary>
+        /// Retrieves the substring starting from the first occurrence of the given <paramref name="startString"/> to the end of this instance.
+        /// </summary>
+        /// <param name="str">The instance from which to extract a substring.</param>
+        /// <param name="startString">The string which marks the start of the substring.</param>
+        /// <param name="inclusive">A boolean indicating whether the substring should include the given <paramref name="startString"/>.</param>
+        /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
+        /// <returns>A string representing the part of the original string, located from <paramref name="startString"/> to the end of the original instance.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="startString"/> is not found in the original instance.
+        /// </exception>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="startString"/> is null.
+        /// </exception>
+        [Pure]
+        public static string SubstringEnd(this string str, string startString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
+        {
+            Validator.CheckSubstringIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
+
+            startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
+
+            return str.Substring(startStringIndex);
         }
 
         /// <summary>
