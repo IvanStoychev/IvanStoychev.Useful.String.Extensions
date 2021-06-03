@@ -35,6 +35,32 @@ namespace IvanStoychev.StringExtensions
         }
 
         /// <summary>
+        /// Retrieves the substring from the start of this instance to the first occurrence of the given <paramref name="endString"/>.
+        /// </summary>
+        /// <param name="str">The instance from which to extract a substring.</param>
+        /// <param name="endString">The string which marks the end of the substring.</param>
+        /// <param name="inclusive">A boolean indicating whether the substring should include the given <paramref name="endString"/>.</param>
+        /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
+        /// <returns>
+        /// A string representing the part of the original string, located from the start of the original instance to the first occurrence of <paramref name="endString"/>.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="endString"/> is not found in the original instance.
+        /// </exception>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="endString"/> is null.
+        /// </exception>
+        [Pure]
+        public static string SubstringStartLast(this string str, string endString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
+        {
+            Validator.CheckSubstringLastIndex(str, endString, nameof(endString), out int endStringIndex, stringComparison);
+
+            endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
+
+            return str.Substring(0, endStringIndex);
+        }
+
+        /// <summary>
         /// Retrieves a substring from this instance. The substring starts at the first occurrence of the given <paramref name="startString"/> and has the specified <paramref name="length"/>.
         /// The retrieved substring can contain <paramref name="startString"/> in it if <paramref name="inclusive"/> is <see langword="true"/>. In that case the length
         /// will be counted from the end of <paramref name="startString"/>.
@@ -152,7 +178,7 @@ namespace IvanStoychev.StringExtensions
         [Pure]
         public static string SubstringEndLast(this string str, string startString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
-            Validator.CheckSubstringIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
+            Validator.CheckSubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
 
             startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 
@@ -183,7 +209,7 @@ namespace IvanStoychev.StringExtensions
         [Pure]
         public static string SubstringEndLast(this string str, string startString, int length, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
-            Validator.CheckSubstringIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
+            Validator.CheckSubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
 
             startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
             int offsetlength = AddSubstringLengthConditional(length, startString, !inclusive);
