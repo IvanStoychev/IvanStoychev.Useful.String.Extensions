@@ -35,15 +35,13 @@ namespace IvanStoychev.StringExtensions
         }
 
         /// <summary>
-        /// Retrieves the substring from the start of this instance to the first occurrence of the given <paramref name="endString"/>.
+        /// Retrieves the substring from the start of this instance to the last occurrence of the given <paramref name="endString"/>.
         /// </summary>
         /// <param name="str">The instance from which to extract a substring.</param>
         /// <param name="endString">The string which marks the end of the substring.</param>
         /// <param name="inclusive">A boolean indicating whether the substring should include the given <paramref name="endString"/>.</param>
         /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
-        /// <returns>
-        /// A string representing the part of the original string, located from the start of the original instance to the first occurrence of <paramref name="endString"/>.
-        /// </returns>
+        /// <returns>Substring starting from the first occurrence of <paramref name="startString"/> to the end of the original string.</returns>
         /// <exception cref="ArgumentOutOfRangeException">
         /// <paramref name="endString"/> is not found in the original instance.
         /// </exception>
@@ -162,13 +160,13 @@ namespace IvanStoychev.StringExtensions
         }
 
         /// <summary>
-        /// Retrieves the substring starting from the last occurrence of the given string to the end of this instance.
+        /// Retrieves the substring starting from the last occurrence of <paramref name="startString"/> to the end of this instance.
         /// </summary>
         /// <param name="str">The instance from which to extract a substring.</param>
         /// <param name="startString">The string which marks the start of the substring.</param>
         /// <param name="inclusive">A boolean indicating whether the substring should include the given <paramref name="startString"/>.</param>
         /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
-        /// <returns>A string representing the part of the original string, located from <paramref name="startString"/> to the end of the original instance.</returns>
+        /// <returns>Substring of the original string, starting from the last occurrence of <paramref name="startString"/> to the end of the original string.</returns>
         /// <exception cref="ArgumentOutOfRangeException">
         /// <paramref name="startString"/> is not found in the original instance.
         /// </exception>
@@ -195,10 +193,7 @@ namespace IvanStoychev.StringExtensions
         /// <param name="length">The number of characters to return.</param>
         /// <param name="inclusive">A boolean indicating whether the substring should include the given <paramref name="startString"/>.</param>
         /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
-        /// <returns>
-        /// A string that is equivalent to the substring of length <paramref name="length"/> that begins at
-        /// the first instance of <paramref name="startString"/> in this string instance.
-        /// </returns>
+        /// <returns>A substring of length "<paramref name="length"/>" that begins at the last occurrence of <paramref name="startString"/> in this instance.</returns>
         /// <exception cref="ArgumentOutOfRangeException">
         /// <paramref name="startString"/> is not found in the original instance or <paramref name="length"/> is less than zero or the index of <paramref name="startString"/> plus "length" indicates
         /// a position not within this instance.
