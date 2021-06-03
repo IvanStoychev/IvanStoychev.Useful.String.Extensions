@@ -160,7 +160,9 @@ namespace IvanStoychev.StringExtensions
         }
 
         /// <summary>
-        /// Retrieves a substring from this instance. The substring starts at the last occurrence of the given <paramref name="startString"/> and has the specified <paramref name="length"/>.
+        /// Retrieves a substring from this instance. The substring starts at the last occurrence of the given <paramref name="startString"/> and has the specified
+        /// <paramref name="length"/>. The retrieved substring can contain <paramref name="startString"/> in it if <paramref name="inclusive"/> is <see langword="true"/>.
+        /// In that case the length will be counted from the end of <paramref name="startString"/>.
         /// </summary>
         /// <param name="str">The instance from which to extract a substring.</param>
         /// <param name="startString">The string which marks the start of the substring.</param>
