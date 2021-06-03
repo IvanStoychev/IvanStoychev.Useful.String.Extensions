@@ -17,9 +17,7 @@ namespace IvanStoychev.StringExtensions
         /// </summary>
         /// <param name="originalString">The instance which to check for <paramref name="substring"/>.</param>
         /// <param name="substring">The string to search in <paramref name="originalString"/> for.</param>
-        /// <param name="parameterName">
-        /// The name of the parameter in the original method, the argument of which is <paramref name="substring"/>.
-        /// </param>
+        /// <param name="parameterName">The name of the parameter in the original method, the argument of which is <paramref name="substring"/>.</param>
         /// <param name="substringIndex">
         /// Contains the index of <paramref name="substring"/> in <paramref name="originalString"/>. If it is not found the index is "-1".
         /// <br/>This parameter is passed uninitialized.
@@ -31,11 +29,9 @@ namespace IvanStoychev.StringExtensions
         internal static void CheckSubstringIndex(string originalString, string substring, string parameterName, out int substringIndex, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             substringIndex = originalString.IndexOf(substring, stringComparison);
+
             if (substringIndex == -1)
-            {
-                if (substring.Length > 10) substring = substring.Substring(0, 10) + "...";
-                throw new ArgumentOutOfRangeException($"{parameterName}", $"The string given for '{parameterName}' (\"{substring}\") was not found in the original instance.");
-            }
+                ExceptionThrower.Throw_Substring_ArgumentOutOfRangeException(substring, parameterName);
         }
 
         /// <summary>
@@ -70,11 +66,7 @@ namespace IvanStoychev.StringExtensions
             endStringIndex = substringStartStringOnwards.IndexOf(endString, stringComparison);
 
             if (endStringIndex == -1)
-            {
-                if (endString.Length > 10) endString = endString.Substring(0, 10) + "...";
-                if (startString.Length > 10) startString = startString.Substring(0, 10) + "...";
-                throw new ArgumentOutOfRangeException($"endString", $"The string given for 'endString' (\"{endString}\") was not found after the given 'startString' (\"{startString}\") in the original instance.");
-            }
+                ExceptionThrower.Throw_Endstring_ArgumentOutOfRangeException(startString, endString);
         }
     }
 }
