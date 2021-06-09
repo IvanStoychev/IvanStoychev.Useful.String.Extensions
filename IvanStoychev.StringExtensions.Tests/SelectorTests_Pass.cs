@@ -3,7 +3,7 @@ using System;
 
 namespace IvanStoychev.StringExtensions.Tests
 {
-    public class SelectorTests
+    public class SelectorTests_Pass
     {
         [Theory]
         [InlineData("His true character is starting to show through.", "His true character is ")]
