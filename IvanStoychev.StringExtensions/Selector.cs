@@ -100,13 +100,15 @@ namespace IvanStoychev.StringExtensions
         /// <param name="str">The instance from which to extract a substring.</param>
         /// <param name="startString">The string which marks the start of the substring to be extracted.</param>
         /// <param name="endString">The string which marks the end of the substring.</param>
-        /// <param name="stringInclusionOptions">A StringInclusionOptions enum, indicating whether <paramref name="startString"/> and/or <paramref name="endString"/> should be included in the result.</param>
+        /// <param name="stringInclusionOptions">
+        /// A <see cref="StringInclusionOptions"/> enum, indicating whether <paramref name="startString"/> and/or <paramref name="endString"/> should be included in the result.
+        /// </param>
         /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
         /// <returns>
         /// A string representing the part of the original instance, located between <paramref name="startString"/> and <paramref name="endString"/>.
         /// </returns>
         /// <exception cref="ArgumentOutOfRangeException">
-        /// <paramref name="startString"/> or <paramref name="endString"/> are not found in the original instance.
+        /// <paramref name="startString"/> was not found in the original instance or <paramref name="endString"/> was not found in the part of the original instance after <paramref name="startString"/>.
         /// </exception>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="startString"/> or <paramref name="endString"/> are null.
@@ -115,6 +117,55 @@ namespace IvanStoychev.StringExtensions
         public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions = StringInclusionOptions.IncludeNone, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             Validator.CheckEndStringIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, stringComparison);
+
+            // This logic is because of how the "endStringIndex" is being calculated.
+            switch (stringInclusionOptions)
+            {
+                case StringInclusionOptions.IncludeNone:
+                    startStringIndex += startString.Length;
+                    break;
+                case StringInclusionOptions.IncludeStart:
+                    endStringIndex += startString.Length;
+                    break;
+                case StringInclusionOptions.IncludeEnd:
+                    startStringIndex += startString.Length;
+                    endStringIndex += endString.Length;
+                    break;
+                case StringInclusionOptions.IncludeAll:
+                    endStringIndex += endString.Length + startString.Length;
+                    break;
+            }
+
+            int selectLength = endStringIndex;
+
+            return str.Substring(startStringIndex, selectLength);
+        }
+
+        /// <summary>
+        /// Locates he first occurrence of <paramref name="startString"/> in the original instance and returns the string situated between it and the last occurrence
+        /// of <paramref name="endString"/>, located after <paramref name="startString"/>. Whether <paramref name="startString"/> and/or <paramref name="endString"/>,
+        /// themselves, are returned is controlled by the <paramref name="stringInclusionOptions"/> argument.
+        /// </summary>
+        /// <param name="str">The instance from which to extract a substring.</param>
+        /// <param name="startString">The string which marks the start of the substring to be extracted.</param>
+        /// <param name="endString">The string which marks the end of the substring.</param>
+        /// <param name="stringInclusionOptions">
+        /// A <see cref="StringInclusionOptions"/> enum, indicating whether <paramref name="startString"/> and/or <paramref name="endString"/> should be included in the result.
+        /// </param>
+        /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
+        /// <returns>
+        /// A string representing the part of the original instance, located between <paramref name="startString"/> and <paramref name="endString"/>.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="startString"/> was not found in the original instance or <paramref name="endString"/> was not found in the part of the original instance after <paramref name="startString"/>.
+        /// </exception>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="startString"/> or <paramref name="endString"/> are null.
+        /// </exception>
+        [Pure]
+        public static string SubstringLast(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions = StringInclusionOptions.IncludeNone, StringComparison stringComparison = StringComparison.CurrentCulture)
+        {
+            Validator.CheckEndStringLastIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, stringComparison);
 
             // This logic is because of how the "endStringIndex" is being calculated.
             switch (stringInclusionOptions)
