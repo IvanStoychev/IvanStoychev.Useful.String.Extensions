@@ -116,21 +116,25 @@ namespace IvanStoychev.StringExtensions
         {
             Validator.CheckEndStringIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, stringComparison);
 
+            // This logic is because of how the "endStringIndex" is being calculated.
             switch (stringInclusionOptions)
             {
                 case StringInclusionOptions.IncludeNone:
                     startStringIndex += startString.Length;
+                    break;
+                case StringInclusionOptions.IncludeStart:
+                    endStringIndex += startString.Length;
                     break;
                 case StringInclusionOptions.IncludeEnd:
                     startStringIndex += startString.Length;
                     endStringIndex += endString.Length;
                     break;
                 case StringInclusionOptions.IncludeAll:
-                    endStringIndex += endString.Length;
+                    endStringIndex += endString.Length + startString.Length;
                     break;
             }
 
-            int selectLength = endStringIndex - startStringIndex;
+            int selectLength = endStringIndex;
 
             return str.Substring(startStringIndex, selectLength);
         }

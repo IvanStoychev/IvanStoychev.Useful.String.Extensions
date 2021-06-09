@@ -6,131 +6,179 @@ namespace IvanStoychev.StringExtensions.Tests
     public class SelectorTests
     {
         [Theory]
-        [InlineData("I started sweating.", "started sweating.")]
-        [InlineData("Now I have to start all over again.", "start all over again.")]
-        [InlineData("He was told that he'd be fired if he didn't start taking his job seriously.", "start taking his job seriously.")]
-        public void Substring_TEST_Inclusive(string testString, string expected)
+        [InlineData("His true character is starting to show through.", "His true character is ")]
+        [InlineData("Export of the product will start soon.", "Export of the product will ")]
+        [InlineData("I'm starting to lose my patience.", "I'm ")]
+        public void SubstringStart_TEST(string testString, string expected)
         {
-            string result = testString.Substring("start", true);
+            string result = testString.SubstringStart("start");
 
             Assert.Equal(expected, result);
         }
 
         [Theory]
-        [InlineData("His true character is starting to show through.", "ing to show through.")]
-        [InlineData("Export of the product will start soon.", " soon.")]
-        [InlineData("I'm starting to lose my patience.", "ing to lose my patience.")]
-        public void Substring_TEST_Exclusive(string testString, string expected)
+        [InlineData("His true character is starting to show through.", "His true character is start")]
+        [InlineData("Export of the product will start soon.", "Export of the product will start")]
+        [InlineData("I'm starting to lose my patience.", "I'm start")]
+        public void SubstringStart_TEST_InclusiveTrue(string testString, string expected)
         {
-            string result = testString.Substring("start", false);
+            string result = testString.SubstringStart("start", true);
 
             Assert.Equal(expected, result);
         }
 
         [Theory]
-        [InlineData("His true character is starting to show through.", "starting to show through.")]
-        [InlineData("Export of the product will start soon.", "start soon.")]
-        [InlineData("I'm starting to lose my patience.", "starting to lose my patience.")]
-        public void Substring_LengthTEST_Inclusive(string testString, string expected)
+        [InlineData("His true starting character is starting to show through the start.", "His true starting character is starting to show through the ")]
+        [InlineData("Export of the starting product will start soon after the start.", "Export of the starting product will start soon after the ")]
+        [InlineData("I'm starting to lose my started patience by stop starting.", "I'm starting to lose my started patience by stop ")]
+        public void SubstringStartLast_TEST(string testString, string expected)
         {
-            string result = testString.Substring("start", true);
+            string result = testString.SubstringStartLast("start");
 
             Assert.Equal(expected, result);
         }
 
         [Theory]
-        [InlineData("His true character is starting to show through.", "ing to show through.")]
-        [InlineData("Export of the product will start soon.", " soon.")]
-        [InlineData("I'm starting to lose my patience.", "ing to lose my patience.")]
-        public void Substring_LengthTEST_Exclusive(string testString, string expected)
+        [InlineData("His true starting character is starting to show through the start.", "His true starting character is starting to show through the start")]
+        [InlineData("Export of the starting product will start soon after the start.", "Export of the starting product will start soon after the start")]
+        [InlineData("I'm starting to lose my started patience by stop starting.", "I'm starting to lose my started patience by stop start")]
+        public void SubstringStartLast_TEST_InclusiveTrue(string testString, string expected)
         {
-            string result = testString.Substring("start", false);
-
-            Assert.Equal(expected, result);
-        }
-        
-        [Theory]
-        [InlineData("Don't step on the broken glass.", "step on the ")]
-        [InlineData("He didn’t step on the dentist, yet he broken anyway.", "step on the dentist, yet he ")]
-        [InlineData("The quick brown fox steps over the broken dog.", "steps over the ")]
-        public void Substring_TEST_IncludeStart(string testString, string expected)
-        {
-            string actual = testString.Substring("step", "broken", StringInclusionOptions.IncludeStart);
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Theory]
-        [InlineData("She did not cheat on the test, for it was not the right thing to do.", " on the test, for it was not the right")]
-        [InlineData("I love eating cheat cheese and tuna right.", " cheese and tuna right")]
-        [InlineData("The cheat right the meal.", " right")]
-        public void Substring_TEST_IncludeEnd(string testString, string expected)
-        {
-            string result = testString.Substring("cheat", "right", StringInclusionOptions.IncludeEnd);
+            string result = testString.SubstringStartLast("start", true);
 
             Assert.Equal(expected, result);
         }
 
         [Theory]
-        [InlineData("The waves were crashing on the shore; it was a lovely sight.", "waves were crashing on the shore")]
-        [InlineData("She did waves best to help shore.", "waves best to help shore")]
-        [InlineData("I'd rather be a waves shore a fish.", "waves shore")]
-        public void Substring_TEST_IncludeBoth(string testString, string expected)
+        [InlineData("I started sweating.", "ed sweat")]
+        [InlineData("Now I have to start all over again.", " all ove")]
+        [InlineData("He was told that he'd be fired if he didn't start taking his job seriously.", " taking ")]
+        public void Substring_TEST_Length(string testString, string expected)
         {
-            string result = testString.Substring("waves", "shore", StringInclusionOptions.IncludeAll);
+            string result = testString.Substring("start", 8);
 
             Assert.Equal(expected, result);
         }
 
         [Theory]
-        [InlineData("Is the snatch safety better than the virus?", " safety better than the ")]
-        [InlineData("It was then the snatch mess met virus unwitting cut.", " mess met ")]
-        [InlineData("snatch the complete boyfriend really tip the virus?", " the complete boyfriend really tip the ")]
-        public void Substring_TEST_IncludeNone(string testString, string expected)
+        [InlineData("I started sweating.", "started sweat")]
+        [InlineData("Now I have to start all over again.", "start all ove")]
+        [InlineData("He was told that he'd be fired if he didn't start taking his job seriously.", "start taking ")]
+        public void Substring_TEST_Length_InclusiveTrue(string testString, string expected)
         {
-            string result = testString.Substring("snatch", "virus", StringInclusionOptions.IncludeNone);
+            string result = testString.Substring("start", 8, true);
 
             Assert.Equal(expected, result);
         }
 
-        [Fact]
-        public void Substring_string_bool_ArgumentOutOfRange_Exception_TEST()
+        [Theory]
+        [InlineData("I started starting sweating sweat.", "ed starting ")]
+        [InlineData("Now I have to start starting to sweat all over sweaty again.", " starting to ")]
+        [InlineData("He started to was told that he'd be fired in a sweat if he didn't start sweating on his job.", "ed to was told that he'd be fired in a ")]
+        public void Substring_StartEnd_TEST(string testString, string expected)
         {
-            string testString = "Test.";
-            string expectedMessage = "The string given for 'startString' (\"Not presen...\") was not found in the original instance. (Parameter 'startString')";
-            Action action = () => testString.Substring("Not present", false);
-            Exception ex = Assert.Throws<ArgumentOutOfRangeException>(action);
-            Assert.Equal(expectedMessage, ex.Message);
+            string result = testString.Substring("start", "sweat");
+
+            Assert.Equal(expected, result);
         }
 
-        [Fact]
-        public void Substring_string_int_bool_ArgumentOutOfRange_Exception_TEST()
+        [Theory]
+        [InlineData("I started starting sweating sweat.", "started starting ")]
+        [InlineData("Now I have to start starting to sweat all over sweaty again.", "start starting to ")]
+        [InlineData("He started to was told that he'd be fired in a sweat if he didn't start sweating on his job.", "started to was told that he'd be fired in a ")]
+        public void Substring_StartEnd_TEST_IncludeStart(string testString, string expected)
         {
-            string testString = "Test.";
-            string expectedMessage = "The string given for 'startString' (\"Not presen...\") was not found in the original instance. (Parameter 'startString')";
-            Action action = () => testString.Substring("Not present", 3, false);
-            Exception ex = Assert.Throws<ArgumentOutOfRangeException>(action);
-            Assert.Equal(expectedMessage, ex.Message);
+            string result = testString.Substring("start", "sweat", StringInclusionOptions.IncludeStart);
+
+            Assert.Equal(expected, result);
         }
 
-        [Fact]
-        public void Substring_string_string_StringInclusionOptions_ArgumentOutOfRange_Exception_startString_TEST()
+        [Theory]
+        [InlineData("I started starting sweating sweat.", "ed starting sweat")]
+        [InlineData("Now I have to start starting to sweat all over sweaty again.", " starting to sweat")]
+        [InlineData("He started to was told that he'd be fired in a sweat if he didn't start sweating on his job.", "ed to was told that he'd be fired in a sweat")]
+        public void Substring_StartEnd_TEST_IncludeEnd(string testString, string expected)
         {
-            string testString = "Test.";
-            string expectedMessage = "The string given for 'startString' (\"Not presen...\") was not found in the original instance. (Parameter 'startString')";
-            Action action = () => testString.Substring("Not present", "Test", StringInclusionOptions.IncludeAll);
-            Exception ex = Assert.Throws<ArgumentOutOfRangeException>(action);
-            Assert.Equal(expectedMessage, ex.Message);
+            string result = testString.Substring("start", "sweat", StringInclusionOptions.IncludeEnd);
+
+            Assert.Equal(expected, result);
         }
 
-        [Fact]
-        public void Substring_string_string_StringInclusionOptions_ArgumentOutOfRange_Exception_endString_TEST()
+        [Theory]
+        [InlineData("I started starting sweating sweat.", "started starting sweat")]
+        [InlineData("Now I have to start starting to sweat all over sweaty again.", "start starting to sweat")]
+        [InlineData("He started to was told that he'd be fired in a sweat if he didn't start sweating on his job.", "started to was told that he'd be fired in a sweat")]
+        public void Substring_StartEnd_TEST_IncludeAll(string testString, string expected)
         {
-            string testString = "Test.";
-            string expectedMessage = "The string given for 'endString' (\"Not presen...\") was not found after the given 'startString' (\"Test\") in the original instance. (Parameter 'endString')";
-            Action action = () => testString.Substring("Test", "Not present", StringInclusionOptions.IncludeAll);
-            Exception ex = Assert.Throws<ArgumentOutOfRangeException>(action);
-            Assert.Equal(expectedMessage, ex.Message);
+            string result = testString.Substring("start", "sweat", StringInclusionOptions.IncludeAll);
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("I started starting sweating sweat.", "ing sweat.")]
+        [InlineData("Now I have to start starting to sweat all over sweaty again.", " all over sweaty again.")]
+        [InlineData("He started to was told that he'd be fired in a sweat if he didn't start sweating on his job.", " if he didn't start sweating on his job.")]
+        public void SubstringEnd_TEST(string testString, string expected)
+        {
+            string result = testString.SubstringEnd("sweat");
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("I started starting sweating sweat.", "sweating sweat.")]
+        [InlineData("Now I have to start starting to sweat all over sweaty again.", "sweat all over sweaty again.")]
+        [InlineData("He started to was told that he'd be fired in a sweat if he didn't start sweating on his job.", "sweat if he didn't start sweating on his job.")]
+        public void SubstringEnd_TEST_InclusiveTrue(string testString, string expected)
+        {
+            string result = testString.SubstringEnd("sweat", true);
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("I started starting sweating sweat.", ".")]
+        [InlineData("Now I have to start starting to sweat all over sweaty again.", "y again.")]
+        [InlineData("He started to was told that he'd be fired in a sweat if he didn't start sweating on his job.", "ing on his job.")]
+        public void SubstringEndLast_TEST(string testString, string expected)
+        {
+            string result = testString.SubstringEndLast("sweat");
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("I started starting sweating sweat.", "sweat.")]
+        [InlineData("Now I have to start starting to sweat all over sweaty again.", "sweaty again.")]
+        [InlineData("He started to was told that he'd be fired in a sweat if he didn't start sweating on his job.", "sweating on his job.")]
+        public void SubstringEndLast_TEST_InclusiveTrue(string testString, string expected)
+        {
+            string result = testString.SubstringEndLast("sweat", true);
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("I started starting sweating tonight.", "ing t")]
+        [InlineData("Now I have to start starting to sweat all over sweaty again.", "y aga")]
+        [InlineData("He started to was told that he'd be fired in a sweat if he didn't start sweating on his job.", "ing o")]
+        public void SubstringEndLast_TEST_Length(string testString, string expected)
+        {
+            string result = testString.SubstringEndLast("sweat", 5);
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("I started starting sweating tonight.", "sweating t")]
+        [InlineData("Now I have to start starting to sweat all over sweaty again.", "sweaty aga")]
+        [InlineData("He started to was told that he'd be fired in a sweat if he didn't start sweating on his job.", "sweating o")]
+        public void SubstringEndLast_TEST_Length_InclusiveTrue(string testString, string expected)
+        {
+            string result = testString.SubstringEndLast("sweat", 5, true);
+
+            Assert.Equal(expected, result);
         }
     }
 }
