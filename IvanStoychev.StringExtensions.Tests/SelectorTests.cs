@@ -116,6 +116,50 @@ namespace IvanStoychev.StringExtensions.Tests
         }
 
         [Theory]
+        [InlineData("I started starting sweating sweat.", "ed starting sweating ")]
+        [InlineData("Now I have to start starting to sweat all over sweaty again.", " starting to sweat all over ")]
+        [InlineData("He started to was told that he'd be fired in a sweat if he didn't start sweating on his job.", "ed to was told that he'd be fired in a sweat if he didn't start ")]
+        public void SubstringLast_StartEnd_TEST(string testString, string expected)
+        {
+            string result = testString.SubstringLast("start", "sweat");
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("I started starting sweating sweat.", "started starting sweating ")]
+        [InlineData("Now I have to start starting to sweat all over sweaty again.", "start starting to sweat all over ")]
+        [InlineData("He started to was told that he'd be fired in a sweat if he didn't start sweating on his job.", "started to was told that he'd be fired in a sweat if he didn't start ")]
+        public void SubstringLast_StartEnd_TEST_IncludeStart(string testString, string expected)
+        {
+            string result = testString.SubstringLast("start", "sweat", StringInclusionOptions.IncludeStart);
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("I started starting sweating sweat.", "ed starting sweating sweat")]
+        [InlineData("Now I have to start starting to sweat all over sweaty again.", " starting to sweat all over sweat")]
+        [InlineData("He started to was told that he'd be fired in a sweat if he didn't start sweating on his job.", "ed to was told that he'd be fired in a sweat if he didn't start sweat")]
+        public void SubstringLast_StartEnd_TEST_IncludeEnd(string testString, string expected)
+        {
+            string result = testString.SubstringLast("start", "sweat", StringInclusionOptions.IncludeEnd);
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("I started starting sweating sweat.", "started starting sweating sweat")]
+        [InlineData("Now I have to start starting to sweat all over sweaty again.", "start starting to sweat all over sweat")]
+        [InlineData("He started to was told that he'd be fired in a sweat if he didn't start sweating on his job.", "started to was told that he'd be fired in a sweat if he didn't start sweat")]
+        public void SubstringLast_StartEnd_TEST_IncludeAll(string testString, string expected)
+        {
+            string result = testString.SubstringLast("start", "sweat", StringInclusionOptions.IncludeAll);
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
         [InlineData("I started starting sweating sweat.", "ing sweat.")]
         [InlineData("Now I have to start starting to sweat all over sweaty again.", " all over sweaty again.")]
         [InlineData("He started to was told that he'd be fired in a sweat if he didn't start sweating on his job.", " if he didn't start sweating on his job.")]
