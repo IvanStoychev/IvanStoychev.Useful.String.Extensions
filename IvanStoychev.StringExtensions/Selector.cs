@@ -85,6 +85,10 @@ namespace IvanStoychev.StringExtensions
         public static string Substring(this string str, string startString, int length, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             Validator.CheckSubstringIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
+            Validator.CheckLength(length);
+
+            int availableLength = str.Length - startStringIndex - startString.Length;
+            Validator.CheckLength(availableLength, length);
 
             startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
             int offsetlength = AddSubstringLengthConditional(length, startString, !inclusive);
@@ -260,6 +264,10 @@ namespace IvanStoychev.StringExtensions
         public static string SubstringEndLast(this string str, string startString, int length, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             Validator.CheckSubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
+            Validator.CheckLength(length);
+
+            int availableLength = str.Length - startStringIndex - startString.Length;
+            Validator.CheckLength(availableLength, length);
 
             startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
             int offsetlength = AddSubstringLengthConditional(length, startString, !inclusive);
