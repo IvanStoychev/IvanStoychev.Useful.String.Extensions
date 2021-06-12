@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.SqlTypes;
 
 namespace IvanStoychev.StringExtensions
 {
@@ -8,6 +7,29 @@ namespace IvanStoychev.StringExtensions
     /// </summary>
     static class Validator
     {
+        /// <summary>
+        /// Checks if the value given for <paramref name="length"/> isn't bigger than the given <paramref name="stringLength"/>.
+        /// </summary>
+        /// <param name="stringLength">The amount of available characters from which the user wishes to select <paramref name="length"/> amount.</param>
+        /// <param name="length">Amount of characters the user wishes to select from a string with length "<paramref name="stringLength"/>".</param>
+        internal static void CheckLength(int length)
+        {
+            if (length < 0)
+                ExceptionThrower.Throw_Length_ArgumentOutOfRangeException(length, nameof(length));
+        }
+
+        /// <summary>
+        /// Checks if the value given for <paramref name="length"/> isn't bigger than the given <paramref name="stringLength"/>.
+        /// </summary>
+        /// <param name="stringLength">The amount of available characters from which the user wishes to select <paramref name="length"/> amount.</param>
+        /// <param name="length">Amount of characters the user wishes to select from a string with length "<paramref name="stringLength"/>".</param>
+        internal static void CheckLength(int stringLength, int length)
+        {
+            int lengthDiff = stringLength - length;
+            if (lengthDiff < 0)
+                ExceptionThrower.Throw_Length_ArgumentOutOfRangeException(length, nameof(length), lengthDiff);
+        }
+
         /// <summary>
         /// Checks if <paramref name="substring"/> occurs in <paramref name="originalString"/> and if it doesn't, throws an
         /// <see cref="ArgumentOutOfRangeException"/> that informs the user that the value "<paramref name="substring"/>" of
@@ -32,29 +54,6 @@ namespace IvanStoychev.StringExtensions
 
             if (substringIndex == -1)
                 ExceptionThrower.Throw_Substring_ArgumentOutOfRangeException(substring, parameterName);
-        }
-
-        /// <summary>
-        /// Checks if the value given for <paramref name="length"/> isn't bigger than the given <paramref name="stringLength"/>.
-        /// </summary>
-        /// <param name="stringLength">The amount of available characters from which the user wishes to select <paramref name="length"/> amount.</param>
-        /// <param name="length">Amount of characters the user wishes to select from a string with length "<paramref name="stringLength"/>".</param>
-        internal static void CheckLength(int length)
-        {
-            if (length < 0)
-                ExceptionThrower.Throw_Length_ArgumentOutOfRangeException(length, nameof(length));
-        }
-
-        /// <summary>
-        /// Checks if the value given for <paramref name="length"/> isn't bigger than the given <paramref name="stringLength"/>.
-        /// </summary>
-        /// <param name="stringLength">The amount of available characters from which the user wishes to select <paramref name="length"/> amount.</param>
-        /// <param name="length">Amount of characters the user wishes to select from a string with length "<paramref name="stringLength"/>".</param>
-        internal static void CheckLength(int stringLength, int length)
-        {
-            int lengthDiff = stringLength - length;
-            if (lengthDiff < 0)
-                ExceptionThrower.Throw_Length_ArgumentOutOfRangeException(length, nameof(length), lengthDiff);
         }
 
         /// <summary>
