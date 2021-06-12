@@ -87,11 +87,11 @@ namespace IvanStoychev.StringExtensions
         public static string Substring(this string str, string startString, int length, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             Validator.CheckNullArgument(startString, nameof(startString));
-            Validator.CheckLength(length);
+            Validator.CheckLengthIsPositive(length);
             Validator.CheckSubstringIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
 
             int availableLength = str.Length - startStringIndex - startString.Length;
-            Validator.CheckLength(availableLength, length);
+            Validator.CheckLengthIsWithinBounds(availableLength, length);
 
             startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
             int offsetlength = AddSubstringLengthConditional(length, startString, !inclusive);
@@ -273,11 +273,11 @@ namespace IvanStoychev.StringExtensions
         public static string SubstringEndLast(this string str, string startString, int length, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             Validator.CheckNullArgument(startString, nameof(startString));
-            Validator.CheckLength(length);
+            Validator.CheckLengthIsPositive(length);
             Validator.CheckSubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
 
             int availableLength = str.Length - startStringIndex - startString.Length;
-            Validator.CheckLength(availableLength, length);
+            Validator.CheckLengthIsWithinBounds(availableLength, length);
 
             startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
             int offsetlength = AddSubstringLengthConditional(length, startString, !inclusive);

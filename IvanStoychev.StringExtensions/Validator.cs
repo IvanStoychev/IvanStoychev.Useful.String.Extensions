@@ -11,7 +11,7 @@ namespace IvanStoychev.StringExtensions
         /// Checks if the value given for <paramref name="length"/> isn't a negative number.
         /// </summary>
         /// <param name="length">Integer to be verified that it isn't less than zero.</param>
-        internal static void CheckLength(int length)
+        internal static void CheckLengthIsPositive(int length)
         {
             if (length < 0)
                 ExceptionThrower.Throw_Length_ArgumentOutOfRangeException(length, nameof(length));
@@ -22,7 +22,7 @@ namespace IvanStoychev.StringExtensions
         /// </summary>
         /// <param name="stringLength">The amount of available characters from which the user wishes to select <paramref name="length"/> amount.</param>
         /// <param name="length">Amount of characters the user wishes to select from a string with length "<paramref name="stringLength"/>".</param>
-        internal static void CheckLength(int stringLength, int length)
+        internal static void CheckLengthIsWithinBounds(int stringLength, int length)
         {
             int lengthDiff = stringLength - length;
             if (lengthDiff < 0)
