@@ -16,7 +16,7 @@ namespace IvanStoychev.StringExtensions
         /// <param name="lengthDiff">The difference between the available length for selection and the length requested by the user.</param>
         internal static void Throw_Length_ArgumentOutOfRangeException(int length, string parameterName, int lengthDiff)
         {
-            throw new ArgumentOutOfRangeException($"{parameterName}", $"The value given for '{parameterName}' (\"{length}\") is longer than the remaining string by {Math.Abs(lengthDiff)}.");
+            throw new ArgumentOutOfRangeException(parameterName, $"The value given for '{parameterName}' (\"{length}\") is longer than the remaining string by {Math.Abs(lengthDiff)}.");
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace IvanStoychev.StringExtensions
         /// <param name="parameterName">Name of the parameter in the original method whose argument is <paramref name="length"/>.</param>
         internal static void Throw_Length_ArgumentOutOfRangeException(int length, string parameterName)
 {
-            throw new ArgumentOutOfRangeException($"{parameterName}", $"The value given for '{parameterName}' (\"{length}\") is less than zero.");
+            throw new ArgumentOutOfRangeException(parameterName, $"The value given for '{parameterName}' (\"{length}\") is less than zero.");
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace IvanStoychev.StringExtensions
         internal static void Throw_Substring_ArgumentOutOfRangeException(string substring, string parameterName)
         {
             if (substring.Length > 10) substring = substring.Substring(0, 10) + "...";
-            throw new ArgumentOutOfRangeException($"{parameterName}", $"The string given for '{parameterName}' (\"{substring}\") was not found in the original instance.");
+            throw new ArgumentOutOfRangeException(parameterName, $"The string given for '{parameterName}' (\"{substring}\") was not found in the original instance.");
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace IvanStoychev.StringExtensions
             if (endString.Length > 10) endString = endString.Substring(0, 10) + "...";
             if (startString.Length > 10) startString = startString.Substring(0, 10) + "...";
 
-            throw new ArgumentOutOfRangeException($"endString", $"The string given for 'endString' (\"{endString}\") was not found after the given 'startString' (\"{startString}\") in the original instance.");
+            throw new ArgumentOutOfRangeException("endString", $"The string given for 'endString' (\"{endString}\") was not found after the given 'startString' (\"{startString}\") in the original instance.");
         }
     }
 }
