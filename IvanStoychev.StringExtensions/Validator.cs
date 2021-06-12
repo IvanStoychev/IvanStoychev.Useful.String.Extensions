@@ -150,5 +150,16 @@ namespace IvanStoychev.StringExtensions
             if (endStringIndex == -1)
                 ExceptionThrower.Throw_Endstring_ArgumentOutOfRangeException(startString, endString);
         }
+
+        /// <summary>
+        /// Checks if the given <paramref name="argument"/> of parameter "<paramref name="parameterName"/>" is null.
+        /// </summary>
+        /// <param name="argument">Value passed as the argument for a method's parameter.</param>
+        /// <param name="parameterName">Name of the parameter in the original method.</param>
+        internal static void CheckNullArgument(string argument, string parameterName)
+        {
+            if (argument is null)
+                ExceptionThrower.ThrowArgumentNullException(parameterName);
+        }
     }
 }

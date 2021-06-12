@@ -28,6 +28,7 @@ namespace IvanStoychev.StringExtensions
         public static string SubstringStart(this string str, string endString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             Validator.CheckSubstringIndex(str, endString, nameof(endString), out int endStringIndex, stringComparison);
+            Validator.CheckNullArgument(endString, nameof(endString));
 
             endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
 
@@ -52,6 +53,7 @@ namespace IvanStoychev.StringExtensions
         public static string SubstringStartLast(this string str, string endString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             Validator.CheckSubstringLastIndex(str, endString, nameof(endString), out int endStringIndex, stringComparison);
+            Validator.CheckNullArgument(endString, nameof(endString));
 
             endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
 
@@ -85,6 +87,7 @@ namespace IvanStoychev.StringExtensions
         public static string Substring(this string str, string startString, int length, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             Validator.CheckSubstringIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
+            Validator.CheckNullArgument(startString, nameof(startString));
             Validator.CheckLength(length);
 
             int availableLength = str.Length - startStringIndex - startString.Length;
@@ -121,6 +124,8 @@ namespace IvanStoychev.StringExtensions
         public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions = StringInclusionOptions.IncludeNone, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             Validator.CheckEndStringIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, stringComparison);
+            Validator.CheckNullArgument(startString, nameof(startString));
+            Validator.CheckNullArgument(endString, nameof(endString));
 
             // This logic is because of how the "endStringIndex" is being calculated.
             switch (stringInclusionOptions)
@@ -170,6 +175,8 @@ namespace IvanStoychev.StringExtensions
         public static string SubstringLast(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions = StringInclusionOptions.IncludeNone, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             Validator.CheckEndStringLastIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, stringComparison);
+            Validator.CheckNullArgument(startString, nameof(startString));
+            Validator.CheckNullArgument(endString, nameof(endString));
 
             // This logic is because of how the "endStringIndex" is being calculated.
             switch (stringInclusionOptions)
@@ -212,6 +219,7 @@ namespace IvanStoychev.StringExtensions
         public static string SubstringEnd(this string str, string startString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             Validator.CheckSubstringIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
+            Validator.CheckNullArgument(startString, nameof(startString));
 
             startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 
@@ -236,6 +244,7 @@ namespace IvanStoychev.StringExtensions
         public static string SubstringEndLast(this string str, string startString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             Validator.CheckSubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
+            Validator.CheckNullArgument(startString, nameof(startString));
 
             startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 
@@ -264,6 +273,7 @@ namespace IvanStoychev.StringExtensions
         public static string SubstringEndLast(this string str, string startString, int length, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
         {
             Validator.CheckSubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
+            Validator.CheckNullArgument(startString, nameof(startString));
             Validator.CheckLength(length);
 
             int availableLength = str.Length - startStringIndex - startString.Length;

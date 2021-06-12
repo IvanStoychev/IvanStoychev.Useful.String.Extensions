@@ -57,5 +57,14 @@ namespace IvanStoychev.StringExtensions
 
             throw new ArgumentOutOfRangeException("endString", $"The string given for 'endString' (\"{endString}\") was not found after the given 'startString' (\"{startString}\") in the original instance.");
         }
+
+        /// <summary>
+        /// Throws an <see cref="ArgumentNullException"/> that informs the user the value of <paramref name="parameterName"/> was null.
+        /// </summary>
+        /// <param name="parameterName">Name of the parameter in the original calling method.</param>
+        internal static void ThrowArgumentNullException(string parameterName)
+        {
+            throw new ArgumentNullException(parameterName, $"The argument given for '{parameterName}' was null.");
+        }
     }
 }
