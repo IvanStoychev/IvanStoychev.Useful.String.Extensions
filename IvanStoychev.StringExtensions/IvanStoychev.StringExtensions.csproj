@@ -12,7 +12,7 @@
     <PackageTags>c#, useful, string, extension, efficient</PackageTags>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>IvanStoychev.StringExtensionsIcon.png</PackageIcon>
-    <Copyright>Copyright (c) 2020 Ivan Stoychev. All rights reserved.</Copyright>
+    <Copyright>Copyright (c) 2021 Ivan Stoychev. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <NeutralLanguage>English</NeutralLanguage>
     <PackageReleaseNotes>+ Added "SubstringStart" method that selects everything from the start of the string to the first occurrence of a given substring.
