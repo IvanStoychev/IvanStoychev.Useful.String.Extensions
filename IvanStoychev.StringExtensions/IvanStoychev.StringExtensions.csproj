@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <Authors>Ivan Stoychev</Authors>
     <Title>Ivan Stoychev's String Extensions</Title>
     <Language>English</Language>
@@ -12,14 +12,28 @@
     <PackageTags>c#, useful, string, extension, efficient</PackageTags>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>IvanStoychev.StringExtensionsIcon.png</PackageIcon>
-    <Copyright>Copyright (c) 2020 Ivan Stoychev. All rights reserved.</Copyright>
+    <Copyright>Copyright (c) 2021 Ivan Stoychev. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <NeutralLanguage>English</NeutralLanguage>
-    <PackageReleaseNotes>Removed "NotNull" attributes.</PackageReleaseNotes>
-    <Version>1.1.1</Version>
+    <PackageReleaseNotes>+ Added "SubstringStart" method that selects everything from the start of the string to the first occurrence of a given substring.
++ Added "SubstringEnd" method that selects everything from the first occurrence of a given substring to the end of the original string.
++ Added "SubstringEndLast" method that selects everything from the last occurrence of a given substring to the end of the original string.
++ Added "SubstringStartLast" method that returns a substring from the start of the original instance to the last occurrence of the given "endString" argument.
++ Added better exception throwing for the "Selector" methods. Now if an exception is thrown by one of those methods it will be much more informative for the user.
++ Improved the function of all "substring" methods. Before they were looking for the indexes of their various "substring" parameters twice, that has been fixed and now they should be approx. twice faster.
+
+= Trimmed overloads of all methods. Now there are only one or two overloads for a single method that achieve the same functionality as all the old overloads by use of optional parameters.
+This change was made for two reasons:
+1. The old strategy was to have multiple overloads, each with more parameters than the previous, thus providing more flexibility to the user. Since overloads with fewer parameters simply called overloads with one more parameter, passing a default value, this strategy has been deprecated in favour of having less (ideally only one) method/overload having the minimal amount of required parameters and the rest being optional. In this way the same functionality as before is achieved but the code is more maintainable and easier to read.
+2. Being able to see what the default values for the optional parameters are will give the user more information about how the code is going to process his request. For example: by calling "Substring("test")" the user would not know how the string comparison is going to be performed. But seeing the default argument used for it will show him just that.
+
+⚠ Changed the way the "Substring" method, which accepts a "length" argument, works. This is the method which returns a substring of length "length", starting from the first index at which a given "startString" occurs.
+Before if the user wanted the method to include the given "startString" in the return result the method would not take into account the length of "startString" and would start counting from it's start. Thus the end result was one "startString" length shorter than what the user might have expected.
+Now, if the user wants the return result to include the given "startString", the string, returned by the method will be "startString" + a substring of length "length", counted from the end of "startString".</PackageReleaseNotes>
+    <Version>2.0.0-RC-14Jun2021</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <AssemblyVersion>1.1.1.0</AssemblyVersion>
-    <FileVersion>1.1.1.0</FileVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
     <PackageIconUrl />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>

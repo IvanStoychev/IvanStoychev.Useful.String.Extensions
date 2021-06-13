@@ -242,8 +242,7 @@ namespace IvanStoychev.StringExtensions
                 result = result.Substring(trimString.Length);
 
             return result;
-        }// TODO: there are two method here with no test coverage and you need to write two more for the "TrimEnd" method
-        // TODO: Improve "Trim" methods by putting the "result" string allocation in the "if" block.
+        }
 
         /// <summary>
         /// Removes the trailing occurrence of a specified string from the current instance.
