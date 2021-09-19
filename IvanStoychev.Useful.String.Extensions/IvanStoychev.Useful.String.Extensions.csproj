@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Authors>Ivan Stoychev</Authors>
+    <Title>Ivan Stoychev's Useful String Extensions</Title>
+    <Language>English</Language>
+    <Description>A .Net Core library of useful extension methods for the "string" class in C#.</Description>
+    <Summary>A .Net Core class library collection of useful extension methods for the "string" class in C#.</Summary>
+    <PackageProjectUrl>https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/wiki</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions</RepositoryUrl>
+    <PackageTags>c#, useful, string, extension, efficient</PackageTags>
+    <RepositoryType>git</RepositoryType>
+    <PackageIcon>IvanStoychev.Useful.String.Extensions.png</PackageIcon>
+    <Copyright>Copyright (c) 2021 Ivan Stoychev. All rights reserved.</Copyright>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <NeutralLanguage>English</NeutralLanguage>
+    <PackageReleaseNotes>Rebranded from IvanStoychev.Useful.String.Extensions.</PackageReleaseNotes>
+    <Version>1.0.0</Version>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <PackageIconUrl />
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>IvanStoychev.Useful.String.Extensions</PackageId>
+    <Product>IvanStoychev.Useful.String.Extensions</Product>
+    <AssemblyName>IvanStoychev.Useful.String.Extensions</AssemblyName>
+    <RootNamespace>IvanStoychev.Useful.String.Extensions</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\VimesRegicide\Source\Repos\IvanStoychev.Useful.String.Extensions\IvanStoychev.Useful.String.Extensions\bin\Release\net5.0\IvanStoychev.Useful.String.Extensions.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="IvanStoychev.Useful.String.Extensions.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

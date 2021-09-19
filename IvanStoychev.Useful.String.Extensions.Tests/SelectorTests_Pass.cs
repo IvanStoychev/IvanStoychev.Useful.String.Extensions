@@ -1,7 +1,6 @@
 ﻿using Xunit;
-using System;
 
-namespace IvanStoychev.StringExtensions.Tests
+namespace IvanStoychev.Useful.String.Extensions.Tests
 {
     public class SelectorTests_Pass
     {
