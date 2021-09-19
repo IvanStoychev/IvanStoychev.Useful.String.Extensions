@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IvanStoychev.StringExtensions
+namespace IvanStoychev.Useful.String.Extensions
 {
     /// <summary>
     /// Performs checks, ensuring program execution proceeds smoothly.

@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace IvanStoychev.StringExtensions.Tests
+namespace IvanStoychev.Useful.String.Extensions.Tests
 {
     public class SelectorTests_Exceptions
     {
