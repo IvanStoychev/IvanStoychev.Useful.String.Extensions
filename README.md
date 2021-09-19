@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://www.nuget.org/packages/IvanStoychev.Useful.String.Extensions"><img src="https://imgur.com/a/VKSptnS.png" alt="Markdownify"></a>
+  <a href="https://www.nuget.org/packages/IvanStoychev.Useful.String.Extensions"><img src="https://i.imgur.com/uQp2iZk.png" alt="IvanStoychev.Useful.String.Extensions"></a>
   <br>
   IvanStoychev.Useful.String.Extensions
   <br>
