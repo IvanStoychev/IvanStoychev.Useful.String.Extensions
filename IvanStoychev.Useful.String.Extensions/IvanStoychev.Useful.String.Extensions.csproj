@@ -15,7 +15,7 @@
     <Copyright>Copyright (c) 2021 Ivan Stoychev. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <NeutralLanguage>English</NeutralLanguage>
-    <PackageReleaseNotes>Rebranded from IvanStoychev.Useful.String.Extensions.</PackageReleaseNotes>
+    <PackageReleaseNotes>Rebranded from IvanStoychev.StringExtensions.</PackageReleaseNotes>
     <Version>1.0.0</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
