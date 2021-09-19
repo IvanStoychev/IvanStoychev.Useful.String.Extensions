@@ -1,35 +1,35 @@
 <h1 align="center">
   <br>
-  <a href="https://www.nuget.org/packages/IvanStoychev.StringExtensions"><img src="https://imgur.com/8bTHOdq.png" alt="Markdownify"></a>
+  <a href="https://www.nuget.org/packages/IvanStoychev.Useful.String.Extensions"><img src="https://imgur.com/a/VKSptnS.png" alt="Markdownify"></a>
   <br>
-  IvanStoychev.StringExtensions
+  IvanStoychev.Useful.String.Extensions
   <br>
 </h1>
 
 <p align="center">
-  <a href="https://github.com/IvanStoychev/IvanStoychev.StringExtensions/graphs/commit-activity">
-    <img src="https://img.shields.io/github/commit-activity/m/IvanStoychev/IvanStoychev.StringExtensions?style=plastic"
+  <a href="https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/graphs/commit-activity">
+    <img src="https://img.shields.io/github/commit-activity/m/IvanStoychev/IvanStoychev.Useful.String.Extensions?style=plastic"
          alt="GitHub commit activity">
   </a>
-  <a href="https://github.com/IvanStoychev/IvanStoychev.StringExtensions/branches">
-    <img src="https://img.shields.io/github/last-commit/IvanStoychev/IvanStoychev.StringExtensions?style=plastic"
+  <a href="https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/branches">
+    <img src="https://img.shields.io/github/last-commit/IvanStoychev/IvanStoychev.Useful.String.Extensions?style=plastic"
          alt="GitHub last commit">
   </a>
-  <a href="https://github.com/IvanStoychev/IvanStoychev.StringExtensions/graphs/commit-activity">
-    <img src="https://img.shields.io/github/commits-since/IvanStoychev/IvanStoychev.StringExtensions/latest?style=plastic"
+  <a href="https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/graphs/commit-activity">
+    <img src="https://img.shields.io/github/commits-since/IvanStoychev/IvanStoychev.Useful.String.Extensions/latest?style=plastic"
          alt="GitHub commits since latest release (by date)">
   </a>
  <br> 
-  <a href="https://www.nuget.org/packages/IvanStoychev.StringExtensions">
-    <img src="https://img.shields.io/nuget/v/IvanStoychev.StringExtensions?style=plastic"
+  <a href="https://www.nuget.org/packages/IvanStoychev.Useful.String.Extensions">
+    <img src="https://img.shields.io/nuget/v/IvanStoychev.Useful.String.Extensions?style=plastic"
          alt="Nuget latest version">
   </a>
-  <a href="https://github.com/IvanStoychev/IvanStoychev.StringExtensions/releases">
-    <img src="https://img.shields.io/github/v/release/IvanStoychev/IvanStoychev.StringExtensions?style=plastic"
+  <a href="https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/releases">
+    <img src="https://img.shields.io/github/v/release/IvanStoychev/IvanStoychev.Useful.String.Extensions?style=plastic"
          alt="GitHub latest release">
   </a>
-  <a href="https://github.com/IvanStoychev/IvanStoychev.StringExtensions/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/IvanStoychev/IvanStoychev.StringExtensions?style=plastic"
+  <a href="https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/IvanStoychev/IvanStoychev.Useful.String.Extensions?style=plastic"
          alt="Project license">
   </a>
 </p>
@@ -74,18 +74,19 @@ This is a collection of string extension methods that I have been in need of man
 
 📰 Features
 ------------
-* Methods to keep or remove all special characters, letters and digits from a string.
-  * Ex. `"!#%&lorem^@ipsum!@%".KeepOnlyLetters()` will return `"loremipsum"`.
-* [`Remove`][6] methods that take a series of strings or characters and clear all their occurrences from the string with a single method call.
-  * Ex. `"Lorem ipsum dolor Lorem ipsum sit amet".Remove("Lorem ", "ipsum ", "t")` will return `"dolor si ame"`.
-* [`Contains`][7] methods that check if a string contains any of a series of provided values.
-  * Ex. `"brake wheel icon number stoic".Contains("keen", "wild", "icon")` will return `true`.
-* [`TrimStart`][6] and [`TrimEnd`][6] methods that take a string and remove it from the start or end of the original string.
-  * Ex. `"In the beginning there was an end".TrimStart("In the beginning ")` will return `"there was an end"`, while `"In the beginning there was an end".TrimEnd(" an end")` will produce `"In the beginning there was"`.
-* [`Replace`][8] methods that take a series of strings or characters and replace all their occurrences in the original string with a provided value.
-  * Ex. `"Cucumbers, oranges and apples are vegetables.".Replace("tomatoes", "oranges", "apples")` will return `"Cucumbers, tomatoes and tomatoes are vegetables."`.
 * [`Substring`][9] methods that use string arguments to determine a substring's position, instead of a starting index.
   * Ex. `"This is the start bla bladdy blah.".Substring("start ", false)` will return `"bla bladdy blah."`, while `"This is the start bla bladdy blah and this is the end.".Substring("start ", "blah", StringInclusionOptions.IncludeNone)` will return `"bla bladdy "`.
+* [`Replace`][8] methods that take a series of strings or characters and replace all their occurrences in the original string with a provided value.
+  * Ex. `"Cucumbers, oranges and apples are vegetables.".Replace("tomatoes", "oranges", "apples")` will return `"Cucumbers, tomatoes and tomatoes are vegetables."`.
+* [`Contains`][7] methods that check if a string contains any of a series of provided values.
+  * Ex. `"brake wheel icon number stoic".Contains("keen", "wild", "icon")` will return `true`.
+* [`Remove`][6] methods that take a series of strings or characters and clear all their occurrences from the string with a single method call.
+  * Ex. `"Lorem ipsum dolor Lorem ipsum sit amet".Remove("Lorem ", "ipsum ", "t")` will return `"dolor si ame"`.
+* [`TrimStart`][6] and [`TrimEnd`][6] methods that take a string and remove it from the start or end of the original string.
+  * Ex. `"In the beginning there was an end".TrimStart("In the beginning ")` will return `"there was an end"`, while `"In the beginning there was an end".TrimEnd(" an end")` will produce `"In the beginning there was"`.
+* Methods to keep or remove all special characters, letters and digits from a string.
+  * Ex. `"!#%&lorem^@ipsum!@%".KeepOnlyLetters()` will return `"loremipsum"`.
+* And much more.
 
 <br/>
 
@@ -104,8 +105,8 @@ __*Install using "NuGet Package Manager" in Visual Studio*__
 
 <br/>3. Make sure your "_Package source:_" (found in the upper-right corner) is pointing to a nuget source that has the library in its catalogue, for example "_nuget.org_". 
 <br/>4. Make sure you're in the "_Browse_" section (located in the upper-left corner).
-<br/>5. Enter "_IvanStoychev.StringExtensions_" in the search box.
-<br/>6. Select the "_IvanStoychev.StringExtensions_" package and choose a version to intall.
+<br/>5. Enter "_IvanStoychev.Useful.String.Extensions_" in the search box.
+<br/>6. Select the "_IvanStoychev.Useful.String.Extensions_" package and choose a version to intall.
 <br/>6.1. If you've opened the Package Manager using option 1 or 2 you can select which projects to install the library to.
 <br/>7. Click the "_Install_" button and read the licence terms. Choose whether you agree to them or not.
 
@@ -114,7 +115,7 @@ __*Install using "NuGet Package Manager" in Visual Studio*__
 __*Install manually*__
 <br/>1.a. Download the package from [NuGet][4], [Github packages][5] or the [Releases][2] page.
 <br/>-or-
-<br/>1.b. Clone the repo and build in it "Release" mode, which will produce a package file in the project's release dir - "~\IvanStoychev.StringExtensions\IvanStoychev.StringExtensions\bin\Release".
+<br/>1.b. Clone the repo and build in it "Release" mode, which will produce a package file in the project's release dir - "~\IvanStoychev.Useful.String.Extensions\IvanStoychev.Useful.String.Extensions\bin\Release".
 <br/>2. Make sure you have the .NET CLI installed.
 <br/>3. Open a command line and Run the command `dotnet add <PROJECT> package <PACKAGE>`.
 <br/>where:
@@ -122,21 +123,21 @@ __*Install manually*__
 <br/>*\<PACKAGE\>* is the path to the package you have downloaded.
 <br/>
 <br/>__*Install using "Package Manager Console"*__
-<br/>1. Run this command in the "Package Manager Console": `Install-Package IvanStoychev.StringExtensions`.
+<br/>1. Run this command in the "Package Manager Console": `Install-Package IvanStoychev.Useful.String.Extensions`.
 <br/>
 <br/>__*Install using PackageReference*__
-<br/>1. Add this line, in an "*\<ItemGroup>*", to your .csproj file `<PackageReference Include="IvanStoychev.StringExtensions" Version="VersionNumber"/>`.
+<br/>1. Add this line, in an "*\<ItemGroup>*", to your .csproj file `<PackageReference Include="IvanStoychev.Useful.String.Extensions" Version="VersionNumber"/>`.
 <br/>where:
 <br/>*VersionNumber* is the version of the package you wish to use, e.g. `1.0.0`.
 <br/>
 <br/>__*Install using Paket CLI*__
-<br/>1. Run the command `paket add IvanStoychev.StringExtensions`.
+<br/>1. Run the command `paket add IvanStoychev.Useful.String.Extensions`.
 
 <br/>
 
 ℹ How to use
 ----------
-Since the functionality, added by this project, is all extension methods, it would be best to add the using statment "`using IvanStoychev.StringExtensions;`" to your code, as Intellisense usually doesn't pick it up.
+Since the functionality, added by this project, is all extension methods, it would be best to add the using statment "`using IvanStoychev.Useful.String.Extensions;`" to your code, as Intellisense usually doesn't pick it up.
 
 After that simply call any desired method on any string.
 
@@ -153,11 +154,11 @@ The methods in the package and project have ample summary information, you can a
 Feel free to make issues and pull requests about anything.
 
 
-  [2]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/releases
-  [3]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/wiki/
-  [4]: https://www.nuget.org/packages/IvanStoychev.StringExtensions/
-  [5]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/packages
-  [6]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/wiki/Remover
-  [7]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/wiki/Comparer
-  [8]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/wiki/Replacer
-  [9]: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/wiki/Selector
+  [2]: https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/releases
+  [3]: https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/wiki/
+  [4]: https://www.nuget.org/packages/IvanStoychev.Useful.String.Extensions/
+  [5]: https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/packages
+  [6]: https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/wiki/Remover
+  [7]: https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/wiki/Comparer
+  [8]: https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/wiki/Replacer
+  [9]: https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/wiki/Selector
