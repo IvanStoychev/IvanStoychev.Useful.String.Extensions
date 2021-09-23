@@ -8,9 +8,10 @@ namespace IvanStoychev.Useful.String.Extensions
     static class Validator
     {
         /// <summary>
-        /// Checks if the value given for <paramref name="length"/> isn't a negative number.
+        /// Checks if the value given for <paramref name="length"/> isn't a negative number. And if it is, throws an <see cref="ArgumentOutOfRangeException"/>.
         /// </summary>
         /// <param name="length">Integer to be verified that it isn't less than zero.</param>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is a negative number.</exception>
         internal static void CheckLengthIsPositive(int length)
         {
             if (length < 0)
@@ -19,14 +20,28 @@ namespace IvanStoychev.Useful.String.Extensions
 
         /// <summary>
         /// Checks if the value given for <paramref name="length"/> isn't bigger than the given <paramref name="stringLength"/>.
+        /// And if it is, throws an <see cref="ArgumentOutOfRangeException"/>.
         /// </summary>
         /// <param name="stringLength">The amount of available characters from which the user wishes to select <paramref name="length"/> amount.</param>
         /// <param name="length">Amount of characters the user wishes to select from a string with length "<paramref name="stringLength"/>".</param>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is bigger than <paramref name="stringLength"/>.</exception>
         internal static void CheckLengthIsWithinBounds(int stringLength, int length)
         {
             int lengthDiff = stringLength - length;
             if (lengthDiff < 0)
                 ExceptionThrower.Throw_Length_ArgumentOutOfRangeException(length, nameof(length), lengthDiff);
+        }
+
+        /// <summary>
+        /// Checks if the value of <paramref name="lengthDiff"/> is negative. And if it is, throws an <see cref="ArgumentOutOfRangeException"/>.
+        /// </summary>
+        /// <param name="stringArgument">The string from which the user wishes to remove <paramref name="amount"/> characters.</param>
+        /// <param name="amount">Amount of characters the user wishes to remove from "<paramref name="stringArgument"/>".</param>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="lengthDiff"/> is a negative number.</exception>
+        internal static void CheckAmountStringLength(string parameterName, int amount, int lengthDiff)
+        {
+            if (lengthDiff < 0)
+                ExceptionThrower.Throw_Amount_ArgumentOutOfRangeException(parameterName, amount, lengthDiff);
         }
 
         /// <summary>
@@ -153,9 +168,11 @@ namespace IvanStoychev.Useful.String.Extensions
 
         /// <summary>
         /// Checks if the given <paramref name="argument"/> of parameter "<paramref name="parameterName"/>" is null.
+        /// And if it is, throws an <see cref="ArgumentNullException"/>.
         /// </summary>
         /// <param name="argument">Value passed as the argument for a method's parameter.</param>
         /// <param name="parameterName">Name of the parameter in the original method.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="argument"/> is null.</exception>
         internal static void CheckNullArgument(string argument, string parameterName)
         {
             if (argument is null)

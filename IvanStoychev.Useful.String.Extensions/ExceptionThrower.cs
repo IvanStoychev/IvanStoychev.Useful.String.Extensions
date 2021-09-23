@@ -60,5 +60,15 @@ namespace IvanStoychev.Useful.String.Extensions
         /// <param name="lengthDiff">The difference between the available length for selection and the length requested by the user.</param>
         internal static void Throw_Length_ArgumentOutOfRangeException(int length, string parameterName, int lengthDiff)
             => throw new ArgumentOutOfRangeException(parameterName, $"The value given for '{parameterName}' (\"{length}\") is longer than the remaining string by {Math.Abs(lengthDiff)}.");
+
+        /// <summary>
+        /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value "<paramref name="amount"/>" of
+        /// parameter "<paramref name="parameterName"/>" is bigger then the whole string by <paramref name="lengthDiff"/>.
+        /// </summary>
+        /// <param name="amount">Amount of characters the user wanted removed from the available string.</param>
+        /// <param name="parameterName">Name of the parameter in the original method whose argument is <paramref name="amount"/>.</param>
+        /// <param name="lengthDiff">The difference between the string length and the amount of characters requested by the user.</param>
+        internal static void Throw_Amount_ArgumentOutOfRangeException(string parameterName, int amount, int lengthDiff)
+            => throw new ArgumentOutOfRangeException(parameterName, $"The value given for '{parameterName}' (\"{amount}\") is longer than the entire string by {Math.Abs(lengthDiff)}.");
     }
 }

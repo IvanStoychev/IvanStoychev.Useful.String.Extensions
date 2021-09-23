@@ -316,6 +316,21 @@ namespace IvanStoychev.Useful.String.Extensions
             return result;
         }
 
+        /// <summary>
+        /// Trims the given amount of characters from the end of the current instance.
+        /// </summary>
+        /// <param name="target">The string to trim.</param>
+        /// <param name="amount">Amount of characters to remove from the end of the instance.</param>
+        /// <returns>The string that remains after <paramref name="amount"/> of characters have been removed from the original instance's end.</returns>
+        [Pure]
+        public static string TrimEnd(this string target, int amount)
+        {
+            int lengthDiff = target.Length - amount;
+            Validator.CheckAmountStringLength(nameof(amount), amount, lengthDiff);
+
+            return target.Substring(0, lengthDiff);
+        }
+
         /// <exception cref="ArgumentException">
         /// Thrown if any of the "toRemove" members are the empty string.
         /// </exception>
