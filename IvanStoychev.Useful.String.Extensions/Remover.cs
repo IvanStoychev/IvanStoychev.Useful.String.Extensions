@@ -185,13 +185,13 @@ namespace IvanStoychev.Useful.String.Extensions
         [Pure]
         public static string TrimStart(this string target, string trimString)
         {
-            if (string.IsNullOrEmpty(trimString)) return target;
+            if (string.IsNullOrEmpty(trimString))
+                return target;
 
-            string result = target;
             if (target.StartsWith(trimString))
-                result = result[trimString.Length..];
+                target = target[trimString.Length..];
 
-            return result;
+            return target;
         }
 
         /// <summary>
@@ -208,13 +208,13 @@ namespace IvanStoychev.Useful.String.Extensions
         [Pure]
         public static string TrimStart(this string target, string trimString, StringComparison stringComparison)
         {
-            if (string.IsNullOrEmpty(trimString)) return target;
+            if (string.IsNullOrEmpty(trimString))
+                return target;
 
-            string result = target;
-            if (result.StartsWith(trimString, stringComparison))
-                result = result[trimString.Length..];
+            if (target.StartsWith(trimString, stringComparison))
+                target = target[trimString.Length..];
 
-            return result;
+            return target;
         }
 
         /// <summary>
@@ -235,13 +235,13 @@ namespace IvanStoychev.Useful.String.Extensions
         [Pure]
         public static string TrimStart(this string target, string trimString, bool ignoreCase, CultureInfo culture)
         {
-            if (string.IsNullOrEmpty(trimString)) return target;
+            if (string.IsNullOrEmpty(trimString))
+                return target;
 
-            string result = target;
-            if (result.StartsWith(trimString, ignoreCase, culture))
-                result = result[trimString.Length..];
+            if (target.StartsWith(trimString, ignoreCase, culture))
+                target = target[trimString.Length..];
 
-            return result;
+            return target;
         }
 
         /// <summary>
@@ -257,13 +257,13 @@ namespace IvanStoychev.Useful.String.Extensions
         [Pure]
         public static string TrimEnd(this string target, string trimString)
         {
-            if (string.IsNullOrEmpty(trimString)) return target;
+            if (string.IsNullOrEmpty(trimString))
+                return target;
 
-            string result = target;
-            if (result.EndsWith(trimString))
-                result = result.Substring(0, result.Length - trimString.Length);
+            if (target.EndsWith(trimString))
+                target = target.Substring(0, target.Length - trimString.Length);
 
-            return result;
+            return target;
         }
 
         /// <summary>
@@ -280,13 +280,13 @@ namespace IvanStoychev.Useful.String.Extensions
         [Pure]
         public static string TrimEnd(this string target, string trimString, StringComparison stringComparison)
         {
-            if (string.IsNullOrEmpty(trimString)) return target;
+            if (string.IsNullOrEmpty(trimString))
+                return target;
 
-            string result = target;
-            if (result.EndsWith(trimString, stringComparison))
-                result = result.Substring(0, result.Length - trimString.Length);
+            if (target.EndsWith(trimString, stringComparison))
+                target = target.Substring(0, target.Length - trimString.Length);
 
-            return result;
+            return target;
         }
 
         /// <summary>
@@ -307,13 +307,13 @@ namespace IvanStoychev.Useful.String.Extensions
         [Pure]
         public static string TrimEnd(this string target, string trimString, bool ignoreCase, CultureInfo culture)
         {
-            if (string.IsNullOrEmpty(trimString)) return target;
+            if (string.IsNullOrEmpty(trimString))
+                return target;
 
-            string result = target;
-            if (result.EndsWith(trimString, ignoreCase, culture))
-                result = result.Substring(0, result.Length - trimString.Length);
+            if (target.EndsWith(trimString, ignoreCase, culture))
+                target = target.Substring(0, target.Length - trimString.Length);
 
-            return result;
+            return target;
         }
 
         /// <summary>
@@ -322,6 +322,7 @@ namespace IvanStoychev.Useful.String.Extensions
         /// <param name="target">The string to trim.</param>
         /// <param name="amount">Amount of characters to remove from the end of the instance.</param>
         /// <returns>The string that remains after <paramref name="amount"/> of characters have been removed from the original instance's end.</returns>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="amount"/> is less than zero.</exception>
         [Pure]
         public static string TrimEnd(this string target, int amount)
         {
