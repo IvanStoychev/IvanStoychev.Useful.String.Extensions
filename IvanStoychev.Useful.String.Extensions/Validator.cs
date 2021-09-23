@@ -124,7 +124,7 @@ namespace IvanStoychev.Useful.String.Extensions
         {
             CheckSubstringIndex(originalString, startString, nameof(startString), out startStringIndex, stringComparison);
 
-            string substringStartStringOnwards = originalString.Substring(startStringIndex + startString.Length);
+            string substringStartStringOnwards = originalString[(startStringIndex + startString.Length)..];
             endStringIndex = substringStartStringOnwards.IndexOf(endString, stringComparison);
 
             if (endStringIndex == -1)
@@ -159,7 +159,7 @@ namespace IvanStoychev.Useful.String.Extensions
         {
             CheckSubstringIndex(originalString, startString, nameof(startString), out startStringIndex, stringComparison);
 
-            string substringStartStringOnwards = originalString.Substring(startStringIndex + startString.Length);
+            string substringStartStringOnwards = originalString[(startStringIndex + startString.Length)..];
             endStringIndex = substringStartStringOnwards.LastIndexOf(endString, stringComparison);
 
             if (endStringIndex == -1)

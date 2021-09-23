@@ -189,7 +189,7 @@ namespace IvanStoychev.Useful.String.Extensions
 
             string result = target;
             if (target.StartsWith(trimString))
-                result = result.Substring(trimString.Length);
+                result = result[trimString.Length..];
 
             return result;
         }
@@ -212,7 +212,7 @@ namespace IvanStoychev.Useful.String.Extensions
 
             string result = target;
             if (result.StartsWith(trimString, stringComparison))
-                result = result.Substring(trimString.Length);
+                result = result[trimString.Length..];
 
             return result;
         }
@@ -239,7 +239,7 @@ namespace IvanStoychev.Useful.String.Extensions
 
             string result = target;
             if (result.StartsWith(trimString, ignoreCase, culture))
-                result = result.Substring(trimString.Length);
+                result = result[trimString.Length..];
 
             return result;
         }

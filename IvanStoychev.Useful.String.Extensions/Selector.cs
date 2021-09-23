@@ -223,7 +223,7 @@ namespace IvanStoychev.Useful.String.Extensions
 
             startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 
-            return str.Substring(startStringIndex);
+            return str[startStringIndex..];
         }
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace IvanStoychev.Useful.String.Extensions
 
             startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 
-            return str.Substring(startStringIndex);
+            return str[startStringIndex..];
         }
 
         /// <summary>

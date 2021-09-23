@@ -32,7 +32,7 @@ namespace IvanStoychev.Useful.String.Extensions
             if (endString.Length > 10) endString = endString.Substring(0, 10) + "...";
             if (startString.Length > 10) startString = startString.Substring(0, 10) + "...";
 
-            throw new ArgumentOutOfRangeException("endString", $"The string given for 'endString' (\"{endString}\") was not found after the given 'startString' (\"{startString}\") in the original instance.");
+            throw new ArgumentOutOfRangeException(nameof(endString), $"The string given for 'endString' (\"{endString}\") was not found after the given '{nameof(startString)}' (\"{startString}\") in the original instance.");
         }
 
         /// <summary>

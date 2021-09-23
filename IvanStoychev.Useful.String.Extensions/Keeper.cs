@@ -37,7 +37,7 @@ namespace IvanStoychev.Useful.String.Extensions
             string specialCharacters = string.Empty;
 
             foreach (var item in originalString.Where(x => !char.IsLetterOrDigit(x)).GroupBy(x => x))
-                specialCharacters = specialCharacters + item.Key;
+                specialCharacters += item.Key;
 
             return specialCharacters;
         }

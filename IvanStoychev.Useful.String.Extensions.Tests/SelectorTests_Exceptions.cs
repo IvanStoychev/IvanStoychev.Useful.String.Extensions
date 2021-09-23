@@ -11,7 +11,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "";
             string expectedMessage = "The string given for 'endString' (\"end\") was not found in the original instance. (Parameter 'endString')";
 
-            Action testAction = () => testString.SubstringStart("end");
+            void testAction() => testString.SubstringStart("end");
 
             var exception = Assert.Throws<ArgumentOutOfRangeException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -23,7 +23,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "";
             string expectedMessage = "The argument given for 'endString' was null. (Parameter 'endString')";
 
-            Action testAction = () => testString.SubstringStart(null);
+            void testAction() => testString.SubstringStart(null);
 
             var exception = Assert.Throws<ArgumentNullException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -35,7 +35,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "";
             string expectedMessage = "The string given for 'endString' (\"end\") was not found in the original instance. (Parameter 'endString')";
 
-            Action testAction = () => testString.SubstringStartLast("end");
+            void testAction() => testString.SubstringStartLast("end");
 
             var exception = Assert.Throws<ArgumentOutOfRangeException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -47,7 +47,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "";
             string expectedMessage = "The argument given for 'endString' was null. (Parameter 'endString')";
 
-            Action testAction = () => testString.SubstringStartLast(null);
+            void testAction() => testString.SubstringStartLast(null);
 
             var exception = Assert.Throws<ArgumentNullException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -59,7 +59,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "";
             string expectedMessage = "The string given for 'startString' (\"start\") was not found in the original instance. (Parameter 'startString')";
 
-            Action testAction = () => testString.Substring("start", 0);
+            void testAction() => testString.Substring("start", 0);
 
             var exception = Assert.Throws<ArgumentOutOfRangeException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -71,7 +71,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "start";
             string expectedMessage = "The value given for 'length' (\"-5\") is less than zero. (Parameter 'length')";
 
-            Action testAction = () => testString.Substring("start", -5);
+            void testAction() => testString.Substring("start", -5);
 
             var exception = Assert.Throws<ArgumentOutOfRangeException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -83,7 +83,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "start12";
             string expectedMessage = "The value given for 'length' (\"11\") is longer than the remaining string by 9. (Parameter 'length')";
 
-            Action testAction = () => testString.Substring("start", 11);
+            void testAction() => testString.Substring("start", 11);
 
             var exception = Assert.Throws<ArgumentOutOfRangeException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -95,7 +95,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "";
             string expectedMessage = "The argument given for 'startString' was null. (Parameter 'startString')";
 
-            Action testAction = () => testString.Substring(null, 0);
+            void testAction() => testString.Substring(null, 0);
 
             var exception = Assert.Throws<ArgumentNullException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -107,7 +107,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "";
             string expectedMessage = "The string given for 'startString' (\"start\") was not found in the original instance. (Parameter 'startString')";
 
-            Action testAction = () => testString.Substring("start", "end");
+            void testAction() => testString.Substring("start", "end");
 
             var exception = Assert.Throws<ArgumentOutOfRangeException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -119,7 +119,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "end start";
             string expectedMessage = "The string given for 'endString' (\"end\") was not found after the given 'startString' (\"start\") in the original instance. (Parameter 'endString')";
 
-            Action testAction = () => testString.Substring("start", "end");
+            void testAction() => testString.Substring("start", "end");
 
             var exception = Assert.Throws<ArgumentOutOfRangeException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -131,7 +131,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "";
             string expectedMessage = "The argument given for 'startString' was null. (Parameter 'startString')";
 
-            Action testAction = () => testString.Substring(null, "end");
+            void testAction() => testString.Substring(null, "end");
 
             var exception = Assert.Throws<ArgumentNullException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -143,7 +143,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "start";
             string expectedMessage = "The argument given for 'endString' was null. (Parameter 'endString')";
 
-            Action testAction = () => testString.Substring("start", null);
+            void testAction() => testString.Substring("start", null);
 
             var exception = Assert.Throws<ArgumentNullException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -155,7 +155,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "";
             string expectedMessage = "The string given for 'startString' (\"start\") was not found in the original instance. (Parameter 'startString')";
 
-            Action testAction = () => testString.SubstringLast("start", "end");
+            void testAction() => testString.SubstringLast("start", "end");
 
             var exception = Assert.Throws<ArgumentOutOfRangeException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -167,7 +167,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "end start";
             string expectedMessage = "The string given for 'endString' (\"end\") was not found after the given 'startString' (\"start\") in the original instance. (Parameter 'endString')";
 
-            Action testAction = () => testString.SubstringLast("start", "end");
+            void testAction() => testString.SubstringLast("start", "end");
 
             var exception = Assert.Throws<ArgumentOutOfRangeException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -179,7 +179,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "";
             string expectedMessage = "The argument given for 'startString' was null. (Parameter 'startString')";
 
-            Action testAction = () => testString.SubstringLast(null, "end");
+            void testAction() => testString.SubstringLast(null, "end");
 
             var exception = Assert.Throws<ArgumentNullException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -191,7 +191,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "start";
             string expectedMessage = "The argument given for 'endString' was null. (Parameter 'endString')";
 
-            Action testAction = () => testString.SubstringLast("start", null);
+            void testAction() => testString.SubstringLast("start", null);
 
             var exception = Assert.Throws<ArgumentNullException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -203,7 +203,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "";
             string expectedMessage = "The string given for 'startString' (\"start\") was not found in the original instance. (Parameter 'startString')";
 
-            Action testAction = () => testString.SubstringEnd("start");
+            void testAction() => testString.SubstringEnd("start");
 
             var exception = Assert.Throws<ArgumentOutOfRangeException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -215,7 +215,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "";
             string expectedMessage = "The argument given for 'startString' was null. (Parameter 'startString')";
 
-            Action testAction = () => testString.SubstringEnd(null);
+            void testAction() => testString.SubstringEnd(null);
 
             var exception = Assert.Throws<ArgumentNullException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -227,7 +227,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "";
             string expectedMessage = "The string given for 'startString' (\"start\") was not found in the original instance. (Parameter 'startString')";
 
-            Action testAction = () => testString.SubstringEndLast("start");
+            void testAction() => testString.SubstringEndLast("start");
 
             var exception = Assert.Throws<ArgumentOutOfRangeException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -239,7 +239,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "";
             string expectedMessage = "The argument given for 'startString' was null. (Parameter 'startString')";
 
-            Action testAction = () => testString.SubstringEndLast(null);
+            void testAction() => testString.SubstringEndLast(null);
 
             var exception = Assert.Throws<ArgumentNullException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -251,7 +251,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "";
             string expectedMessage = "The string given for 'startString' (\"start\") was not found in the original instance. (Parameter 'startString')";
 
-            Action testAction = () => testString.SubstringEndLast("start", 0);
+            void testAction() => testString.SubstringEndLast("start", 0);
 
             var exception = Assert.Throws<ArgumentOutOfRangeException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -263,7 +263,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "start";
             string expectedMessage = "The value given for 'length' (\"-5\") is less than zero. (Parameter 'length')";
 
-            Action testAction = () => testString.SubstringEndLast("start", -5);
+            void testAction() => testString.SubstringEndLast("start", -5);
 
             var exception = Assert.Throws<ArgumentOutOfRangeException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -275,7 +275,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "start12";
             string expectedMessage = "The value given for 'length' (\"11\") is longer than the remaining string by 9. (Parameter 'length')";
 
-            Action testAction = () => testString.SubstringEndLast("start", 11);
+            void testAction() => testString.SubstringEndLast("start", 11);
 
             var exception = Assert.Throws<ArgumentOutOfRangeException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
@@ -287,7 +287,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "";
             string expectedMessage = "The argument given for 'startString' was null. (Parameter 'startString')";
 
-            Action testAction = () => testString.SubstringEndLast(null, 0);
+            void testAction() => testString.SubstringEndLast(null, 0);
 
             var exception = Assert.Throws<ArgumentNullException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
