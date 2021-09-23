@@ -8,29 +8,6 @@ namespace IvanStoychev.Useful.String.Extensions
     static class ExceptionThrower
     {
         /// <summary>
-        /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value "<paramref name="length"/>" of
-        /// parameter "<paramref name="parameterName"/>" is bigger then the available string by <paramref name="lengthDiff"/>.
-        /// </summary>
-        /// <param name="length">Amount of characters the user wanted selected from the available string.</param>
-        /// <param name="parameterName">Name of the parameter in the original method whose argument is <paramref name="length"/>.</param>
-        /// <param name="lengthDiff">The difference between the available length for selection and the length requested by the user.</param>
-        internal static void Throw_Length_ArgumentOutOfRangeException(int length, string parameterName, int lengthDiff)
-        {
-            throw new ArgumentOutOfRangeException(parameterName, $"The value given for '{parameterName}' (\"{length}\") is longer than the remaining string by {Math.Abs(lengthDiff)}.");
-        }
-
-        /// <summary>
-        /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value "<paramref name="length"/>" of
-        /// parameter "<paramref name="parameterName"/>" is a negative number.
-        /// </summary>
-        /// <param name="length">Integer, less than zero, the user provided for an operation that requires a positive number.</param>
-        /// <param name="parameterName">Name of the parameter in the original method whose argument is <paramref name="length"/>.</param>
-        internal static void Throw_Length_ArgumentOutOfRangeException(int length, string parameterName)
-{
-            throw new ArgumentOutOfRangeException(parameterName, $"The value given for '{parameterName}' (\"{length}\") is less than zero.");
-        }
-
-        /// <summary>
         /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value "<paramref name="substring"/>" of
         /// parameter "<paramref name="parameterName"/>" is not found in the original string. If the value of <paramref name="substring"/> is longer
         /// than 10 characters the value displayed in the exception message will be truncated to 10.
@@ -63,8 +40,25 @@ namespace IvanStoychev.Useful.String.Extensions
         /// </summary>
         /// <param name="parameterName">Name of the parameter in the original calling method.</param>
         internal static void ThrowArgumentNullException(string parameterName)
-        {
-            throw new ArgumentNullException(parameterName, $"The argument given for '{parameterName}' was null.");
-        }
+            => throw new ArgumentNullException(parameterName, $"The argument given for '{parameterName}' was null.");
+
+        /// <summary>
+        /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value "<paramref name="length"/>" of
+        /// parameter "<paramref name="parameterName"/>" is a negative number.
+        /// </summary>
+        /// <param name="length">Integer, less than zero, the user provided for an operation that requires a positive number.</param>
+        /// <param name="parameterName">Name of the parameter in the original method whose argument is <paramref name="length"/>.</param>
+        internal static void Throw_Length_ArgumentOutOfRangeException(int length, string parameterName)
+            => throw new ArgumentOutOfRangeException(parameterName, $"The value given for '{parameterName}' (\"{length}\") is less than zero.");
+
+        /// <summary>
+        /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value "<paramref name="length"/>" of
+        /// parameter "<paramref name="parameterName"/>" is bigger then the available string by <paramref name="lengthDiff"/>.
+        /// </summary>
+        /// <param name="length">Amount of characters the user wanted selected from the available string.</param>
+        /// <param name="parameterName">Name of the parameter in the original method whose argument is <paramref name="length"/>.</param>
+        /// <param name="lengthDiff">The difference between the available length for selection and the length requested by the user.</param>
+        internal static void Throw_Length_ArgumentOutOfRangeException(int length, string parameterName, int lengthDiff)
+            => throw new ArgumentOutOfRangeException(parameterName, $"The value given for '{parameterName}' (\"{length}\") is longer than the remaining string by {Math.Abs(lengthDiff)}.");
     }
 }
