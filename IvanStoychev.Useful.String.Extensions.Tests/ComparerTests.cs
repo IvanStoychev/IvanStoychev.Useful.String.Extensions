@@ -13,7 +13,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         [InlineData("Fat cannot use denied excuse son law", new string[] { "man", "phone", "denied", "rang" })]
         [InlineData("Wisdom happen suffer common the appear ham beauty her had", new string[] { "Microsoft", "window", "happen", "appear" })]
         [InlineData("Or belonging zealously existence as by resources", new string[] { "zeal", "crusade", "scarlet", "diglett" })]
-        public void ContainsStrings_Pass_Test(string testString, string[] keywords)
+        public void Contains_StringArray_Pass(string testString, string[] keywords)
         {
             bool actual = testString.Contains(keywords);
 
@@ -27,7 +27,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         [InlineData("Fat cannot use denied excuse son law", new string[] { "man", "DENIED", "vox", "rang" })]
         [InlineData("Wisdom happen suffer common the appear ham beauty her had", new string[] { "Microsoft", "window", "hapPen", "apear" })]
         [InlineData("Or belonging zealously existence as by resources", new string[] { "zeaL", "crusade", "scarlet", "diglett" })]
-        public void ContainsStrings_Fail_Test(string testString, string[] keywords)
+        public void Contains_StringArray_Fail(string testString, string[] keywords)
         {
             bool actual = testString.Contains(keywords);
 
@@ -41,7 +41,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         [InlineData("Fat cannot use denied excuse son law", new string[] { "man", "phone", "DENIED", "rang" })]
         [InlineData("Wisdom happen suffer common the appear ham beauty her had", new string[] { "Microsoft", "window", "happen", "appear" })]
         [InlineData("Or belonging zealously existence as by resources", new string[] { "zeaL", "crusade", "scarlet", "diglett" })]
-        public void ContainsStrings_OrdinalIgnoreCase_Pass_Test(string testString, string[] keywords)
+        public void Contains_StringArray_OrdinalIgnoreCase_Pass(string testString, string[] keywords)
         {
             bool actual = testString.Contains(StringComparison.OrdinalIgnoreCase, keywords);
 
@@ -55,7 +55,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         [InlineData("Fat cannot use denied excuse son law", new string[] { "man", "phone", "vox", "rang" })]
         [InlineData("Wisdom happen suffer common the appear ham beauty her had", new string[] { "Microsoft", "window", "hapen", "apear" })]
         [InlineData("Or belonging zealously existence as by resources", new string[] { "zealu", "crusade", "scarlet", "diglett" })]
-        public void ContainsStrings_OrdinalIgnoreCase_Fail_Test(string testString, string[] keywords)
+        public void Contains_StringArray_OrdinalIgnoreCase_Fail(string testString, string[] keywords)
         {
             bool actual = testString.Contains(StringComparison.OrdinalIgnoreCase, keywords);
 
@@ -69,7 +69,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         [InlineData("Fat cannot use denied excuse son law", new string[] { "man", "phone", "denied", "rang" })]
         [InlineData("Wisdom happen suffer common the appear ham beauty her had", new string[] { "Microsoft", "window", "happen", "appear" })]
         [InlineData("Or belonging zealously existence as by resources", new string[] { "zeal", "crusade", "scarlet", "diglett" })]
-        public void ContainsStrings_Ordinal_Pass_Test(string testString, string[] keywords)
+        public void Contains_StringArray_Ordinal_Pass(string testString, string[] keywords)
         {
             bool actual = testString.Contains(StringComparison.Ordinal, keywords);
 
@@ -83,7 +83,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         [InlineData("Fat cannot use denied excuse son law", new string[] { "man", "phone", "vox", "DENIED", "rang" })]
         [InlineData("Wisdom happen suffer common the appear ham beauty her had", new string[] { "Microsoft", "window", "hapen", "apear" })]
         [InlineData("Or belonging zealously existence as by resources", new string[] { "zeaL", "crusade", "scarlet", "diglett" })]
-        public void ContainsStrings_Ordinal_Fail_Test(string testString, string[] keywords)
+        public void Contains_StringArray_Ordinal_Fail(string testString, string[] keywords)
         {
             bool actual = testString.Contains(StringComparison.Ordinal, keywords);
 
@@ -97,7 +97,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         [InlineData("Fat cannot use denied excuse son law", new string[] { "man", "phone", "denied", "rang" })]
         [InlineData("Wisdom happen suffer common the appear ham beauty her had", new string[] { "Microsoft", "window", "happen", "appear" })]
         [InlineData("Or belonging zealously existence as by resources", new string[] { "zeal", "crusade", "scarlet", "diglett" })]
-        public void ContainsStrings_InvariantCulture_Pass_Test(string testString, string[] keywords)
+        public void Contains_StringArray_InvariantCulture_Pass(string testString, string[] keywords)
         {
             bool actual = testString.Contains(StringComparison.InvariantCulture, keywords);
 
@@ -111,7 +111,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         [InlineData("Fat cannot use denied excuse son law", new string[] { "man", "phone", "vox", "DENIED", "rang" })]
         [InlineData("Wisdom happen suffer common the appear ham beauty her had", new string[] { "Microsoft", "window", "hapen", "apear" })]
         [InlineData("Or belonging zealously existence as by resources", new string[] { "zeaL", "crusade", "scarlet", "diglett" })]
-        public void ContainsStrings_InvariantCulture_Fail_Test(string testString, string[] keywords)
+        public void Contains_StringArray_InvariantCulture_Fail(string testString, string[] keywords)
         {
             bool actual = testString.Contains(StringComparison.InvariantCulture, keywords);
 
@@ -125,7 +125,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         [InlineData("U5SVGjk0hIr9Bxz0", new char[] { 'U', '4', 'H' })]
         [InlineData("Caq0r9KadJwBgFte", new char[] { 'f', '8', 'q' })]
         [InlineData("KE0evdEczTKxAmkn", new char[] { 'l', 'K', 'D' })]
-        public void ContainsChars_Pass_Test(string testString, char[] keychars)
+        public void Contains_CharArray_Pass(string testString, char[] keychars)
         {
             bool actual = testString.Contains(keychars);
 
@@ -139,7 +139,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         [InlineData("U5SVGjk0hIr9Bxz0", new char[] { 'u', '4', 'H' })]
         [InlineData("Caq0r9KadJwBgFte", new char[] { 'f', '8', 'Q' })]
         [InlineData("KE0evdEczTKxAmkn", new char[] { 'l', '1', 'D' })]
-        public void ContainsChars_Fail_Test(string testString, char[] keychars)
+        public void Contains_CharArray_Fail(string testString, char[] keychars)
         {
             bool actual = testString.Contains(keychars);
 
@@ -153,7 +153,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         [InlineData("U5SVGjk0hIr9Bxz0", new char[] { 'u', '4', 'H' })]
         [InlineData("Caq0r9KadJwBgFte", new char[] { 'f', '8', 'Q' })]
         [InlineData("KE0evdEczTKxAmkn", new char[] { 'l', 'k', 'D' })]
-        public void ContainsChars_OrdinalIgnoreCase_Pass_Test(string testString, char[] keychars)
+        public void Contains_CharArray_OrdinalIgnoreCase_Pass(string testString, char[] keychars)
         {
             bool actual = testString.Contains(StringComparison.OrdinalIgnoreCase, keychars);
 
@@ -167,7 +167,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         [InlineData("U5SVGjk0hIr9Bxz0", new char[] { 'f', '4', 'y' })]
         [InlineData("Caq0r9KadJwBgFte", new char[] { 'z', '8', 's' })]
         [InlineData("KE0evdEczTKxAmkn", new char[] { 'l', 'i', 's' })]
-        public void ContainsChars_OrdinalIgnoreCase_Fail_Test(string testString, char[] keychars)
+        public void Contains_CharArray_OrdinalIgnoreCase_Fail(string testString, char[] keychars)
         {
             bool actual = testString.Contains(StringComparison.OrdinalIgnoreCase, keychars);
 
@@ -181,7 +181,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         [InlineData("U5SVGjk0hIr9Bxz0", new char[] { 'U', '4', 'H' })]
         [InlineData("Caq0r9KadJwBgFte", new char[] { 'f', '8', 'q' })]
         [InlineData("KE0evdEczTKxAmkn", new char[] { 'l', 'K', 'D' })]
-        public void ContainsChars_Ordinal_Pass_Test(string testString, char[] keychars)
+        public void Contains_CharArray_Ordinal_Pass(string testString, char[] keychars)
         {
             bool actual = testString.Contains(StringComparison.Ordinal, keychars);
 
@@ -195,7 +195,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         [InlineData("U5SVGjk0hIr9Bxz0", new char[] { 'u', '4', 'H' })]
         [InlineData("Caq0r9KadJwBgFte", new char[] { 'f', '8', 'Q' })]
         [InlineData("KE0evdEczTKxAmkn", new char[] { 'l', 't', 'D' })]
-        public void ContainsChars_Ordinal_Fail_Test(string testString, char[] keychars)
+        public void Contains_CharArray_Ordinal_Fail(string testString, char[] keychars)
         {
             bool actual = testString.Contains(StringComparison.Ordinal, keychars);
 
@@ -209,7 +209,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         [InlineData("U5SVGjk0hIr9Bxz0", new char[] { 'U', '4', 'H' })]
         [InlineData("Caq0r9KadJwBgFte", new char[] { 'f', '8', 'q' })]
         [InlineData("KE0evdEczTKxAmkn", new char[] { 'l', 'K', 'D' })]
-        public void ContainsChars_InvariantCulture_Pass_Test(string testString, char[] keychars)
+        public void Contains_CharArray_InvariantCulture_Pass(string testString, char[] keychars)
         {
             bool actual = testString.Contains(StringComparison.InvariantCulture, keychars);
 
@@ -223,7 +223,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         [InlineData("U5SVGjk0hIr9Bxz0", new char[] { 'u', '4', 'H' })]
         [InlineData("Caq0r9KadJwBgFte", new char[] { 'f', '8', 'Q' })]
         [InlineData("KE0evdEczTKxAmkn", new char[] { 'l', 't', 'D' })]
-        public void ContainsChars_InvariantCulture_Fail_Test(string testString, char[] keychars)
+        public void Contains_CharArray_InvariantCulture_Fail(string testString, char[] keychars)
         {
             bool actual = testString.Contains(StringComparison.InvariantCulture, keychars);
 
@@ -231,7 +231,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         }
 
         [Theory, MemberData(nameof(ContainsStrings_PassTestDataCaseSensetive))]
-        public void ContainsStringsIEnum_Pass_Test(string testString, IEnumerable<string> keywords)
+        public void Contains_IEnumString_Pass(string testString, IEnumerable<string> keywords)
         {
             bool actual = testString.Contains(keywords);
 
@@ -239,7 +239,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         }
 
         [Theory, MemberData(nameof(ContainsStrings_FailTestDataCaseSensetive))]
-        public void ContainsStringsIEnum_Fail_Test(string testString, IEnumerable<string> keywords)
+        public void Contains_IEnumString_Fail(string testString, IEnumerable<string> keywords)
         {
             bool actual = testString.Contains(keywords);
 
@@ -247,7 +247,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         }
 
         [Theory, MemberData(nameof(ContainsStrings_PassTestDataCaseInsensetive))]
-        public void ContainsStringsIEnum_OrdinalIgnoreCase_Pass_Test(string testString, IEnumerable<string> keywords)
+        public void Contains_IEnumString_OrdinalIgnoreCase_Pass(string testString, IEnumerable<string> keywords)
         {
             bool actual = testString.Contains(StringComparison.OrdinalIgnoreCase, keywords);
 
@@ -255,7 +255,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         }
 
         [Theory, MemberData(nameof(ContainsStrings_FailTestDataCaseInsensetive))]
-        public void ContainsStringsIEnum_OrdinalIgnoreCase_Fail_Test(string testString, IEnumerable<string> keywords)
+        public void Contains_IEnumString_OrdinalIgnoreCase_Fail(string testString, IEnumerable<string> keywords)
         {
             bool actual = testString.Contains(StringComparison.OrdinalIgnoreCase, keywords);
 
@@ -263,7 +263,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         }
 
         [Theory, MemberData(nameof(ContainsStrings_PassTestDataCaseSensetive))]
-        public void ContainsStringsIEnum_Ordinal_Pass_Test(string testString, IEnumerable<string> keywords)
+        public void Contains_IEnumString_Ordinal_Pass(string testString, IEnumerable<string> keywords)
         {
             bool actual = testString.Contains(StringComparison.Ordinal, keywords);
 
@@ -271,7 +271,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         }
 
         [Theory, MemberData(nameof(ContainsStrings_FailTestDataCaseSensetive))]
-        public void ContainsStringsIEnum_Ordinal_Fail_Test(string testString, IEnumerable<string> keywords)
+        public void Contains_IEnumString_Ordinal_Fail(string testString, IEnumerable<string> keywords)
         {
             bool actual = testString.Contains(StringComparison.Ordinal, keywords);
 
@@ -279,7 +279,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         }
 
         [Theory, MemberData(nameof(ContainsStrings_PassTestDataCaseSensetive))]
-        public void ContainsStringsIEnum_InvariantCulture_Pass_Test(string testString, IEnumerable<string> keywords)
+        public void Contains_IEnumString_InvariantCulture_Pass(string testString, IEnumerable<string> keywords)
         {
             bool actual = testString.Contains(StringComparison.InvariantCulture, keywords);
 
@@ -287,78 +287,78 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         }
 
         [Theory, MemberData(nameof(ContainsStrings_FailTestDataCaseSensetive))]
-        public void ContainsStringsIEnum_InvariantCulture_Fail_Test(string testString, IEnumerable<string> keywords)
+        public void Contains_IEnumString_InvariantCulture_Fail(string testString, IEnumerable<string> keywords)
         {
             bool actual = testString.Contains(StringComparison.InvariantCulture, keywords);
 
             Assert.False(actual);
         }
 
-        [Theory, MemberData(nameof(ContainsChars_PassTestDataCaseSensetive))]
-        public void ContainsCharsIEnum_Pass_Test(string testString, IEnumerable<char> keychars)
+        [Theory, MemberData(nameof(Contains_CharArray_PassTestDataCaseSensetive))]
+        public void Contains_IEnumChar_Pass(string testString, IEnumerable<char> keychars)
         {
             bool actual = testString.Contains(keychars);
 
             Assert.True(actual);
         }
 
-        [Theory, MemberData(nameof(ContainsChars_FailTestDataCaseSensetive))]
-        public void ContainsCharsIEnum_Fail_Test(string testString, IEnumerable<char> keychars)
+        [Theory, MemberData(nameof(Contains_CharArray_FailTestDataCaseSensetive))]
+        public void Contains_IEnumChar_Fail(string testString, IEnumerable<char> keychars)
         {
             bool actual = testString.Contains(keychars);
 
             Assert.False(actual);
         }
 
-        [Theory, MemberData(nameof(ContainsChars_PassTestDataCaseInsensetive))]
-        public void ContainsCharsIEnum_OrdinalIgnoreCase_Pass_Test(string testString, IEnumerable<char> keychars)
+        [Theory, MemberData(nameof(Contains_CharArray_PassTestDataCaseInsensetive))]
+        public void Contains_IEnumChar_OrdinalIgnoreCase_Pass(string testString, IEnumerable<char> keychars)
         {
             bool actual = testString.Contains(StringComparison.OrdinalIgnoreCase, keychars);
 
             Assert.True(actual);
         }
 
-        [Theory, MemberData(nameof(ContainsChars_FailTestDataCaseInsensetive))]
-        public void ContainsCharsIEnum_OrdinalIgnoreCase_Fail_Test(string testString, IEnumerable<char> keychars)
+        [Theory, MemberData(nameof(Contains_CharArray_FailTestDataCaseInsensetive))]
+        public void Contains_IEnumChar_OrdinalIgnoreCase_Fail(string testString, IEnumerable<char> keychars)
         {
             bool actual = testString.Contains(StringComparison.OrdinalIgnoreCase, keychars);
 
             Assert.False(actual);
         }
 
-        [Theory, MemberData(nameof(ContainsChars_PassTestDataCaseSensetive))]
-        public void ContainsCharsIEnum_Ordinal_Pass_Test(string testString, IEnumerable<char> keychars)
+        [Theory, MemberData(nameof(Contains_CharArray_PassTestDataCaseSensetive))]
+        public void Contains_IEnumChar_Ordinal_Pass(string testString, IEnumerable<char> keychars)
         {
             bool actual = testString.Contains(StringComparison.Ordinal, keychars);
 
             Assert.True(actual);
         }
 
-        [Theory, MemberData(nameof(ContainsChars_FailTestDataCaseSensetive))]
-        public void ContainsCharsIEnum_Ordinal_Fail_Test(string testString, IEnumerable<char> keychars)
+        [Theory, MemberData(nameof(Contains_CharArray_FailTestDataCaseSensetive))]
+        public void Contains_IEnumChar_Ordinal_Fail(string testString, IEnumerable<char> keychars)
         {
             bool actual = testString.Contains(StringComparison.Ordinal, keychars);
 
             Assert.False(actual);
         }
 
-        [Theory, MemberData(nameof(ContainsChars_PassTestDataCaseSensetive))]
-        public void ContainsCharsIEnum_InvariantCulture_Pass_Test(string testString, IEnumerable<char> keychars)
+        [Theory, MemberData(nameof(Contains_CharArray_PassTestDataCaseSensetive))]
+        public void Contains_IEnumChar_InvariantCulture_Pass(string testString, IEnumerable<char> keychars)
         {
             bool actual = testString.Contains(StringComparison.InvariantCulture, keychars);
 
             Assert.True(actual);
         }
 
-        [Theory, MemberData(nameof(ContainsChars_FailTestDataCaseSensetive))]
-        public void ContainsCharsIEnum_InvariantCulture_Fail_Test(string testString, IEnumerable<char> keychars)
+        [Theory, MemberData(nameof(Contains_CharArray_FailTestDataCaseSensetive))]
+        public void Contains_IEnumChar_InvariantCulture_Fail(string testString, IEnumerable<char> keychars)
         {
             bool actual = testString.Contains(StringComparison.InvariantCulture, keychars);
 
             Assert.False(actual);
         }
 
-        public static IEnumerable<object[]> ContainsChars_PassTestDataCaseSensetive
+        public static IEnumerable<object[]> Contains_CharArray_PassTestDataCaseSensetive
         {
             get
             {
@@ -372,7 +372,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             }
         }
 
-        public static IEnumerable<object[]> ContainsChars_PassTestDataCaseInsensetive
+        public static IEnumerable<object[]> Contains_CharArray_PassTestDataCaseInsensetive
         {
             get
             {
@@ -386,7 +386,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             }
         }
 
-        public static IEnumerable<object[]> ContainsChars_FailTestDataCaseSensetive
+        public static IEnumerable<object[]> Contains_CharArray_FailTestDataCaseSensetive
         {
             get
             {
@@ -400,7 +400,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             }
         }
 
-        public static IEnumerable<object[]> ContainsChars_FailTestDataCaseInsensetive
+        public static IEnumerable<object[]> Contains_CharArray_FailTestDataCaseInsensetive
         {
             get
             {
