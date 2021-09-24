@@ -173,6 +173,22 @@ namespace IvanStoychev.Useful.String.Extensions
         }
 
         /// <summary>
+        /// Trims the given amount of characters from the start and end of the current instance.
+        /// </summary>
+        /// <param name="target">The string to trim.</param>
+        /// <param name="amount">Amount of characters to remove from the start and end of the instance.</param>
+        /// <returns>The string that remains after <paramref name="amount"/> of characters have been removed from the original instance's start and end.</returns>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="amount"/> is twice of more times bigger than the original instance's length.</exception>
+        [Pure]
+        public static string Trim(this string target, int amount)
+        {
+            int lengthDiff = target.Length - amount * 2;
+            Validator.CheckAmountStringLength(nameof(amount), amount, lengthDiff);
+
+            return target.Substring(amount, lengthDiff);
+        }
+
+        /// <summary>
         /// Removes the leading occurrence of a specified string from the current instance.
         /// </summary>
         /// <param name="target">The instance to remove the string from.</param>
@@ -242,6 +258,22 @@ namespace IvanStoychev.Useful.String.Extensions
                 target = target[trimString.Length..];
 
             return target;
+        }
+
+        /// <summary>
+        /// Trims the given amount of characters from the start of the current instance.
+        /// </summary>
+        /// <param name="target">The string to trim.</param>
+        /// <param name="amount">Amount of characters to remove from the start of the instance.</param>
+        /// <returns>The string that remains after <paramref name="amount"/> of characters have been removed from the original instance's start.</returns>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="amount"/> is bigger than the original instance's length.</exception>
+        [Pure]
+        public static string TrimStart(this string target, int amount)
+        {
+            int lengthDiff = target.Length - amount;
+            Validator.CheckAmountStringLength(nameof(amount), amount, lengthDiff);
+
+            return target.Substring(amount);
         }
 
         /// <summary>
@@ -322,7 +354,7 @@ namespace IvanStoychev.Useful.String.Extensions
         /// <param name="target">The string to trim.</param>
         /// <param name="amount">Amount of characters to remove from the end of the instance.</param>
         /// <returns>The string that remains after <paramref name="amount"/> of characters have been removed from the original instance's end.</returns>
-        /// <exception cref="ArgumentOutOfRangeException"><paramref name="amount"/> is less than zero.</exception>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="amount"/> is bigger than the original instance's length.</exception>
         [Pure]
         public static string TrimEnd(this string target, int amount)
         {
