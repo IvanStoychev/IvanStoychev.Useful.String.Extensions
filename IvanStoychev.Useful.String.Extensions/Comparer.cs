@@ -120,15 +120,16 @@ namespace IvanStoychev.Useful.String.Extensions
         }
 
         /// <summary>
-        /// Returns a boolean indicating whether any of the characters in the given IEnumerable occur in this string.
+        /// Returns a <see langword="bool"/> indicating whether any of the characters in <paramref name="keychars"/> occur in this string, using the specified comparison rules.
         /// </summary>
         /// <param name="str">The string to check.</param>
         /// <param name="keychars">A collection of characters to seek.</param>
+        /// <param name="comparison">One of the enumeration values that specifies the rules to use in the comparison.</param>
         /// <returns>
-        /// "true" if any of the characters occur within this string; otherwise, "false".
+        /// <see langword="true"/> if any of the <paramref name="keychars"/> members occur within this string; otherwise, <see langword="false"/>.
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// "keychars" is null.
+        /// The <paramref name="keychars"/> collection or any of its memebers are null.
         /// </exception>
         [Pure]
         public static bool Contains(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
