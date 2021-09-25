@@ -15,11 +15,15 @@
     <Copyright>Copyright (c) 2021 Ivan Stoychev. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <NeutralLanguage>English</NeutralLanguage>
-    <PackageReleaseNotes>Rebranded from IvanStoychev.StringExtensions.</PackageReleaseNotes>
-    <Version>1.0.0</Version>
+    <PackageReleaseNotes>= Updated package icon.
+= Improved unit tests.
+= Consolidated "Contains" methods:
+    - Consolidated "Contains(StringComparison comparison, IEnumerable&lt;string&gt; keywords)" and "Contains(IEnumerable&lt;string&gt; keywords)" into "Contains(IEnumerable&lt;string&gt; keywords, StringComparison comparison = StringComparison.Ordinal)".
+    - Consolidated "Contains(StringComparison comparison, IEnumerable&lt;char&gt; keywords)" and "Contains(IEnumerable&lt;char&gt; keywords)" into "Contains(IEnumerable&lt;char&gt; keywords, StringComparison comparison = StringComparison.Ordinal)".</PackageReleaseNotes>
+    <Version>2.0.0</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
     <PackageIconUrl />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>IvanStoychev.Useful.String.Extensions</PackageId>
