@@ -79,6 +79,30 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         }
 
         [Theory]
+        [InlineData("I was very proud", 1, " was very prou")]
+        [InlineData("The father handed", 2, "e father hand")]
+        [InlineData("In that instant", 3, "that inst")]
+        [InlineData("For oil spots", 4, "oil s")]
+        public void Trim_Amount(string testString, int amount, string expected)
+        {
+            string actual = testString.Trim(amount);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("I was very proud", 1, " was very proud")]
+        [InlineData("The father handed", 2, "e father handed")]
+        [InlineData("In that instant", 3, "that instant")]
+        [InlineData("For oil spots", 4, "oil spots")]
+        public void TrimStart_Amount(string testString, int amount, string expected)
+        {
+            string actual = testString.TrimStart(amount);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
         [InlineData("If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?", "If the Easter", " Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?")]
         [InlineData("As he waited for the shower to warm", "As he waited ", "for the shower to warm")]
         [InlineData("I love eating toasted cheese and tuna sandwiches.", "I lov", "e eating toasted cheese and tuna sandwiches.")]
@@ -110,6 +134,18 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
         public void TrimStart_CultureInfo(string testString, string stringToRemove, string expected)
         {
             string actual = testString.TrimStart(stringToRemove, true, CultureInfo.InvariantCulture);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("I was very proud", 1, "I was very prou")]
+        [InlineData("The father handed", 2, "The father hand")]
+        [InlineData("In that instant", 3, "In that inst")]
+        [InlineData("For oil spots", 4, "For oil s")]
+        public void TrimEnd_Amount(string testString, int amount, string expected)
+        {
+            string actual = testString.TrimEnd(amount);
 
             Assert.Equal(expected, actual);
         }
