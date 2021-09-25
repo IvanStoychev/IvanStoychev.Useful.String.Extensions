@@ -5,7 +5,7 @@ using Xunit;
 
 namespace IvanStoychev.Useful.String.Extensions.Tests
 {
-    public class RemoverTests
+    public class Remover_Tests_Pass
     {
         [Theory]
         [InlineData("Lorem lorem IPSUM ipsum", "Lorem   ipsum")]
