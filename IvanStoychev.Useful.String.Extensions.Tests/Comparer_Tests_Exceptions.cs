@@ -5,7 +5,7 @@ using Xunit;
 
 namespace IvanStoychev.Useful.String.Extensions.Tests
 {
-    public class ComparerTests_Exceptions
+    public class Comparer_Tests_Exceptions
     {
         [Fact]
         public void Contains_IEnumString_NullArgument()

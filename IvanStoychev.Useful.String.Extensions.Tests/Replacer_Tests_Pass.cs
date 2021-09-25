@@ -3,7 +3,7 @@ using Xunit;
 
 namespace IvanStoychev.Useful.String.Extensions.Tests
 {
-    public class ReplacerTests
+    public class Replacer_Tests_Pass
     {
         [Theory]
         [InlineData("eos sed elitr sit lorem eos zzril lorem", "newWord", new string[] { "sed", "sit", "eos" }, "newWord newWord elitr newWord lorem newWord zzril lorem")]

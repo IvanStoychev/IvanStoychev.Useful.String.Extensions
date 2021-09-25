@@ -3,7 +3,7 @@ using Xunit;
 
 namespace IvanStoychev.Useful.String.Extensions.Tests
 {
-    public class SelectorTests_Exceptions
+    public class Selector_Tests_Exceptions
     {
         [Fact]
         public void SubstringStart_ArgumentOutOfRange()

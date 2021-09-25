@@ -4,7 +4,7 @@ using Xunit;
 
 namespace IvanStoychev.Useful.String.Extensions.Tests
 {
-    public class ComparerTests
+    public class Comparer_Tests_Pass
     {
         [Theory]
         [InlineData("Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car", "ham" })]

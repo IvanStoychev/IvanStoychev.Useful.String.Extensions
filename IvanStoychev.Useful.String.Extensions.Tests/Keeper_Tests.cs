@@ -2,7 +2,7 @@
 
 namespace IvanStoychev.Useful.String.Extensions.Tests
 {
-    public class KeeperTests
+    public class Keeper_Tests
     {
         [Theory]
         [InlineData("awd1dkb33aljfo39d109j1082jd", "133391091082")]
