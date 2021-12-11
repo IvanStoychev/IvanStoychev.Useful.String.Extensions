@@ -193,7 +193,7 @@ namespace IvanStoychev.Useful.String.Extensions
         internal static void CheckNullMember(object collectionMember, string collectionParameterName)
         {
             if (collectionMember is null)
-                ExceptionThrower.ThrowArgumentNullException_Member(collectionParameterName);
+                ExceptionThrower.ThrowArgumentNullMemberException(collectionParameterName);
         }
     }
 }

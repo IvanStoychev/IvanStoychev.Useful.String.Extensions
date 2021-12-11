@@ -51,7 +51,7 @@ namespace IvanStoychev.Useful.String.Extensions
         /// Throws an <see cref="ArgumentNullException"/> that informs the user the member of <paramref name="parameterName"/> was null.
         /// </summary>
         /// <param name="parameterName">Name of the parameter in the original calling method.</param>
-        internal static void ThrowArgumentNullException_Member(string parameterName)
+        internal static void ThrowArgumentNullMemberException(string parameterName)
             => throw new ArgumentNullException(parameterName, $"A member of the collection argument given for '{parameterName}' was null.");
 
         /// <summary>
