@@ -11,11 +11,12 @@
     <RepositoryUrl>https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions</RepositoryUrl>
     <PackageTags>c#, useful, string, extension, efficient</PackageTags>
     <RepositoryType>git</RepositoryType>
-    <PackageIcon>IvanStoychev.Useful.String.Extensions.png</PackageIcon>
+    <PackageIcon>Nuget Icon.png</PackageIcon>
     <Copyright>Copyright (c) 2021 Ivan Stoychev. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <NeutralLanguage>English</NeutralLanguage>
-    <PackageReleaseNotes>= Updated package icon.
+    <PackageReleaseNotes>= Fixed some methods throwing an incorrect "NullReferenceException" instead of an "ArgumentNullException".
+= Updated package icon.
 = Improved unit tests.
 = Consolidated "Contains" methods:
     - Consolidated "Contains(StringComparison comparison, IEnumerable&lt;string&gt; keywords)" and "Contains(IEnumerable&lt;string&gt; keywords)" into "Contains(IEnumerable&lt;string&gt; keywords, StringComparison comparison = StringComparison.Ordinal)".
@@ -30,6 +31,7 @@
     <Product>IvanStoychev.Useful.String.Extensions</Product>
     <AssemblyName>IvanStoychev.Useful.String.Extensions</AssemblyName>
     <RootNamespace>IvanStoychev.Useful.String.Extensions</RootNamespace>
+    <PackageReadmeFile>Nuget Readme.md</PackageReadmeFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -45,9 +47,13 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="IvanStoychev.Useful.String.Extensions.png">
+    <None Include="..\Nuget Icon.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
+    </None>
+    <None Include="..\Nuget Readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
