@@ -24,7 +24,7 @@ namespace IvanStoychev.Useful.String.Extensions
         [Pure]
         public static bool Contains(this string str, params string[] keywords)
         {
-            Validator.CheckNullArgument(keywords, nameof(keywords));
+            Validator.CheckNullArgument(keywords);
 
             foreach (var word in keywords)
             {
@@ -51,7 +51,7 @@ namespace IvanStoychev.Useful.String.Extensions
         [Pure]
         public static bool Contains(this string str, StringComparison comparison, params string[] keywords)
         {
-            Validator.CheckNullArgument(keywords, nameof(keywords));
+            Validator.CheckNullArgument(keywords);
 
             foreach (var word in keywords)
             {
@@ -79,7 +79,7 @@ namespace IvanStoychev.Useful.String.Extensions
         [Pure]
         public static bool Contains(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
         {
-            Validator.CheckNullArgument(keywords, nameof(keywords));
+            Validator.CheckNullArgument(keywords);
 
             foreach (var word in keywords)
             {
@@ -105,7 +105,7 @@ namespace IvanStoychev.Useful.String.Extensions
         [Pure]
         public static bool Contains(this string str, params char[] keychars)
         {
-            Validator.CheckNullArgument(keychars, nameof(keychars));
+            Validator.CheckNullArgument(keychars);
 
             foreach (var character in keychars)
                 if (str.Contains(character))
@@ -129,7 +129,7 @@ namespace IvanStoychev.Useful.String.Extensions
         [Pure]
         public static bool Contains(this string str, StringComparison comparison, params char[] keychars)
         {
-            Validator.CheckNullArgument(keychars, nameof(keychars));
+            Validator.CheckNullArgument(keychars);
 
             foreach (var character in keychars)
                 if (str.Contains(character, comparison))
@@ -153,7 +153,7 @@ namespace IvanStoychev.Useful.String.Extensions
         [Pure]
         public static bool Contains(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
         {
-            Validator.CheckNullArgument(keychars, nameof(keychars));
+            Validator.CheckNullArgument(keychars);
 
             foreach (var character in keychars)
                 if (str.Contains(character, comparison))

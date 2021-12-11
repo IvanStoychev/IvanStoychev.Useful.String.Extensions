@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace IvanStoychev.Useful.String.Extensions
 {
@@ -175,7 +176,7 @@ namespace IvanStoychev.Useful.String.Extensions
         /// <exception cref="ArgumentNullException">
         /// <paramref name="argument"/> is null.
         /// </exception>
-        internal static void CheckNullArgument(object argument, string parameterName)
+        internal static void CheckNullArgument(object argument, [CallerArgumentExpression("argument")] string parameterName = null)
         {
             if (argument is null)
                 ExceptionThrower.ThrowArgumentNullException(parameterName);
