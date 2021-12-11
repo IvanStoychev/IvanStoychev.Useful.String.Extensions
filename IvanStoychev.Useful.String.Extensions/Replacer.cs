@@ -24,9 +24,7 @@ namespace IvanStoychev.Useful.String.Extensions
         /// </exception>
         [Pure]
         public static string Replace(this string str, string newString, params string[] oldStrings)
-        {
-            return ReplaceStringConsiderCase(str, oldStrings, newString);
-        }
+            => ReplaceStringConsiderCase(str, oldStrings, newString);
 
         /// <summary>
         /// Uses a regular expression to return a new string in which all occurrences of all given strings in the current instance are replaced with the given "newString",
@@ -66,9 +64,7 @@ namespace IvanStoychev.Useful.String.Extensions
         /// </exception>
         [Pure]
         public static string Replace(this string str, IEnumerable<string> oldStrings, string newString)
-        {
-            return ReplaceStringConsiderCase(str, oldStrings, newString);
-        }
+            => ReplaceStringConsiderCase(str, oldStrings, newString);
 
         /// <summary>
         /// Uses a regular expression to return a new string in which all occurrences of all members of the given IEnumerable
