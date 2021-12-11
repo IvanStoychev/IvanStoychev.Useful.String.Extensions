@@ -8,6 +8,11 @@ namespace IvanStoychev.Useful.String.Extensions
     static class ExceptionThrower
     {
         /// <summary>
+        /// Maximum amount of characters to display in an exception to the user.
+        /// </summary>
+        const int MAX_LENGTH = 10;
+
+        /// <summary>
         /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value "<paramref name="substring"/>" of
         /// parameter "<paramref name="parameterName"/>" is not found in the original string. If the value of <paramref name="substring"/> is longer
         /// than 10 characters the value displayed in the exception message will be truncated to 10.
@@ -16,7 +21,7 @@ namespace IvanStoychev.Useful.String.Extensions
         /// <param name="parameterName">Name of the parameter in the original method whose argument is <paramref name="substring"/>.</param>
         internal static void Throw_Substring_ArgumentOutOfRangeException(string substring, string parameterName)
         {
-            if (substring.Length > 10) substring = substring.Substring(0, 10) + "...";
+            if (substring.Length > MAX_LENGTH) substring = substring[..MAX_LENGTH] + "...";
             throw new ArgumentOutOfRangeException(parameterName, $"The string given for '{parameterName}' (\"{substring}\") was not found in the original instance.");
         }
 
@@ -29,18 +34,25 @@ namespace IvanStoychev.Useful.String.Extensions
         /// <param name="endString">String the user requested but that is not present in a subset of the string the original method was called on.</param>
         internal static void Throw_Endstring_ArgumentOutOfRangeException(string startString, string endString)
         {
-            if (endString.Length > 10) endString = endString.Substring(0, 10) + "...";
-            if (startString.Length > 10) startString = startString.Substring(0, 10) + "...";
+            if (endString.Length > MAX_LENGTH) endString = endString[..MAX_LENGTH] + "...";
+            if (startString.Length > MAX_LENGTH) startString = startString[..MAX_LENGTH] + "...";
 
             throw new ArgumentOutOfRangeException(nameof(endString), $"The string given for 'endString' (\"{endString}\") was not found after the given '{nameof(startString)}' (\"{startString}\") in the original instance.");
         }
 
         /// <summary>
-        /// Throws an <see cref="ArgumentNullException"/> that informs the user the value of <paramref name="parameterName"/> was null.
+        /// Throws an <see cref="ArgumentNullException"/> that informs the user the argument of <paramref name="parameterName"/> was null.
         /// </summary>
         /// <param name="parameterName">Name of the parameter in the original calling method.</param>
         internal static void ThrowArgumentNullException(string parameterName)
             => throw new ArgumentNullException(parameterName, $"The argument given for '{parameterName}' was null.");
+
+        /// <summary>
+        /// Throws an <see cref="ArgumentNullException"/> that informs the user the member of <paramref name="parameterName"/> was null.
+        /// </summary>
+        /// <param name="parameterName">Name of the parameter in the original calling method.</param>
+        internal static void ThrowArgumentNullException_Member(string parameterName)
+            => throw new ArgumentNullException(parameterName, $"A member of the collection argument given for '{parameterName}' was null.");
 
         /// <summary>
         /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value "<paramref name="length"/>" of
