@@ -30,9 +30,7 @@ namespace IvanStoychev.Useful.String.Extensions
         /// </exception>
         [Pure]
         public static string Remove(this string str, IEnumerable<string> removeStrings)
-        {
-            return RemoveStringConsiderCase(str, removeStrings.ToArray());
-        }
+            => RemoveStringConsiderCase(str, removeStrings.ToArray());
 
         /// <summary>
         /// Returns a new string in which all occurrences of all given strings in the current instance are removed.
@@ -52,9 +50,7 @@ namespace IvanStoychev.Useful.String.Extensions
         /// </exception>
         [Pure]
         public static string Remove(this string str, params string[] removeStrings)
-        {
-            return RemoveStringConsiderCase(str, removeStrings);
-        }
+            => RemoveStringConsiderCase(str, removeStrings);
 
         /// <summary>
         /// Returns a new string in which all occurrences of all members of a given IEnumerable in the current instance are removed.
@@ -132,9 +128,7 @@ namespace IvanStoychev.Useful.String.Extensions
         /// </exception>
         [Pure]
         public static string RemoveNumbers(this string originalString)
-        {
-            return Regex.Replace(originalString, @"[\d-]", string.Empty);
-        }
+            => Regex.Replace(originalString, @"[\d-]", string.Empty);
 
         /// <summary>
         /// Uses a regular expression to return a new string in which all occurrences of all special characters in the current instance are removed.
@@ -150,9 +144,7 @@ namespace IvanStoychev.Useful.String.Extensions
         /// </exception>
         [Pure]
         public static string RemoveSpecialCharacters(this string originalString)
-        {
-            return Regex.Replace(originalString, "[^0-9A-Za-z]+", string.Empty);
-        }
+            => Regex.Replace(originalString, "[^0-9A-Za-z]+", string.Empty);
 
         /// <summary>
         /// Uses a regular expression to return a new string in which all occurrences of all latin letters in the current instance are removed.
@@ -168,9 +160,7 @@ namespace IvanStoychev.Useful.String.Extensions
         /// </exception>
         [Pure]
         public static string RemoveLetters(this string originalString)
-        {
-            return Regex.Replace(originalString, "[A-Za-z]", string.Empty);
-        }
+            => Regex.Replace(originalString, "[A-Za-z]", string.Empty);
 
         /// <summary>
         /// Trims the given amount of characters from the start and end of the current instance.
@@ -273,7 +263,7 @@ namespace IvanStoychev.Useful.String.Extensions
             int lengthDiff = target.Length - amount;
             Validator.CheckAmountStringLength(nameof(amount), amount, lengthDiff);
 
-            return target.Substring(amount);
+            return target[amount..];
         }
 
         /// <summary>
@@ -293,7 +283,7 @@ namespace IvanStoychev.Useful.String.Extensions
                 return target;
 
             if (target.EndsWith(trimString))
-                target = target.Substring(0, target.Length - trimString.Length);
+                target = target[..^trimString.Length];
 
             return target;
         }
@@ -316,7 +306,7 @@ namespace IvanStoychev.Useful.String.Extensions
                 return target;
 
             if (target.EndsWith(trimString, stringComparison))
-                target = target.Substring(0, target.Length - trimString.Length);
+                target = target[..^trimString.Length];
 
             return target;
         }
@@ -343,7 +333,7 @@ namespace IvanStoychev.Useful.String.Extensions
                 return target;
 
             if (target.EndsWith(trimString, ignoreCase, culture))
-                target = target.Substring(0, target.Length - trimString.Length);
+                target = target[..^trimString.Length];
 
             return target;
         }
@@ -361,7 +351,7 @@ namespace IvanStoychev.Useful.String.Extensions
             int lengthDiff = target.Length - amount;
             Validator.CheckAmountStringLength(nameof(amount), amount, lengthDiff);
 
-            return target.Substring(0, lengthDiff);
+            return target[..lengthDiff];
         }
 
         /// <exception cref="ArgumentException">
