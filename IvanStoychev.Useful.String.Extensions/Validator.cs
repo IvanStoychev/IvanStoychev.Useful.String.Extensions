@@ -180,5 +180,19 @@ namespace IvanStoychev.Useful.String.Extensions
             if (argument is null)
                 ExceptionThrower.ThrowArgumentNullException(parameterName);
         }
+
+        /// <summary>
+        /// Checks if the given <paramref name="collectionMember"/> is null. And if it is, throws an <see cref="ArgumentNullException"/>.
+        /// </summary>
+        /// <param name="collectionMember">Member of a collection to evaluate.</param>
+        /// <param name="collectionParameterName">Name of the parameter, whose argument is the collection, in the original method.</param>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="collectionMember"/> is null.
+        /// </exception>
+        internal static void CheckNullMember(object collectionMember, string collectionParameterName)
+        {
+            if (collectionMember is null)
+                ExceptionThrower.ThrowArgumentNullException_Member(collectionParameterName);
+        }
     }
 }
