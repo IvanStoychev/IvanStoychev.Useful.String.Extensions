@@ -24,9 +24,14 @@ namespace IvanStoychev.Useful.String.Extensions
         [Pure]
         public static bool Contains(this string str, params string[] keywords)
         {
+            Validator.CheckNullArgument(keywords, nameof(keywords));
+
             foreach (var word in keywords)
+            {
+                Validator.CheckNullMember(word, nameof(keywords));
                 if (str.Contains(word))
                     return true;
+            }
 
             return false;
         }
@@ -46,9 +51,14 @@ namespace IvanStoychev.Useful.String.Extensions
         [Pure]
         public static bool Contains(this string str, StringComparison comparison, params string[] keywords)
         {
+            Validator.CheckNullArgument(keywords, nameof(keywords));
+
             foreach (var word in keywords)
+            {
+                Validator.CheckNullMember(word, nameof(keywords));
                 if (str.Contains(word, comparison))
                     return true;
+            }
 
             return false;
         }
@@ -69,9 +79,14 @@ namespace IvanStoychev.Useful.String.Extensions
         [Pure]
         public static bool Contains(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
         {
+            Validator.CheckNullArgument(keywords, nameof(keywords));
+
             foreach (var word in keywords)
+            {
+                Validator.CheckNullMember(word, nameof(keywords));
                 if (str.Contains(word, comparison))
                     return true;
+            }
 
             return false;
         }
@@ -90,8 +105,10 @@ namespace IvanStoychev.Useful.String.Extensions
         [Pure]
         public static bool Contains(this string str, params char[] keychars)
         {
-            foreach (var ch in keychars)
-                if (str.Contains(ch))
+            Validator.CheckNullArgument(keychars, nameof(keychars));
+
+            foreach (var character in keychars)
+                if (str.Contains(character))
                     return true;
 
             return false;
@@ -112,8 +129,10 @@ namespace IvanStoychev.Useful.String.Extensions
         [Pure]
         public static bool Contains(this string str, StringComparison comparison, params char[] keychars)
         {
-            foreach (var ch in keychars)
-                if (str.Contains(ch, comparison))
+            Validator.CheckNullArgument(keychars, nameof(keychars));
+
+            foreach (var character in keychars)
+                if (str.Contains(character, comparison))
                     return true;
 
             return false;
@@ -129,11 +148,13 @@ namespace IvanStoychev.Useful.String.Extensions
         /// <see langword="true"/> if any of the <paramref name="keychars"/> members occur within this string; otherwise, <see langword="false"/>.
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// The <paramref name="keychars"/> collection or any of its memebers are null.
+        /// <paramref name="keychars"/> is null.
         /// </exception>
         [Pure]
         public static bool Contains(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
         {
+            Validator.CheckNullArgument(keychars, nameof(keychars));
+
             foreach (var character in keychars)
                 if (str.Contains(character, comparison))
                     return true;
