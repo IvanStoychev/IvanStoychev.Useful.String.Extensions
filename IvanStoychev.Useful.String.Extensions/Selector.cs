@@ -32,7 +32,7 @@ namespace IvanStoychev.Useful.String.Extensions
 
             endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
 
-            return str.Substring(0, endStringIndex);
+            return str[..endStringIndex];
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace IvanStoychev.Useful.String.Extensions
 
             endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
 
-            return str.Substring(0, endStringIndex);
+            return str[..endStringIndex];
         }
 
         /// <summary>
