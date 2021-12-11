@@ -21,9 +21,7 @@ namespace IvanStoychev.Useful.String.Extensions
         /// </exception>
         [Pure]
         public static string KeepOnlyNumbers(this string originalString)
-        {
-            return Regex.Replace(originalString, @"[^\d]", string.Empty);
-        }
+            => Regex.Replace(originalString, @"[^\d]", string.Empty);
 
         /// <summary>
         /// Returns a new string containing all occurrences of all special characters in the current instance.
@@ -54,8 +52,6 @@ namespace IvanStoychev.Useful.String.Extensions
         /// </exception>
         [Pure]
         public static string KeepOnlyLetters(this string originalString)
-        {        
-            return Regex.Replace(originalString, @"[^a-zA-Z]", string.Empty);
-        }
+            => Regex.Replace(originalString, @"[^a-zA-Z]", string.Empty);
     }
 }
