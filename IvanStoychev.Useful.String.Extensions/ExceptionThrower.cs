@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace IvanStoychev.Useful.String.Extensions
 {
@@ -32,19 +33,21 @@ namespace IvanStoychev.Useful.String.Extensions
         /// </summary>
         /// <param name="startString">Substring that marks the start of a string which does not contain <paramref name="endString"/>.</param>
         /// <param name="endString">String the user requested but that is not present in a subset of the string the original method was called on.</param>
-        internal static void Throw_Endstring_ArgumentOutOfRangeException(string startString, string endString)
+        internal static void Throw_Endstring_ArgumentOutOfRangeException(string startString, string endString,
+                                                                         [CallerArgumentExpression("startString")] string startStringParameterName = null,
+                                                                         [CallerArgumentExpression("endString")] string endStringParameterName = null)
         {
             if (endString.Length > MAX_LENGTH) endString = endString[..MAX_LENGTH] + "...";
             if (startString.Length > MAX_LENGTH) startString = startString[..MAX_LENGTH] + "...";
 
-            throw new ArgumentOutOfRangeException(nameof(endString), $"The string given for 'endString' (\"{endString}\") was not found after the given '{nameof(startString)}' (\"{startString}\") in the original instance.");
+            throw new ArgumentOutOfRangeException(endStringParameterName, $"The string given for '{endStringParameterName}' (\"{endString}\") was not found after the given '{startStringParameterName}' (\"{startString}\") in the original instance.");
         }
 
         /// <summary>
         /// Throws an <see cref="ArgumentNullException"/> that informs the user the argument of <paramref name="parameterName"/> was null.
         /// </summary>
         /// <param name="parameterName">Name of the parameter in the original calling method.</param>
-        internal static void ThrowArgumentNullException(string parameterName)
+            internal static void ThrowArgumentNullException(string parameterName)
             => throw new ArgumentNullException(parameterName, $"The argument given for '{parameterName}' was null.");
 
         /// <summary>
