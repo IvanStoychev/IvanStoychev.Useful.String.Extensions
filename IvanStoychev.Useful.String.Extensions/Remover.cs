@@ -173,7 +173,7 @@ namespace IvanStoychev.Useful.String.Extensions
         public static string Trim(this string str, int amount)
         {
             int lengthDiff = str.Length - amount * 2;
-            Validator.CheckAmountStringLength(amount, lengthDiff);
+            Validator.CheckDoubleAmountStringLength(amount, lengthDiff);
 
             return str.Substring(amount, lengthDiff);
         }

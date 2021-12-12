@@ -85,5 +85,15 @@ namespace IvanStoychev.Useful.String.Extensions
         /// <param name="lengthDiff">The difference between the string length and the amount of characters requested by the user.</param>
         internal static void Throw_Amount_ArgumentOutOfRangeException(int amount, int lengthDiff, [CallerArgumentExpression("amount")] string parameterName = null)
             => throw new ArgumentOutOfRangeException(parameterName, $"The value given for '{parameterName}' (\"{amount}\") is longer than the entire string by {Math.Abs(lengthDiff)}.");
+
+        /// <summary>
+        /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the string he is attempting to trim by "<paramref name="amount"/>" from both ends is
+        /// <paramref name="lengthDiff"/> characters too short for that.
+        /// </summary>
+        /// <param name="amount">Amount of characters the user wanted removed from the start and end of a string.</param>
+        /// <param name="lengthDiff">The difference between the string length and the amount of characters requested by the user.</param>
+        /// <param name="parameterName">Name of the parameter in the original method whose argument is <paramref name="amount"/>.</param>
+        internal static void Throw_DoubleAmount_ArgumentOutOfRangeException(int amount, int lengthDiff, [CallerArgumentExpression("amount")] string parameterName = null)
+            => throw new ArgumentOutOfRangeException(parameterName, $"The string being trimmed is {Math.Abs(lengthDiff)} characters too short to be trimmed by {amount} from both ends.");
     }
 }

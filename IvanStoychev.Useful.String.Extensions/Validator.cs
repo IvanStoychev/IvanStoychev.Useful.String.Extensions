@@ -46,6 +46,18 @@ namespace IvanStoychev.Useful.String.Extensions
         }
 
         /// <summary>
+        /// Checks if the value of <paramref name="lengthDiff"/> is negative. And if it is, throws an <see cref="ArgumentOutOfRangeException"/>.
+        /// </summary>
+        /// <param name="amount">Number of characters the user wishes to remove from a string.</param>
+        /// <param name="lengthDiff">Number of characters left in the string after <paramref name="amount"/> have been removed.</param>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="lengthDiff"/> is a negative number.</exception>
+        internal static void CheckDoubleAmountStringLength(int amount, int lengthDiff)
+        {
+            if (lengthDiff < 0)
+                ExceptionThrower.Throw_DoubleAmount_ArgumentOutOfRangeException(amount, lengthDiff);
+        }
+
+        /// <summary>
         /// Checks if <paramref name="substring"/> occurs in <paramref name="originalString"/> and if it doesn't, throws an
         /// <see cref="ArgumentOutOfRangeException"/> that informs the user that the value "<paramref name="substring"/>" of
         /// argument <paramref name="parameterName"/> is not found in said string. If the value of <paramref name="substring"/> is longer
