@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace IvanStoychev.Useful.String.Extensions.Tests
@@ -15,9 +11,9 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             string testString = "123";
             int amount = 2;
             int lengthDiff = testString.Length - amount * 2;
-            string expectedMessage = $"The value given for '{nameof(amount)}' (\"{amount}\") is longer than the entire string by {Math.Abs(lengthDiff)}. (Parameter '{nameof(amount)}')";
+            string expectedMessage = $"The string being trimmed is {Math.Abs(lengthDiff)} characters too short to be trimmed by {amount} from both ends. (Parameter '{nameof(amount)}')";
 
-            void testAction() => testString.TrimStart(amount);
+            void testAction() => testString.Trim(amount);
 
             var exception = Assert.Throws<ArgumentOutOfRangeException>(testAction);
             Assert.Equal(expectedMessage, exception.Message);
