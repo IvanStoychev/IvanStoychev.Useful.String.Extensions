@@ -39,10 +39,10 @@ namespace IvanStoychev.Useful.String.Extensions
         /// <param name="stringArgument">The string from which the user wishes to remove <paramref name="amount"/> characters.</param>
         /// <param name="amount">Amount of characters the user wishes to remove from "<paramref name="stringArgument"/>".</param>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="lengthDiff"/> is a negative number.</exception>
-        internal static void CheckAmountStringLength(string parameterName, int amount, int lengthDiff)
+        internal static void CheckAmountStringLength(int amount, int lengthDiff)
         {
             if (lengthDiff < 0)
-                ExceptionThrower.Throw_Amount_ArgumentOutOfRangeException(parameterName, amount, lengthDiff);
+                ExceptionThrower.Throw_Amount_ArgumentOutOfRangeException(amount, lengthDiff);
         }
 
         /// <summary>

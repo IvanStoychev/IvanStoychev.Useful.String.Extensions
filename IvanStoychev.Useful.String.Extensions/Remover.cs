@@ -173,7 +173,7 @@ namespace IvanStoychev.Useful.String.Extensions
         public static string Trim(this string target, int amount)
         {
             int lengthDiff = target.Length - amount * 2;
-            Validator.CheckAmountStringLength(nameof(amount), amount, lengthDiff);
+            Validator.CheckAmountStringLength(amount, lengthDiff);
 
             return target.Substring(amount, lengthDiff);
         }
@@ -261,7 +261,7 @@ namespace IvanStoychev.Useful.String.Extensions
         public static string TrimStart(this string target, int amount)
         {
             int lengthDiff = target.Length - amount;
-            Validator.CheckAmountStringLength(nameof(amount), amount, lengthDiff);
+            Validator.CheckAmountStringLength(amount, lengthDiff);
 
             return target[amount..];
         }
@@ -349,7 +349,7 @@ namespace IvanStoychev.Useful.String.Extensions
         public static string TrimEnd(this string target, int amount)
         {
             int lengthDiff = target.Length - amount;
-            Validator.CheckAmountStringLength(nameof(amount), amount, lengthDiff);
+            Validator.CheckAmountStringLength(amount, lengthDiff);
 
             return target[..lengthDiff];
         }
