@@ -7,6 +7,9 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
     {
         [Theory]
         [InlineData("eos sed elitr sit lorem eos zzril lorem", "newWord", new string[] { "sed", "sit", "eos" }, "newWord newWord elitr newWord lorem newWord zzril lorem")]
+        [InlineData("Her scream silenced the screams of the screaming teenagers.", "newWord", new string[] { "scream" }, "Her newWord silenced the newWords of the newWording teenagers.")]
+        [InlineData("She was the burnt sugar type of girl sugar that always burnt sugar to show she cared.", "newWord", new string[] { "burnt", "sugar" }, "She was the newWord newWord type of girl newWord that always newWord newWord to show she cared.")]
+        [InlineData("Written warnings in rabbits manuals are worthless since rabbits worthless read.", "newWord", new string[] { "warnings", "rabbits", "worthless" }, "Written newWord in newWord manuals are newWord since newWord newWord read.")]
         public void ReplaceTest_Pass(string testString, string newString, string[] oldStrings, string expectedString)
         {
             string actualString = testString.Replace(newString, oldStrings);
