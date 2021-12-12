@@ -6,7 +6,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
 {
     public class Comparer_Tests
     {
-        #region Contains(this string str, params string[] keywords)
+        #region string Contains(this string str, params string[] keywords)
 
         [Theory]
         [InlineData("Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car", "ham" })]
@@ -36,9 +36,9 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             Assert.False(actual);
         }
 
-        #endregion Contains(this string str, params string[] keywords)
+        #endregion string Contains(this string str, params string[] keywords)
 
-        #region Contains(this string str, StringComparison comparison, params string[] keywords)
+        #region string Contains(this string str, StringComparison comparison, params string[] keywords)
 
         [Theory]
         [InlineData("Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car", "ham" })]
@@ -152,9 +152,9 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             Assert.False(actual);
         }
 
-        #endregion Contains(this string str, StringComparison comparison, params string[] keywords)
+        #endregion string Contains(this string str, StringComparison comparison, params string[] keywords)
 
-        #region Contains(this string str, IEnumerable<string> keywords, StringComparison comparison)
+        #region string Contains(this string str, IEnumerable<string> keywords, StringComparison comparison)
 
         [Theory, MemberData(nameof(Contains_IEnumString_CaseSensetive_Pass))]
         public void Contains_IEnumString_StringComparisonDefault_Pass(string testString, IEnumerable<string> keywords)
@@ -236,9 +236,9 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             Assert.False(actual);
         }
 
-        #endregion Contains(this string str, IEnumerable<string> keywords, StringComparison comparison)
+        #endregion string Contains(this string str, IEnumerable<string> keywords, StringComparison comparison)
 
-        #region Contains(this string str, params char[] keychars)
+        #region string Contains(this string str, params char[] keychars)
 
         [Theory]
         [InlineData("v027CPSNRo9pwj9f", new char[] { 'z', '7', 'x' })]
@@ -268,9 +268,9 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             Assert.False(actual);
         }
 
-        #endregion Contains(this string str, params char[] keychars)
+        #endregion string Contains(this string str, params char[] keychars)
 
-        #region Contains(this string str, StringComparison comparison, params char[] keychars)
+        #region string Contains(this string str, StringComparison comparison, params char[] keychars)
 
         [Theory]
         [InlineData("v027CPSNRo9pwj9f", new char[] { 'z', '7', 'x' })]
@@ -384,9 +384,9 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             Assert.False(actual);
         }
 
-        #endregion Contains(this string str, StringComparison comparison, params char[] keychars)
+        #endregion string Contains(this string str, StringComparison comparison, params char[] keychars)
 
-        #region Contains(this string str, IEnumerable<char> keychars, StringComparison comparison)
+        #region string Contains(this string str, IEnumerable<char> keychars, StringComparison comparison)
 
         [Theory, MemberData(nameof(Contains_IEnumChar_CaseSensetive_Pass))]
         public void Contains_IEnumChar_StringComparisonDefault_Pass(string testString, IEnumerable<char> keychars)
@@ -468,7 +468,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             Assert.False(actual);
         }
 
-        #endregion Contains(this string str, IEnumerable<char> keychars, StringComparison comparison)
+        #endregion string Contains(this string str, IEnumerable<char> keychars, StringComparison comparison)
 
         #region IEnumerable test data
 

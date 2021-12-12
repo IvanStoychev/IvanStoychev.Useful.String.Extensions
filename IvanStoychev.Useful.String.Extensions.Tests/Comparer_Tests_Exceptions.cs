@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace IvanStoychev.Useful.String.Extensions.Tests
 {
     public class Comparer_Tests_Exceptions
     {
-        #region Contains(this string str, params string[] keywords)
+        #region string Contains(this string str, params string[] keywords)
 
         [Fact]
         public void Contains_ParamsString_NullArgument()
@@ -33,9 +31,9 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             Assert.Equal(expectedMessage, exception.Message);
         }
 
-        #endregion Contains(this string str, params string[] keywords)
+        #endregion string Contains(this string str, params string[] keywords)
 
-        #region Contains(this string str, StringComparison comparison, params string[] keywords)
+        #region string Contains(this string str, StringComparison comparison, params string[] keywords)
 
         [Fact]
         public void Contains_InvariantCulture_ParamsString_NullArgument()
@@ -133,9 +131,9 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             Assert.Equal(expectedMessage, exception.Message);
         }
 
-        #endregion Contains(this string str, StringComparison comparison, params string[] keywords)
+        #endregion string Contains(this string str, StringComparison comparison, params string[] keywords)
 
-        #region Contains(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
+        #region string Contains(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
 
         [Fact]
         public void Contains_IEnumString_Default_NullArgument()
@@ -257,9 +255,9 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             Assert.Equal(expectedMessage, exception.Message);
         }
 
-        #endregion Contains(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
+        #endregion string Contains(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
         
-        #region Contains(this string str, params char[] keychars)
+        #region string Contains(this string str, params char[] keychars)
 
         [Fact]
         public void Contains_ParamsChar_NullArgument()
@@ -273,9 +271,9 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             Assert.Equal(expectedMessage, exception.Message);
         }
 
-        #endregion Contains(this string str, params char[] keychars)
+        #endregion string Contains(this string str, params char[] keychars)
 
-        #region Contains(this string str, StringComparison comparison, params char[] keychars)
+        #region string Contains(this string str, StringComparison comparison, params char[] keychars)
 
         [Fact]
         public void Contains_InvariantCulture_ParamsChar_NullArgument()
@@ -325,9 +323,9 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             Assert.Equal(expectedMessage, exception.Message);
         }
 
-        #endregion Contains(this string str, StringComparison comparison, params char[] keychars)
+        #endregion string Contains(this string str, StringComparison comparison, params char[] keychars)
 
-        #region Contains(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
+        #region string Contains(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
 
         [Fact]
         public void Contains_IEnumChar_InvariantCulture_NullArgument()
@@ -377,6 +375,6 @@ namespace IvanStoychev.Useful.String.Extensions.Tests
             Assert.Equal(expectedMessage, exception.Message);
         }
 
-        #endregion Contains(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
+        #endregion string Contains(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
     }
 }
