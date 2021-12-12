@@ -18,6 +18,7 @@ namespace IvanStoychev.Useful.String.Extensions
         /// <returns>A string with all instances of "oldStrings" replaced by "newString".</returns>
         /// <exception cref="ArgumentException">A regular expression parsing error occurred.</exception>
         /// <exception cref="ArgumentNullException">The current instance, "newString", or a member of "oldStrings" is null.</exception>
+        /// <exception cref="NullReferenceException">"oldStrings" is null.</exception>
         /// <exception cref="RegexMatchTimeoutException">
         /// Thrown if the execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
         /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
@@ -36,6 +37,7 @@ namespace IvanStoychev.Useful.String.Extensions
         /// <returns>A string with all instances of "oldStrings" replaced by "newString".</returns>
         /// <exception cref="ArgumentException">A regular expression parsing error occurred.</exception>
         /// <exception cref="ArgumentNullException">The current instance, "newString", or a member of "oldStrings" is null.</exception>
+        /// <exception cref="NullReferenceException">"oldStrings" is null.</exception>
         /// <exception cref="RegexMatchTimeoutException">
         /// Thrown if the execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
         /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
@@ -58,6 +60,7 @@ namespace IvanStoychev.Useful.String.Extensions
         /// <returns>A string with all instances of "oldStrings" replaced by "newString".</returns>
         /// <exception cref="ArgumentException">A regular expression parsing error occurred.</exception>
         /// <exception cref="ArgumentNullException">The current instance, "newString", or a member of "oldStrings" is null.</exception>
+        /// <exception cref="NullReferenceException">"oldStrings" is null.</exception>
         /// <exception cref="RegexMatchTimeoutException">
         /// Thrown if the execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
         /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
@@ -76,6 +79,7 @@ namespace IvanStoychev.Useful.String.Extensions
         /// <returns>A string with all instances of "oldStrings" replaced by "newString".</returns>
         /// <exception cref="ArgumentException">A regular expression parsing error occurred.</exception>
         /// <exception cref="ArgumentNullException">The current instance, "newString", or a member of "oldStrings" is null.</exception>
+        /// <exception cref="NullReferenceException">"oldStrings" is null.</exception>
         /// <exception cref="RegexMatchTimeoutException">
         /// Thrown if the execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
         /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
@@ -91,6 +95,7 @@ namespace IvanStoychev.Useful.String.Extensions
 
         /// <exception cref="ArgumentException">A regular expression parsing error occurred.</exception>
         /// <exception cref="ArgumentNullException">"value", "oldStrings", or "newString" are null.</exception>
+        /// <exception cref="NullReferenceException">"oldStrings" is null.</exception>
         /// <exception cref="RegexMatchTimeoutException">
         /// Thrown if the execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
         /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
@@ -105,6 +110,7 @@ namespace IvanStoychev.Useful.String.Extensions
 
         /// <exception cref="ArgumentException">A regular expression parsing error occurred.</exception>
         /// <exception cref="ArgumentNullException">"value", "oldStrings", or "newString" are null.</exception>
+        /// <exception cref="NullReferenceException">"oldStrings" is null.</exception>
         /// <exception cref="RegexMatchTimeoutException">
         /// Thrown if the execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
         /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
