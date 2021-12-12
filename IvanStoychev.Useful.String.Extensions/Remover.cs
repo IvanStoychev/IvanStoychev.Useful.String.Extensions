@@ -165,23 +165,23 @@ namespace IvanStoychev.Useful.String.Extensions
         /// <summary>
         /// Trims the given amount of characters from the start and end of the current instance.
         /// </summary>
-        /// <param name="target">The string to trim.</param>
+        /// <param name="str">The string to trim.</param>
         /// <param name="amount">Amount of characters to remove from the start and end of the instance.</param>
         /// <returns>The string that remains after <paramref name="amount"/> of characters have been removed from the original instance's start and end.</returns>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="amount"/> is twice of more times bigger than the original instance's length.</exception>
         [Pure]
-        public static string Trim(this string target, int amount)
+        public static string Trim(this string str, int amount)
         {
-            int lengthDiff = target.Length - amount * 2;
+            int lengthDiff = str.Length - amount * 2;
             Validator.CheckAmountStringLength(amount, lengthDiff);
 
-            return target.Substring(amount, lengthDiff);
+            return str.Substring(amount, lengthDiff);
         }
 
         /// <summary>
         /// Removes the leading occurrence of a specified string from the current instance.
         /// </summary>
-        /// <param name="target">The instance to remove the string from.</param>
+        /// <param name="str">The instance to remove the string from.</param>
         /// <param name="trimString">The string to remove or null.</param>
         /// <returns>
         /// The string that remains after the occurrence of "trimString" is removed from the start of
@@ -189,21 +189,21 @@ namespace IvanStoychev.Useful.String.Extensions
         /// current instance the method returns the current instance unchanged.
         /// </returns>
         [Pure]
-        public static string TrimStart(this string target, string trimString)
+        public static string TrimStart(this string str, string trimString)
         {
             if (string.IsNullOrEmpty(trimString))
-                return target;
+                return str;
 
-            if (target.StartsWith(trimString))
-                target = target[trimString.Length..];
+            if (str.StartsWith(trimString))
+                str = str[trimString.Length..];
 
-            return target;
+            return str;
         }
 
         /// <summary>
         /// Removes the leading occurrence of a specified string from the current instance, using the provided string comparison option.
         /// </summary>
-        /// <param name="target">The instance to remove the string from.</param>
+        /// <param name="str">The instance to remove the string from.</param>
         /// <param name="trimString">The string to remove.</param>
         /// <param name="stringComparison">One of the enumeration values that determines how the start of the current instance and "trimString" are compared.</param>
         /// <returns>
@@ -212,21 +212,21 @@ namespace IvanStoychev.Useful.String.Extensions
         /// current instance the method returns the current instance unchanged.
         /// </returns>
         [Pure]
-        public static string TrimStart(this string target, string trimString, StringComparison stringComparison)
+        public static string TrimStart(this string str, string trimString, StringComparison stringComparison)
         {
             if (string.IsNullOrEmpty(trimString))
-                return target;
+                return str;
 
-            if (target.StartsWith(trimString, stringComparison))
-                target = target[trimString.Length..];
+            if (str.StartsWith(trimString, stringComparison))
+                str = str[trimString.Length..];
 
-            return target;
+            return str;
         }
 
         /// <summary>
         /// Removes the leading occurrence of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
         /// </summary>
-        /// <param name="target">The string to remove occurrences from.</param>
+        /// <param name="str">The string to remove occurrences from.</param>
         /// <param name="trimString">The string to remove.</param>
         /// <param name="ignoreCase">"true" to ignore casing when trimming, "false" otherwise.</param>
         /// <param name="culture">
@@ -239,37 +239,37 @@ namespace IvanStoychev.Useful.String.Extensions
         /// current instance the method returns the current instance unchanged.
         /// </returns>
         [Pure]
-        public static string TrimStart(this string target, string trimString, bool ignoreCase, CultureInfo culture)
+        public static string TrimStart(this string str, string trimString, bool ignoreCase, CultureInfo culture)
         {
             if (string.IsNullOrEmpty(trimString))
-                return target;
+                return str;
 
-            if (target.StartsWith(trimString, ignoreCase, culture))
-                target = target[trimString.Length..];
+            if (str.StartsWith(trimString, ignoreCase, culture))
+                str = str[trimString.Length..];
 
-            return target;
+            return str;
         }
 
         /// <summary>
         /// Trims the given amount of characters from the start of the current instance.
         /// </summary>
-        /// <param name="target">The string to trim.</param>
+        /// <param name="str">The string to trim.</param>
         /// <param name="amount">Amount of characters to remove from the start of the instance.</param>
         /// <returns>The string that remains after <paramref name="amount"/> of characters have been removed from the original instance's start.</returns>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="amount"/> is bigger than the original instance's length.</exception>
         [Pure]
-        public static string TrimStart(this string target, int amount)
+        public static string TrimStart(this string str, int amount)
         {
-            int lengthDiff = target.Length - amount;
+            int lengthDiff = str.Length - amount;
             Validator.CheckAmountStringLength(amount, lengthDiff);
 
-            return target[amount..];
+            return str[amount..];
         }
 
         /// <summary>
         /// Removes the trailing occurrence of a specified string from the current instance.
         /// </summary>
-        /// <param name="target">The string to remove occurrences from.</param>
+        /// <param name="str">The string to remove occurrences from.</param>
         /// <param name="trimString">The string to remove.</param>
         /// <returns>
         /// The string that remains after the occurrence of "trimString" is removed from the end of
@@ -277,21 +277,21 @@ namespace IvanStoychev.Useful.String.Extensions
         /// current instance the method returns the current instance unchanged.
         /// </returns>
         [Pure]
-        public static string TrimEnd(this string target, string trimString)
+        public static string TrimEnd(this string str, string trimString)
         {
             if (string.IsNullOrEmpty(trimString))
-                return target;
+                return str;
 
-            if (target.EndsWith(trimString))
-                target = target[..^trimString.Length];
+            if (str.EndsWith(trimString))
+                str = str[..^trimString.Length];
 
-            return target;
+            return str;
         }
 
         /// <summary>
         /// Removes the trailing occurrence of a specified string from the current instance, using the provided string comparison option.
         /// </summary>
-        /// <param name="target">The string to remove occurrences from.</param>
+        /// <param name="str">The string to remove occurrences from.</param>
         /// <param name="trimString">The string to remove.</param>
         /// <param name="stringComparison">One of the enumeration values that determines how the end of the current instance and "trimString" are compared.</param>
         /// <returns>
@@ -300,21 +300,21 @@ namespace IvanStoychev.Useful.String.Extensions
         /// current instance the method returns the current instance unchanged.
         /// </returns>
         [Pure]
-        public static string TrimEnd(this string target, string trimString, StringComparison stringComparison)
+        public static string TrimEnd(this string str, string trimString, StringComparison stringComparison)
         {
             if (string.IsNullOrEmpty(trimString))
-                return target;
+                return str;
 
-            if (target.EndsWith(trimString, stringComparison))
-                target = target[..^trimString.Length];
+            if (str.EndsWith(trimString, stringComparison))
+                str = str[..^trimString.Length];
 
-            return target;
+            return str;
         }
 
         /// <summary>
         /// Removes the trailing occurrence of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
         /// </summary>
-        /// <param name="target">The string to remove occurrences from.</param>
+        /// <param name="str">The string to remove occurrences from.</param>
         /// <param name="trimString">The string to remove.</param>
         /// <param name="ignoreCase">"true" to ignore casing when trimming, "false" otherwise.</param>
         /// <param name="culture">
@@ -327,31 +327,31 @@ namespace IvanStoychev.Useful.String.Extensions
         /// current instance the method returns the current instance unchanged.
         /// </returns>
         [Pure]
-        public static string TrimEnd(this string target, string trimString, bool ignoreCase, CultureInfo culture)
+        public static string TrimEnd(this string str, string trimString, bool ignoreCase, CultureInfo culture)
         {
             if (string.IsNullOrEmpty(trimString))
-                return target;
+                return str;
 
-            if (target.EndsWith(trimString, ignoreCase, culture))
-                target = target[..^trimString.Length];
+            if (str.EndsWith(trimString, ignoreCase, culture))
+                str = str[..^trimString.Length];
 
-            return target;
+            return str;
         }
 
         /// <summary>
         /// Trims the given amount of characters from the end of the current instance.
         /// </summary>
-        /// <param name="target">The string to trim.</param>
+        /// <param name="str">The string to trim.</param>
         /// <param name="amount">Amount of characters to remove from the end of the instance.</param>
         /// <returns>The string that remains after <paramref name="amount"/> of characters have been removed from the original instance's end.</returns>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="amount"/> is bigger than the original instance's length.</exception>
         [Pure]
-        public static string TrimEnd(this string target, int amount)
+        public static string TrimEnd(this string str, int amount)
         {
-            int lengthDiff = target.Length - amount;
+            int lengthDiff = str.Length - amount;
             Validator.CheckAmountStringLength(amount, lengthDiff);
 
-            return target[..lengthDiff];
+            return str[..lengthDiff];
         }
 
         /// <exception cref="ArgumentException">
