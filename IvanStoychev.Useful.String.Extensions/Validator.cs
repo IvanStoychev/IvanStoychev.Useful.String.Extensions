@@ -17,7 +17,7 @@ namespace IvanStoychev.Useful.String.Extensions
         internal static void CheckAmountStringLength(int amount, int lengthDiff)
         {
             if (lengthDiff < 0)
-                ExceptionThrower.Throw_Amount_ArgumentOutOfRangeException(amount, lengthDiff);
+                ExceptionThrower.Throw_ArgumentOutOfRangeException_Amount(amount, lengthDiff);
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace IvanStoychev.Useful.String.Extensions
         internal static void CheckDoubleAmountStringLength(int amount, int lengthDiff)
         {
             if (lengthDiff < 0)
-                ExceptionThrower.Throw_DoubleAmount_ArgumentOutOfRangeException(amount, lengthDiff);
+                ExceptionThrower.Throw_ArgumentOutOfRangeException_DoubleAmount(amount, lengthDiff);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace IvanStoychev.Useful.String.Extensions
             endStringIndex = substringStartStringOnwards.IndexOf(endString, stringComparison);
 
             if (endStringIndex == -1)
-                ExceptionThrower.Throw_Endstring_ArgumentOutOfRangeException(startString, endString);
+                ExceptionThrower.Throw_ArgumentOutOfRangeException_Endstring(startString, endString);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace IvanStoychev.Useful.String.Extensions
             endStringIndex = substringStartStringOnwards.LastIndexOf(endString, stringComparison);
 
             if (endStringIndex == -1)
-                ExceptionThrower.Throw_Endstring_ArgumentOutOfRangeException(startString, endString);
+                ExceptionThrower.Throw_ArgumentOutOfRangeException_Endstring(startString, endString);
         }
         
         /// <summary>
@@ -110,7 +110,7 @@ namespace IvanStoychev.Useful.String.Extensions
         internal static void CheckLengthIsPositive(int length)
         {
             if (length < 0)
-                ExceptionThrower.Throw_Length_ArgumentOutOfRangeException(length, nameof(length));
+                ExceptionThrower.Throw_ArgumentOutOfRangeException_Length(length, nameof(length));
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace IvanStoychev.Useful.String.Extensions
         {
             int lengthDiff = stringLength - length;
             if (lengthDiff < 0)
-                ExceptionThrower.Throw_Length_ArgumentOutOfRangeException(length, lengthDiff);
+                ExceptionThrower.Throw_ArgumentOutOfRangeException_Length(length, lengthDiff);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace IvanStoychev.Useful.String.Extensions
         internal static void CheckNullArgument(object argument, [CallerArgumentExpression("argument")] string parameterName = null)
         {
             if (argument is null)
-                ExceptionThrower.ThrowArgumentNullException(parameterName);
+                ExceptionThrower.Throw_ArgumentNullException(parameterName);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace IvanStoychev.Useful.String.Extensions
         internal static void CheckNullMember(object collectionMember, string collectionParameterName)
         {
             if (collectionMember is null)
-                ExceptionThrower.ThrowArgumentNullMemberException(collectionParameterName);
+                ExceptionThrower.Throw_ArgumentNullMemberException(collectionParameterName);
         }
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace IvanStoychev.Useful.String.Extensions
             substringIndex = originalString.IndexOf(substring, stringComparison);
 
             if (substringIndex == -1)
-                ExceptionThrower.Throw_Substring_ArgumentOutOfRangeException(substring, parameterName);
+                ExceptionThrower.Throw_ArgumentOutOfRangeException_Substring(substring, parameterName);
         }
 
         /// <summary>
@@ -205,7 +205,7 @@ namespace IvanStoychev.Useful.String.Extensions
             substringIndex = originalString.LastIndexOf(substring, stringComparison);
 
             if (substringIndex == -1)
-                ExceptionThrower.Throw_Substring_ArgumentOutOfRangeException(substring, parameterName);
+                ExceptionThrower.Throw_ArgumentOutOfRangeException_Substring(substring, parameterName);
         }
     }
 }
