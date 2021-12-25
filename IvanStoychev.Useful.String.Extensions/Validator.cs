@@ -9,31 +9,6 @@ namespace IvanStoychev.Useful.String.Extensions
     static class Validator
     {
         /// <summary>
-        /// Checks if the value given for <paramref name="length"/> isn't a negative number. And if it is, throws an <see cref="ArgumentOutOfRangeException"/>.
-        /// </summary>
-        /// <param name="length">Integer to be verified that it isn't less than zero.</param>
-        /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is a negative number.</exception>
-        internal static void CheckLengthIsPositive(int length)
-        {
-            if (length < 0)
-                ExceptionThrower.Throw_Length_ArgumentOutOfRangeException(length, nameof(length));
-        }
-
-        /// <summary>
-        /// Checks if the value given for <paramref name="length"/> isn't bigger than the given <paramref name="stringLength"/>.
-        /// And if it is, throws an <see cref="ArgumentOutOfRangeException"/>.
-        /// </summary>
-        /// <param name="stringLength">The amount of available characters from which the user wishes to select <paramref name="length"/> amount.</param>
-        /// <param name="length">Amount of characters the user wishes to select from a string with length "<paramref name="stringLength"/>".</param>
-        /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is bigger than <paramref name="stringLength"/>.</exception>
-        internal static void CheckLengthIsWithinBounds(int stringLength, int length)
-        {
-            int lengthDiff = stringLength - length;
-            if (lengthDiff < 0)
-                ExceptionThrower.Throw_Length_ArgumentOutOfRangeException(length, lengthDiff);
-        }
-
-        /// <summary>
         /// Checks if the value of <paramref name="lengthDiff"/> is negative. And if it is, throws an <see cref="ArgumentOutOfRangeException"/>.
         /// </summary>
         /// <param name="amount">Number of characters the user wishes to remove from a string.</param>
@@ -55,58 +30,6 @@ namespace IvanStoychev.Useful.String.Extensions
         {
             if (lengthDiff < 0)
                 ExceptionThrower.Throw_DoubleAmount_ArgumentOutOfRangeException(amount, lengthDiff);
-        }
-
-        /// <summary>
-        /// Checks if <paramref name="substring"/> occurs in <paramref name="originalString"/> and if it doesn't, throws an
-        /// <see cref="ArgumentOutOfRangeException"/> that informs the user that the value "<paramref name="substring"/>" of
-        /// argument <paramref name="parameterName"/> is not found in said string. If the value of <paramref name="substring"/> is longer
-        /// than 10 characters the value displayed in the exception message will be truncated to 10.
-        /// <br/>In all cases the index of the first occurrence of <paramref name="substring"/> in <paramref name="originalString"/> is saved in <paramref name="substringIndex"/>.
-        /// </summary>
-        /// <param name="originalString">The instance which to check for <paramref name="substring"/>.</param>
-        /// <param name="substring">The string to search in <paramref name="originalString"/> for.</param>
-        /// <param name="parameterName">The name of the parameter in the original method, the argument of which is <paramref name="substring"/>.</param>
-        /// <param name="substringIndex">
-        /// Contains the index of <paramref name="substring"/> in <paramref name="originalString"/>. If it is not found the index is "-1".
-        /// <br/>This parameter is passed uninitialized.
-        /// </param>
-        /// <param name="stringComparison">The comparison rules to use when looking for <paramref name="substring"/>.</param>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// <paramref name="substring"/> is not found in <paramref name="originalString"/>.
-        /// </exception>
-        internal static void CheckSubstringIndex(string originalString, string substring, string parameterName, out int substringIndex, StringComparison stringComparison = StringComparison.CurrentCulture)
-        {
-            substringIndex = originalString.IndexOf(substring, stringComparison);
-
-            if (substringIndex == -1)
-                ExceptionThrower.Throw_Substring_ArgumentOutOfRangeException(substring, parameterName);
-        }
-
-        /// <summary>
-        /// Checks if <paramref name="substring"/> occurs in <paramref name="originalString"/> and if it doesn't, throws an
-        /// <see cref="ArgumentOutOfRangeException"/> that informs the user that the value "<paramref name="substring"/>" of
-        /// argument <paramref name="parameterName"/> is not found in said string. If the value of <paramref name="substring"/> is longer
-        /// than 10 characters the value displayed in the exception message will be truncated to 10.
-        /// <br/>In all cases the index of the last occurrence of <paramref name="substring"/> in <paramref name="originalString"/> is saved in <paramref name="substringIndex"/>.
-        /// </summary>
-        /// <param name="originalString">The instance which to check for <paramref name="substring"/>.</param>
-        /// <param name="substring">The string to search in <paramref name="originalString"/> for.</param>
-        /// <param name="parameterName">The name of the parameter in the original method, the argument of which is <paramref name="substring"/>.</param>
-        /// <param name="substringIndex">
-        /// Contains the index of <paramref name="substring"/> in <paramref name="originalString"/>. If it is not found the index is "-1".
-        /// <br/>This parameter is passed uninitialized.
-        /// </param>
-        /// <param name="stringComparison">The comparison rules to use when looking for <paramref name="substring"/>.</param>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// <paramref name="substring"/> is not found in <paramref name="originalString"/>.
-        /// </exception>
-        internal static void CheckSubstringLastIndex(string originalString, string substring, string parameterName, out int substringIndex, StringComparison stringComparison = StringComparison.CurrentCulture)
-        {
-            substringIndex = originalString.LastIndexOf(substring, stringComparison);
-
-            if (substringIndex == -1)
-                ExceptionThrower.Throw_Substring_ArgumentOutOfRangeException(substring, parameterName);
         }
 
         /// <summary>
@@ -178,6 +101,31 @@ namespace IvanStoychev.Useful.String.Extensions
             if (endStringIndex == -1)
                 ExceptionThrower.Throw_Endstring_ArgumentOutOfRangeException(startString, endString);
         }
+        
+        /// <summary>
+        /// Checks if the value given for <paramref name="length"/> isn't a negative number. And if it is, throws an <see cref="ArgumentOutOfRangeException"/>.
+        /// </summary>
+        /// <param name="length">Integer to be verified that it isn't less than zero.</param>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is a negative number.</exception>
+        internal static void CheckLengthIsPositive(int length)
+        {
+            if (length < 0)
+                ExceptionThrower.Throw_Length_ArgumentOutOfRangeException(length, nameof(length));
+        }
+
+        /// <summary>
+        /// Checks if the value given for <paramref name="length"/> isn't bigger than the given <paramref name="stringLength"/>.
+        /// And if it is, throws an <see cref="ArgumentOutOfRangeException"/>.
+        /// </summary>
+        /// <param name="stringLength">The amount of available characters from which the user wishes to select <paramref name="length"/> amount.</param>
+        /// <param name="length">Amount of characters the user wishes to select from a string with length "<paramref name="stringLength"/>".</param>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is bigger than <paramref name="stringLength"/>.</exception>
+        internal static void CheckLengthIsWithinBounds(int stringLength, int length)
+        {
+            int lengthDiff = stringLength - length;
+            if (lengthDiff < 0)
+                ExceptionThrower.Throw_Length_ArgumentOutOfRangeException(length, lengthDiff);
+        }
 
         /// <summary>
         /// Checks if the given <paramref name="argument"/> of parameter "<paramref name="parameterName"/>" is null.
@@ -206,6 +154,58 @@ namespace IvanStoychev.Useful.String.Extensions
         {
             if (collectionMember is null)
                 ExceptionThrower.ThrowArgumentNullMemberException(collectionParameterName);
+        }
+
+        /// <summary>
+        /// Checks if <paramref name="substring"/> occurs in <paramref name="originalString"/> and if it doesn't, throws an
+        /// <see cref="ArgumentOutOfRangeException"/> that informs the user that the value "<paramref name="substring"/>" of
+        /// argument <paramref name="parameterName"/> is not found in said string. If the value of <paramref name="substring"/> is longer
+        /// than 10 characters the value displayed in the exception message will be truncated to 10.
+        /// <br/>In all cases the index of the first occurrence of <paramref name="substring"/> in <paramref name="originalString"/> is saved in <paramref name="substringIndex"/>.
+        /// </summary>
+        /// <param name="originalString">The instance which to check for <paramref name="substring"/>.</param>
+        /// <param name="substring">The string to search in <paramref name="originalString"/> for.</param>
+        /// <param name="parameterName">The name of the parameter in the original method, the argument of which is <paramref name="substring"/>.</param>
+        /// <param name="substringIndex">
+        /// Contains the index of <paramref name="substring"/> in <paramref name="originalString"/>. If it is not found the index is "-1".
+        /// <br/>This parameter is passed uninitialized.
+        /// </param>
+        /// <param name="stringComparison">The comparison rules to use when looking for <paramref name="substring"/>.</param>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="substring"/> is not found in <paramref name="originalString"/>.
+        /// </exception>
+        internal static void CheckSubstringIndex(string originalString, string substring, string parameterName, out int substringIndex, StringComparison stringComparison = StringComparison.CurrentCulture)
+        {
+            substringIndex = originalString.IndexOf(substring, stringComparison);
+
+            if (substringIndex == -1)
+                ExceptionThrower.Throw_Substring_ArgumentOutOfRangeException(substring, parameterName);
+        }
+
+        /// <summary>
+        /// Checks if <paramref name="substring"/> occurs in <paramref name="originalString"/> and if it doesn't, throws an
+        /// <see cref="ArgumentOutOfRangeException"/> that informs the user that the value "<paramref name="substring"/>" of
+        /// argument <paramref name="parameterName"/> is not found in said string. If the value of <paramref name="substring"/> is longer
+        /// than 10 characters the value displayed in the exception message will be truncated to 10.
+        /// <br/>In all cases the index of the last occurrence of <paramref name="substring"/> in <paramref name="originalString"/> is saved in <paramref name="substringIndex"/>.
+        /// </summary>
+        /// <param name="originalString">The instance which to check for <paramref name="substring"/>.</param>
+        /// <param name="substring">The string to search in <paramref name="originalString"/> for.</param>
+        /// <param name="parameterName">The name of the parameter in the original method, the argument of which is <paramref name="substring"/>.</param>
+        /// <param name="substringIndex">
+        /// Contains the index of <paramref name="substring"/> in <paramref name="originalString"/>. If it is not found the index is "-1".
+        /// <br/>This parameter is passed uninitialized.
+        /// </param>
+        /// <param name="stringComparison">The comparison rules to use when looking for <paramref name="substring"/>.</param>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="substring"/> is not found in <paramref name="originalString"/>.
+        /// </exception>
+        internal static void CheckSubstringLastIndex(string originalString, string substring, string parameterName, out int substringIndex, StringComparison stringComparison = StringComparison.CurrentCulture)
+        {
+            substringIndex = originalString.LastIndexOf(substring, stringComparison);
+
+            if (substringIndex == -1)
+                ExceptionThrower.Throw_Substring_ArgumentOutOfRangeException(substring, parameterName);
         }
     }
 }
