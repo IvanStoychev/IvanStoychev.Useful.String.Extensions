@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <Authors>Ivan Stoychev</Authors>
     <Title>Ivan Stoychev's Useful String Extensions</Title>
     <Language>English</Language>
@@ -12,9 +12,9 @@
     <PackageTags>c#, useful, string, extension, efficient</PackageTags>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>Nuget Icon.png</PackageIcon>
-    <Copyright>Copyright (c) 2021 Ivan Stoychev. All rights reserved.</Copyright>
+    <Copyright>Copyright (c) 2022 Ivan Stoychev. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <NeutralLanguage>English</NeutralLanguage>
+    <NeutralLanguage>en</NeutralLanguage>
     <PackageReleaseNotes>= Fixed some methods throwing an incorrect "NullReferenceException" instead of an "ArgumentNullException".
 = Updated package icon.
 = Improved unit tests.
@@ -32,6 +32,11 @@
     <AssemblyName>IvanStoychev.Useful.String.Extensions</AssemblyName>
     <RootNamespace>IvanStoychev.Useful.String.Extensions</RootNamespace>
     <PackageReadmeFile>Nuget Readme.md</PackageReadmeFile>
+    <DebugType>embedded</DebugType>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Nullable>disable</Nullable>
+    <SignAssembly>False</SignAssembly>
+    <ErrorReport>queue</ErrorReport>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
