@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "IvanStoychev.Useful.String.Extensions": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
