@@ -19,8 +19,17 @@ static class ExceptionThrower
     /// </summary>
     /// <param name="collectionParameterName">Name of the parameter whose argument is the collection.</param>
     /// <param name="callingMethodName">Name of the method that does this validation.</param>
-    internal static void Throw_ArgumentException(string collectionParameterName, string callingMethodName)
+    internal static void Throw_ArgumentException_EmptyString(string collectionParameterName, string callingMethodName)
         => throw new ArgumentException($"A member of the collection given for parameter \"{collectionParameterName}\" of method \"{callingMethodName}\" is the empty string (\"\").", collectionParameterName);
+
+    /// <summary>
+    /// Throws an <see cref="ArgumentException"/> that informs the user the collection provided for parameter
+    /// "<paramref name="collectionParameterName"/>" has no members.
+    /// </summary>
+    /// <param name="collectionParameterName">Name of the parameter whose argument is the collection.</param>
+    /// <param name="callingMethodName">Name of the method that does this validation.</param>
+    internal static void Throw_ArgumentException_EmptyCollection(string collectionParameterName, string callingMethodName)
+        => throw new ArgumentException($"The collection argument given for parameter \"{collectionParameterName}\" of method \"{callingMethodName}\" contains no elements.", collectionParameterName);
 
     /// <summary>
     /// Throws an <see cref="ArgumentNullException"/> that informs the user the argument of <paramref name="parameterName"/> was null.

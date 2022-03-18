@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace IvanStoychev.Useful.String.Extensions;
@@ -33,6 +35,18 @@ static class Validator
     }
 
     /// <summary>
+    /// Checks if the given <paramref name="ienum"/> contains any members and throws an <see cref="ArgumentException"/> if it doesn't.
+    /// </summary>
+    /// <param name="ienum">An <see cref="IEnumerable{T}"/> to be checked if it is empty or not.</param>
+    /// <param name="parameterName">Name of the parameter in the method that does this validation.</param>
+    /// <param name="callingMethodName">Name of the method that does this validation.</param>
+    internal static void CheckIEnumNotEmpty(IEnumerable<string> ienum, [CallerArgumentExpression("ienum")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
+    {
+        if (!ienum.Any())
+            ExceptionThrower.Throw_ArgumentException_EmptyCollection(parameterName, callingMethodName);
+    }
+
+    /// <summary>
     /// Checks if the given <paramref name="collectionMember"/> is the empty string (""). And if it is, throws an <see cref="ArgumentException"/>.
     /// </summary>
     /// <param name="collectionMember">Member of a collection to evaluate.</param>
@@ -44,7 +58,7 @@ static class Validator
     internal static void CheckEmptyStringMember(string collectionMember, string collectionParameterName, [CallerMemberName] string callingMethodName = null)
     {
         if (collectionMember == "")
-            ExceptionThrower.Throw_ArgumentException(collectionParameterName, callingMethodName);
+            ExceptionThrower.Throw_ArgumentException_EmptyString(collectionParameterName, callingMethodName);
     }
 
     /// <summary>
@@ -147,7 +161,7 @@ static class Validator
     /// And if it is, throws an <see cref="ArgumentNullException"/>.
     /// </summary>
     /// <param name="argument">Value passed as the argument for a method's parameter.</param>
-    /// <param name="parameterName">Name of the parameter in the original method.</param>
+    /// <param name="parameterName">Name of the parameter in the method that does this validation.</param>
     /// <param name="callingMethodName">Name of the method that does this validation.</param>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="argument"/> is null.
@@ -181,7 +195,7 @@ static class Validator
     /// </summary>
     /// <param name="originalString">The instance which to check for <paramref name="substring"/>.</param>
     /// <param name="substring">The string to search in <paramref name="originalString"/> for.</param>
-    /// <param name="parameterName">The name of the parameter in the original method, the argument of which is <paramref name="substring"/>.</param>
+    /// <param name="parameterName">The Name of the parameter in the method that does this validation, the argument of which is <paramref name="substring"/>.</param>
     /// <param name="substringIndex">
     /// Contains the index of <paramref name="substring"/> in <paramref name="originalString"/>. If it is not found the index is "-1".
     /// <br/>This parameter is passed uninitialized.
@@ -207,7 +221,7 @@ static class Validator
     /// </summary>
     /// <param name="originalString">The instance which to check for <paramref name="substring"/>.</param>
     /// <param name="substring">The string to search in <paramref name="originalString"/> for.</param>
-    /// <param name="parameterName">The name of the parameter in the original method, the argument of which is <paramref name="substring"/>.</param>
+    /// <param name="parameterName">The Name of the parameter in the method that does this validation, the argument of which is <paramref name="substring"/>.</param>
     /// <param name="substringIndex">
     /// Contains the index of <paramref name="substring"/> in <paramref name="originalString"/>. If it is not found the index is "-1".
     /// <br/>This parameter is passed uninitialized.
