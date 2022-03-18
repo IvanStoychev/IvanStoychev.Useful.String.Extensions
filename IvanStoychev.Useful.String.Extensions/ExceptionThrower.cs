@@ -14,6 +14,15 @@ static class ExceptionThrower
     const int MAX_LENGTH = 10;
 
     /// <summary>
+    /// Throws an <see cref="ArgumentException"/> that informs the user a member of the collection provided for parameter
+    /// "<paramref name="collectionParameterName"/>" was the empty string.
+    /// </summary>
+    /// <param name="collectionParameterName">Name of the parameter whose argument is the collection.</param>
+    /// <param name="callingMethodName">Name of the method that does this validation.</param>
+    internal static void Throw_ArgumentException(string collectionParameterName, string callingMethodName)
+        => throw new ArgumentException($"A member of the collection given for parameter \"{collectionParameterName}\" of method \"{callingMethodName}\" is the empty string (\"\").", collectionParameterName);
+
+    /// <summary>
     /// Throws an <see cref="ArgumentNullException"/> that informs the user the argument of <paramref name="parameterName"/> was null.
     /// </summary>
     /// <param name="parameterName">Name of the parameter in the original calling method.</param>
