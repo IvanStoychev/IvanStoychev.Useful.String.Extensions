@@ -8,7 +8,7 @@ namespace IvanStoychev.Useful.String.Extensions;
 /// <summary>
 /// Performs checks, ensuring program execution proceeds smoothly.
 /// </summary>
-static class Validator
+static class Validate
 {
     /// <summary>
     /// Checks if the value of <paramref name="lengthDiff"/> is negative. And if it is, throws an <see cref="ArgumentOutOfRangeException"/>.
@@ -16,7 +16,7 @@ static class Validator
     /// <param name="amount">Number of characters the user wishes to remove from a string.</param>
     /// <param name="lengthDiff">Number of characters left in the string after <paramref name="amount"/> have been removed.</param>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="lengthDiff"/> is a negative number.</exception>
-    internal static void CheckAmountStringLength(int amount, int lengthDiff)
+    internal static void AmountStringLength(int amount, int lengthDiff)
     {
         if (lengthDiff < 0)
             ExceptionThrower.Throw_ArgumentOutOfRangeException_Amount(amount, lengthDiff);
@@ -28,7 +28,7 @@ static class Validator
     /// <param name="amount">Number of characters the user wishes to remove from a string.</param>
     /// <param name="lengthDiff">Number of characters left in the string after <paramref name="amount"/> have been removed.</param>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="lengthDiff"/> is a negative number.</exception>
-    internal static void CheckDoubleAmountStringLength(int amount, int lengthDiff)
+    internal static void DoubleAmountStringLength(int amount, int lengthDiff)
     {
         if (lengthDiff < 0)
             ExceptionThrower.Throw_ArgumentOutOfRangeException_DoubleAmount(amount, lengthDiff);
@@ -40,7 +40,7 @@ static class Validator
     /// <param name="ienum">An <see cref="IEnumerable{T}"/> to be checked if it is empty or not.</param>
     /// <param name="parameterName">Name of the parameter in the method that does this validation.</param>
     /// <param name="callingMethodName">Name of the method that does this validation.</param>
-    internal static void CheckIEnumNotEmpty(IEnumerable<string> ienum, [CallerArgumentExpression("ienum")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
+    internal static void IEnumNotEmpty(IEnumerable<string> ienum, [CallerArgumentExpression("ienum")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
     {
         if (!ienum.Any())
             ExceptionThrower.Throw_ArgumentException_EmptyCollection(parameterName, callingMethodName);
@@ -55,7 +55,7 @@ static class Validator
     /// <exception cref="ArgumentException">
     /// <paramref name="collectionMember"/> is the empty string ("").
     /// </exception>
-    internal static void CheckEmptyStringMember(string collectionMember, string collectionParameterName, [CallerMemberName] string callingMethodName = null)
+    internal static void EmptyStringMember(string collectionMember, string collectionParameterName, [CallerMemberName] string callingMethodName = null)
     {
         if (collectionMember == "")
             ExceptionThrower.Throw_ArgumentException_EmptyString(collectionParameterName, callingMethodName);
@@ -85,9 +85,9 @@ static class Validator
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="endString"/> is not found in the part of <paramref name="originalString"/> from <paramref name="startString"/> onward.
     /// </exception>
-    internal static void CheckEndStringIndex(string originalString, string startString, string endString, out int startStringIndex, out int endStringIndex, StringComparison stringComparison = StringComparison.CurrentCulture)
+    internal static void EndStringIndex(string originalString, string startString, string endString, out int startStringIndex, out int endStringIndex, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
-        CheckSubstringIndex(originalString, startString, nameof(startString), out startStringIndex, stringComparison);
+        SubstringIndex(originalString, startString, nameof(startString), out startStringIndex, stringComparison);
 
         string substringStartStringOnwards = originalString[(startStringIndex + startString.Length)..];
         endStringIndex = substringStartStringOnwards.IndexOf(endString, stringComparison);
@@ -120,9 +120,9 @@ static class Validator
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="endString"/> is not found in the part of <paramref name="originalString"/> from <paramref name="startString"/> onward.
     /// </exception>
-    internal static void CheckEndStringLastIndex(string originalString, string startString, string endString, out int startStringIndex, out int endStringIndex, StringComparison stringComparison = StringComparison.CurrentCulture)
+    internal static void EndStringLastIndex(string originalString, string startString, string endString, out int startStringIndex, out int endStringIndex, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
-        CheckSubstringIndex(originalString, startString, nameof(startString), out startStringIndex, stringComparison);
+        SubstringIndex(originalString, startString, nameof(startString), out startStringIndex, stringComparison);
 
         string substringStartStringOnwards = originalString[(startStringIndex + startString.Length)..];
         endStringIndex = substringStartStringOnwards.LastIndexOf(endString, stringComparison);
@@ -136,7 +136,7 @@ static class Validator
     /// </summary>
     /// <param name="length">Integer to be verified that it isn't less than zero.</param>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is a negative number.</exception>
-    internal static void CheckLengthIsPositive(int length)
+    internal static void LengthIsPositive(int length)
     {
         if (length < 0)
             ExceptionThrower.Throw_ArgumentOutOfRangeException_Length(length, nameof(length));
@@ -149,7 +149,7 @@ static class Validator
     /// <param name="stringLength">The amount of available characters from which the user wishes to select <paramref name="length"/> amount.</param>
     /// <param name="length">Amount of characters the user wishes to select from a string with length "<paramref name="stringLength"/>".</param>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is bigger than <paramref name="stringLength"/>.</exception>
-    internal static void CheckLengthIsWithinBounds(int stringLength, int length)
+    internal static void LengthIsWithinBounds(int stringLength, int length)
     {
         int lengthDiff = stringLength - length;
         if (lengthDiff < 0)
@@ -166,7 +166,7 @@ static class Validator
     /// <exception cref="ArgumentNullException">
     /// <paramref name="argument"/> is null.
     /// </exception>
-    internal static void CheckNullArgument(object argument, [CallerArgumentExpression("argument")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
+    internal static void NullArgument(object argument, [CallerArgumentExpression("argument")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
     {
         if (argument is null)
             ExceptionThrower.Throw_ArgumentNullException(parameterName, callingMethodName);
@@ -180,7 +180,7 @@ static class Validator
     /// <exception cref="ArgumentNullException">
     /// <paramref name="collectionMember"/> is null.
     /// </exception>
-    internal static void CheckNullMember(object collectionMember, string collectionParameterName)
+    internal static void NullMember(object collectionMember, string collectionParameterName)
     {
         if (collectionMember is null)
             ExceptionThrower.Throw_ArgumentNullMemberException(collectionParameterName);
@@ -204,7 +204,7 @@ static class Validator
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="substring"/> is not found in <paramref name="originalString"/>.
     /// </exception>
-    internal static void CheckSubstringIndex(string originalString, string substring, string parameterName, out int substringIndex, StringComparison stringComparison = StringComparison.CurrentCulture)
+    internal static void SubstringIndex(string originalString, string substring, string parameterName, out int substringIndex, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
         substringIndex = originalString.IndexOf(substring, stringComparison);
 
@@ -230,7 +230,7 @@ static class Validator
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="substring"/> is not found in <paramref name="originalString"/>.
     /// </exception>
-    internal static void CheckSubstringLastIndex(string originalString, string substring, string parameterName, out int substringIndex, StringComparison stringComparison = StringComparison.CurrentCulture)
+    internal static void SubstringLastIndex(string originalString, string substring, string parameterName, out int substringIndex, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
         substringIndex = originalString.LastIndexOf(substring, stringComparison);
 

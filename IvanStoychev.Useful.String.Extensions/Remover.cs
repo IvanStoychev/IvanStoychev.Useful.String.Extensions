@@ -173,7 +173,7 @@ public static class Remover
     public static string Trim(this string str, int amount)
     {
         int lengthDiff = str.Length - amount * 2;
-        Validator.CheckDoubleAmountStringLength(amount, lengthDiff);
+        Validate.DoubleAmountStringLength(amount, lengthDiff);
 
         return str.Substring(amount, lengthDiff);
     }
@@ -261,7 +261,7 @@ public static class Remover
     public static string TrimStart(this string str, int amount)
     {
         int lengthDiff = str.Length - amount;
-        Validator.CheckAmountStringLength(amount, lengthDiff);
+        Validate.AmountStringLength(amount, lengthDiff);
 
         return str[amount..];
     }
@@ -349,7 +349,7 @@ public static class Remover
     public static string TrimEnd(this string str, int amount)
     {
         int lengthDiff = str.Length - amount;
-        Validator.CheckAmountStringLength(amount, lengthDiff);
+        Validate.AmountStringLength(amount, lengthDiff);
 
         return str[..lengthDiff];
     }

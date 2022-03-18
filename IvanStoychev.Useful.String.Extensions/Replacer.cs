@@ -24,13 +24,13 @@ public static class Replacer
     [Pure]
     public static string Replace(this string str, string newString, IEnumerable<string> oldStrings, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
-        Validator.CheckNullArgument(oldStrings);
-        Validator.CheckIEnumNotEmpty(oldStrings);
+        Validate.NullArgument(oldStrings);
+        Validate.IEnumNotEmpty(oldStrings);
 
         foreach (var item in oldStrings)
         {
-            Validator.CheckNullMember(item, nameof(oldStrings));
-            Validator.CheckEmptyStringMember(item, nameof(oldStrings));
+            Validate.NullMember(item, nameof(oldStrings));
+            Validate.EmptyStringMember(item, nameof(oldStrings));
             str = str.Replace(item, newString, stringComparison);
         }
 

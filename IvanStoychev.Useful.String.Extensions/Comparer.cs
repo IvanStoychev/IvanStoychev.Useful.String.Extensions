@@ -23,11 +23,11 @@ public static class Comparer
     [Pure]
     public static bool Contains(this string str, params string[] keywords)
     {
-        Validator.CheckNullArgument(keywords);
+        Validate.NullArgument(keywords);
 
         foreach (var word in keywords)
         {
-            Validator.CheckNullMember(word, nameof(keywords));
+            Validate.NullMember(word, nameof(keywords));
             if (str.Contains(word))
                 return true;
         }
@@ -50,11 +50,11 @@ public static class Comparer
     [Pure]
     public static bool Contains(this string str, StringComparison comparison, params string[] keywords)
     {
-        Validator.CheckNullArgument(keywords);
+        Validate.NullArgument(keywords);
 
         foreach (var word in keywords)
         {
-            Validator.CheckNullMember(word, nameof(keywords));
+            Validate.NullMember(word, nameof(keywords));
             if (str.Contains(word, comparison))
                 return true;
         }
@@ -78,11 +78,11 @@ public static class Comparer
     [Pure]
     public static bool Contains(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
     {
-        Validator.CheckNullArgument(keywords);
+        Validate.NullArgument(keywords);
 
         foreach (var word in keywords)
         {
-            Validator.CheckNullMember(word, nameof(keywords));
+            Validate.NullMember(word, nameof(keywords));
             if (str.Contains(word, comparison))
                 return true;
         }
@@ -104,7 +104,7 @@ public static class Comparer
     [Pure]
     public static bool Contains(this string str, params char[] keychars)
     {
-        Validator.CheckNullArgument(keychars);
+        Validate.NullArgument(keychars);
 
         foreach (var character in keychars)
             if (str.Contains(character))
@@ -128,7 +128,7 @@ public static class Comparer
     [Pure]
     public static bool Contains(this string str, StringComparison comparison, params char[] keychars)
     {
-        Validator.CheckNullArgument(keychars);
+        Validate.NullArgument(keychars);
 
         foreach (var character in keychars)
             if (str.Contains(character, comparison))
@@ -152,7 +152,7 @@ public static class Comparer
     [Pure]
     public static bool Contains(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
     {
-        Validator.CheckNullArgument(keychars);
+        Validate.NullArgument(keychars);
 
         foreach (var character in keychars)
             if (str.Contains(character, comparison))

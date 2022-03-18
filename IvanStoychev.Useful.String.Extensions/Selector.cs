@@ -27,8 +27,8 @@ public static class Selector
     [Pure]
     public static string SubstringStart(this string str, string endString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
-        Validator.CheckNullArgument(endString);
-        Validator.CheckSubstringIndex(str, endString, nameof(endString), out int endStringIndex, stringComparison);
+        Validate.NullArgument(endString);
+        Validate.SubstringIndex(str, endString, nameof(endString), out int endStringIndex, stringComparison);
 
         endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
 
@@ -52,8 +52,8 @@ public static class Selector
     [Pure]
     public static string SubstringStartLast(this string str, string endString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
-        Validator.CheckNullArgument(endString);
-        Validator.CheckSubstringLastIndex(str, endString, nameof(endString), out int endStringIndex, stringComparison);
+        Validate.NullArgument(endString);
+        Validate.SubstringLastIndex(str, endString, nameof(endString), out int endStringIndex, stringComparison);
 
         endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
 
@@ -86,12 +86,12 @@ public static class Selector
     [Pure]
     public static string Substring(this string str, string startString, int length, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
-        Validator.CheckNullArgument(startString);
-        Validator.CheckLengthIsPositive(length);
-        Validator.CheckSubstringIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
+        Validate.NullArgument(startString);
+        Validate.LengthIsPositive(length);
+        Validate.SubstringIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
 
         int availableLength = str.Length - startStringIndex - startString.Length;
-        Validator.CheckLengthIsWithinBounds(availableLength, length);
+        Validate.LengthIsWithinBounds(availableLength, length);
 
         startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
         int offsetlength = AddSubstringLengthConditional(length, startString, !inclusive);
@@ -123,9 +123,9 @@ public static class Selector
     [Pure]
     public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions = StringInclusionOptions.IncludeNone, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
-        Validator.CheckNullArgument(startString);
-        Validator.CheckNullArgument(endString);
-        Validator.CheckEndStringIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, stringComparison);
+        Validate.NullArgument(startString);
+        Validate.NullArgument(endString);
+        Validate.EndStringIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, stringComparison);
 
         // This logic is because of how the "endStringIndex" is being calculated.
         switch (stringInclusionOptions)
@@ -174,9 +174,9 @@ public static class Selector
     [Pure]
     public static string SubstringLast(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions = StringInclusionOptions.IncludeNone, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
-        Validator.CheckNullArgument(startString);
-        Validator.CheckNullArgument(endString);
-        Validator.CheckEndStringLastIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, stringComparison);
+        Validate.NullArgument(startString);
+        Validate.NullArgument(endString);
+        Validate.EndStringLastIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, stringComparison);
 
         // This logic is because of how the "endStringIndex" is being calculated.
         switch (stringInclusionOptions)
@@ -218,8 +218,8 @@ public static class Selector
     [Pure]
     public static string SubstringEnd(this string str, string startString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
-        Validator.CheckNullArgument(startString);
-        Validator.CheckSubstringIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
+        Validate.NullArgument(startString);
+        Validate.SubstringIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
 
         startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 
@@ -243,8 +243,8 @@ public static class Selector
     [Pure]
     public static string SubstringEndLast(this string str, string startString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
-        Validator.CheckNullArgument(startString);
-        Validator.CheckSubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
+        Validate.NullArgument(startString);
+        Validate.SubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
 
         startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 
@@ -272,12 +272,12 @@ public static class Selector
     [Pure]
     public static string SubstringEndLast(this string str, string startString, int length, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
-        Validator.CheckNullArgument(startString);
-        Validator.CheckLengthIsPositive(length);
-        Validator.CheckSubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
+        Validate.NullArgument(startString);
+        Validate.LengthIsPositive(length);
+        Validate.SubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
 
         int availableLength = str.Length - startStringIndex - startString.Length;
-        Validator.CheckLengthIsWithinBounds(availableLength, length);
+        Validate.LengthIsWithinBounds(availableLength, length);
 
         startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
         int offsetlength = AddSubstringLengthConditional(length, startString, !inclusive);
