@@ -33,26 +33,6 @@ public static class Remover
         => RemoveStringConsiderCase(str, removeStrings.ToArray());
 
     /// <summary>
-    /// Returns a new string in which all occurrences of all given strings in the current instance are removed.
-    /// Occurrences are removed in the same order as they are given. The removal is case-sensitive.
-    /// </summary>
-    /// <param name="str">The instance to remove strings from.</param>
-    /// <param name="removeStrings">Values to be removed.</param>
-    /// <returns>
-    /// A string that is equivalent to the current string except that all instances of all members of the given collection are removed.
-    /// If none of the members are found in the current instance, the method returns it unchanged.
-    /// </returns>
-    /// <exception cref="ArgumentException">
-    /// Thrown if any of the "removeStrings" parameters are the empty string.
-    /// </exception>
-    /// <exception cref="ArgumentNullException">
-    /// The "removeStrings" collection or any of its members are null.
-    /// </exception>
-    [Pure]
-    public static string Remove(this string str, params string[] removeStrings)
-        => RemoveStringConsiderCase(str, removeStrings);
-
-    /// <summary>
     /// Returns a new string in which all occurrences of all members of a given IEnumerable in the current instance are removed.
     /// Occurrences are removed in the same order as the IEnumerable's members, using the specified case-sensitivity.
     /// If case is ignored a regular expression is used internally.
@@ -81,37 +61,6 @@ public static class Remover
             return RemoveStringIgnoreCase(str, removeStrings.ToArray());
         else
             return RemoveStringConsiderCase(str, removeStrings.ToArray());
-    }
-
-    /// <summary>
-    /// Returns a new string in which all occurrences of all given strings in the current instance are removed.
-    /// Occurrences are removed in the same order as they are given, using the specified case-sensitivity.
-    /// If case is ignored a regular expression is used internally.
-    /// </summary>
-    /// <param name="str">The instance to remove strings from.</param>
-    /// <param name="ignoreCase">"true" to ignore casing when trimming, "false" otherwise.</param>
-    /// <param name="removeStrings">Values to be removed.</param>
-    /// <returns>
-    /// A string that is equivalent to the current string except that all instances of all members of the given collection are removed.
-    /// If none of the members are found in the current instance, the method returns it unchanged.
-    /// </returns>
-    /// <exception cref="ArgumentException">
-    /// A regular expression parsing error occurred.
-    /// </exception>
-    /// <exception cref="ArgumentNullException">
-    /// The "removeStrings" collection or any of its members are null.
-    /// </exception>
-    /// <exception cref="RegexMatchTimeoutException">
-    /// The execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
-    /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
-    /// </exception>
-    [Pure]
-    public static string Remove(this string str, bool ignoreCase, params string[] removeStrings)
-    {
-        if (ignoreCase)
-            return RemoveStringIgnoreCase(str, removeStrings);
-        else
-            return RemoveStringConsiderCase(str, removeStrings);
     }
 
     /// <summary>
