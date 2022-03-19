@@ -10,59 +10,6 @@ namespace IvanStoychev.Useful.String.Extensions;
 public static class Comparer
 {
     /// <summary>
-    /// Returns a boolean indicating whether any of the specified strings occur in this string.
-    /// </summary>
-    /// <param name="str">The string to check.</param>
-    /// <param name="keywords">Strings to seek.</param>
-    /// <returns>
-    /// <see langword="true"/> if any of the <paramref name="keywords"/> occur within this string, or if any of them are the empty string (""); otherwise, <see langword="false"/>.
-    /// </returns>
-    /// <exception cref="ArgumentNullException">
-    /// The <paramref name="keywords"/> collection or any of its memebers are null.
-    /// </exception>
-    [Pure]
-    public static bool Contains(this string str, params string[] keywords)
-    {
-        Validate.NullArgument(keywords);
-
-        foreach (var word in keywords)
-        {
-            Validate.NullMember(word, nameof(keywords));
-            if (str.Contains(word))
-                return true;
-        }
-
-        return false;
-    }
-
-    /// <summary>
-    /// Returns a boolean indicating whether any of the specified strings occur in this string, using the specified comparison rules.
-    /// </summary>
-    /// <param name="str">The string to check.</param>
-    /// <param name="comparison">One of the enumeration values that specifies the rules to use in the comparison.</param>
-    /// <param name="keywords">Strings to seek.</param>
-    /// <returns>
-    /// <see langword="true"/> if any of the <paramref name="keywords"/> occur within this string, or if any of them are the empty string (""); otherwise, <see langword="false"/>.
-    /// </returns>
-    /// <exception cref="ArgumentNullException">
-    /// The <paramref name="keywords"/> collection or any of its memebers are null.
-    /// </exception>
-    [Pure]
-    public static bool Contains(this string str, StringComparison comparison, params string[] keywords)
-    {
-        Validate.NullArgument(keywords);
-
-        foreach (var word in keywords)
-        {
-            Validate.NullMember(word, nameof(keywords));
-            if (str.Contains(word, comparison))
-                return true;
-        }
-
-        return false;
-    }
-
-    /// <summary>
     /// Returns a <see langword="bool"/> indicating whether any of the strings in <paramref name="keywords"/> occur in this string, using the specified comparison rules.
     /// </summary>
     /// <param name="str">The string to check.</param>
@@ -86,53 +33,6 @@ public static class Comparer
             if (str.Contains(word, comparison))
                 return true;
         }
-
-        return false;
-    }
-
-    /// <summary>
-    /// Returns a boolean indicating whether any of the specified characters occur in this string.
-    /// </summary>
-    /// <param name="str">The string to check.</param>
-    /// <param name="keychars">Characters to seek.</param>
-    /// <returns>
-    /// <see langword="true"/> if any of the <paramref name="keychars"/> occur within this string; otherwise, <see langword="false"/>.
-    /// </returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="keychars"/> is null.
-    /// </exception>
-    [Pure]
-    public static bool Contains(this string str, params char[] keychars)
-    {
-        Validate.NullArgument(keychars);
-
-        foreach (var character in keychars)
-            if (str.Contains(character))
-                return true;
-
-        return false;
-    }
-
-    /// <summary>
-    /// Returns a boolean indicating whether any of the specified characters occur in this string, using the specified comparison rules.
-    /// </summary>
-    /// <param name="str">The string to check.</param>
-    /// <param name="comparison">One of the enumeration values that specifies the rules to use in the comparison.</param>
-    /// <param name="keychars">Characters to seek.</param>
-    /// <returns>
-    /// <see langword="true"/> if any of the <paramref name="keychars"/> occur within this string; otherwise, <see langword="false"/>.
-    /// </returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="keychars"/> is null.
-    /// </exception>
-    [Pure]
-    public static bool Contains(this string str, StringComparison comparison, params char[] keychars)
-    {
-        Validate.NullArgument(keychars);
-
-        foreach (var character in keychars)
-            if (str.Contains(character, comparison))
-                return true;
 
         return false;
     }
