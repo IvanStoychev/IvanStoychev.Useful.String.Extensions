@@ -13,54 +13,36 @@ namespace IvanStoychev.Useful.String.Extensions;
 public static class Remover
 {
     /// <summary>
-    /// Returns a new string in which all occurrences of all members of a given IEnumerable in the current instance are removed.
-    /// Occurrences are removed in the same order as the IEnumerable's members. The removal is case-sensitive.
+    /// Returns a new string in which all occurrences of all members of the given <paramref name="removeStrings"/> in the current instance are removed.
+    /// Occurrences are removed in the same order as the IEnumerable's members, using the provided <paramref name="stringComparison"/> rules.
     /// </summary>
     /// <param name="str">The instance to remove strings from.</param>
     /// <param name="removeStrings">Collection of values to be removed.</param>
+    /// <param name="stringComparison">Comparison rules to use.</param>
     /// <returns>
     /// A string that is equivalent to the current string except that all instances of all members of the given collection are removed.
     /// If none of the members are found in the current instance, the method returns it unchanged.
     /// </returns>
     /// <exception cref="ArgumentException">
-    /// Thrown if any of the "removeStrings" members are the empty string.
+    /// Any of the <paramref name="removeStrings"/> members are the empty string ("").
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// The "removeStrings" collection or any of its members are null.
+    /// The <paramref name="removeStrings"/> collection or any of its members are <see langword="null"/>.
     /// </exception>
     [Pure]
-    public static string Remove(this string str, IEnumerable<string> removeStrings)
-        => RemoveStringConsiderCase(str, removeStrings.ToArray());
-
-    /// <summary>
-    /// Returns a new string in which all occurrences of all members of a given IEnumerable in the current instance are removed.
-    /// Occurrences are removed in the same order as the IEnumerable's members, using the specified case-sensitivity.
-    /// If case is ignored a regular expression is used internally.
-    /// </summary>
-    /// <param name="str">The instance to remove strings from.</param>
-    /// <param name="ignoreCase">"true" to ignore casing when trimming, "false" otherwise.</param>
-    /// <param name="removeStrings">Array of values to be removed.</param>
-    /// <returns>
-    /// A string that is equivalent to the current string except that all instances of all members of the given collection are removed.
-    /// If none of the members are found in the current instance, the method returns it unchanged.
-    /// </returns>
-    /// <exception cref="ArgumentException">
-    /// A regular expression parsing error occurred.
-    /// </exception>
-    /// <exception cref="ArgumentNullException">
-    /// The "removeStrings" collection or any of its members are null.
-    /// </exception>
-    /// <exception cref="RegexMatchTimeoutException">
-    /// The execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
-    /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
-    /// </exception>
-    [Pure]
-    public static string Remove(this string str, bool ignoreCase, IEnumerable<string> removeStrings)
+    public static string Remove(this string str, IEnumerable<string> removeStrings, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
-        if (ignoreCase)
-            return RemoveStringIgnoreCase(str, removeStrings.ToArray());
-        else
-            return RemoveStringConsiderCase(str, removeStrings.ToArray());
+        Validate.NullArgument(removeStrings);
+        Validate.IEnumNotEmpty(removeStrings);
+
+        foreach (var item in removeStrings)
+        {
+            Validate.NullMember(item, nameof(removeStrings));
+            Validate.EmptyStringMember(item, nameof(removeStrings));
+            str = str.Replace(item, string.Empty, stringComparison);
+        }
+
+        return str;
     }
 
     /// <summary>
@@ -301,37 +283,5 @@ public static class Remover
         Validate.AmountStringLength(amount, lengthDiff);
 
         return str[..lengthDiff];
-    }
-
-    /// <exception cref="ArgumentException">
-    /// Thrown if any of the "toRemove" members are the empty string.
-    /// </exception>
-    /// <exception cref="ArgumentNullException">
-    /// Thrown when either "value", the "toRemove" array or any of its memebers are null.
-    /// </exception>
-    private static string RemoveStringConsiderCase(this string value, string[] toRemove)
-    {
-        foreach (var item in toRemove)
-            value = value.Replace(item, string.Empty);
-
-        return value;
-    }
-
-    /// <exception cref="ArgumentException">
-    /// A regular expression parsing error occurred.
-    /// </exception>
-    /// <exception cref="ArgumentNullException">
-    /// Thrown when either "value", the "toRemove" array or any of its memebers are null.
-    /// </exception>
-    /// <exception cref="RegexMatchTimeoutException">
-    /// Thrown if the execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
-    /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
-    /// </exception>
-    private static string RemoveStringIgnoreCase(this string value, string[] toRemove)
-    {
-        foreach (var item in toRemove)
-            value = Regex.Replace(value, Regex.Escape(item), string.Empty, RegexOptions.IgnoreCase);
-
-        return value;
     }
 }
