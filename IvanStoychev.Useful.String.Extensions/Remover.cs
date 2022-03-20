@@ -110,28 +110,6 @@ public static class Remover
     }
 
     /// <summary>
-    /// Removes the leading occurrence of a specified string from the current instance.
-    /// </summary>
-    /// <param name="str">The instance to remove the string from.</param>
-    /// <param name="trimString">The string to remove or null.</param>
-    /// <returns>
-    /// The string that remains after the occurrence of "trimString" is removed from the start of
-    /// the current instance. If "trimString" is null, the empty string or not found at the start of the
-    /// current instance the method returns the current instance unchanged.
-    /// </returns>
-    [Pure]
-    public static string TrimStart(this string str, string trimString)
-    {
-        if (string.IsNullOrEmpty(trimString))
-            return str;
-
-        if (str.StartsWith(trimString))
-            str = str[trimString.Length..];
-
-        return str;
-    }
-
-    /// <summary>
     /// Removes the leading occurrence of a specified string from the current instance, using the provided string comparison option.
     /// </summary>
     /// <param name="str">The instance to remove the string from.</param>
@@ -143,13 +121,13 @@ public static class Remover
     /// current instance the method returns the current instance unchanged.
     /// </returns>
     [Pure]
-    public static string TrimStart(this string str, string trimString, StringComparison stringComparison)
+    public static string TrimStart(this string str, string trimString, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
         if (string.IsNullOrEmpty(trimString))
             return str;
 
         if (str.StartsWith(trimString, stringComparison))
-            str = str[trimString.Length..];
+            str = str.Substring(trimString.Length);
 
         return str;
     }
