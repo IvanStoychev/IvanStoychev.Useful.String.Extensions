@@ -28,7 +28,7 @@ public static class Selector
     public static string SubstringStart(this string str, string endString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
         Validate.NullArgument(endString);
-        Validate.SubstringIndex(str, endString, nameof(endString), out int endStringIndex, stringComparison);
+        Validate.SubstringIndex(str, endString, out int endStringIndex, stringComparison);
 
         endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
 
@@ -88,7 +88,7 @@ public static class Selector
     {
         Validate.NullArgument(startString);
         Validate.LengthIsPositive(length);
-        Validate.SubstringIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
+        Validate.SubstringIndex(str, startString, out int startStringIndex, stringComparison);
 
         int availableLength = str.Length - startStringIndex - startString.Length;
         Validate.LengthIsWithinBounds(availableLength, length);
@@ -219,7 +219,7 @@ public static class Selector
     public static string SubstringEnd(this string str, string startString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
         Validate.NullArgument(startString);
-        Validate.SubstringIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
+        Validate.SubstringIndex(str, startString, out int startStringIndex, stringComparison);
 
         startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 

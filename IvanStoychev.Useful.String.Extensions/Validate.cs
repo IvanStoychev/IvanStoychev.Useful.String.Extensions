@@ -16,10 +16,11 @@ static class Validate
     /// <param name="amount">Number of characters the user wishes to remove from a string.</param>
     /// <param name="lengthDiff">Number of characters left in the string after <paramref name="amount"/> have been removed.</param>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="lengthDiff"/> is a negative number.</exception>
-    internal static void AmountStringLength(int amount, int lengthDiff)
+    /// <param name="callingMethodName">Name of the method that does this validation.</param>
+    internal static void AmountStringLength(int amount, int lengthDiff, [CallerMemberName] string callingMethodName = null)
     {
         if (lengthDiff < 0)
-            ExceptionThrower.Throw_ArgumentOutOfRangeException_Amount(amount, lengthDiff);
+            ExceptionThrower.Throw_ArgumentOutOfRangeException_Amount(amount, lengthDiff, callingMethodName);
     }
 
     /// <summary>
@@ -28,10 +29,11 @@ static class Validate
     /// <param name="amount">Number of characters the user wishes to remove from a string.</param>
     /// <param name="lengthDiff">Number of characters left in the string after <paramref name="amount"/> have been removed.</param>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="lengthDiff"/> is a negative number.</exception>
-    internal static void DoubleAmountStringLength(int amount, int lengthDiff)
+    /// <param name="callingMethodName">Name of the method that does this validation.</param>
+    internal static void DoubleAmountStringLength(int amount, int lengthDiff, [CallerMemberName] string callingMethodName = null)
     {
         if (lengthDiff < 0)
-            ExceptionThrower.Throw_ArgumentOutOfRangeException_DoubleAmount(amount, lengthDiff);
+            ExceptionThrower.Throw_ArgumentOutOfRangeException_DoubleAmount(amount, lengthDiff, callingMethodName);
     }
 
     /// <summary>
@@ -82,18 +84,19 @@ static class Validate
     /// <br/>This parameter is passed uninitialized.
     /// </param>
     /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
+    /// <param name="callingMethodName">Name of the method that does this validation.</param>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="endString"/> is not found in the part of <paramref name="originalString"/> from <paramref name="startString"/> onward.
     /// </exception>
-    internal static void EndStringIndex(string originalString, string startString, string endString, out int startStringIndex, out int endStringIndex, StringComparison stringComparison = StringComparison.CurrentCulture)
+    internal static void EndStringIndex(string originalString, string startString, string endString, out int startStringIndex, out int endStringIndex, StringComparison stringComparison = StringComparison.CurrentCulture, [CallerMemberName] string callingMethodName = null)
     {
-        SubstringIndex(originalString, startString, nameof(startString), out startStringIndex, stringComparison);
+        SubstringIndex(originalString, startString, out startStringIndex, stringComparison);
 
         string substringStartStringOnwards = originalString[(startStringIndex + startString.Length)..];
         endStringIndex = substringStartStringOnwards.IndexOf(endString, stringComparison);
 
         if (endStringIndex == -1)
-            ExceptionThrower.Throw_ArgumentOutOfRangeException_Endstring(startString, endString);
+            ExceptionThrower.Throw_ArgumentOutOfRangeException_Endstring(startString, endString, callingMethodName);
     }
 
     /// <summary>
@@ -117,29 +120,31 @@ static class Validate
     /// <br/>This parameter is passed uninitialized.
     /// </param>
     /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
+    /// <param name="callingMethodName">Name of the method that does this validation.</param>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="endString"/> is not found in the part of <paramref name="originalString"/> from <paramref name="startString"/> onward.
     /// </exception>
-    internal static void EndStringLastIndex(string originalString, string startString, string endString, out int startStringIndex, out int endStringIndex, StringComparison stringComparison = StringComparison.CurrentCulture)
+    internal static void EndStringLastIndex(string originalString, string startString, string endString, out int startStringIndex, out int endStringIndex, StringComparison stringComparison = StringComparison.CurrentCulture, [CallerMemberName] string callingMethodName = null)
     {
-        SubstringIndex(originalString, startString, nameof(startString), out startStringIndex, stringComparison);
+        SubstringIndex(originalString, startString, out startStringIndex, stringComparison);
 
         string substringStartStringOnwards = originalString[(startStringIndex + startString.Length)..];
         endStringIndex = substringStartStringOnwards.LastIndexOf(endString, stringComparison);
 
         if (endStringIndex == -1)
-            ExceptionThrower.Throw_ArgumentOutOfRangeException_Endstring(startString, endString);
+            ExceptionThrower.Throw_ArgumentOutOfRangeException_Endstring(startString, endString, callingMethodName);
     }
-    
+
     /// <summary>
     /// Checks if the value given for <paramref name="length"/> isn't a negative number. And if it is, throws an <see cref="ArgumentOutOfRangeException"/>.
     /// </summary>
     /// <param name="length">Integer to be verified that it isn't less than zero.</param>
+    /// <param name="callingMethodName">Name of the method that does this validation.</param>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is a negative number.</exception>
-    internal static void LengthIsPositive(int length)
+    internal static void LengthIsPositive(int length, [CallerMemberName] string callingMethodName = null)
     {
         if (length < 0)
-            ExceptionThrower.Throw_ArgumentOutOfRangeException_Length(length, nameof(length));
+            ExceptionThrower.Throw_ArgumentOutOfRangeException_Length(length, callingMethodName);
     }
 
     /// <summary>
@@ -148,12 +153,13 @@ static class Validate
     /// </summary>
     /// <param name="stringLength">The amount of available characters from which the user wishes to select <paramref name="length"/> amount.</param>
     /// <param name="length">Amount of characters the user wishes to select from a string with length "<paramref name="stringLength"/>".</param>
+    /// <param name="callingMethodName">Name of the method that does this validation.</param>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is bigger than <paramref name="stringLength"/>.</exception>
-    internal static void LengthIsWithinBounds(int stringLength, int length)
+    internal static void LengthIsWithinBounds(int stringLength, int length, [CallerMemberName] string callingMethodName = null)
     {
         int lengthDiff = stringLength - length;
         if (lengthDiff < 0)
-            ExceptionThrower.Throw_ArgumentOutOfRangeException_Length(length, lengthDiff);
+            ExceptionThrower.Throw_ArgumentOutOfRangeException_Length(length, lengthDiff, callingMethodName);
     }
 
     /// <summary>
@@ -177,13 +183,14 @@ static class Validate
     /// </summary>
     /// <param name="collectionMember">Member of a collection to evaluate.</param>
     /// <param name="collectionParameterName">Name of the parameter, whose argument is the collection, in the original method.</param>
+    /// <param name="callingMethodName">Name of the method that does this validation.</param>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="collectionMember"/> is null.
     /// </exception>
-    internal static void NullMember(object collectionMember, string collectionParameterName)
+    internal static void NullMember(object collectionMember, string collectionParameterName, [CallerMemberName] string callingMethodName = null)
     {
         if (collectionMember is null)
-            ExceptionThrower.Throw_ArgumentNullMemberException(collectionParameterName);
+            ExceptionThrower.Throw_ArgumentNullMemberException(collectionParameterName, callingMethodName);
     }
 
     /// <summary>
@@ -201,15 +208,16 @@ static class Validate
     /// <br/>This parameter is passed uninitialized.
     /// </param>
     /// <param name="stringComparison">The comparison rules to use when looking for <paramref name="substring"/>.</param>
+    /// <param name="callingMethodName">Name of the method that does this validation.</param>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="substring"/> is not found in <paramref name="originalString"/>.
     /// </exception>
-    internal static void SubstringIndex(string originalString, string substring, string parameterName, out int substringIndex, StringComparison stringComparison = StringComparison.CurrentCulture)
+    internal static void SubstringIndex(string originalString, string substring, out int substringIndex, StringComparison stringComparison = StringComparison.CurrentCulture, [CallerArgumentExpression("substring")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
     {
         substringIndex = originalString.IndexOf(substring, stringComparison);
 
         if (substringIndex == -1)
-            ExceptionThrower.Throw_ArgumentOutOfRangeException_Substring(substring, parameterName);
+            ExceptionThrower.Throw_ArgumentOutOfRangeException_Substring(substring, parameterName, callingMethodName);
     }
 
     /// <summary>
@@ -227,14 +235,15 @@ static class Validate
     /// <br/>This parameter is passed uninitialized.
     /// </param>
     /// <param name="stringComparison">The comparison rules to use when looking for <paramref name="substring"/>.</param>
+    /// <param name="callingMethodName">Name of the method that does this validation.</param>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="substring"/> is not found in <paramref name="originalString"/>.
     /// </exception>
-    internal static void SubstringLastIndex(string originalString, string substring, string parameterName, out int substringIndex, StringComparison stringComparison = StringComparison.CurrentCulture)
+    internal static void SubstringLastIndex(string originalString, string substring, string parameterName, out int substringIndex, StringComparison stringComparison = StringComparison.CurrentCulture, [CallerMemberName] string callingMethodName = null)
     {
         substringIndex = originalString.LastIndexOf(substring, stringComparison);
 
         if (substringIndex == -1)
-            ExceptionThrower.Throw_ArgumentOutOfRangeException_Substring(substring, parameterName);
+            ExceptionThrower.Throw_ArgumentOutOfRangeException_Substring(substring, parameterName, callingMethodName);
     }
 }
