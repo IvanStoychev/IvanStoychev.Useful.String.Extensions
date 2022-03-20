@@ -160,7 +160,7 @@ public static class Remover
             return str;
 
         if (str.EndsWith(trimString))
-            str = str[..^trimString.Length];
+            str = str.Substring(0, str.Length - trimString.Length);
 
         return str;
     }
@@ -170,20 +170,20 @@ public static class Remover
     /// </summary>
     /// <param name="str">The string to remove occurrences from.</param>
     /// <param name="trimString">The string to remove.</param>
-    /// <param name="stringComparison">One of the enumeration values that determines how the end of the current instance and "trimString" are compared.</param>
+    /// <param name="stringComparison">One of the enumeration values that determines how the end of the current instance and <paramref name="trimString"/> are compared.</param>
     /// <returns>
-    /// The string that remains after the occurrence of "trimString" is removed from the end of
-    /// the current instance. If "trimString" is null, the empty string or not found at the end of the
+    /// The string that remains after the occurrence of <paramref name="trimString"/> is removed from the end of
+    /// the current instance. If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the end of the
     /// current instance the method returns the current instance unchanged.
     /// </returns>
     [Pure]
-    public static string TrimEnd(this string str, string trimString, StringComparison stringComparison)
+    public static string TrimEnd(this string str, string trimString, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
         if (string.IsNullOrEmpty(trimString))
             return str;
 
         if (str.EndsWith(trimString, stringComparison))
-            str = str[..^trimString.Length];
+            str = str.Substring(0, str.Length - trimString.Length);
 
         return str;
     }
@@ -193,24 +193,24 @@ public static class Remover
     /// </summary>
     /// <param name="str">The string to remove occurrences from.</param>
     /// <param name="trimString">The string to remove.</param>
-    /// <param name="ignoreCase">"true" to ignore casing when trimming, "false" otherwise.</param>
+    /// <param name="ignoreCase"><see langword="true"/> to ignore casing when trimming, <see langword="false"/> otherwise.</param>
     /// <param name="culture">
-    /// Cultural information that determines how the end of this instance and "trimString" are compared.
+    /// Cultural information that determines how the end of this instance and <paramref name="trimString"/> are compared.
     /// If culture is null, the current culture is used.
     /// </param>
     /// <returns>
-    /// The string that remains after the occurrence of "trimString" is removed from the end of
-    /// the current instance. If "trimString" is null, the empty string or not found at the end of the
+    /// The string that remains after the occurrence of <paramref name="trimString"/> is removed from the end of
+    /// the current instance. If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the end of the
     /// current instance the method returns the current instance unchanged.
     /// </returns>
     [Pure]
-    public static string TrimEnd(this string str, string trimString, bool ignoreCase, CultureInfo culture)
+    public static string TrimEnd(this string str, string trimString, bool ignoreCase, CultureInfo? culture)
     {
         if (string.IsNullOrEmpty(trimString))
             return str;
 
         if (str.EndsWith(trimString, ignoreCase, culture))
-            str = str[..^trimString.Length];
+            str = str.Substring(0, str.Length - trimString.Length);
 
         return str;
     }
