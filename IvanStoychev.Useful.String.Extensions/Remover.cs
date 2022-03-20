@@ -94,27 +94,11 @@ public static class Remover
         => Regex.Replace(originalString, "[A-Za-z]", string.Empty);
 
     /// <summary>
-    /// Trims the given amount of characters from the start and end of the current instance.
-    /// </summary>
-    /// <param name="str">The string to trim.</param>
-    /// <param name="amount">Amount of characters to remove from the start and end of the instance.</param>
-    /// <returns>The string that remains after <paramref name="amount"/> of characters have been removed from the original instance's start and end.</returns>
-    /// <exception cref="ArgumentOutOfRangeException"><paramref name="amount"/> is twice of more times bigger than the original instance's length.</exception>
-    [Pure]
-    public static string Trim(this string str, int amount)
-    {
-        int lengthDiff = str.Length - amount * 2;
-        Validate.DoubleAmountStringLength(amount, lengthDiff);
-
-        return str.Substring(amount, lengthDiff);
-    }
-
-    /// <summary>
     /// Removes the leading occurrence of a specified string from the current instance, using the provided string comparison option.
     /// </summary>
     /// <param name="str">The instance to remove the string from.</param>
     /// <param name="trimString">The string to remove.</param>
-    /// <param name="stringComparison">One of the enumeration values that determines how the start of the current instance and "trimString" are compared.</param>
+    /// <param name="stringComparison">One of the enumeration values that determines how the start of the current instance and <paramref name="trimString"/> are compared.</param>
     /// <returns>
     /// The string that remains after the occurrence of "trimString" is removed from the start of
     /// the current instance. If "trimString" is null, the empty string or not found at the start of the
@@ -137,42 +121,26 @@ public static class Remover
     /// </summary>
     /// <param name="str">The string to remove occurrences from.</param>
     /// <param name="trimString">The string to remove.</param>
-    /// <param name="ignoreCase">"true" to ignore casing when trimming, "false" otherwise.</param>
+    /// <param name="ignoreCase"><see langword="true"/> to ignore casing when trimming, <see langword="false"/> otherwise.</param>
     /// <param name="culture">
-    /// Cultural information that determines how the start of this instance and "trimString" are compared.
+    /// Cultural information that determines how the start of this instance and <paramref name="trimString"/> are compared.
     /// If culture is null, the current culture is used.
     /// </param>
     /// <returns>
-    /// The string that remains after the occurrence of "trimString" is removed from the start of
-    /// the current instance. If "trimString" is null, the empty string or not found at the start of the
+    /// The string that remains after the occurrence of <paramref name="trimString"/> is removed from the start of
+    /// the current instance. If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the start of the
     /// current instance the method returns the current instance unchanged.
     /// </returns>
     [Pure]
-    public static string TrimStart(this string str, string trimString, bool ignoreCase, CultureInfo culture)
+    public static string TrimStart(this string str, string trimString, bool ignoreCase, CultureInfo? culture)
     {
         if (string.IsNullOrEmpty(trimString))
             return str;
 
         if (str.StartsWith(trimString, ignoreCase, culture))
-            str = str[trimString.Length..];
+            str = str.Substring(trimString.Length);
 
         return str;
-    }
-
-    /// <summary>
-    /// Trims the given amount of characters from the start of the current instance.
-    /// </summary>
-    /// <param name="str">The string to trim.</param>
-    /// <param name="amount">Amount of characters to remove from the start of the instance.</param>
-    /// <returns>The string that remains after <paramref name="amount"/> of characters have been removed from the original instance's start.</returns>
-    /// <exception cref="ArgumentOutOfRangeException"><paramref name="amount"/> is bigger than the original instance's length.</exception>
-    [Pure]
-    public static string TrimStart(this string str, int amount)
-    {
-        int lengthDiff = str.Length - amount;
-        Validate.AmountStringLength(amount, lengthDiff);
-
-        return str[amount..];
     }
 
     /// <summary>
@@ -245,21 +213,5 @@ public static class Remover
             str = str[..^trimString.Length];
 
         return str;
-    }
-
-    /// <summary>
-    /// Trims the given amount of characters from the end of the current instance.
-    /// </summary>
-    /// <param name="str">The string to trim.</param>
-    /// <param name="amount">Amount of characters to remove from the end of the instance.</param>
-    /// <returns>The string that remains after <paramref name="amount"/> of characters have been removed from the original instance's end.</returns>
-    /// <exception cref="ArgumentOutOfRangeException"><paramref name="amount"/> is bigger than the original instance's length.</exception>
-    [Pure]
-    public static string TrimEnd(this string str, int amount)
-    {
-        int lengthDiff = str.Length - amount;
-        Validate.AmountStringLength(amount, lengthDiff);
-
-        return str[..lengthDiff];
     }
 }
