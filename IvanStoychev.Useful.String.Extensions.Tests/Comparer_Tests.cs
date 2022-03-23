@@ -6,7 +6,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests;
 
 public class Comparer_Tests
 {
-    #region string Contains(this string str, IEnumerable<string> keywords, StringComparison comparison)
+    #region bool Contains(this string str, IEnumerable<string> keywords, StringComparison comparison)
 
     [Theory, MemberData(nameof(Data_Contains_IEnumString_DefaultComparison_Pass))]
     public void Contains_IEnumString_DefaultComparison_Pass(string testString, IEnumerable<string> keywords)
@@ -40,9 +40,9 @@ public class Comparer_Tests
         Assert.False(actual);
     }
 
-    #endregion string Contains(this string str, IEnumerable<string> keywords, StringComparison comparison)
+    #endregion bool Contains(this string str, IEnumerable<string> keywords, StringComparison comparison)
 
-    #region string Contains(this string str, IEnumerable<char> keychars, StringComparison comparison)
+    #region bool Contains(this string str, IEnumerable<char> keychars, StringComparison comparison)
 
     [Theory, MemberData(nameof(Data_Contains_IEnumChar_DefaultComparison_Pass))]
     public void Contains_IEnumChar_DefaultComparison_Pass(string testString, IEnumerable<char> keychars)
@@ -76,7 +76,7 @@ public class Comparer_Tests
         Assert.False(actual);
     }
 
-    #endregion string Contains(this string str, IEnumerable<char> keychars, StringComparison comparison)
+    #endregion bool Contains(this string str, IEnumerable<char> keychars, StringComparison comparison)
 
     #region IEnumerable test data
 
