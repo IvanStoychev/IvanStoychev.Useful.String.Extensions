@@ -6,464 +6,72 @@ namespace IvanStoychev.Useful.String.Extensions.Tests;
 
 public class Comparer_Tests
 {
-    #region string Contains(this string str, params string[] keywords)
-
-    [Theory]
-    [InlineData("Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car", "ham" })]
-    [InlineData("Pulled coming wooded tended it answer remain me be", new string[] { "wood", "anybody", "word" })]
-    [InlineData("So landlord by we unlocked sensible it", new string[] { "maids", "people", "unlocked" })]
-    [InlineData("Fat cannot use denied excuse son law", new string[] { "man", "phone", "denied", "rang" })]
-    [InlineData("Wisdom happen suffer common the appear ham beauty her had", new string[] { "Microsoft", "window", "happen", "appear" })]
-    [InlineData("Or belonging zealously existence as by resources", new string[] { "zeal", "crusade", "scarlet", "diglett" })]
-    public void Contains_StringArray_Pass(string testString, string[] keywords)
-    {
-        bool actual = testString.Contains(keywords);
-
-        Assert.True(actual);
-    }
-
-    [Theory]
-    [InlineData("Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car" })]
-    [InlineData("Pulled coming wooded tended it answer remain me be", new string[] { "WOODED", "anybody", "word" })]
-    [InlineData("So landlord by we unlocked sensible it", new string[] { "maids", "people", "cooked" })]
-    [InlineData("Fat cannot use denied excuse son law", new string[] { "man", "DENIED", "vox", "rang" })]
-    [InlineData("Wisdom happen suffer common the appear ham beauty her had", new string[] { "Microsoft", "window", "hapPen", "apear" })]
-    [InlineData("Or belonging zealously existence as by resources", new string[] { "zeaL", "crusade", "scarlet", "diglett" })]
-    public void Contains_StringArray_Fail(string testString, string[] keywords)
-    {
-        bool actual = testString.Contains(keywords);
-
-        Assert.False(actual);
-    }
-
-    #endregion string Contains(this string str, params string[] keywords)
-
-    #region string Contains(this string str, StringComparison comparison, params string[] keywords)
-
-    [Theory]
-    [InlineData("Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car", "ham" })]
-    [InlineData("Pulled coming wooded tended it answer remain me be", new string[] { "wood", "anybody", "word" })]
-    [InlineData("So landlord by we unlocked sensible it", new string[] { "maids", "people", "unlocked" })]
-    [InlineData("Fat cannot use denied excuse son law", new string[] { "man", "phone", "denied", "rang" })]
-    [InlineData("Wisdom happen suffer common the appear ham beauty her had", new string[] { "Microsoft", "window", "happen", "appear" })]
-    [InlineData("Or belonging zealously existence as by resources", new string[] { "zeal", "crusade", "scarlet", "diglett" })]
-    public void Contains_Ordinal_StringArray_Pass(string testString, string[] keywords)
-    {
-        bool actual = testString.Contains(StringComparison.Ordinal, keywords);
-
-        Assert.True(actual);
-    }
-
-    [Theory]
-    [InlineData("Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car" })]
-    [InlineData("Pulled coming wooded tended it answer remain me be", new string[] { "WOODED", "anybody", "word" })]
-    [InlineData("So landlord by we unlocked sensible it", new string[] { "maids", "people", "cooked" })]
-    [InlineData("Fat cannot use denied excuse son law", new string[] { "man", "phone", "vox", "DENIED", "rang" })]
-    [InlineData("Wisdom happen suffer common the appear ham beauty her had", new string[] { "Microsoft", "window", "hapen", "apear" })]
-    [InlineData("Or belonging zealously existence as by resources", new string[] { "zeaL", "crusade", "scarlet", "diglett" })]
-    public void Contains_Ordinal_StringArray_Fail(string testString, string[] keywords)
-    {
-        bool actual = testString.Contains(StringComparison.Ordinal, keywords);
-
-        Assert.False(actual);
-    }
-
-    [Theory]
-    [InlineData("Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car", "ham" })]
-    [InlineData("Pulled coming wooded tended it answer remain me be", new string[] { "WOODED", "anybody", "word" })]
-    [InlineData("So landlord by we unlocked sensible it", new string[] { "maids", "people", "unlocked" })]
-    [InlineData("Fat cannot use denied excuse son law", new string[] { "man", "phone", "DENIED", "rang" })]
-    [InlineData("Wisdom happen suffer common the appear ham beauty her had", new string[] { "Microsoft", "window", "happen", "appear" })]
-    [InlineData("Or belonging zealously existence as by resources", new string[] { "zeaL", "crusade", "scarlet", "diglett" })]
-    public void Contains_OrdinalIgnoreCase_StringArray_Pass(string testString, string[] keywords)
-    {
-        bool actual = testString.Contains(StringComparison.OrdinalIgnoreCase, keywords);
-
-        Assert.True(actual);
-    }
-
-    [Theory]
-    [InlineData("Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car" })]
-    [InlineData("Pulled coming wooded tended it answer remain me be", new string[] { "woodd", "anybody", "word" })]
-    [InlineData("So landlord by we unlocked sensible it", new string[] { "maids", "people", "cooked" })]
-    [InlineData("Fat cannot use denied excuse son law", new string[] { "man", "phone", "vox", "rang" })]
-    [InlineData("Wisdom happen suffer common the appear ham beauty her had", new string[] { "Microsoft", "window", "hapen", "apear" })]
-    [InlineData("Or belonging zealously existence as by resources", new string[] { "zealu", "crusade", "scarlet", "diglett" })]
-    public void Contains_OrdinalIgnoreCase_StringArray_Fail(string testString, string[] keywords)
-    {
-        bool actual = testString.Contains(StringComparison.OrdinalIgnoreCase, keywords);
-
-        Assert.False(actual);
-    }
-
-    [Theory]
-    [InlineData("Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car", "ham" })]
-    [InlineData("Pulled coming wooded tended it answer remain me be", new string[] { "wood", "anybody", "word" })]
-    [InlineData("So landlord by we unlocked sensible it", new string[] { "maids", "people", "unlocked" })]
-    [InlineData("Fat cannot use denied excuse son law", new string[] { "man", "phone", "denied", "rang" })]
-    [InlineData("Wisdom happen suffer common the appear ham beauty her had", new string[] { "Microsoft", "window", "happen", "appear" })]
-    [InlineData("Or belonging zealously existence as by resources", new string[] { "zeal", "crusade", "scarlet", "diglett" })]
-    public void Contains_InvariantCulture_StringArray_Pass(string testString, string[] keywords)
-    {
-        bool actual = testString.Contains(StringComparison.InvariantCulture, keywords);
-
-        Assert.True(actual);
-    }
-
-    [Theory]
-    [InlineData("Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car" })]
-    [InlineData("Pulled coming wooded tended it answer remain me be", new string[] { "WOODED", "anybody", "word" })]
-    [InlineData("So landlord by we unlocked sensible it", new string[] { "maids", "people", "cooked" })]
-    [InlineData("Fat cannot use denied excuse son law", new string[] { "man", "phone", "vox", "DENIED", "rang" })]
-    [InlineData("Wisdom happen suffer common the appear ham beauty her had", new string[] { "Microsoft", "window", "hapen", "apear" })]
-    [InlineData("Or belonging zealously existence as by resources", new string[] { "zeaL", "crusade", "scarlet", "diglett" })]
-    public void Contains_InvariantCulture_StringArray_Fail(string testString, string[] keywords)
-    {
-        bool actual = testString.Contains(StringComparison.InvariantCulture, keywords);
-
-        Assert.False(actual);
-    }
-
-    [Theory]
-    [InlineData("Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car", "hAm" })]
-    [InlineData("Pulled coming wooded tended it answer remain me be", new string[] { "wOod", "anybody", "word" })]
-    [InlineData("So landlord by we unlocked sensible it", new string[] { "maids", "people", "unloCKed" })]
-    [InlineData("Fat cannot use denied excuse son law", new string[] { "man", "phone", "dEnIed", "rang" })]
-    [InlineData("Wisdom happen suffer common the appear ham beauty her had", new string[] { "Microsoft", "window", "hapPEN", "appear" })]
-    [InlineData("Or belonging zealously existence as by resources", new string[] { "ZEAL", "crusade", "scarlet", "diglett" })]
-    public void Contains_InvariantCultureIgnoreCase_StringArray_Pass(string testString, string[] keywords)
-    {
-        bool actual = testString.Contains(StringComparison.InvariantCultureIgnoreCase, keywords);
-
-        Assert.True(actual);
-    }
-
-    [Theory]
-    [InlineData("Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car" })]
-    [InlineData("Pulled coming wooded tended it answer remain me be", new string[] { "anybody", "word" })]
-    [InlineData("So landlord by we unlocked sensible it", new string[] { "maids", "people", "cooked" })]
-    [InlineData("Fat cannot use denied excuse son law", new string[] { "man", "phone", "vox", "rang" })]
-    [InlineData("Wisdom happen suffer common the appear ham beauty her had", new string[] { "Microsoft", "window", "hapen", "apear" })]
-    [InlineData("Or belonging zealously existence as by resources", new string[] { "crusade", "scarlet", "diglett" })]
-    public void Contains_InvariantCultureIgnoreCase_StringArray_Fail(string testString, string[] keywords)
-    {
-        bool actual = testString.Contains(StringComparison.InvariantCultureIgnoreCase, keywords);
-
-        Assert.False(actual);
-    }
-
-    #endregion string Contains(this string str, StringComparison comparison, params string[] keywords)
-
     #region string Contains(this string str, IEnumerable<string> keywords, StringComparison comparison)
 
-    [Theory, MemberData(nameof(Contains_IEnumString_CaseSensetive_Pass))]
-    public void Contains_IEnumString_StringComparisonDefault_Pass(string testString, IEnumerable<string> keywords)
+    [Theory, MemberData(nameof(Data_Contains_IEnumString_DefaultComparison_Pass))]
+    public void Contains_IEnumString_DefaultComparison_Pass(string testString, IEnumerable<string> keywords)
     {
         bool actual = testString.Contains(keywords);
 
         Assert.True(actual);
     }
 
-    [Theory, MemberData(nameof(Contains_IEnumString_CaseSensetive_Fail))]
-    public void Contains_IEnumString_StringComparisonDefault_Fail(string testString, IEnumerable<string> keywords)
+    [Theory, MemberData(nameof(Data_Contains_IEnumString_DefaultComparison_Fail))]
+    public void Contains_IEnumString_DefaultComparison_Fail(string testString, IEnumerable<string> keywords)
     {
         bool actual = testString.Contains(keywords);
 
         Assert.False(actual);
     }
 
-    [Theory, MemberData(nameof(Contains_IEnumString_CaseSensetive_Pass))]
-    public void Contains_IEnumString_StringComparisonOrdinal_Pass(string testString, IEnumerable<string> keywords)
+    [Theory, MemberData(nameof(Data_Contains_IEnumString_SetComparison_Pass))]
+    public void Contains_IEnumString_SetComparison_Pass(string testString, IEnumerable<string> keywords, StringComparison stringComparison)
     {
-        bool actual = testString.Contains(keywords, StringComparison.Ordinal);
+        bool actual = testString.Contains(keywords, stringComparison);
 
         Assert.True(actual);
     }
 
-    [Theory, MemberData(nameof(Contains_IEnumString_CaseSensetive_Fail))]
-    public void Contains_IEnumString_StringComparisonOrdinal_Fail(string testString, IEnumerable<string> keywords)
+    [Theory, MemberData(nameof(Data_Contains_IEnumString_SetComparison_Fail))]
+    public void Contains_IEnumString_SetComparison_Fail(string testString, IEnumerable<string> keywords, StringComparison stringComparison)
     {
-        bool actual = testString.Contains(keywords, StringComparison.Ordinal);
-
-        Assert.False(actual);
-    }
-
-    [Theory, MemberData(nameof(Contains_IEnumString_CaseInsensetive_Pass))]
-    public void Contains_IEnumString_StringComparisonOrdinalIgnoreCase_Pass(string testString, IEnumerable<string> keywords)
-    {
-        bool actual = testString.Contains(keywords, StringComparison.OrdinalIgnoreCase);
-
-        Assert.True(actual);
-    }
-
-    [Theory, MemberData(nameof(Contains_IEnumString_CaseInsensetive_Fail))]
-    public void Contains_IEnumString_StringComparisonOrdinalIgnoreCase_Fail(string testString, IEnumerable<string> keywords)
-    {
-        bool actual = testString.Contains(keywords, StringComparison.OrdinalIgnoreCase);
-
-        Assert.False(actual);
-    }
-
-    [Theory, MemberData(nameof(Contains_IEnumString_CaseSensetive_Pass))]
-    public void Contains_IEnumString_StringComparisonInvariantCulture_Pass(string testString, IEnumerable<string> keywords)
-    {
-        bool actual = testString.Contains(keywords, StringComparison.InvariantCulture);
-
-        Assert.True(actual);
-    }
-
-    [Theory, MemberData(nameof(Contains_IEnumString_CaseSensetive_Fail))]
-    public void Contains_IEnumString_StringComparisonInvariantCulture_Fail(string testString, IEnumerable<string> keywords)
-    {
-        bool actual = testString.Contains(keywords, StringComparison.InvariantCulture);
-
-        Assert.False(actual);
-    }
-
-    [Theory, MemberData(nameof(Contains_IEnumString_CaseInsensetive_Pass))]
-    public void Contains_IEnumString_StringComparisonInvariantCultureIgnoreCase_Pass(string testString, IEnumerable<string> keywords)
-    {
-        bool actual = testString.Contains(keywords, StringComparison.InvariantCultureIgnoreCase);
-
-        Assert.True(actual);
-    }
-
-    [Theory, MemberData(nameof(Contains_IEnumString_CaseInsensetive_Fail))]
-    public void Contains_IEnumString_StringComparisonInvariantCultureIgnoreCase_Fail(string testString, IEnumerable<string> keywords)
-    {
-        bool actual = testString.Contains(keywords, StringComparison.InvariantCultureIgnoreCase);
+        bool actual = testString.Contains(keywords, stringComparison);
 
         Assert.False(actual);
     }
 
     #endregion string Contains(this string str, IEnumerable<string> keywords, StringComparison comparison)
 
-    #region string Contains(this string str, params char[] keychars)
-
-    [Theory]
-    [InlineData("v027CPSNRo9pwj9f", new char[] { 'z', '7', 'x' })]
-    [InlineData("tPzglSBMqE6u9bvB", new char[] { 'P', '0', 'n' })]
-    [InlineData("jT5BZRbC8cgwAYu2", new char[] { 'x', '3', 'C' })]
-    [InlineData("U5SVGjk0hIr9Bxz0", new char[] { 'U', '4', 'H' })]
-    [InlineData("Caq0r9KadJwBgFte", new char[] { 'f', '8', 'q' })]
-    [InlineData("KE0evdEczTKxAmkn", new char[] { 'l', 'K', 'D' })]
-    public void Contains_IEnumChar_Pass(string testString, char[] keychars)
-    {
-        bool actual = testString.Contains(keychars);
-
-        Assert.True(actual);
-    }
-
-    [Theory]
-    [InlineData("v027CPSNRo9pwj9f", new char[] { 'z', '8', 'x' })]
-    [InlineData("tPzglSBMqE6u9bvB", new char[] { 'p', '0', 'n' })]
-    [InlineData("jT5BZRbC8cgwAYu2", new char[] { 'x', '3', 'y' })]
-    [InlineData("U5SVGjk0hIr9Bxz0", new char[] { 'u', '4', 'H' })]
-    [InlineData("Caq0r9KadJwBgFte", new char[] { 'f', '8', 'Q' })]
-    [InlineData("KE0evdEczTKxAmkn", new char[] { 'l', '1', 'D' })]
-    public void Contains_IEnumChar_Fail(string testString, char[] keychars)
-    {
-        bool actual = testString.Contains(keychars);
-
-        Assert.False(actual);
-    }
-
-    #endregion string Contains(this string str, params char[] keychars)
-
-    #region string Contains(this string str, StringComparison comparison, params char[] keychars)
-
-    [Theory]
-    [InlineData("v027CPSNRo9pwj9f", new char[] { 'z', '7', 'x' })]
-    [InlineData("tPzglSBMqE6u9bvB", new char[] { 'P', '0', 'n' })]
-    [InlineData("jT5BZRbC8cgwAYu2", new char[] { 'x', '3', 'C' })]
-    [InlineData("U5SVGjk0hIr9Bxz0", new char[] { 'U', '4', 'H' })]
-    [InlineData("Caq0r9KadJwBgFte", new char[] { 'f', '8', 'q' })]
-    [InlineData("KE0evdEczTKxAmkn", new char[] { 'l', 'K', 'D' })]
-    public void Contains_IEnumChar_Ordinal_Pass(string testString, char[] keychars)
-    {
-        bool actual = testString.Contains(StringComparison.Ordinal, keychars);
-
-        Assert.True(actual);
-    }
-
-    [Theory]
-    [InlineData("v027CPSNRo9pwj9f", new char[] { 'z', '8', 'x' })]
-    [InlineData("tPzglSBMqE6u9bvB", new char[] { 'p', '0', 'n' })]
-    [InlineData("jT5BZRbC8cgwAYu2", new char[] { 'x', '3', 'W' })]
-    [InlineData("U5SVGjk0hIr9Bxz0", new char[] { 'u', '4', 'H' })]
-    [InlineData("Caq0r9KadJwBgFte", new char[] { 'f', '8', 'Q' })]
-    [InlineData("KE0evdEczTKxAmkn", new char[] { 'l', 't', 'D' })]
-    public void Contains_IEnumChar_Ordinal_Fail(string testString, char[] keychars)
-    {
-        bool actual = testString.Contains(StringComparison.Ordinal, keychars);
-
-        Assert.False(actual);
-    }
-
-    [Theory]
-    [InlineData("v027CPSNRo9pwj9f", new char[] { 'z', '8', 'W' })]
-    [InlineData("tPzglSBMqE6u9bvB", new char[] { 'p', '0', 'n' })]
-    [InlineData("jT5BZRbC8cgwAYu2", new char[] { 'x', '3', 'c' })]
-    [InlineData("U5SVGjk0hIr9Bxz0", new char[] { 'u', '4', 'H' })]
-    [InlineData("Caq0r9KadJwBgFte", new char[] { 'f', '8', 'Q' })]
-    [InlineData("KE0evdEczTKxAmkn", new char[] { 'l', 'k', 'D' })]
-    public void Contains_OrdinalIgnoreCase_CharArray_Pass(string testString, char[] keychars)
-    {
-        bool actual = testString.Contains(StringComparison.OrdinalIgnoreCase, keychars);
-
-        Assert.True(actual);
-    }
-
-    [Theory]
-    [InlineData("v027CPSNRo9pwj9f", new char[] { 'z', '8', 'x' })]
-    [InlineData("tPzglSBMqE6u9bvB", new char[] { 'w', '0', 'n' })]
-    [InlineData("jT5BZRbC8cgwAYu2", new char[] { 'x', '3', 'n' })]
-    [InlineData("U5SVGjk0hIr9Bxz0", new char[] { 'f', '4', 'y' })]
-    [InlineData("Caq0r9KadJwBgFte", new char[] { 'z', '8', 's' })]
-    [InlineData("KE0evdEczTKxAmkn", new char[] { 'l', 'i', 's' })]
-    public void Contains_OrdinalIgnoreCase_CharArray_Fail(string testString, char[] keychars)
-    {
-        bool actual = testString.Contains(StringComparison.OrdinalIgnoreCase, keychars);
-
-        Assert.False(actual);
-    }
-
-    [Theory]
-    [InlineData("v027CPSNRo9pwj9f", new char[] { 'z', '7', 'x' })]
-    [InlineData("tPzglSBMqE6u9bvB", new char[] { 'P', '0', 'n' })]
-    [InlineData("jT5BZRbC8cgwAYu2", new char[] { 'x', '3', 'C' })]
-    [InlineData("U5SVGjk0hIr9Bxz0", new char[] { 'U', '4', 'H' })]
-    [InlineData("Caq0r9KadJwBgFte", new char[] { 'f', '8', 'q' })]
-    [InlineData("KE0evdEczTKxAmkn", new char[] { 'l', 'K', 'D' })]
-    public void Contains_InvariantCulture_CharArray_Pass(string testString, char[] keychars)
-    {
-        bool actual = testString.Contains(StringComparison.InvariantCulture, keychars);
-
-        Assert.True(actual);
-    }
-
-    [Theory]
-    [InlineData("v027CPSNRo9pwj9f", new char[] { 'z', '8', 'x' })]
-    [InlineData("tPzglSBMqE6u9bvB", new char[] { 'p', '0', 'n' })]
-    [InlineData("jT5BZRbC8cgwAYu2", new char[] { 'x', '3', 'W' })]
-    [InlineData("U5SVGjk0hIr9Bxz0", new char[] { 'u', '4', 'H' })]
-    [InlineData("Caq0r9KadJwBgFte", new char[] { 'f', '8', 'Q' })]
-    [InlineData("KE0evdEczTKxAmkn", new char[] { 'l', 't', 'D' })]
-    public void Contains_InvariantCulture_CharArray_Fail(string testString, char[] keychars)
-    {
-        bool actual = testString.Contains(StringComparison.InvariantCulture, keychars);
-
-        Assert.False(actual);
-    }
-
-    [Theory]
-    [InlineData("v027CPSNRo9pwj9f", new char[] { 'z', '7', 'x' })]
-    [InlineData("tPzglSBMqE6u9bvB", new char[] { 'P', '0', 'n' })]
-    [InlineData("jT5BZRbC8cgwAYu2", new char[] { 'x', '3', 'C' })]
-    [InlineData("U5SVGjk0hIr9Bxz0", new char[] { 'U', '4', 'H' })]
-    [InlineData("Caq0r9KadJwBgFte", new char[] { 'f', '8', 'q' })]
-    [InlineData("KE0evdEczTKxAmkn", new char[] { 'l', 'K', 'D' })]
-    public void Contains_InvariantCultureIgnoreCase_CharArray_Pass(string testString, char[] keychars)
-    {
-        bool actual = testString.Contains(StringComparison.InvariantCultureIgnoreCase, keychars);
-
-        Assert.True(actual);
-    }
-
-    [Theory]
-    [InlineData("v027CPSNRo9pwj9f", new char[] { 'z', '8', 'x' })]
-    [InlineData("tPzglSBMqE6u9bvB", new char[] { 'w', '0', 'n' })]
-    [InlineData("jT5BZRbC8cgwAYu2", new char[] { 'x', '3', 'n' })]
-    [InlineData("U5SVGjk0hIr9Bxz0", new char[] { 'f', '4', 'y' })]
-    [InlineData("Caq0r9KadJwBgFte", new char[] { 'z', '8', 's' })]
-    [InlineData("KE0evdEczTKxAmkn", new char[] { 'l', 'i', 's' })]
-    public void Contains_InvariantCultureIgnoreCase_CharArray_Fail(string testString, char[] keychars)
-    {
-        bool actual = testString.Contains(StringComparison.InvariantCultureIgnoreCase, keychars);
-
-        Assert.False(actual);
-    }
-
-    #endregion string Contains(this string str, StringComparison comparison, params char[] keychars)
-
     #region string Contains(this string str, IEnumerable<char> keychars, StringComparison comparison)
 
-    [Theory, MemberData(nameof(Contains_IEnumChar_CaseSensetive_Pass))]
-    public void Contains_IEnumChar_StringComparisonDefault_Pass(string testString, IEnumerable<char> keychars)
+    [Theory, MemberData(nameof(Data_Contains_IEnumChar_DefaultComparison_Pass))]
+    public void Contains_IEnumChar_DefaultComparison_Pass(string testString, IEnumerable<char> keychars)
     {
         bool actual = testString.Contains(keychars);
 
         Assert.True(actual);
     }
 
-    [Theory, MemberData(nameof(Contains_IEnumChar_CaseSensetive_Fail))]
-    public void Contains_IEnumChar_StringComparisonDefault_Fail(string testString, IEnumerable<char> keychars)
+    [Theory, MemberData(nameof(Data_Contains_IEnumChar_DefaultComparison_Fail))]
+    public void Contains_IEnumChar_DefaultComparison_Fail(string testString, IEnumerable<char> keychars)
     {
         bool actual = testString.Contains(keychars);
 
         Assert.False(actual);
     }
 
-    [Theory, MemberData(nameof(Contains_IEnumChar_CaseSensetive_Pass))]
-    public void Contains_IEnumChar_StringComparisonOrdinal_Pass(string testString, IEnumerable<char> keychars)
+    [Theory, MemberData(nameof(Data_Contains_IEnumChar_SetComparison_Pass))]
+    public void Contains_IEnumChar_SetComparison_Pass(string testString, IEnumerable<char> keychars, StringComparison stringComparison)
     {
-        bool actual = testString.Contains(keychars, StringComparison.Ordinal);
+        bool actual = testString.Contains(keychars, stringComparison);
 
         Assert.True(actual);
     }
 
-    [Theory, MemberData(nameof(Contains_IEnumChar_CaseSensetive_Fail))]
-    public void Contains_IEnumChar_StringComparisonOrdinal_Fail(string testString, IEnumerable<char> keychars)
+    [Theory, MemberData(nameof(Data_Contains_IEnumChar_SetComparison_Fail))]
+    public void Contains_IEnumChar_SetComparison_Fail(string testString, IEnumerable<char> keychars, StringComparison stringComparison)
     {
-        bool actual = testString.Contains(keychars, StringComparison.Ordinal);
-
-        Assert.False(actual);
-    }
-
-    [Theory, MemberData(nameof(Contains_IEnumChar_CaseInsensetive_Pass))]
-    public void Contains_IEnumChar_StringComparisonOrdinalIgnoreCase_Pass(string testString, IEnumerable<char> keychars)
-    {
-        bool actual = testString.Contains(keychars, StringComparison.OrdinalIgnoreCase);
-
-        Assert.True(actual);
-    }
-
-    [Theory, MemberData(nameof(Contains_IEnumChar_CaseInsensetive_Fail))]
-    public void Contains_IEnumChar_StringComparisonOrdinalIgnoreCase_Fail(string testString, IEnumerable<char> keychars)
-    {
-        bool actual = testString.Contains(keychars, StringComparison.OrdinalIgnoreCase);
-
-        Assert.False(actual);
-    }
-
-    [Theory, MemberData(nameof(Contains_IEnumChar_CaseSensetive_Pass))]
-    public void Contains_IEnumChar_StringComparisonInvariantCulture_Pass(string testString, IEnumerable<char> keychars)
-    {
-        bool actual = testString.Contains(keychars, StringComparison.InvariantCulture);
-
-        Assert.True(actual);
-    }
-
-    [Theory, MemberData(nameof(Contains_IEnumChar_CaseSensetive_Fail))]
-    public void Contains_IEnumChar_StringComparisonInvariantCulture_Fail(string testString, IEnumerable<char> keychars)
-    {
-        bool actual = testString.Contains(keychars, StringComparison.InvariantCulture);
-
-        Assert.False(actual);
-    }
-
-    [Theory, MemberData(nameof(Contains_IEnumChar_CaseInsensetive_Pass))]
-    public void Contains_IEnumChar_StringComparisonInvariantCultureIgnoreCase_Pass(string testString, IEnumerable<char> keychars)
-    {
-        bool actual = testString.Contains(keychars, StringComparison.InvariantCultureIgnoreCase);
-
-        Assert.True(actual);
-    }
-
-    [Theory, MemberData(nameof(Contains_IEnumChar_CaseInsensetive_Fail))]
-    public void Contains_IEnumChar_StringComparisonInvariantCultureIgnoreCase_Fail(string testString, IEnumerable<char> keychars)
-    {
-        bool actual = testString.Contains(keychars, StringComparison.InvariantCultureIgnoreCase);
+        bool actual = testString.Contains(keychars, stringComparison);
 
         Assert.False(actual);
     }
@@ -472,114 +80,174 @@ public class Comparer_Tests
 
     #region IEnumerable test data
 
-    public static IEnumerable<object[]> Contains_IEnumString_CaseSensetive_Pass
+    public static IEnumerable<object[]> Data_Contains_IEnumString_DefaultComparison_Pass
     {
         get
         {
             return new[]
             {
-                new object[] { "Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car", "ham" } },
-                new object[] { "Pulled coming wooded tended it answer remain me be", new List<string>() { "wood", "anybody", "word" } },
-                new object[] { "So landlord by we unlocked sensible it", new HashSet<string>() { "maids", "people", "unlocked" } },
-                new object[] { "Fat cannot use denied excuse son law", new Queue<string>(new string[] { "man", "phone", "denied", "rang" }) }
+                new object[] { "case encyclopædia Archæology", new string[] { "dummy", "case", "dummy", "dummy" } },
+                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "encyclopædia", "dummy", "dummy" } },
+                new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "Archæology", "dummy", "dummy" } },
+                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "dummy", "case", "encyclopædia", "Archæology" }) }
             };
         }
     }
 
-    public static IEnumerable<object[]> Contains_IEnumString_CaseSensetive_Fail
+    public static IEnumerable<object[]> Data_Contains_IEnumString_DefaultComparison_Fail
     {
         get
         {
             return new[]
             {
-                new object[] { "Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car", "HAM" } },
-                new object[] { "Pulled coming wooded tended it answer remain me be", new List<string>() { "WOOD", "anybody", "word" } },
-                new object[] { "So landlord by we unlocked sensible it", new HashSet<string>() { "maids", "people", "uNLocked" } },
-                new object[] { "Fat cannot use denied excuse son law", new Queue<string>(new string[] { "man", "phone", "DeNIeD", "rang" }) }
+                new object[] { "case encyclopædia Archæology", new string[] { "dummy", "Case", "encyclopaedia", "ARCHÆOLOGY" } },
+                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "Case", "encyclopaedia", "ARCHÆOLOGY" } },
+                new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "Case", "encyclopaedia", "ARCHÆOLOGY" } },
+                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "dummy", "Case", "encyclopaedia", "ARCHÆOLOGY" }) }
             };
         }
     }
 
-    public static IEnumerable<object[]> Contains_IEnumString_CaseInsensetive_Pass
+    public static IEnumerable<object[]> Data_Contains_IEnumString_SetComparison_Pass
     {
         get
         {
             return new[]
             {
-                new object[] { "Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car", "HAM" } },
-                new object[] { "Pulled coming wooded tended it answer remain me be", new List<string>() { "WOOD", "anybody", "word" } },
-                new object[] { "So landlord by we unlocked sensible it", new HashSet<string>() { "maids", "people", "uNLocked" } },
-                new object[] { "Fat cannot use denied excuse son law", new Queue<string>(new string[] { "man", "phone", "DeNIeD", "rang" }) }
+                new object[] { "case encyclopædia Archæology", new string[] { "dummy", "case", "dummy" }, StringComparison.InvariantCulture},
+                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "encyclopaedia", "dummy" }, StringComparison.InvariantCulture},
+                new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "Archæology", "dummy" }, StringComparison.InvariantCulture},
+                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "case", "encyclopaedia", "Archæology" }), StringComparison.InvariantCulture},
+
+                new object[] { "case encyclopædia Archæology", new string[] { "dummy", "Case", "dummy" }, StringComparison.InvariantCultureIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "encyclopaedia", "dummy" }, StringComparison.InvariantCultureIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "ARCHÆOLOGY", "dummy" }, StringComparison.InvariantCultureIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "Case", "encyclopaedia", "ARCHÆOLOGY" }), StringComparison.InvariantCultureIgnoreCase},
+
+                new object[] { "case encyclopædia Archæology", new string[] { "dummy", "case", "dummy" }, StringComparison.Ordinal},
+                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "encyclopædia", "dummy" }, StringComparison.Ordinal},
+                new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "Archæology", "dummy" }, StringComparison.Ordinal},
+                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "dummy", "Archæology", "dummy" }), StringComparison.Ordinal},
+
+                new object[] { "case encyclopædia Archæology", new string[] { "dummy", "Case", "dummy" }, StringComparison.OrdinalIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "encyclopædia", "dummy" }, StringComparison.OrdinalIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "ARCHÆOLOGY", "dummy" }, StringComparison.OrdinalIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "Case", "encyclopædia", "ARCHÆOLOGY" }), StringComparison.OrdinalIgnoreCase}
             };
         }
     }
 
-    public static IEnumerable<object[]> Contains_IEnumString_CaseInsensetive_Fail
+    public static IEnumerable<object[]> Data_Contains_IEnumString_SetComparison_Fail
     {
         get
         {
             return new[]
             {
-                new object[] { "Built purse maids cease her ham new seven among and", new string[] { "door", "hook", "car", "news" } },
-                new object[] { "Pulled coming wooded tended it answer remain me be", new List<string>() { "hard", "anybody", "word" } },
-                new object[] { "So landlord by we unlocked sensible it", new HashSet<string>() { "maids", "people", "pig" } },
-                new object[] { "Fat cannot use denied excuse son law", new Queue<string>(new string[] { "man", "phone", "rang" }) }
+                new object[] { "case encyclopædia Archæology", new string[] { "dummy", "Case", "dummy" }, StringComparison.InvariantCulture},
+                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "Case", "dummy" }, StringComparison.InvariantCulture},
+                new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "Archæology", "dummy" }, StringComparison.InvariantCulture},
+                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "dummy", "Archæology", "dummy" }), StringComparison.InvariantCulture},
+
+                new object[] { "case encyclopædia Archæology", new string[] { "dummy", "dummy", "dummy" }, StringComparison.InvariantCultureIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "dummy", "dummy" }, StringComparison.InvariantCultureIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "dummy", "dummy" }, StringComparison.InvariantCultureIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "dummy", "dummy", "dummy" }), StringComparison.InvariantCultureIgnoreCase},
+
+                new object[] { "case encyclopædia Archæology", new string[] { "dummy", "Case", "dummy" }, StringComparison.Ordinal},
+                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "encyclopaedia", "dummy" }, StringComparison.Ordinal},
+                new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "ARCHÆOLOGY", "dummy" }, StringComparison.Ordinal},
+                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "Case", "encyclopaedia", "ARCHÆOLOGY" }), StringComparison.Ordinal},
+
+                new object[] { "case encyclopædia Archæology", new string[] { "dummy", "Case", "dummy" }, StringComparison.OrdinalIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "encyclopaedia", "dummy" }, StringComparison.OrdinalIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "encyclopaedia", "dummy" }, StringComparison.OrdinalIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "Case", "encyclopaedia", "dummy" }), StringComparison.OrdinalIgnoreCase}
             };
         }
     }
 
-    public static IEnumerable<object[]> Contains_IEnumChar_CaseSensetive_Pass
+    public static IEnumerable<object[]> Data_Contains_IEnumChar_DefaultComparison_Pass
     {
         get
         {
             return new[]
             {
-                new object[] { "v027CPSNRo9pwj9f", new char[] { 'z', '7', 'x' } },
-                new object[] { "tPzglSBMqE6u9bvB", new List<char>() { 'P', '0', 'n' } },
-                new object[] { "jT5BZRbC8cgwAYu2", new HashSet<char>() { 'x', '3', 'w' } },
-                new object[] { "U5SVGjk0hIr9Bxz0", new Queue<char>(new char[] { 'U', '4', 'h' }) }
+                new object[] { "char", new char[] { 'c', 'z', 'z', 'z' } },
+                new object[] { "char", new List<char>() { 'z', 'h', 'z', 'z' } },
+                new object[] { "char", new HashSet<char>() { 'z', 'z', 'a', 'z' } },
+                new object[] { "char", new Queue<char>(new char[] { 'z', 'z', 'z', 'r' }) }
             };
         }
     }
 
-    public static IEnumerable<object[]> Contains_IEnumChar_CaseSensetive_Fail
+    public static IEnumerable<object[]> Data_Contains_IEnumChar_DefaultComparison_Fail
     {
         get
         {
             return new[]
             {
-                new object[] { "v027CPSNRo9pwj9f", new char[] { 'z', '3', 'x' } },
-                new object[] { "tPzglSBMqE6u9bvB", new List<char>() { 'p', '0', 'n' } },
-                new object[] { "jT5BZRbC8cgwAYu2", new HashSet<char>() { 'x', '3', 'W' } },
-                new object[] { "U5SVGjk0hIr9Bxz0", new Queue<char>(new char[] { 'u', '4', 'H' }) }
+                new object[] { "char", new char[] { 'C', 'z', 'z', 'z' } },
+                new object[] { "char", new List<char>() { 'z', 'H', 'z', 'z' } },
+                new object[] { "char", new HashSet<char>() { 'z', 'z', 'A', 'z' } },
+                new object[] { "char", new Queue<char>(new char[] { 'z', 'z', 'z', 'R' }) }
             };
         }
     }
 
-    public static IEnumerable<object[]> Contains_IEnumChar_CaseInsensetive_Pass
+    public static IEnumerable<object[]> Data_Contains_IEnumChar_SetComparison_Pass
     {
         get
         {
             return new[]
             {
-                new object[] { "v027CPSNRo9pwj9f", new char[] { 'z', '7', 'x' } },
-                new object[] { "tPzglSBMqE6u9bvB", new List<char>() { 'p', '0', 'n' } },
-                new object[] { "jT5BZRbC8cgwAYu2", new HashSet<char>() { 'x', '3', 'W' } },
-                new object[] { "U5SVGjk0hIr9Bxz0", new Queue<char>(new char[] { 'u', '4', 'H' }) }
+                new object[] { "i" /* (U+0069) */, new char[] { 'i' /* (U+0069) */, 'z', 'z', 'z' }, StringComparison.InvariantCulture },
+                new object[] { "i" /* (U+0069) */, new List<char>() { 'z', 'i' /* (U+0069) */, 'z', 'z' }, StringComparison.InvariantCulture },
+                new object[] { "i" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'i' /* (U+0069) */, 'z' }, StringComparison.InvariantCulture },
+                new object[] { "i" /* (U+0069) */, new Queue<char>(new char[] { 'z', 'z', 'z', 'i' /* (U+0069) */ }), StringComparison.InvariantCulture },
+
+                new object[] { "i" /* (U+0069) */, new char[] { 'I' /* (U+0049) */, 'z', 'z', 'z' }, StringComparison.InvariantCultureIgnoreCase },
+                new object[] { "i" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, StringComparison.InvariantCultureIgnoreCase },
+                new object[] { "i" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'I' /* (U+0049) */, 'z' }, StringComparison.InvariantCultureIgnoreCase },
+                new object[] { "i" /* (U+0069) */, new Queue<char>(new char[] { 'z', 'z', 'z', 'I' /* (U+0049) */ }), StringComparison.InvariantCultureIgnoreCase },
+
+                new object[] { "i" /* (U+0069) */, new char[] { 'i' /* (U+0069) */, 'z', 'z', 'z' }, StringComparison.Ordinal },
+                new object[] { "i" /* (U+0069) */, new List<char>() { 'z', 'i' /* (U+0069) */, 'z', 'z' }, StringComparison.Ordinal },
+                new object[] { "i" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'i' /* (U+0069) */, 'z' }, StringComparison.Ordinal },
+                new object[] { "i" /* (U+0069) */, new Queue<char>(new char[] { 'z', 'z', 'z', 'i' /* (U+0069) */ }), StringComparison.Ordinal },
+
+                new object[] { "i" /* (U+0069) */, new char[] { 'I' /* (U+0049) */, 'z', 'z', 'z' }, StringComparison.OrdinalIgnoreCase },
+                new object[] { "i" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, StringComparison.OrdinalIgnoreCase },
+                new object[] { "i" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'I' /* (U+0049) */, 'z' }, StringComparison.OrdinalIgnoreCase },
+                new object[] { "i" /* (U+0069) */, new Queue<char>(new char[] { 'z', 'z', 'z', 'I' /* (U+0049) */ }), StringComparison.OrdinalIgnoreCase },
             };
         }
     }
 
-    public static IEnumerable<object[]> Contains_IEnumChar_CaseInsensetive_Fail
+    public static IEnumerable<object[]> Data_Contains_IEnumChar_SetComparison_Fail
     {
         get
         {
             return new[]
             {
-                new object[] { "v027CPSNRo9pwj9f", new char[] { 'z', '3', 'x' } },
-                new object[] { "tPzglSBMqE6u9bvB", new List<char>() { 'i', '0', 'n' } },
-                new object[] { "jT5BZRbC8cgwAYu2", new HashSet<char>() { 'x', '3', 'h' } },
-                new object[] { "U5SVGjk0hIr9Bxz0", new Queue<char>(new char[] { 'f', '4', 'q' }) }
+                new object[] { "i" /* (U+0069) */, new char[] { 'i' /* (U+0131) */, 'z', 'z', 'z' }, StringComparison.InvariantCulture },
+                new object[] { "i" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, StringComparison.InvariantCulture },
+                new object[] { "I" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'i' /* (U+0131) */, 'z' }, StringComparison.InvariantCulture },
+                new object[] { "i" /* (U+0069) */, new Queue<char>(new char[] { 'z', 'z', 'z', 'I' /* (U+0049) */ }), StringComparison.InvariantCulture },
+
+                new object[] { "i" /* (U+0069) */, new char[] { 'i' /* (U+0131) */, 'z', 'z', 'z' }, StringComparison.InvariantCultureIgnoreCase },
+                new object[] { "i" /* (U+0069) */, new List<char>() { 'z', 'i' /* (U+0131) */, 'z', 'z' }, StringComparison.InvariantCultureIgnoreCase },
+                new object[] { "I" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'i' /* (U+0131) */, 'z' }, StringComparison.InvariantCultureIgnoreCase },
+                new object[] { "i" /* (U+0049) */, new Queue<char>(new char[] { 'z', 'z', 'z', 'i' /* (U+0131) */ }), StringComparison.InvariantCultureIgnoreCase },
+
+                new object[] { "i" /* (U+0069) */, new char[] { 'i' /* (U+0131) */, 'z', 'z', 'z' }, StringComparison.Ordinal },
+                new object[] { "i" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, StringComparison.Ordinal },
+                new object[] { "I" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'i' /* (U+0131) */, 'z' }, StringComparison.Ordinal },
+                new object[] { "i" /* (U+0069) */, new Queue<char>(new char[] { 'z', 'z', 'z', 'I' /* (U+0049) */ }), StringComparison.Ordinal },
+
+                new object[] { "i" /* (U+0069) */, new char[] { 'i' /* (U+0131) */, 'z', 'z', 'z' }, StringComparison.OrdinalIgnoreCase },
+                new object[] { "i" /* (U+0069) */, new List<char>() { 'z', 'i' /* (U+0131) */, 'z', 'z' }, StringComparison.OrdinalIgnoreCase },
+                new object[] { "I" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'i' /* (U+0131) */, 'z' }, StringComparison.OrdinalIgnoreCase },
+                new object[] { "I" /* (U+0049) */, new Queue<char>(new char[] { 'z', 'z', 'z', 'i' /* (U+0131) */ }), StringComparison.OrdinalIgnoreCase },
             };
         }
     }
