@@ -10,6 +10,7 @@ public class Replacer_Tests
     public void Replace_DefaultComparison_Pass(string testString, string newString, IEnumerable<string> oldStrings, string expectedString)
     {
         string actualString = testString.Replace(newString, oldStrings);
+
         Assert.Equal(expectedString, actualString);
     }
 
@@ -17,6 +18,7 @@ public class Replacer_Tests
     public void Replace_SetComparison_Pass(string testString, string newString, IEnumerable<string> oldStrings, StringComparison stringComparison, string expectedString)
     {
         string actualString = testString.Replace(newString, oldStrings, stringComparison);
+
         Assert.Equal(expectedString, actualString);
     }
 
