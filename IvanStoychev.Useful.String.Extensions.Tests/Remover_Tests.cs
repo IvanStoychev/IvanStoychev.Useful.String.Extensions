@@ -7,42 +7,20 @@ namespace IvanStoychev.Useful.String.Extensions.Tests;
 
 public class Remover_Tests
 {
-    [Theory]
-    [InlineData("Lorem lorem IPSUM ipsum", "Lorem   ipsum")]
-    [InlineData("lorem LORem ipSUM IPSUM", " LORem ipSUM ")]
-    [InlineData("lorem ipsum IPSUM", " ipsum ")]
-    public void Remove_ConsiderCase(string testString, string expected)
+    [Theory, MemberData(nameof(Data_Remove_DefaultComparison_Pass))]
+    public void Remove_DefaultComparison_Pass(string testString, IEnumerable<string> removeStrings, string expectedString)
     {
-        string actual = testString.Remove("lorem", "IPSUM");
+        string actualString = testString.Remove(removeStrings);
 
-        Assert.Equal(expected, actual);
+        Assert.Equal(expectedString, actualString);
     }
 
-    [Theory, MemberData(nameof(RemoveStringsIEnumTestData_CaseSensetive))]
-    public void Remove_ConsiderCase_IEnum(string testString, IEnumerable<string> stringsToRemove, string expected)
+    [Theory, MemberData(nameof(Data_Remove_SetComparison_Pass))]
+    public void Remove_SetComparison_Pass(string testString, IEnumerable<string> removeStrings, StringComparison stringComparison, string expectedString)
     {
-        string actual = testString.Remove(stringsToRemove);
+        string actualString = testString.Remove(removeStrings, stringComparison);
 
-        Assert.Equal(expected, actual);
-    }
-
-    [Theory]
-    [InlineData("Lorem lorem IPSUM ipsum", "   ")]
-    [InlineData("lorem LORem ipSUM IPSUM", "   ")]
-    [InlineData("lorem ipsum IPSUM", "  ")]
-    public void Remove_IgnoreCase(string testString, string expected)
-    {
-        string actual = testString.Remove(true, "lorem", "IPSUM");
-
-        Assert.Equal(expected, actual);
-    }
-
-    [Theory, MemberData(nameof(RemoveStringsIEnumTestData_CaseInsensetive))]
-    public void Remove_IgnoreCase_IEnum(string testString, IEnumerable<string> stringsToRemove, string expected)
-    {
-        string actual = testString.Remove(true, stringsToRemove);
-
-        Assert.Equal(expected, actual);
+        Assert.Equal(expectedString, actualString);
     }
 
     [Theory]
@@ -74,30 +52,6 @@ public class Remover_Tests
     public void RemoveLetters(string testString, string expected)
     {
         string actual = testString.RemoveLetters();
-
-        Assert.Equal(expected, actual);
-    }
-
-    [Theory]
-    [InlineData("I was very proud", 1, " was very prou")]
-    [InlineData("The father handed", 2, "e father hand")]
-    [InlineData("In that instant", 3, "that inst")]
-    [InlineData("For oil spots", 4, "oil s")]
-    public void Trim_Amount(string testString, int amount, string expected)
-    {
-        string actual = testString.Trim(amount);
-
-        Assert.Equal(expected, actual);
-    }
-
-    [Theory]
-    [InlineData("I was very proud", 1, " was very proud")]
-    [InlineData("The father handed", 2, "e father handed")]
-    [InlineData("In that instant", 3, "that instant")]
-    [InlineData("For oil spots", 4, "oil spots")]
-    public void TrimStart_Amount(string testString, int amount, string expected)
-    {
-        string actual = testString.TrimStart(amount);
 
         Assert.Equal(expected, actual);
     }
@@ -139,18 +93,6 @@ public class Remover_Tests
     }
 
     [Theory]
-    [InlineData("I was very proud", 1, "I was very prou")]
-    [InlineData("The father handed", 2, "The father hand")]
-    [InlineData("In that instant", 3, "In that inst")]
-    [InlineData("For oil spots", 4, "For oil s")]
-    public void TrimEnd_Amount(string testString, int amount, string expected)
-    {
-        string actual = testString.TrimEnd(amount);
-
-        Assert.Equal(expected, actual);
-    }
-
-    [Theory]
     [InlineData("If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?", "they take your teeth and leave chocolate for you?", "If the Easter Bunny and the Tooth Fairy had babies would ")]
     [InlineData("As he waited for the shower to warm", "shower to warm", "As he waited for the ")]
     [InlineData("I love eating toasted cheese and tuna sandwiches.", " and tuna sandwiches.", "I love eating toasted cheese")]
@@ -186,7 +128,7 @@ public class Remover_Tests
         Assert.Equal(expected, actual);
     }
 
-    public static IEnumerable<object[]> RemoveStringsIEnumTestData_CaseSensetive
+    public static IEnumerable<object[]> Data_Remove_DefaultComparison_Pass
     {
         get
         {
@@ -200,16 +142,31 @@ public class Remover_Tests
         }
     }
 
-    public static IEnumerable<object[]> RemoveStringsIEnumTestData_CaseInsensetive
+    public static IEnumerable<object[]> Data_Remove_SetComparison_Pass
     {
         get
         {
             return new[]
             {
-                new object[] { "I would have gotten the promotion, but my attendance wasn’t good enough.", new string[] { "gotTen", "promotion", "attenDAnce", "good " }, "I would have  the , but my  wasn’t enough." },
-                new object[] { "This is the last random sentence I will be writing and I am going to stop mid-sent", new List<string>() { "last ", "SEntence", " writing" }, "This is the random  I will be and I am going to stop mid-sent" },
-                new object[] { "Oh, how I'd love to go!", new HashSet<string>() { "Oh, how", "lovE", "GO!" }, " I'd  to " },
-                new object[] { "Rock music approaches at high velocity.", new Queue<string>(new string[] { "musiC", "approaches", "rock", "high " }), "   at velocity." }
+                new object[] { "Case encyclopædia Archæology", new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.InvariantCulture, "Case  Archæology" },
+                new object[] { "Case encyclopædia Archæology", new List<string>() { "case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.InvariantCulture, "Case  Archæology" },
+                new object[] { "Case encyclopædia Archæology", new HashSet<string>() { "case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.InvariantCulture, "Case  Archæology" },
+                new object[] { "Case encyclopædia Archæology", new Queue<string>(new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }), StringComparison.InvariantCulture, "Case  Archæology" },
+
+                new object[] { "Case encyclopædia Archæology", new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.InvariantCultureIgnoreCase, "  Archæology" },
+                new object[] { "Case encyclopædia Archæology", new List<string>() { "case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.InvariantCultureIgnoreCase, "  Archæology" },
+                new object[] { "Case encyclopædia Archæology", new HashSet<string>() { "case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.InvariantCultureIgnoreCase, "  Archæology" },
+                new object[] { "Case encyclopædia Archæology", new Queue<string>(new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }), StringComparison.InvariantCultureIgnoreCase, "  Archæology" },
+
+                new object[] { "Case encyclopædia Archæology", new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.Ordinal, "Case encyclopædia Archæology" },
+                new object[] { "Case encyclopædia Archæology", new List<string>() { "case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.Ordinal, "Case encyclopædia Archæology" },
+                new object[] { "Case encyclopædia Archæology", new HashSet<string>() { "case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.Ordinal, "Case encyclopædia Archæology" },
+                new object[] { "Case encyclopædia Archæology", new Queue<string>(new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }), StringComparison.Ordinal, "Case encyclopædia Archæology" },
+
+                new object[] { "Case encyclopædia Archæology", new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.OrdinalIgnoreCase, " encyclopædia " },
+                new object[] { "Case encyclopædia Archæology", new List<string>() { "case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.OrdinalIgnoreCase, " encyclopædia " },
+                new object[] { "Case encyclopædia Archæology", new HashSet<string>() { "case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.OrdinalIgnoreCase, " encyclopædia " },
+                new object[] { "Case encyclopædia Archæology", new Queue<string>(new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }), StringComparison.OrdinalIgnoreCase, " encyclopædia " }
             };
         }
     }
