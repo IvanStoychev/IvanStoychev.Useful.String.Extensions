@@ -11,36 +11,6 @@ namespace IvanStoychev.Useful.String.Extensions;
 static class Validate
 {
     /// <summary>
-    /// Checks if the value of <paramref name="lengthDiff"/> is negative. And if it is, throws an <see cref="ArgumentOutOfRangeException"/>.
-    /// </summary>
-    /// <param name="amount">Number of characters the user wishes to remove from a string.</param>
-    /// <param name="lengthDiff">Number of characters left in the string after <paramref name="amount"/> have been removed.</param>
-    /// <param name="callingMethodName">Name of the method that does this validation.</param>
-    /// <exception cref="ArgumentOutOfRangeException">
-    /// <paramref name="lengthDiff"/> is a negative number.
-    /// </exception>
-    internal static void AmountStringLength(int amount, int lengthDiff, [CallerMemberName] string callingMethodName = null)
-    {
-        if (lengthDiff < 0)
-            ExceptionThrower.Throw_ArgumentOutOfRangeException_Amount(amount, lengthDiff, callingMethodName);
-    }
-
-    /// <summary>
-    /// Checks if the value of <paramref name="lengthDiff"/> is negative. And if it is, throws an <see cref="ArgumentOutOfRangeException"/>.
-    /// </summary>
-    /// <param name="amount">Number of characters the user wishes to remove from a string.</param>
-    /// <param name="lengthDiff">Number of characters left in the string after <paramref name="amount"/> have been removed.</param>
-    /// <param name="callingMethodName">Name of the method that does this validation.</param>
-    /// <exception cref="ArgumentOutOfRangeException">
-    /// <paramref name="lengthDiff"/> is a negative number.
-    /// </exception>
-    internal static void DoubleAmountStringLength(int amount, int lengthDiff, [CallerMemberName] string callingMethodName = null)
-    {
-        if (lengthDiff < 0)
-            ExceptionThrower.Throw_ArgumentOutOfRangeException_DoubleAmount(amount, lengthDiff, callingMethodName);
-    }
-
-    /// <summary>
     /// Checks if the given <paramref name="ienum"/> contains any members and throws an <see cref="ArgumentException"/> if it doesn't.
     /// </summary>
     /// <param name="ienum">An <see cref="IEnumerable{T}"/> to be checked if it is empty or not.</param>
