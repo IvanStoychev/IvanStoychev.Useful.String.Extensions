@@ -15,8 +15,10 @@ static class Validate
     /// </summary>
     /// <param name="amount">Number of characters the user wishes to remove from a string.</param>
     /// <param name="lengthDiff">Number of characters left in the string after <paramref name="amount"/> have been removed.</param>
-    /// <exception cref="ArgumentOutOfRangeException"><paramref name="lengthDiff"/> is a negative number.</exception>
     /// <param name="callingMethodName">Name of the method that does this validation.</param>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="lengthDiff"/> is a negative number.
+    /// </exception>
     internal static void AmountStringLength(int amount, int lengthDiff, [CallerMemberName] string callingMethodName = null)
     {
         if (lengthDiff < 0)
@@ -28,8 +30,10 @@ static class Validate
     /// </summary>
     /// <param name="amount">Number of characters the user wishes to remove from a string.</param>
     /// <param name="lengthDiff">Number of characters left in the string after <paramref name="amount"/> have been removed.</param>
-    /// <exception cref="ArgumentOutOfRangeException"><paramref name="lengthDiff"/> is a negative number.</exception>
     /// <param name="callingMethodName">Name of the method that does this validation.</param>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="lengthDiff"/> is a negative number.
+    /// </exception>
     internal static void DoubleAmountStringLength(int amount, int lengthDiff, [CallerMemberName] string callingMethodName = null)
     {
         if (lengthDiff < 0)
@@ -42,6 +46,9 @@ static class Validate
     /// <param name="ienum">An <see cref="IEnumerable{T}"/> to be checked if it is empty or not.</param>
     /// <param name="parameterName">Name of the parameter in the method that does this validation.</param>
     /// <param name="callingMethodName">Name of the method that does this validation.</param>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="ienum"/> has no elements.
+    /// </exception>
     internal static void IEnumNotEmpty(IEnumerable<string> ienum, [CallerArgumentExpression("ienum")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
     {
         if (!ienum.Any())
@@ -140,7 +147,9 @@ static class Validate
     /// </summary>
     /// <param name="length">Integer to be verified that it isn't less than zero.</param>
     /// <param name="callingMethodName">Name of the method that does this validation.</param>
-    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is a negative number.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="length"/> is a negative number.
+    /// </exception>
     internal static void LengthIsPositive(int length, [CallerMemberName] string callingMethodName = null)
     {
         if (length < 0)
@@ -154,7 +163,9 @@ static class Validate
     /// <param name="stringLength">The amount of available characters from which the user wishes to select <paramref name="length"/> amount.</param>
     /// <param name="length">Amount of characters the user wishes to select from a string with length "<paramref name="stringLength"/>".</param>
     /// <param name="callingMethodName">Name of the method that does this validation.</param>
-    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is bigger than <paramref name="stringLength"/>.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="length"/> is bigger than <paramref name="stringLength"/>.
+    /// </exception>
     internal static void LengthIsWithinBounds(int stringLength, int length, [CallerMemberName] string callingMethodName = null)
     {
         int lengthDiff = stringLength - length;
