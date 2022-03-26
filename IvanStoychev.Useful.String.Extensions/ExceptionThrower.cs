@@ -19,6 +19,9 @@ static class ExceptionThrower
     /// </summary>
     /// <param name="collectionParameterName">Name of the parameter whose argument is the collection.</param>
     /// <param name="callingMethodName">Name of the method that throws this exception.</param>
+    /// <exception cref="ArgumentException">
+    /// A member of <paramref name="collectionParameterName"/> is the empty string ("").
+    /// </exception>
     internal static void Throw_ArgumentException_EmptyString(string collectionParameterName, string callingMethodName)
         => throw new ArgumentException($"A member of the collection given for parameter \"{collectionParameterName}\" of method \"{callingMethodName}\" is the empty string (\"\").", collectionParameterName);
 
@@ -28,46 +31,33 @@ static class ExceptionThrower
     /// </summary>
     /// <param name="collectionParameterName">Name of the parameter whose argument is the collection.</param>
     /// <param name="callingMethodName">Name of the method that throws this exception.</param>
+    /// <exception cref="ArgumentException">
+    /// Collection <paramref name="collectionParameterName"/> is empty.
+    /// </exception>
     internal static void Throw_ArgumentException_EmptyCollection(string collectionParameterName, string callingMethodName)
         => throw new ArgumentException($"The collection argument given for parameter \"{collectionParameterName}\" of method \"{callingMethodName}\" contains no elements.", collectionParameterName);
 
     /// <summary>
-    /// Throws an <see cref="ArgumentNullException"/> that informs the user the argument of <paramref name="parameterName"/> was null.
+    /// Throws an <see cref="ArgumentNullException"/> that informs the user the argument of <paramref name="parameterName"/> was <see langword="null"/>.
     /// </summary>
     /// <param name="parameterName">Name of the parameter in the original calling method.</param>
     /// <param name="callingMethodName">Name of the method that throws this exception.</param>
+    /// <exception cref="ArgumentNullException">
+    /// <paramref name="parameterName"/> is <see langword="null"/>.
+    /// </exception>
     internal static void Throw_ArgumentNullException(string parameterName, string callingMethodName)
         => throw new ArgumentNullException(parameterName, $"The argument given for parameter \"{parameterName}\" of method \"{callingMethodName}\" was null.");
 
     /// <summary>
-    /// Throws an <see cref="ArgumentNullException"/> that informs the user the member of <paramref name="parameterName"/> was null.
+    /// Throws an <see cref="ArgumentNullException"/> that informs the user the member of <paramref name="parameterName"/> was <see langword="null"/>.
     /// </summary>
     /// <param name="parameterName">Name of the parameter in the original calling method.</param>
     /// <param name="callingMethodName">Name of the method that throws this exception.</param>
+    /// <exception cref="ArgumentNullException">
+    /// <paramref name="parameterName"/> is <see langword="null"/>.
+    /// </exception>
     internal static void Throw_ArgumentNullMemberException(string parameterName, string callingMethodName)
         => throw new ArgumentNullException(parameterName, $"A member of the collection argument given for parameter \"{parameterName}\" of method \"{callingMethodName}\" was null.");
-
-    /// <summary>
-    /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value "<paramref name="amount"/>" of
-    /// parameter "<paramref name="parameterName"/>" is bigger then the whole string by <paramref name="lengthDiff"/>.
-    /// </summary>
-    /// <param name="amount">Amount of characters the user wanted removed from the available string.</param>
-    /// <param name="parameterName">Name of the parameter in the original method whose argument is <paramref name="amount"/>.</param>
-    /// <param name="lengthDiff">The difference between the string length and the amount of characters requested by the user.</param>
-    /// <param name="callingMethodName">Name of the method that throws this exception.</param>
-    internal static void Throw_ArgumentOutOfRangeException_Amount(int amount, int lengthDiff, string callingMethodName, [CallerArgumentExpression("amount")] string parameterName = null)
-        => throw new ArgumentOutOfRangeException(parameterName, $"The value given for parameter \"{parameterName}\" (\"{amount}\") of method \"{callingMethodName}\" is longer than the entire string by {Math.Abs(lengthDiff)}.");
-
-    /// <summary>
-    /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the string he is attempting to trim by "<paramref name="amount"/>" from both ends is
-    /// <paramref name="lengthDiff"/> characters too short for that.
-    /// </summary>
-    /// <param name="amount">Amount of characters the user wanted removed from the start and end of a string.</param>
-    /// <param name="lengthDiff">The difference between the string length and the amount of characters requested by the user.</param>
-    /// <param name="parameterName">Name of the parameter in the original method whose argument is <paramref name="amount"/>.</param>
-    /// <param name="callingMethodName">Name of the method that throws this exception.</param>
-    internal static void Throw_ArgumentOutOfRangeException_DoubleAmount(int amount, int lengthDiff, string callingMethodName, [CallerArgumentExpression("amount")] string parameterName = null)
-        => throw new ArgumentOutOfRangeException(parameterName, $"The string being trimmed by method \"{callingMethodName}\" is {Math.Abs(lengthDiff)} characters too short to be trimmed by {amount} from both ends.");
 
     /// <summary>
     /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value of <paramref name="endString"/> was
@@ -79,6 +69,9 @@ static class ExceptionThrower
     /// <param name="startStringParameterName">Name of the parameter in the original method whose argument is <paramref name="startString"/>.</param>
     /// <param name="endStringParameterName">Name of the parameter in the original method whose argument is <paramref name="endString"/>.</param>
     /// <param name="callingMethodName">Name of the method that throws this exception.</param>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="endString"/> was not found after <paramref name="startString"/>.
+    /// </exception>
     internal static void Throw_ArgumentOutOfRangeException_Endstring(string startString, string endString, string callingMethodName,
                                                                      [CallerArgumentExpression("startString")] string startStringParameterName = null,
                                                                      [CallerArgumentExpression("endString")] string endStringParameterName = null)
@@ -99,6 +92,9 @@ static class ExceptionThrower
     /// <param name="length">Integer, less than zero, the user provided for an operation that requires a positive number.</param>
     /// <param name="parameterName">Name of the parameter in the original method whose argument is <paramref name="length"/>.</param>
     /// <param name="callingMethodName">Name of the method that throws this exception.</param>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="length"/> is a negative number.
+    /// </exception>
     internal static void Throw_ArgumentOutOfRangeException_Length(int length, string callingMethodName, [CallerArgumentExpression("length")] string parameterName = null)
         => throw new ArgumentOutOfRangeException(parameterName, $"The value given for \"{parameterName}\" (\"{length}\") of method \"{callingMethodName}\" is less than zero.");
 
@@ -110,6 +106,9 @@ static class ExceptionThrower
     /// <param name="parameterName">Name of the parameter in the original method whose argument is <paramref name="length"/>.</param>
     /// <param name="lengthDiff">The difference between the available length for selection and the length requested by the user.</param>
     /// <param name="callingMethodName">Name of the method that throws this exception.</param>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="length"/> is too big by <paramref name="lengthDiff"/>.
+    /// </exception>
     internal static void Throw_ArgumentOutOfRangeException_Length(int length, int lengthDiff, string callingMethodName, [CallerArgumentExpression("length")] string parameterName = null)
         => throw new ArgumentOutOfRangeException(parameterName, $"The value given for \"{parameterName}\" (\"{length}\") of method \"{callingMethodName}\" is longer than the remaining string by {Math.Abs(lengthDiff)}.");
 
@@ -121,6 +120,9 @@ static class ExceptionThrower
     /// <param name="substring">Substring not located in the originalString.</param>
     /// <param name="parameterName">Name of the parameter in the original method whose argument is <paramref name="substring"/>.</param>
     /// <param name="callingMethodName">Name of the method that throws this exception.</param>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="substring"/> is not found in the original string.
+    /// </exception>
     internal static void Throw_ArgumentOutOfRangeException_Substring(string substring, string parameterName, string callingMethodName)
     {
         if (substring.Length > MAX_LENGTH)
