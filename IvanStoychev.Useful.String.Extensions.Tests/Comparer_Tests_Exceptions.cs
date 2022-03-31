@@ -12,7 +12,7 @@ public class Comparer_Tests_Exceptions
     public void Contains_IEnumString_NullArgument(StringComparison stringComparison)
     {
         string[] keywords = null;
-        string expectedMessage = "The argument given for 'keywords' was null. (Parameter 'keywords')";
+        string expectedMessage = "The argument given for parameter \"keywords\" of method \"Contains\" was null. (Parameter 'keywords')";
 
         void testAction() => "".Contains(keywords, stringComparison);
 
@@ -24,7 +24,7 @@ public class Comparer_Tests_Exceptions
     public void Contains_IEnumString_NullMember(StringComparison stringComparison)
     {
         string[] keywords = { "asd", null };
-        string expectedMessage = "A member of the collection argument given for 'keywords' was null. (Parameter 'keywords')";
+        string expectedMessage = "A member of the collection argument given for parameter \"keywords\" of method \"Contains\" was null. (Parameter 'keywords')";
 
         void testAction() => "".Contains(keywords, stringComparison);
 
@@ -40,7 +40,7 @@ public class Comparer_Tests_Exceptions
     public void Contains_IEnumChar_NullArgument(StringComparison stringComparison)
     {
         char[] keychars = null;
-        string expectedMessage = "The argument given for 'keywords' was null. (Parameter 'keywords')";
+        string expectedMessage = "The argument given for parameter \"keychars\" of method \"Contains\" was null. (Parameter 'keychars')";
 
         void testAction() => "".Contains(keychars, stringComparison);
 

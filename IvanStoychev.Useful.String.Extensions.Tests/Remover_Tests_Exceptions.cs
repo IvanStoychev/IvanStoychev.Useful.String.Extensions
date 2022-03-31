@@ -12,7 +12,7 @@ public class Remover_Tests_Exceptions
     public void Remove_DefaultComparison_NullArgument()
     {
         string testString = "testString";
-        string expectedMessage = "The argument given for parameter \"removeStrings\" of method \"Remove\" was null.";
+        string expectedMessage = "The argument given for parameter \"removeStrings\" of method \"Remove\" was null. (Parameter 'removeStrings')";
 
         void testAction() => testString.Remove(null);
 
@@ -24,11 +24,11 @@ public class Remover_Tests_Exceptions
     public void Remove_DefaultComparison_IEnumNotEmpty(IEnumerable<string> removeStrings)
     {
         string testString = "testString";
-        string expectedMessage = "The collection argument given for parameter \"removeStrings\" of method \"Remove\" contains no elements.";
+        string expectedMessage = "The collection argument given for parameter \"removeStrings\" of method \"Remove\" contains no elements. (Parameter 'removeStrings')";
 
         void testAction() => testString.Remove(removeStrings);
 
-        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        var exception = Assert.Throws<ArgumentException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 
@@ -36,7 +36,7 @@ public class Remover_Tests_Exceptions
     public void Remove_DefaultComparison_NullMember(IEnumerable<string> removeStrings)
     {
         string testString = "testString";
-        string expectedMessage = "A member of the collection argument given for parameter \"removeStrings\" of method \"Remove\" was null.";
+        string expectedMessage = "A member of the collection argument given for parameter \"removeStrings\" of method \"Remove\" was null. (Parameter 'removeStrings')";
 
         void testAction() => testString.Remove(removeStrings);
 
@@ -48,11 +48,11 @@ public class Remover_Tests_Exceptions
     public void Remove_DefaultComparison_EmptyStringMember(IEnumerable<string> removeStrings)
     {
         string testString = "testString";
-        string expectedMessage = "A member of the collection given for parameter \"removeStrings\" of method \"Remove\" is the empty string (\"\").";
+        string expectedMessage = "A member of the collection given for parameter \"removeStrings\" of method \"Remove\" is the empty string (\"\"). (Parameter 'removeStrings')";
 
         void testAction() => testString.Remove(removeStrings);
 
-        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        var exception = Assert.Throws<ArgumentException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 
@@ -64,7 +64,7 @@ public class Remover_Tests_Exceptions
     public void Remove_SetComparison_NullArgument(StringComparison stringComparison)
     {
         string testString = "testString";
-        string expectedMessage = "The argument given for parameter \"removeStrings\" of method \"Remove\" was null.";
+        string expectedMessage = "The argument given for parameter \"removeStrings\" of method \"Remove\" was null. (Parameter 'removeStrings')";
 
         void testAction() => testString.Remove(null, stringComparison);
 
@@ -76,11 +76,11 @@ public class Remover_Tests_Exceptions
     public void Remove_SetComparison_IEnumNotEmpty(IEnumerable<string> removeStrings, StringComparison stringComparison)
     {
         string testString = "testString";
-        string expectedMessage = "The collection argument given for parameter \"removeStrings\" of method \"Remove\" contains no elements.";
+        string expectedMessage = "The collection argument given for parameter \"removeStrings\" of method \"Remove\" contains no elements. (Parameter 'removeStrings')";
 
         void testAction() => testString.Remove(removeStrings, stringComparison);
 
-        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        var exception = Assert.Throws<ArgumentException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 
@@ -88,7 +88,7 @@ public class Remover_Tests_Exceptions
     public void Remove_SetComparison_NullMember(IEnumerable<string> removeStrings, StringComparison stringComparison)
     {
         string testString = "testString";
-        string expectedMessage = "A member of the collection argument given for parameter \"removeStrings\" of method \"Remove\" was null.";
+        string expectedMessage = "A member of the collection argument given for parameter \"removeStrings\" of method \"Remove\" was null. (Parameter 'removeStrings')";
 
         void testAction() => testString.Remove(removeStrings, stringComparison);
 
@@ -100,11 +100,11 @@ public class Remover_Tests_Exceptions
     public void Remove_SetComparison_EmptyStringMember(IEnumerable<string> removeStrings, StringComparison stringComparison)
     {
         string testString = "testString";
-        string expectedMessage = "A member of the collection given for parameter \"removeStrings\" of method \"Remove\" is the empty string (\"\").";
+        string expectedMessage = "A member of the collection given for parameter \"removeStrings\" of method \"Remove\" is the empty string (\"\"). (Parameter 'removeStrings')";
 
         void testAction() => testString.Remove(removeStrings, stringComparison);
 
-        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        var exception = Assert.Throws<ArgumentException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 

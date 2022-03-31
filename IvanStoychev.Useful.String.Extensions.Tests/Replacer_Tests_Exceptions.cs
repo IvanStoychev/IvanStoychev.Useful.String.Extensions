@@ -9,11 +9,11 @@ public class Replacer_Tests_Exceptions
     public void Replace_ArgumentException()
     {
         string[] oldStrings = new[] { "asd", "", "asd" };
-        string expectedMessage = "Object reference not set to an instance of an object.";
+        string expectedMessage = "A member of the collection given for parameter \"oldStrings\" of method \"Replace\" is the empty string (\"\"). (Parameter 'oldStrings')";
 
         void testAction() => "".Replace("", oldStrings);
 
-        var exception = Assert.Throws<NullReferenceException>(testAction);
+        var exception = Assert.Throws<ArgumentException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 
@@ -21,7 +21,7 @@ public class Replacer_Tests_Exceptions
     public void Replace_ArgumentNullException_Collection()
     {
         string[] oldStrings = null;
-        string expectedMessage = "Value cannot be null. (Parameter 'replacement')";
+        string expectedMessage = "The argument given for parameter \"oldStrings\" of method \"Replace\" was null. (Parameter 'oldStrings')";
 
         void testAction() => "".Replace("", oldStrings);
 
@@ -33,7 +33,7 @@ public class Replacer_Tests_Exceptions
     public void Replace_ArgumentNullException_Member()
     {
         string[] oldStrings = { "asd", null };
-        string expectedMessage = "Value cannot be null. (Parameter 'replacement')";
+        string expectedMessage = "A member of the collection argument given for parameter \"oldStrings\" of method \"Replace\" was null. (Parameter 'oldStrings')";
 
         void testAction() => "".Replace("", oldStrings);
 
