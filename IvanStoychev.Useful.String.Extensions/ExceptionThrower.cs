@@ -82,7 +82,7 @@ static class ExceptionThrower
         if (startString.Length > MAX_LENGTH)
             startString = startString[..MAX_LENGTH] + "...";
 
-        throw new ArgumentOutOfRangeException(endStringParameterName, $"The string given for \"{endStringParameterName}\" (\"{endString}\") was not found after the given \"{startStringParameterName}\" (\"{startString}\") in the original instance. Executing method \"{callingMethodName}\".");
+        throw new ArgumentOutOfRangeException(endStringParameterName, $"The string given for \"{endStringParameterName}\" (\"{endString}\") was not found after the given \"{startStringParameterName}\" (\"{startString}\") in the original instance. Name of the method throwing the exception - \"{callingMethodName}\".");
     }
 
     /// <summary>
