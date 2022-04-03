@@ -65,7 +65,7 @@ static class Validate
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="endString"/> is not found in the part of <paramref name="originalString"/> from <paramref name="startString"/> onward.
     /// </exception>
-    internal static void EndStringIndex(string originalString, string startString, string endString, out int startStringIndex, out int endStringIndex, StringComparison stringComparison = StringComparison.CurrentCulture, [CallerMemberName] string callingMethodName = null)
+    internal static void EndStringIndex(string originalString, string startString, string endString, out int startStringIndex, out int endStringIndex, StringComparison stringComparison, [CallerMemberName] string callingMethodName = null)
     {
         SubstringIndex(originalString, startString, out startStringIndex, callingMethodName, stringComparison);
 
@@ -101,7 +101,7 @@ static class Validate
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="endString"/> is not found in the part of <paramref name="originalString"/> from <paramref name="startString"/> onward.
     /// </exception>
-    internal static void EndStringLastIndex(string originalString, string startString, string endString, out int startStringIndex, out int endStringIndex, StringComparison stringComparison = StringComparison.CurrentCulture, [CallerMemberName] string callingMethodName = null)
+    internal static void EndStringLastIndex(string originalString, string startString, string endString, out int startStringIndex, out int endStringIndex, StringComparison stringComparison, [CallerMemberName] string callingMethodName = null)
     {
         SubstringIndex(originalString, startString, out startStringIndex, callingMethodName, stringComparison);
 
@@ -193,7 +193,7 @@ static class Validate
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="substring"/> is not found in <paramref name="originalString"/>.
     /// </exception>
-    internal static void SubstringIndex(string originalString, string substring, out int substringIndex, string callingMethodName, StringComparison stringComparison = StringComparison.CurrentCulture, [CallerArgumentExpression("substring")] string parameterName = null)
+    internal static void SubstringIndex(string originalString, string substring, out int substringIndex, string callingMethodName, StringComparison stringComparison, [CallerArgumentExpression("substring")] string parameterName = null)
     {
         substringIndex = originalString.IndexOf(substring, stringComparison);
 
@@ -220,7 +220,7 @@ static class Validate
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="substring"/> is not found in <paramref name="originalString"/>.
     /// </exception>
-    internal static void SubstringIndex(string originalString, string substring, out int substringIndex, StringComparison stringComparison = StringComparison.CurrentCulture, [CallerArgumentExpression("substring")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
+    internal static void SubstringIndex(string originalString, string substring, out int substringIndex, StringComparison stringComparison, [CallerArgumentExpression("substring")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
     {
         substringIndex = originalString.IndexOf(substring, stringComparison);
 
@@ -247,7 +247,7 @@ static class Validate
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="substring"/> is not found in <paramref name="originalString"/>.
     /// </exception>
-    internal static void SubstringLastIndex(string originalString, string substring, string parameterName, out int substringIndex, StringComparison stringComparison = StringComparison.CurrentCulture, [CallerMemberName] string callingMethodName = null)
+    internal static void SubstringLastIndex(string originalString, string substring, string parameterName, out int substringIndex, StringComparison stringComparison, [CallerMemberName] string callingMethodName = null)
     {
         substringIndex = originalString.LastIndexOf(substring, stringComparison);
 
