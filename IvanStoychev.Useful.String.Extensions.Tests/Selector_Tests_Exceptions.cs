@@ -105,7 +105,7 @@ public class Selector_Tests_Exceptions
     public void Substring_StartEndString_Start_ArgumentOutOfRange()
     {
         string testString = "";
-        string expectedMessage = "The string given for \"startString\" (\"start\") of method \"EndStringIndex\" was not found in the original instance. (Parameter 'startString')";
+        string expectedMessage = "The string given for \"startString\" (\"start\") of method \"Substring\" was not found in the original instance. (Parameter 'startString')";
 
         void testAction() => testString.Substring("start", "end");
 
@@ -117,7 +117,7 @@ public class Selector_Tests_Exceptions
     public void Substring_StartEndString_End_ArgumentOutOfRange()
     {
         string testString = "end start";
-        string expectedMessage = "The string given for \"endString\" (\"end\") was not found after the given \"startString\" (\"start\") in the original instance. Executing method \"Substring\". (Parameter 'endString')";
+        string expectedMessage = "The string given for \"endString\" (\"end\") was not found after the given \"startString\" (\"start\") in the original instance. Name of the method throwing the exception - \"Substring\". (Parameter 'endString')";
 
         void testAction() => testString.Substring("start", "end");
 
@@ -153,7 +153,7 @@ public class Selector_Tests_Exceptions
     public void SubstringLast_StartString_ArgumentOutOfRange()
     {
         string testString = "";
-        string expectedMessage = "The string given for \"startString\" (\"start\") of method \"EndStringLastIndex\" was not found in the original instance. (Parameter 'startString')";
+        string expectedMessage = "The string given for \"startString\" (\"start\") of method \"SubstringLast\" was not found in the original instance. (Parameter 'startString')";
 
         void testAction() => testString.SubstringLast("start", "end");
 
@@ -165,7 +165,7 @@ public class Selector_Tests_Exceptions
     public void SubstringLast_EndString_ArgumentOutOfRange()
     {
         string testString = "end start";
-        string expectedMessage = "The string given for \"endString\" (\"end\") was not found after the given \"startString\" (\"start\") in the original instance. Executing method \"SubstringLast\". (Parameter 'endString')";
+        string expectedMessage = "The string given for \"endString\" (\"end\") was not found after the given \"startString\" (\"start\") in the original instance. Name of the method throwing the exception - \"SubstringLast\". (Parameter 'endString')";
 
         void testAction() => testString.SubstringLast("start", "end");
 
