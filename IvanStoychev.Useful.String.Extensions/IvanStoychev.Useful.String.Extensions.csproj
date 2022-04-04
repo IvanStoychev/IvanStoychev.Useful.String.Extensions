@@ -15,12 +15,32 @@
     <Copyright>Copyright (c) 2022 Ivan Stoychev. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <NeutralLanguage>en</NeutralLanguage>
-    <PackageReleaseNotes>= Fixed some methods throwing an incorrect "NullReferenceException" instead of an "ArgumentNullException".
-= Updated package icon.
-= Improved unit tests.
-= Consolidated "Contains" methods:
-    - Consolidated "Contains(StringComparison comparison, IEnumerable&lt;string&gt; keywords)" and "Contains(IEnumerable&lt;string&gt; keywords)" into "Contains(IEnumerable&lt;string&gt; keywords, StringComparison comparison = StringComparison.Ordinal)".
-    - Consolidated "Contains(StringComparison comparison, IEnumerable&lt;char&gt; keywords)" and "Contains(IEnumerable&lt;char&gt; keywords)" into "Contains(IEnumerable&lt;char&gt; keywords, StringComparison comparison = StringComparison.Ordinal)".</PackageReleaseNotes>
+    <PackageReleaseNotes>+ Updated to .Net 6.
+		+ Updated NuGet Icon.
+		+ Added NuGet README.
+		+ Improved all method validation and thrown exception messages. Now any problems will be caught better and any exceptions caused will contain more useful information.
+		+ Embedded debug symbols, so that the library source code can be stepped through during debugging.
+
+		= Improved some summaries.
+		= Consolidated the `Replace(IEnumerable&lt;string&gt; oldStrings, string newString)` and `Replace(IEnumerable&lt;string&gt; oldStrings, string newString, bool ignoreCase)` methods into `Replace(string newString, IEnumerable&lt;string&gt; oldStrings, StringComparison stringComparison = StringComparison.CurrentCulture)`. This allows more string comparison flexibility and features improved validation of arguments and information in thrown exceptions.
+		= Consolidated the `Replace(IEnumerable&lt;string&gt; oldStrings, string newString)` and `Replace(IEnumerable&lt;string&gt; oldStrings, string newString, bool ignoreCase)` methods into `Replace(string newString, IEnumerable&lt;string&gt; oldStrings, StringComparison stringComparison = StringComparison.CurrentCulture)`. This allows more string comparison flexibility.
+		= Consolidated the `Remove(IEnumerable&lt;string&gt; removeStrings)` and `Remove(bool ignoreCase, IEnumerable&lt;string&gt; removeStrings)` methods into `Remove(IEnumerable&lt;string&gt; removeStrings, StringComparison stringComparison = StringComparison.CurrentCulture)`.
+		= Changed signature of method `Replace(bool ignoreCase, string newString, params string[] oldStrings)` to `Replace(string newString, bool ignoreCase = false, params string[] oldStrings)`.
+		= Added additional information in ArgumentNullExceptions about the name of the method the exception occurred in.
+		Before the message would be akin to "The argument given for 'keychars' was null.", now the message will be akin to "The argument given for parameter "keychars" of method "Contains" was null.".
+		This was done to give more details to developers trying to debug the source of such an exception, as many different methods can have parameters with the same name.
+		= Changed parameter "culture" of methods `TrimStart(string trimString, bool ignoreCase, CultureInfo culture)` and `TrimEnd(string trimString, bool ignoreCase, CultureInfo culture)` to be nullable. The signatures are now `TrimStart(string trimString, bool ignoreCase, CultureInfo? culture)` and `TrimEnd(string trimString, bool ignoreCase, CultureInfo? culture)`.
+
+		- Removed methods `Replace(string newString, params string[] oldStrings)`, `Replace(bool ignoreCase, string newString, params string[] oldStrings)`, `Contains(params string[] keywords)`, `Contains(StringComparison comparison, params string[] keywords)`, `Contains(params char[] keychars)`, `Contains(StringComparison comparison, params char[] keychars)`, `Remove(params string[] removeStrings)` and `Remove(bool ignoreCase, params string[] removeStrings)` as they could be, legally, called with no argument for the `params` parameter, which would either do nothing or throw an exception. This is a very confusing and unpleasant behaviour, even when fully documented. It was decided that the convenience of, potentially, saving the user from passing these arguments as an `IEnumerable` is not worth the hassle.
+		- Removed methods `Trim(int amount)`, `TrimStart(int amount)` and `TrimEnd(int amount)` as the same functionality can be easily achieved with [indices and ranges](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/ranges-indexes) or the "Substring" method.
+		- Removed method `TrimStart(string trimString)` and added default value for parameter `stringComparison` of method `TrimStart(string trimString, StringComparison stringComparison)`.
+
+
+		Legend:
+		+ New feature
+		- Removed feature
+		= Altered existing feature
+	</PackageReleaseNotes>
     <Version>2.0.0</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
