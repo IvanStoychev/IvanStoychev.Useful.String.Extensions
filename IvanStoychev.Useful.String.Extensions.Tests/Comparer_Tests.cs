@@ -115,24 +115,24 @@ public class Comparer_Tests
             return new[]
             {
                 new object[] { "case encyclopædia Archæology", new string[] { "dummy", "case", "dummy" }, StringComparison.InvariantCulture},
-                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "encyclopaedia", "dummy" }, StringComparison.InvariantCulture},
+                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "encyclopædia", "dummy" }, StringComparison.InvariantCulture},
                 new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "Archæology", "dummy" }, StringComparison.InvariantCulture},
-                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "case", "encyclopaedia", "Archæology" }), StringComparison.InvariantCulture},
+                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "case", "encyclopædia", "Archæology" }), StringComparison.InvariantCulture},
 
                 new object[] { "case encyclopædia Archæology", new string[] { "dummy", "Case", "dummy" }, StringComparison.InvariantCultureIgnoreCase},
-                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "encyclopaedia", "dummy" }, StringComparison.InvariantCultureIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "encyclopædiA", "dummy" }, StringComparison.InvariantCultureIgnoreCase},
                 new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "ARCHÆOLOGY", "dummy" }, StringComparison.InvariantCultureIgnoreCase},
-                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "Case", "encyclopaedia", "ARCHÆOLOGY" }), StringComparison.InvariantCultureIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "Case", "encyclopædiA", "ARCHÆOLOGY" }), StringComparison.InvariantCultureIgnoreCase},
 
                 new object[] { "case encyclopædia Archæology", new string[] { "dummy", "case", "dummy" }, StringComparison.Ordinal},
                 new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "encyclopædia", "dummy" }, StringComparison.Ordinal},
                 new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "Archæology", "dummy" }, StringComparison.Ordinal},
-                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "dummy", "Archæology", "dummy" }), StringComparison.Ordinal},
+                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "case", "encyclopædia", "Archæology" }), StringComparison.Ordinal},
 
                 new object[] { "case encyclopædia Archæology", new string[] { "dummy", "Case", "dummy" }, StringComparison.OrdinalIgnoreCase},
-                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "encyclopædia", "dummy" }, StringComparison.OrdinalIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "encyclopædiA", "dummy" }, StringComparison.OrdinalIgnoreCase},
                 new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "ARCHÆOLOGY", "dummy" }, StringComparison.OrdinalIgnoreCase},
-                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "Case", "encyclopædia", "ARCHÆOLOGY" }), StringComparison.OrdinalIgnoreCase}
+                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "Case", "encyclopædiA", "ARCHÆOLOGY" }), StringComparison.OrdinalIgnoreCase}
             };
         }
     }
@@ -144,24 +144,24 @@ public class Comparer_Tests
             return new[]
             {
                 new object[] { "case encyclopædia Archæology", new string[] { "dummy", "Case", "dummy" }, StringComparison.InvariantCulture},
-                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "Case", "dummy" }, StringComparison.InvariantCulture},
-                new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "Archæology", "dummy" }, StringComparison.InvariantCulture},
-                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "dummy", "Archæology", "dummy" }), StringComparison.InvariantCulture},
+                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "encyclopaedia", "dummy" }, StringComparison.InvariantCulture},
+                new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "ARCHÆOLOGY", "dummy" }, StringComparison.InvariantCulture},
+                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "Case", "encyclopaedia", "ARCHÆOLOGY" }), StringComparison.InvariantCulture},
 
-                new object[] { "case encyclopædia Archæology", new string[] { "dummy", "dummy", "dummy" }, StringComparison.InvariantCultureIgnoreCase},
-                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "dummy", "dummy" }, StringComparison.InvariantCultureIgnoreCase},
-                new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "dummy", "dummy" }, StringComparison.InvariantCultureIgnoreCase},
-                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "dummy", "dummy", "dummy" }), StringComparison.InvariantCultureIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new string[] { "dummy", "Kase", "dummy" }, StringComparison.InvariantCultureIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "encyclopaedia", "dummy" }, StringComparison.InvariantCultureIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "ARCHAEOLOGY", "dummy" }, StringComparison.InvariantCultureIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "Kase", "encyclopaedia", "ARCHAEOLOGY" }), StringComparison.InvariantCultureIgnoreCase},
 
                 new object[] { "case encyclopædia Archæology", new string[] { "dummy", "Case", "dummy" }, StringComparison.Ordinal},
                 new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "encyclopaedia", "dummy" }, StringComparison.Ordinal},
                 new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "ARCHÆOLOGY", "dummy" }, StringComparison.Ordinal},
                 new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "Case", "encyclopaedia", "ARCHÆOLOGY" }), StringComparison.Ordinal},
 
-                new object[] { "case encyclopædia Archæology", new string[] { "dummy", "Case", "dummy" }, StringComparison.OrdinalIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new string[] { "dummy", "Kase", "dummy" }, StringComparison.OrdinalIgnoreCase},
                 new object[] { "case encyclopædia Archæology", new List<string>() { "dummy", "encyclopaedia", "dummy" }, StringComparison.OrdinalIgnoreCase},
-                new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "encyclopaedia", "dummy" }, StringComparison.OrdinalIgnoreCase},
-                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "Case", "encyclopaedia", "dummy" }), StringComparison.OrdinalIgnoreCase}
+                new object[] { "case encyclopædia Archæology", new HashSet<string>() { "dummy", "Archaeology", "dummy" }, StringComparison.OrdinalIgnoreCase},
+                new object[] { "case encyclopædia Archæology", new Queue<string>(new string[] { "Kase", "encyclopaedia", "Archaeology" }), StringComparison.OrdinalIgnoreCase}
             };
         }
     }
@@ -229,25 +229,25 @@ public class Comparer_Tests
         {
             return new[]
             {
-                new object[] { "i" /* (U+0069) */, new char[] { 'i' /* (U+0131) */, 'z', 'z', 'z' }, StringComparison.InvariantCulture },
+                new object[] { "i" /* (U+0069) */, new char[] { 'ı' /* (U+0131) */, 'z', 'z', 'z' }, StringComparison.InvariantCulture },
                 new object[] { "i" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, StringComparison.InvariantCulture },
-                new object[] { "I" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'i' /* (U+0131) */, 'z' }, StringComparison.InvariantCulture },
+                new object[] { "I" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'ı' /* (U+0131) */, 'z' }, StringComparison.InvariantCulture },
                 new object[] { "i" /* (U+0069) */, new Queue<char>(new char[] { 'z', 'z', 'z', 'I' /* (U+0049) */ }), StringComparison.InvariantCulture },
 
-                new object[] { "i" /* (U+0069) */, new char[] { 'i' /* (U+0131) */, 'z', 'z', 'z' }, StringComparison.InvariantCultureIgnoreCase },
-                new object[] { "i" /* (U+0069) */, new List<char>() { 'z', 'i' /* (U+0131) */, 'z', 'z' }, StringComparison.InvariantCultureIgnoreCase },
-                new object[] { "I" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'i' /* (U+0131) */, 'z' }, StringComparison.InvariantCultureIgnoreCase },
-                new object[] { "i" /* (U+0049) */, new Queue<char>(new char[] { 'z', 'z', 'z', 'i' /* (U+0131) */ }), StringComparison.InvariantCultureIgnoreCase },
+                new object[] { "i" /* (U+0069) */, new char[] { 'ı' /* (U+0131) */, 'z', 'z', 'z' }, StringComparison.InvariantCultureIgnoreCase },
+                new object[] { "i" /* (U+0069) */, new List<char>() { 'z', 'ı' /* (U+0131) */, 'z', 'z' }, StringComparison.InvariantCultureIgnoreCase },
+                new object[] { "i" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'ı' /* (U+0131) */, 'z' }, StringComparison.InvariantCultureIgnoreCase },
+                new object[] { "i" /* (U+0049) */, new Queue<char>(new char[] { 'z', 'z', 'z', 'ı' /* (U+0131) */ }), StringComparison.InvariantCultureIgnoreCase },
 
-                new object[] { "i" /* (U+0069) */, new char[] { 'i' /* (U+0131) */, 'z', 'z', 'z' }, StringComparison.Ordinal },
+                new object[] { "i" /* (U+0069) */, new char[] { 'ı' /* (U+0131) */, 'z', 'z', 'z' }, StringComparison.Ordinal },
                 new object[] { "i" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, StringComparison.Ordinal },
-                new object[] { "I" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'i' /* (U+0131) */, 'z' }, StringComparison.Ordinal },
+                new object[] { "I" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'ı' /* (U+0131) */, 'z' }, StringComparison.Ordinal },
                 new object[] { "i" /* (U+0069) */, new Queue<char>(new char[] { 'z', 'z', 'z', 'I' /* (U+0049) */ }), StringComparison.Ordinal },
 
-                new object[] { "i" /* (U+0069) */, new char[] { 'i' /* (U+0131) */, 'z', 'z', 'z' }, StringComparison.OrdinalIgnoreCase },
-                new object[] { "i" /* (U+0069) */, new List<char>() { 'z', 'i' /* (U+0131) */, 'z', 'z' }, StringComparison.OrdinalIgnoreCase },
-                new object[] { "I" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'i' /* (U+0131) */, 'z' }, StringComparison.OrdinalIgnoreCase },
-                new object[] { "I" /* (U+0049) */, new Queue<char>(new char[] { 'z', 'z', 'z', 'i' /* (U+0131) */ }), StringComparison.OrdinalIgnoreCase },
+                new object[] { "i" /* (U+0069) */, new char[] { 'ı' /* (U+0131) */, 'z', 'z', 'z' }, StringComparison.OrdinalIgnoreCase },
+                new object[] { "i" /* (U+0069) */, new List<char>() { 'z', 'ı' /* (U+0131) */, 'z', 'z' }, StringComparison.OrdinalIgnoreCase },
+                new object[] { "I" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'ı' /* (U+0131) */, 'z' }, StringComparison.OrdinalIgnoreCase },
+                new object[] { "I" /* (U+0049) */, new Queue<char>(new char[] { 'z', 'z', 'z', 'ı' /* (U+0131) */ }), StringComparison.OrdinalIgnoreCase },
             };
         }
     }
