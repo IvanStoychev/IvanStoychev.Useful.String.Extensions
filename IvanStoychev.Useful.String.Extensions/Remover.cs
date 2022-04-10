@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Globalization;
-using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace IvanStoychev.Useful.String.Extensions;
