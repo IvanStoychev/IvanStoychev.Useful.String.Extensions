@@ -16,9 +16,9 @@ public class Keeper_Tests
     }
 
     [Theory]
-    [InlineData(@"FH3g=n*-!9ZaHL)k%uPQ", @"=*-!)%")]
-    [InlineData(@"*Uk%K+Re6&e!u9wV/)PC", @"*%+&!/)")]
-    [InlineData(@"YckU$QV%-1d*6MDRKnQq", @"$%-*")]
+    [InlineData(@"F*H3g=n*-!9ZaHL)k%uPQ=", @"*=*-!)%=")]
+    [InlineData(@"*Uk%%K+Re6&e!u9wV/)PC", @"*%%+&!/)")]
+    [InlineData(@"YckU$QV%-1d*-6MDRKnQq", @"$%-*-")]
     public void KeepOnlySpecialCharacters(string testString, string expected)
     {
         string actual = testString.KeepOnlySpecialCharacters();
