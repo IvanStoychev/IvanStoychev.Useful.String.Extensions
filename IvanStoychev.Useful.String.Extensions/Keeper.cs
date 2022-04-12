@@ -31,14 +31,7 @@ public static class Keeper
     /// </returns>
     [Pure]
     public static string KeepOnlySpecialCharacters(this string originalString)
-    {
-        string specialCharacters = string.Empty;
-
-        foreach (var item in originalString.Where(x => !char.IsLetterOrDigit(x)).GroupBy(x => x))
-            specialCharacters += item.Key;
-
-        return specialCharacters;
-    }
+        => Regex.Replace(originalString, @"[0-9a-zA-Z]", string.Empty);
 
     /// <summary>
     /// Uses a regular expression to return a new string containing all occurrences of all latin letters in the current instance.
