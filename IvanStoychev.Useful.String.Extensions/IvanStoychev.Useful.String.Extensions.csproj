@@ -22,6 +22,7 @@
 		+ Embedded debug symbols, so that the library source code can be stepped through during debugging.
 
 		= Improved some summaries.
+		= Fixed `KeepOnlySpecialCharacters()` method only keeping a single instance of each special character.
 		= Consolidated the `Replace(IEnumerable&lt;string&gt; oldStrings, string newString)` and `Replace(IEnumerable&lt;string&gt; oldStrings, string newString, bool ignoreCase)` methods into `Replace(string newString, IEnumerable&lt;string&gt; oldStrings, StringComparison stringComparison = StringComparison.CurrentCulture)`. This allows more string comparison flexibility and features improved validation of arguments and information in thrown exceptions.
 		= Consolidated the `Replace(IEnumerable&lt;string&gt; oldStrings, string newString)` and `Replace(IEnumerable&lt;string&gt; oldStrings, string newString, bool ignoreCase)` methods into `Replace(string newString, IEnumerable&lt;string&gt; oldStrings, StringComparison stringComparison = StringComparison.CurrentCulture)`. This allows more string comparison flexibility.
 		= Consolidated the `Remove(IEnumerable&lt;string&gt; removeStrings)` and `Remove(bool ignoreCase, IEnumerable&lt;string&gt; removeStrings)` methods into `Remove(IEnumerable&lt;string&gt; removeStrings, StringComparison stringComparison = StringComparison.CurrentCulture)`.
