@@ -29,6 +29,9 @@ public static class Keeper
     /// <returns>
     /// A string containing all occurrences of all special characters in the current instance.
     /// </returns>
+    /// <remarks>
+    /// Whitespace is considered a special character.
+    /// </remarks>
     [Pure]
     public static string KeepOnlySpecialCharacters(this string originalString)
         => Regex.Replace(originalString, @"[0-9a-zA-Z]", string.Empty);
