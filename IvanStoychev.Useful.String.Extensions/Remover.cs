@@ -143,28 +143,6 @@ public static class Remover
     }
 
     /// <summary>
-    /// Removes the trailing occurrence of a specified string from the current instance.
-    /// </summary>
-    /// <param name="str">The string to remove occurrences from.</param>
-    /// <param name="trimString">The string to remove.</param>
-    /// <returns>
-    /// The string that remains after the occurrence of "trimString" is removed from the end of
-    /// the current instance. If "trimString" is null, the empty string or not found at the end of the
-    /// current instance the method returns the current instance unchanged.
-    /// </returns>
-    [Pure]
-    public static string TrimEnd(this string str, string trimString)
-    {
-        if (string.IsNullOrEmpty(trimString))
-            return str;
-
-        if (str.EndsWith(trimString))
-            str = str.Substring(0, str.Length - trimString.Length);
-
-        return str;
-    }
-
-    /// <summary>
     /// Removes the trailing occurrence of a specified string from the current instance, using the provided string comparison option.
     /// </summary>
     /// <param name="str">The string to remove occurrences from.</param>
