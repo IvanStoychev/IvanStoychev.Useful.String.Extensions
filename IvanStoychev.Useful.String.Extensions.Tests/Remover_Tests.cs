@@ -114,6 +114,42 @@ public class Remover_Tests
         Assert.Equal(expected, actual);
     }
 
+    [Theory]
+    [InlineData("If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?", "dummy")]
+    [InlineData("As he waited for the shower to warm", "dummy")]
+    [InlineData("I love eating toasted cheese and tuna sandwiches.", "dummy")]
+    [InlineData("The light in his life was actually a fire burning all around him.", "dummy")]
+    public void TrimStart_DefaultComparison_Fail(string testString, string stringToRemove)
+    {
+        string actual = testString.TrimStart(stringToRemove);
+
+        Assert.Equal(testString, actual);
+    }
+
+    [Theory]
+    [InlineData("encyclopædia Case Archæology", "dummy", StringComparison.InvariantCulture)]
+    [InlineData("Case encyclopædia Archæology", "dummy", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("Archæology encyclopædia Case", "dummy", StringComparison.Ordinal)]
+    [InlineData("Archæology encyclopædia Case", "dummy", StringComparison.OrdinalIgnoreCase)]
+    public void TrimStart_SetComparison_Fail(string testString, string stringToRemove, StringComparison stringComparison)
+    {
+        string actual = testString.TrimStart(stringToRemove, stringComparison);
+
+        Assert.Equal(testString, actual);
+    }
+
+    [Theory]
+    [InlineData("If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?", "dummy")]
+    [InlineData("As he waited for the shower to warm", "dummy")]
+    [InlineData("I love eating toasted cheese and tuna sandwiches.", "dummy")]
+    [InlineData("The light in his life was actually a fire burning all around him.", "dummy")]
+    public void TrimStart_CultureInfo_Fail(string testString, string stringToRemove)
+    {
+        string actual = testString.TrimStart(stringToRemove, true, CultureInfo.InvariantCulture);
+
+        Assert.Equal(testString, actual);
+    }
+
     #endregion TrimStart
 
     #region TrimEnd
@@ -152,6 +188,42 @@ public class Remover_Tests
         string actual = testString.TrimEnd(stringToRemove, true, CultureInfo.InvariantCulture);
 
         Assert.Equal(expected, actual);
+    }
+
+    [Theory]
+    [InlineData("If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?", "dummy")]
+    [InlineData("As he waited for the shower to warm", "dummy")]
+    [InlineData("I love eating toasted cheese and tuna sandwiches.", "dummy")]
+    [InlineData("The light in his life was actually a fire burning all around him.", "dummy")]
+    public void TrimEnd_DefaultComparison_Fail(string testString, string stringToRemove)
+    {
+        string actual = testString.TrimEnd(stringToRemove);
+
+        Assert.Equal(testString, actual);
+    }
+
+    [Theory]
+    [InlineData("Case Archæology encyclopædia", "dummy", StringComparison.InvariantCulture)]
+    [InlineData("encyclopædia Archæology Case", "dummy", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("encyclopædia Case Archæology", "dummy", StringComparison.Ordinal)]
+    [InlineData("encyclopædia Case Archæology", "dummy", StringComparison.OrdinalIgnoreCase)]
+    public void TrimEnd_SetComparison_Fail(string testString, string stringToRemove, StringComparison stringComparison)
+    {
+        string actual = testString.TrimEnd(stringToRemove, stringComparison);
+
+        Assert.Equal(testString, actual);
+    }
+
+    [Theory]
+    [InlineData("If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?", "dummy")]
+    [InlineData("As he waited for the shower to warm", "dummy")]
+    [InlineData("I love eating toasted cheese and tuna sandwiches.", "dummy")]
+    [InlineData("The light in his life was actually a fire burning all around him.", "dummy")]
+    public void TrimEnd_CultureInfo_Fail(string testString, string stringToRemove)
+    {
+        string actual = testString.TrimEnd(stringToRemove, true, CultureInfo.InvariantCulture);
+
+        Assert.Equal(testString, actual);
     }
 
     #endregion TrimEnd
