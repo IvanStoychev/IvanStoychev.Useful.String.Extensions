@@ -82,7 +82,6 @@ public class Remover_Tests
     [InlineData("encyclopædia Case Archæology encyclopædia", "encyclopædia", " Case Archæology ")]
     [InlineData("Case encyclopædia Archæology", "Case", " encyclopædia Archæology")]
     [InlineData("encyclopædia Case Archæology", "Archæology", "encyclopædia Case ")]
-    [InlineData("Archæology encyclopædia Case", "archæology", "Archæology encyclopædia Case")]
     public void Trim_DefaultComparison_Pass(string testString, string stringToRemove, string expectedString)
     {
         string actual = testString.Trim(stringToRemove);
@@ -92,14 +91,20 @@ public class Remover_Tests
 
     [Theory]
     [InlineData("encyclopædia Case Archæology encyclopædia", "encyclopædia", StringComparison.InvariantCulture, " Case Archæology ")]
-    [InlineData("Case encyclopædia Archæology cAse", "case", StringComparison.InvariantCultureIgnoreCase, " encyclopædia Archæology ")]
-    [InlineData("Archæology encyclopædia Case Archæology", "Archæology", StringComparison.Ordinal, " encyclopædia Case ")]
-    [InlineData("Archæology encyclopædia Case archæologY", "archæology", StringComparison.OrdinalIgnoreCase, " encyclopædia Case ")]
+    [InlineData("Case encyclopædia Archæology", "Case", StringComparison.InvariantCulture, " encyclopædia Archæology")]
+    [InlineData("encyclopædia Case Archæology", "Archæology", StringComparison.InvariantCulture, "encyclopædia Case ")]
 
-    [InlineData("encyclopædia Case Archæology encyclopædia", "dummy", StringComparison.InvariantCulture, "encyclopædia Case Archæology encyclopædia")]
-    [InlineData("Case encyclopædia Archæology cAse", "dummy", StringComparison.InvariantCultureIgnoreCase, "Case encyclopædia Archæology cAse")]
-    [InlineData("Archæology encyclopædia Case Archæology", "dummy", StringComparison.Ordinal, "Archæology encyclopædia Case Archæology")]
-    [InlineData("Archæology encyclopædia Case", "dummy", StringComparison.OrdinalIgnoreCase, "Archæology encyclopædia Case")]
+    [InlineData("encyclopædia Case Archæology encyclopædia", "encyclopædia", StringComparison.InvariantCultureIgnoreCase, " Case Archæology ")]
+    [InlineData("Case encyclopædia Archæology", "Case", StringComparison.InvariantCultureIgnoreCase, " encyclopædia Archæology")]
+    [InlineData("encyclopædia Case Archæology", "Archæology", StringComparison.InvariantCultureIgnoreCase, "encyclopædia Case ")]
+
+    [InlineData("encyclopædia Case Archæology encyclopædia", "encyclopædia", StringComparison.Ordinal, " Case Archæology ")]
+    [InlineData("Case encyclopædia Archæology", "Case", StringComparison.Ordinal, " encyclopædia Archæology")]
+    [InlineData("encyclopædia Case Archæology", "Archæology", StringComparison.Ordinal, "encyclopædia Case ")]
+
+    [InlineData("encyclopædia Case Archæology encyclopædia", "encyclopædia", StringComparison.OrdinalIgnoreCase, " Case Archæology ")]
+    [InlineData("Case encyclopædia Archæology", "Case", StringComparison.OrdinalIgnoreCase, " encyclopædia Archæology")]
+    [InlineData("encyclopædia Case Archæology", "Archæology", StringComparison.OrdinalIgnoreCase, "encyclopædia Case ")]
     public void Trim_SetComparison_Pass(string testString, string stringToRemove, StringComparison stringComparison, string expectedString)
     {
         string actual = testString.Trim(stringToRemove, stringComparison);
@@ -111,12 +116,47 @@ public class Remover_Tests
     [InlineData("RemoveMe text RemoveMe", "RemoveMe", " text ")]
     [InlineData("RemoveMe text", "RemoveMe", " text")]
     [InlineData("text RemoveMe", "RemoveMe", "text ")]
-    [InlineData("RemoveMe text RemoveMe", "dummy", "RemoveMe text RemoveMe")]
     public void Trim_CultureInfo_Pass(string testString, string stringToRemove, string expectedString)
     {
         string actual = testString.Trim(stringToRemove, true, CultureInfo.InvariantCulture);
 
         Assert.Equal(expectedString, actual);
+    }
+
+    [Theory]
+    [InlineData("If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?", "dummy")]
+    [InlineData("As he waited for the shower to warm", "dummy")]
+    [InlineData("I love eating toasted cheese and tuna sandwiches.", "dummy")]
+    [InlineData("The light in his life was actually a fire burning all around him.", "dummy")]
+    public void Trim_DefaultComparison_Fail(string testString, string stringToRemove)
+    {
+        string actual = testString.Trim(stringToRemove);
+
+        Assert.Equal(testString, actual);
+    }
+
+    [Theory]
+    [InlineData("encyclopædia Case Archæology", "dummy", StringComparison.InvariantCulture)]
+    [InlineData("Case encyclopædia Archæology", "dummy", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("Archæology encyclopædia Case", "dummy", StringComparison.Ordinal)]
+    [InlineData("archæology encyclopædia Case", "dummy", StringComparison.OrdinalIgnoreCase)]
+    public void Trim_SetComparison_Fail(string testString, string stringToRemove, StringComparison stringComparison)
+    {
+        string actual = testString.Trim(stringToRemove, stringComparison);
+
+        Assert.Equal(testString, actual);
+    }
+
+    [Theory]
+    [InlineData("If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?", "dummy")]
+    [InlineData("As he waited for the shower to warm", "dummy")]
+    [InlineData("I love eating toasted cheese and tuna sandwiches.", "dummy")]
+    [InlineData("The light in his life was actually a fire burning all around him.", "dummy")]
+    public void Trim_CultureInfo_Fail(string testString, string stringToRemove)
+    {
+        string actual = testString.Trim(stringToRemove, true, CultureInfo.InvariantCulture);
+
+        Assert.Equal(testString, actual);
     }
 
     #endregion Trim
