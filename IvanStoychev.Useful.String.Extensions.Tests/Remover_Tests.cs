@@ -76,6 +76,51 @@ public class Remover_Tests
         Assert.Equal(expectedString, actual);
     }
 
+    #region Trim
+
+    [Theory]
+    [InlineData("encyclopædia Case Archæology encyclopædia", "encyclopædia", " Case Archæology ")]
+    [InlineData("Case encyclopædia Archæology", "Case", " encyclopædia Archæology")]
+    [InlineData("encyclopædia Case Archæology", "Archæology", "encyclopædia Case ")]
+    [InlineData("Archæology encyclopædia Case", "archæology", "Archæology encyclopædia Case")]
+    public void Trim_DefaultComparison_Pass(string testString, string stringToRemove, string expectedString)
+    {
+        string actual = testString.Trim(stringToRemove);
+
+        Assert.Equal(expectedString, actual);
+    }
+
+    [Theory]
+    [InlineData("encyclopædia Case Archæology encyclopædia", "encyclopædia", StringComparison.InvariantCulture, " Case Archæology ")]
+    [InlineData("Case encyclopædia Archæology cAse", "case", StringComparison.InvariantCultureIgnoreCase, " encyclopædia Archæology ")]
+    [InlineData("Archæology encyclopædia Case Archæology", "Archæology", StringComparison.Ordinal, " encyclopædia Case ")]
+    [InlineData("Archæology encyclopædia Case archæologY", "archæology", StringComparison.OrdinalIgnoreCase, " encyclopædia Case ")]
+
+    [InlineData("encyclopædia Case Archæology encyclopædia", "dummy", StringComparison.InvariantCulture, "encyclopædia Case Archæology encyclopædia")]
+    [InlineData("Case encyclopædia Archæology cAse", "dummy", StringComparison.InvariantCultureIgnoreCase, "Case encyclopædia Archæology cAse")]
+    [InlineData("Archæology encyclopædia Case Archæology", "dummy", StringComparison.Ordinal, "Archæology encyclopædia Case Archæology")]
+    [InlineData("Archæology encyclopædia Case", "dummy", StringComparison.OrdinalIgnoreCase, "Archæology encyclopædia Case")]
+    public void Trim_SetComparison_Pass(string testString, string stringToRemove, StringComparison stringComparison, string expectedString)
+    {
+        string actual = testString.Trim(stringToRemove, stringComparison);
+
+        Assert.Equal(expectedString, actual);
+    }
+
+    [Theory]
+    [InlineData("RemoveMe text RemoveMe", "RemoveMe", " text ")]
+    [InlineData("RemoveMe text", "RemoveMe", " text")]
+    [InlineData("text RemoveMe", "RemoveMe", "text ")]
+    [InlineData("RemoveMe text RemoveMe", "dummy", "RemoveMe text RemoveMe")]
+    public void Trim_CultureInfo_Pass(string testString, string stringToRemove, string expectedString)
+    {
+        string actual = testString.Trim(stringToRemove, true, CultureInfo.InvariantCulture);
+
+        Assert.Equal(expectedString, actual);
+    }
+
+    #endregion Trim
+
     #region TrimStart
 
     [Theory]
