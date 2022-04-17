@@ -107,7 +107,7 @@ public class Remover_Tests
     [InlineData("As he waited for the shower to warm", "As HE waited ", "for the shower to warm")]
     [InlineData("I love eating toasted cheese and tuna sandwiches.", "i LOV", "e eating toasted cheese and tuna sandwiches.")]
     [InlineData("The light in his life was actually a fire burning all around him.", "The liGht in him", "The light in his life was actually a fire burning all around him.")]
-    public void TrimStart_CultureInfo(string testString, string stringToRemove, string expected)
+    public void TrimStart_CultureInfo_Pass(string testString, string stringToRemove, string expected)
     {
         string actual = testString.TrimStart(stringToRemove, true, CultureInfo.InvariantCulture);
 
@@ -123,7 +123,7 @@ public class Remover_Tests
     [InlineData("As he waited for the shower to warm", "shower to warm", "As he waited for the ")]
     [InlineData("I love eating toasted cheese and tuna sandwiches.", " and tuna sandwiches.", "I love eating toasted cheese")]
     [InlineData("The light in his life was actually a fire burning all around him.", "all around her", "The light in his life was actually a fire burning all around him.")]
-    public void TrimEnd(string testString, string stringToRemove, string expected)
+    public void TrimEnd_DefaultComparison_Pass(string testString, string stringToRemove, string expected)
     {
         string actual = testString.TrimEnd(stringToRemove);
 
@@ -147,7 +147,7 @@ public class Remover_Tests
     [InlineData("As he waited for the shower to warm", "shower TO warm", "As he waited for the ")]
     [InlineData("I love eating toasted cheese and tuna sandwiches.", " AND tuna sandwiches.", "I love eating toasted cheese")]
     [InlineData("The light in his life was actually a fire burning all around him.", "all around HER", "The light in his life was actually a fire burning all around him.")]
-    public void TrimEnd_CultureInfo(string testString, string stringToRemove, string expected)
+    public void TrimEnd_CultureInfo_Pass(string testString, string stringToRemove, string expected)
     {
         string actual = testString.TrimEnd(stringToRemove, true, CultureInfo.InvariantCulture);
 
