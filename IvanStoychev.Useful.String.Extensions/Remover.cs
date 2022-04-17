@@ -93,6 +93,73 @@ public static class Remover
         => Regex.Replace(originalString, "[A-Za-z]", string.Empty);
 
     /// <summary>
+    /// Removes the leading and trailing occurrences of a specified string from the current instance, using the provided string comparison option.
+    /// </summary>
+    /// <param name="str">The instance to remove the string from.</param>
+    /// <param name="trimString">The string to remove.</param>
+    /// <param name="stringComparison">One of the enumeration values that determines how the start of the current instance and <paramref name="trimString"/> are compared.</param>
+    /// <returns>
+    /// The string that remains after the occurrence of "trimString" is removed from the start and end of the current instance. If "trimString" is <see langword="null"/>,
+    /// the empty string or not found at the start or end of the current instance the method returns the current instance unchanged.
+    /// </returns>
+    [Pure]
+    public static string Trim(this string str, string trimString, StringComparison stringComparison = StringComparison.CurrentCulture)
+    {
+        if (string.IsNullOrEmpty(trimString))
+            return str;
+
+        int startIndex = 0;
+        int tailLength = 0;
+
+        if (str.StartsWith(trimString, stringComparison))
+            startIndex = trimString.Length;
+
+        if (str.EndsWith(trimString, stringComparison))
+            tailLength = trimString.Length;
+
+        int length = str.Length - startIndex - tailLength;
+        str = str.Substring(startIndex, length);
+
+        return str;
+    }
+
+    /// <summary>
+    /// Removes the leading and trailing occurrences of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
+    /// </summary>
+    /// <param name="str">The string to remove occurrences from.</param>
+    /// <param name="trimString">The string to remove.</param>
+    /// <param name="ignoreCase"><see langword="true"/> to ignore casing when trimming, <see langword="false"/> otherwise.</param>
+    /// <param name="culture">
+    /// Cultural information that determines how the start and end of this instance and <paramref name="trimString"/> are compared.
+    /// If culture is <see langword="null"/>, the current culture is used.
+    /// </param>
+    /// <returns>
+    /// The string that remains after the occurrence of <paramref name="trimString"/> is removed from the start and end of the current instance.
+    /// If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the start of the current instance the method returns
+    /// the current instance unchanged.
+    /// </returns>
+    [Pure]
+    public static string Trim(this string str, string trimString, bool ignoreCase, CultureInfo? culture)
+    {
+        if (string.IsNullOrEmpty(trimString))
+            return str;
+
+        int startIndex = 0;
+        int tailLength = 0;
+
+        if (str.StartsWith(trimString, ignoreCase, culture))
+            startIndex = trimString.Length;
+
+        if (str.EndsWith(trimString, ignoreCase, culture))
+            tailLength = trimString.Length;
+
+        int length = str.Length - startIndex - tailLength;
+        str = str.Substring(startIndex, length);
+
+        return str;
+    }
+
+    /// <summary>
     /// Removes the leading occurrence of a specified string from the current instance, using the provided string comparison option.
     /// </summary>
     /// <param name="str">The instance to remove the string from.</param>
