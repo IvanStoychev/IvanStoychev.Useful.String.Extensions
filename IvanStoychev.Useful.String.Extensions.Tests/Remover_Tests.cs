@@ -47,33 +47,33 @@ public class Remover_Tests
     [InlineData("b2HGLTxiVJz0cxWacceZ", "bHGLTxiVJzcxWacceZ")]
     [InlineData("S1Rsf3jsE2IPKhIML5kN", "SRsfjsEIPKhIMLkN")]
     [InlineData("xqyao0g2EwQmweZUqy6l", "xqyaogEwQmweZUqyl")]
-    public void RemoveNumbers(string testString, string expected)
+    public void RemoveNumbers(string testString, string expectedString)
     {
         string actual = testString.RemoveNumbers();
 
-        Assert.Equal(expected, actual);
+        Assert.Equal(expectedString, actual);
     }
 
     [Theory]
     [InlineData(@"5riD+p-AvsnZImA@i[(r", @"5riDpAvsnZImAir")]
     [InlineData(@"qnxON$cEX\=i?]3s3MyB", @"qnxONcEXi3s3MyB")]
     [InlineData(@"^{b,H:b{ft^3TU<PZJGd", @"bHbft3TUPZJGd")]
-    public void RemoveSpecialCharacters(string testString, string expected)
+    public void RemoveSpecialCharacters(string testString, string expectedString)
     {
         string actual = testString.RemoveSpecialCharacters();
 
-        Assert.Equal(expected, actual);
+        Assert.Equal(expectedString, actual);
     }
 
     [Theory]
     [InlineData(@"rMhj5(VirYg<rS7lWuGZ", @"5(<7")]
     [InlineData(@"gNa/*+Kd($@k+$%8Fj/I", @"/*+($@+$%8/")]
     [InlineData(@"bJcnmhy7<9-h%]wk[dTc", @"7<9-%][")]
-    public void RemoveLetters(string testString, string expected)
+    public void RemoveLetters(string testString, string expectedString)
     {
         string actual = testString.RemoveLetters();
 
-        Assert.Equal(expected, actual);
+        Assert.Equal(expectedString, actual);
     }
 
     #region TrimStart
@@ -83,11 +83,11 @@ public class Remover_Tests
     [InlineData("As he waited for the shower to warm", "As he waited ", "for the shower to warm")]
     [InlineData("I love eating toasted cheese and tuna sandwiches.", "I lov", "e eating toasted cheese and tuna sandwiches.")]
     [InlineData("The light in his life was actually a fire burning all around him.", "The light in him", "The light in his life was actually a fire burning all around him.")]
-    public void TrimStart_DefaultComparison_Pass(string testString, string stringToRemove, string expected)
+    public void TrimStart_DefaultComparison_Pass(string testString, string stringToRemove, string expectedString)
     {
         string actual = testString.TrimStart(stringToRemove);
 
-        Assert.Equal(expected, actual);
+        Assert.Equal(expectedString, actual);
     }
 
     [Theory]
@@ -107,11 +107,11 @@ public class Remover_Tests
     [InlineData("As he waited for the shower to warm", "As HE waited ", "for the shower to warm")]
     [InlineData("I love eating toasted cheese and tuna sandwiches.", "i LOV", "e eating toasted cheese and tuna sandwiches.")]
     [InlineData("The light in his life was actually a fire burning all around him.", "The liGht in him", "The light in his life was actually a fire burning all around him.")]
-    public void TrimStart_CultureInfo_Pass(string testString, string stringToRemove, string expected)
+    public void TrimStart_CultureInfo_Pass(string testString, string stringToRemove, string expectedString)
     {
         string actual = testString.TrimStart(stringToRemove, true, CultureInfo.InvariantCulture);
 
-        Assert.Equal(expected, actual);
+        Assert.Equal(expectedString, actual);
     }
 
     [Theory]
@@ -159,11 +159,11 @@ public class Remover_Tests
     [InlineData("As he waited for the shower to warm", "shower to warm", "As he waited for the ")]
     [InlineData("I love eating toasted cheese and tuna sandwiches.", " and tuna sandwiches.", "I love eating toasted cheese")]
     [InlineData("The light in his life was actually a fire burning all around him.", "all around her", "The light in his life was actually a fire burning all around him.")]
-    public void TrimEnd_DefaultComparison_Pass(string testString, string stringToRemove, string expected)
+    public void TrimEnd_DefaultComparison_Pass(string testString, string stringToRemove, string expectedString)
     {
         string actual = testString.TrimEnd(stringToRemove);
 
-        Assert.Equal(expected, actual);
+        Assert.Equal(expectedString, actual);
     }
 
     [Theory]
@@ -183,11 +183,11 @@ public class Remover_Tests
     [InlineData("As he waited for the shower to warm", "shower TO warm", "As he waited for the ")]
     [InlineData("I love eating toasted cheese and tuna sandwiches.", " AND tuna sandwiches.", "I love eating toasted cheese")]
     [InlineData("The light in his life was actually a fire burning all around him.", "all around HER", "The light in his life was actually a fire burning all around him.")]
-    public void TrimEnd_CultureInfo_Pass(string testString, string stringToRemove, string expected)
+    public void TrimEnd_CultureInfo_Pass(string testString, string stringToRemove, string expectedString)
     {
         string actual = testString.TrimEnd(stringToRemove, true, CultureInfo.InvariantCulture);
 
-        Assert.Equal(expected, actual);
+        Assert.Equal(expectedString, actual);
     }
 
     [Theory]
