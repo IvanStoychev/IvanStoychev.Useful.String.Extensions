@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://www.nuget.org/packages/IvanStoychev.Useful.String.Extensions"><img src="https://i.imgur.com/uQp2iZk.png" alt="IvanStoychev.Useful.String.Extensions"></a>
+  <a href="https://www.nuget.org/packages/IvanStoychev.Useful.String.Extensions"><img src="Project logo.png" alt="IvanStoychev.Useful.String.Extensions"></a>
   <br>
   IvanStoychev.Useful.String.Extensions
   <br>
@@ -69,6 +69,11 @@
 📣 Introduction
 ------------
 This is a collection of string extension methods that I have been in need of many a time, so I bundled them in a nuget package and published the code here. They are designed to be "ease-of-life" and "generally making your life easier" methods with user comfort in mind, which is why there are numerious overloads, designed for every case I could think of.
+
+<br/>
+
+# ![YouTube](https://i.imgur.com/GqXgzqn.png) Demo
+asd
 
 <br/>
 
