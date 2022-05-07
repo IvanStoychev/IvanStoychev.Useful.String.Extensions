@@ -1,36 +1,73 @@
-**Source link enabled**
-Makes work with strings a breeze.
+![Project logo](https://user-images.githubusercontent.com/30086277/167206693-157df6ee-55f8-4f00-a32f-7d6cef52ed9b.png)
 
-To get started you need only add `using IvanStoychev.Useful.String.Extensions;`
+### **Source and debug symbols embedded**
+#### *(You can step through this package's code during debug)*
 
-To use the library, call methods on the `string` class.
+---
 
-For example:
+### What is this?
+
+A library of extension methods for the `string` class that make work with text easier.
+
+### How do I get started?
+
+Add `using IvanStoychev.Useful.String.Extensions;`
+And call methods on any string.
+
+---
+
+### Video Demonstration
+#### *(Must click to watch on YouTube)*
+
+...
+
+### Examples:
 
 #### Remove all occurrences of a collection of strings
-    string testString = "To buy: eggs, eggs, jam, ham, milk, ham, bread, bread";
-    List<string> stringsToRemove = new() { "eggs, ", "ham, ", ", bread" };
-    string output = testString.Remove(stringsToRemove);
-    Console.WriteLine(output);
+    string testString = "To buy: Eggs. eggs. Jam. Ham. Milk. ham. Bread. Bread";
+    List<string> stringsToRemove = new() { "Eggs. ", "Ham. ", ". Bread" };
+    string outputDefault = testString.Remove(stringsToRemove);
+    string outputIgnoreCase = testString.Remove(stringsToRemove, StringComparison.InvariantCultureIgnoreCase);
+    Console.WriteLine(outputDefault);
+    Console.WriteLine(outputIgnoreCase);
     
-    // Output is "To buy: jam, milk"
+    // Result
+    // ------
+    // outputDefault    = "To buy: eggs. Jam. Milk. ham"
+    // outputIgnoreCase = "To buy: Jam. Milk"
+
+.
 
 #### Replace all occurrences of a collection of strings with another string
-    string testString = "Gold, gems, jewels, trinkets, more gems, more jewels!";
-    List<string> oldStrings = new() { "gems", "jewels", "trinkets" };
-    string output = testString.Replace(oldStrings, "gold");
-    Console.WriteLine(output);
+    string testString = "Gold. Gems. Jewels. Trinkets. More gems. More jewels!";
+    List<string> oldStrings = new() { "Gems", "Jewels", "Trinkets" };
+    string outputDefault = testString.Replace("gold", oldStrings);
+    string outputIgnoreCase = testString.Replace("gold", oldStrings, StringComparison.InvariantCultureIgnoreCase);
+    Console.WriteLine(outputDefault);
+    Console.WriteLine(outputIgnoreCase);
     
-    // Output is "Gold, gold, gold, gold, more gold, more gold!"
+    // Result
+    // ------
+    // outputDefault    = "Gold. gold. gold. gold. More gems. More jewels!"
+    // outputIgnoreCase = "Gold. gold. gold. gold. More gold. More gold!"
+
+.
 
 #### Select everything between two substrings
     string testString = "We start on Monday and we finish on Tuesday.";
     string startString = "start on ";
     string endString = " and we finish";
-    string output = testString.Substring(startString, endString);
-    Console.WriteLine(output);
+    string outputDefault = testString.Substring(startString, endString);
+    string outputFull = testString.Substring(startString, endString, StringInclusionOptions.IncludeAll);
+    Console.WriteLine(outputDefault);
+    Console.WriteLine(outputFull);
     
-    // Output is "Monday"
+    // Result
+    // ------
+    // outputDefault = "Monday"
+    // outputFull    = "start on Monday and we finish"
+
+.
 
 #### Select everything after/before a substring
     string testString = "In the beginning there was bread. In the end there was jam.";
@@ -41,9 +78,11 @@ For example:
     Console.WriteLine(outputStart);
     Console.WriteLine(outputEnd);
     
-    // Outputs are:
-    // "In the beginning there was bread."
-    // "In the end there was jam.""
+    // Result
+    // ------
+    // outputStart = "In the beginning there was bread."
+    // outputEnd   = "In the end there was jam."
+.
 
 All methods have a detailed summary.
 For a complete list of all methods in the library and details on them consult the [wiki](https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/wiki).
