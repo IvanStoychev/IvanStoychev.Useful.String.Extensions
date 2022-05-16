@@ -73,7 +73,7 @@ This is a collection of string extension methods that I have been in need of man
 <br/>
 
 # ![YouTube](https://i.imgur.com/GqXgzqn.png) Demo
-asd
+#### *(Will open in YouTube)*
 
 <br/>
 

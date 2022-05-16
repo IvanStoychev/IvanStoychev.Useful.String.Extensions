@@ -17,7 +17,7 @@ And call methods on any string.
 ---
 
 ### Video Demonstration
-#### *(Must click to watch on YouTube)*
+#### *(Will open in YouTube)*
 
 ...
 
