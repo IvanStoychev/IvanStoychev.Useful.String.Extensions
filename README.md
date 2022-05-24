@@ -144,7 +144,48 @@ __*Install manually*__
 ----------
 Since the functionality, added by this project, is all extension methods, it would be best to add the using statment "`using IvanStoychev.Useful.String.Extensions;`" to your code, as Intellisense usually doesn't pick it up.
 
-After that simply call any desired method on any string.
+Here are some examples ([using top-level statements][6]):
+
+##### Select an amount of characters from a string
+
+    using IvanStoychev.Useful.String.Extensions;
+    
+    string original = "A-1 B-2 C-3";
+    string result = original.Substring("B", 2);
+    Console.WriteLine(result);
+    
+    // output:
+    //
+    // -2
+
+
+##### Select the start/end of a string
+
+    using IvanStoychev.Useful.String.Extensions;
+    
+    string original = "Press any button";
+    string beginning = original.SubstringStart(" any ");
+    string ending = original.SubstringEnd(" any ");
+    Console.WriteLine(beginning);
+    Console.WriteLine(ending);
+    
+    // output:
+    //
+    // Press
+    // button
+
+
+##### Select everything between two substrings
+
+    using IvanStoychev.Useful.String.Extensions;
+    
+    string original = "Press any button";
+    string result = original.Substring("Press ", " button");
+    Console.WriteLine(result);
+    
+    // output:
+    //
+    // any
 
 <br/>
 
