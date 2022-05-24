@@ -11,10 +11,11 @@ public class Remover_Tests_Exceptions
     [Fact]
     public void Remove_DefaultComparison_NullArgument()
     {
+        IEnumerable<string> removeStrings = null;
         string testString = "testString";
         string expectedMessage = "The argument given for parameter \"removeStrings\" of method \"Remove\" was null. (Parameter 'removeStrings')";
 
-        void testAction() => testString.Remove(null);
+        void testAction() => testString.Remove(removeStrings);
 
         var exception = Assert.Throws<ArgumentNullException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
@@ -63,17 +64,18 @@ public class Remover_Tests_Exceptions
     [Theory, MemberData(nameof(Data_Remove_SetComparison_NullArgument))]
     public void Remove_SetComparison_NullArgument(StringComparison stringComparison)
     {
+        IEnumerable<string> removeStrings = null;
         string testString = "testString";
         string expectedMessage = "The argument given for parameter \"removeStrings\" of method \"Remove\" was null. (Parameter 'removeStrings')";
 
-        void testAction() => testString.Remove(null, stringComparison);
+        void testAction() => testString.Remove(removeStrings, stringComparison);
 
         var exception = Assert.Throws<ArgumentNullException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 
-    [Theory, MemberData(nameof(Data_Remove_SetComparison_IEnumNotEmpty))]
-    public void Remove_SetComparison_IEnumNotEmpty(IEnumerable<string> removeStrings, StringComparison stringComparison)
+    [Theory, MemberData(nameof(Data_Remove_SetComparison_IEnumEmpty))]
+    public void Remove_SetComparison_IEnumEmpty(IEnumerable<string> removeStrings, StringComparison stringComparison)
     {
         string testString = "testString";
         string expectedMessage = "The collection argument given for parameter \"removeStrings\" of method \"Remove\" contains no elements. (Parameter 'removeStrings')";
@@ -112,67 +114,39 @@ public class Remover_Tests_Exceptions
 
     #region Data
 
-    public static IEnumerable<object[]> Data_Remove_DefaultComparison_IEnumNotEmpty
-    {
-        get
-        {
-            return new[]
+    public static IEnumerable<object[]> Data_Remove_DefaultComparison_IEnumNotEmpty => new[]
             {
                 new object[] { new string[] { } },
                 new object[] { new List<string>() { } },
                 new object[] { new HashSet<string>() { } },
                 new object[] { new Queue<string>(new string[] { }) },
             };
-        }
-    }
 
-    public static IEnumerable<object[]> Data_Remove_DefaultComparison_NullMember
-    {
-        get
-        {
-            return new[]
+    public static IEnumerable<object[]> Data_Remove_DefaultComparison_NullMember => new[]
             {
                 new object[] { new string[] { null, "asd", "asd", "asd" } },
                 new object[] { new List<string>() { "asd", null, "asd", "asd" } },
                 new object[] { new HashSet<string>() { "asd", "asd", null, "asd" } },
                 new object[] { new Queue<string>(new string[] { "asd", "asd", "asd", null }) },
             };
-        }
-    }
 
-    public static IEnumerable<object[]> Data_Remove_DefaultComparison_EmptyStringMember
-    {
-        get
-        {
-            return new[]
+    public static IEnumerable<object[]> Data_Remove_DefaultComparison_EmptyStringMember => new[]
             {
                 new object[] { new string[] { "", "asd", "asd", "asd" } },
                 new object[] { new List<string>() { "asd", "", "asd", "asd" } },
                 new object[] { new HashSet<string>() { "asd", "asd", "", "asd" } },
                 new object[] { new Queue<string>(new string[] { "asd", "asd", "asd", "" }) },
             };
-        }
-    }
 
-    public static IEnumerable<object[]> Data_Remove_SetComparison_NullArgument
-    {
-        get
-        {
-            return new[]
+    public static IEnumerable<object[]> Data_Remove_SetComparison_NullArgument => new[]
             {
                 new object[] { StringComparison.InvariantCulture },
                 new object[] { StringComparison.InvariantCultureIgnoreCase },
                 new object[] { StringComparison.Ordinal },
                 new object[] { StringComparison.OrdinalIgnoreCase }
             };
-        }
-    }
 
-    public static IEnumerable<object[]> Data_Remove_SetComparison_IEnumNotEmpty
-    {
-        get
-        {
-            return new[]
+    public static IEnumerable<object[]> Data_Remove_SetComparison_IEnumEmpty => new[]
             {
                 new object[] { new string[] {  }, StringComparison.InvariantCulture },
                 new object[] { new List<string>(), StringComparison.InvariantCulture },
@@ -194,14 +168,8 @@ public class Remover_Tests_Exceptions
                 new object[] { new HashSet<string>() {  }, StringComparison.OrdinalIgnoreCase },
                 new object[] { new Queue<string>(new string[] {  }), StringComparison.OrdinalIgnoreCase }
             };
-        }
-    }
 
-    public static IEnumerable<object[]> Data_Remove_SetComparison_NullMember
-    {
-        get
-        {
-            return new[]
+    public static IEnumerable<object[]> Data_Remove_SetComparison_NullMember => new[]
             {
                 new object[] { new string[] { null, "asd", "asd", "asd" }, StringComparison.InvariantCulture },
                 new object[] { new List<string>() { "asd", null, "asd", "asd" }, StringComparison.InvariantCulture },
@@ -223,14 +191,8 @@ public class Remover_Tests_Exceptions
                 new object[] { new HashSet<string>() { "asd", "asd", null, "asd" }, StringComparison.OrdinalIgnoreCase },
                 new object[] { new Queue<string>(new string[] { "asd", "asd", "asd", null }), StringComparison.OrdinalIgnoreCase }
             };
-        }
-    }
 
-    public static IEnumerable<object[]> Data_Remove_SetComparison_EmptyStringMember
-    {
-        get
-        {
-            return new[]
+    public static IEnumerable<object[]> Data_Remove_SetComparison_EmptyStringMember => new[]
             {
                 new object[] { new string[] { "", "asd", "asd", "asd" }, StringComparison.InvariantCulture },
                 new object[] { new List<string>() { "asd", "", "asd", "asd" }, StringComparison.InvariantCulture },
@@ -252,8 +214,6 @@ public class Remover_Tests_Exceptions
                 new object[] { new HashSet<string>() { "asd", "asd", "", "asd" }, StringComparison.OrdinalIgnoreCase },
                 new object[] { new Queue<string>(new string[] { "asd", "asd", "asd", "" }), StringComparison.OrdinalIgnoreCase }
             };
-        }
-    }
 
     #endregion Data
 }
