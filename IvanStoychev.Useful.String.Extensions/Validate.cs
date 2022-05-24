@@ -69,7 +69,7 @@ static class Validate
     {
         SubstringIndex(originalString, startString, out startStringIndex, callingMethodName, stringComparison);
 
-        string substringStartStringOnwards = originalString[(startStringIndex + startString.Length)..];
+        string substringStartStringOnwards = originalString.Substring(startStringIndex + startString.Length);
         endStringIndex = substringStartStringOnwards.IndexOf(endString, stringComparison);
 
         if (endStringIndex == -1)
@@ -105,7 +105,7 @@ static class Validate
     {
         SubstringIndex(originalString, startString, out startStringIndex, callingMethodName, stringComparison);
 
-        string substringStartStringOnwards = originalString[(startStringIndex + startString.Length)..];
+        string substringStartStringOnwards = originalString.Substring(startStringIndex + startString.Length);
         endStringIndex = substringStartStringOnwards.LastIndexOf(endString, stringComparison);
 
         if (endStringIndex == -1)

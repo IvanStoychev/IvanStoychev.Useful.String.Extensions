@@ -77,10 +77,10 @@ static class ExceptionThrower
                                                                      [CallerArgumentExpression("endString")] string endStringParameterName = null)
     {
         if (endString.Length > MAX_LENGTH)
-            endString = endString[..MAX_LENGTH] + "...";
+            endString = endString.Substring(0, MAX_LENGTH) + "...";
 
         if (startString.Length > MAX_LENGTH)
-            startString = startString[..MAX_LENGTH] + "...";
+            startString = startString.Substring(0, MAX_LENGTH) + "...";
 
         throw new ArgumentOutOfRangeException(endStringParameterName, $"The string given for \"{endStringParameterName}\" (\"{endString}\") was not found after the given \"{startStringParameterName}\" (\"{startString}\") in the original instance. Name of the method throwing the exception - \"{callingMethodName}\".");
     }
@@ -126,7 +126,7 @@ static class ExceptionThrower
     internal static void Throw_ArgumentOutOfRangeException_Substring(string substring, string parameterName, string callingMethodName)
     {
         if (substring.Length > MAX_LENGTH)
-            substring = substring[..MAX_LENGTH] + "...";
+            substring = substring.Substring(0, MAX_LENGTH) + "...";
 
         throw new ArgumentOutOfRangeException(parameterName, $"The string given for \"{parameterName}\" (\"{substring}\") of method \"{callingMethodName}\" was not found in the original instance.");
     }

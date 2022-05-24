@@ -32,7 +32,7 @@ public static class Selector
 
         endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
 
-        return str[..endStringIndex];
+        return str.Substring(0, endStringIndex);
     }
 
     /// <summary>
@@ -57,7 +57,7 @@ public static class Selector
 
         endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
 
-        return str[..endStringIndex];
+        return str.Substring(0, endStringIndex);
     }
 
     /// <summary>
@@ -223,7 +223,7 @@ public static class Selector
 
         startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 
-        return str[startStringIndex..];
+        return str.Substring(startStringIndex);
     }
 
     /// <summary>
@@ -248,7 +248,7 @@ public static class Selector
 
         startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 
-        return str[startStringIndex..];
+        return str.Substring(startStringIndex);
     }
 
     /// <summary>
