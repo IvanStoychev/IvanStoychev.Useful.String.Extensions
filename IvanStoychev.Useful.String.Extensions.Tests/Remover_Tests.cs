@@ -896,25 +896,15 @@ public class Remover_Tests
 
     #endregion TrimEnd
 
-    public static IEnumerable<object[]> Data_Remove_DefaultComparison_Pass
-    {
-        get
-        {
-            return new[]
+    public static IEnumerable<object[]> Data_Remove_DefaultComparison_Pass => new[]
             {
                 new object[] { "I would have gotten the promotion, but my attendance wasn’t good enough.", new string[] { "gotten", "attendance", "would", "enough" }, "I  have  the promotion, but my  wasn’t good ." },
                 new object[] { "This is the last random sentence I will be writing and I am going to stop mid-sent", new List<string>() { "random ", "writing ", " sentence" }, "This is the last I will be and I am going to stop mid-sent" },
                 new object[] { "Oh, how I'd love to go!", new HashSet<string>() { "how I", ",", "go!" }, "Oh 'd love to " },
                 new object[] { "Rock music approaches at high velocity.", new Queue<string>(new string[] { "Rock ", "music", " approaches", "velocity" }), " at high ." }
             };
-        }
-    }
 
-    public static IEnumerable<object[]> Data_Remove_SetComparison_Pass
-    {
-        get
-        {
-            return new[]
+    public static IEnumerable<object[]> Data_Remove_SetComparison_Pass => new[]
             {
                 new object[] { "Case encyclopædia Archæology", new string[] { "case", "encyclopædia", "ARCHÆOLOGY" }, StringComparison.InvariantCulture, "Case  Archæology" },
                 new object[] { "Case encyclopædia Archæology", new List<string>() { "Case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.InvariantCulture, " encyclopædia Archæology" },
@@ -936,28 +926,16 @@ public class Remover_Tests
                 new object[] { "Case encyclopædia Archæology", new HashSet<string>() { "case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.OrdinalIgnoreCase, " encyclopædia " },
                 new object[] { "Case encyclopædia Archæology", new Queue<string>(new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }), StringComparison.OrdinalIgnoreCase, " encyclopædia " }
             };
-        }
-    }
 
-    public static IEnumerable<object[]> Data_Remove_DefaultComparison_Fail
-    {
-        get
-        {
-            return new[]
+    public static IEnumerable<object[]> Data_Remove_DefaultComparison_Fail => new[]
             {
                 new object[] { "I would have gotten the promotion, but my attendance wasn’t good enough.", new string[] { "dummy", "dummy", "dummy", "dummy" } },
                 new object[] { "This is the last random sentence I will be writing and I am going to stop mid-sent", new List<string>() { "dummy ", "dummy ", "dummy" } },
                 new object[] { "Oh, how I'd love to go!", new HashSet<string>() { "dummy", "dummy", "dummy" } },
                 new object[] { "Rock music approaches at high velocity.", new Queue<string>(new string[] { "dummy", "dummy", "dummy", "dummy" }) }
             };
-        }
-    }
 
-    public static IEnumerable<object[]> Data_Remove_SetComparison_Fail
-    {
-        get
-        {
-            return new[]
+    public static IEnumerable<object[]> Data_Remove_SetComparison_Fail => new[]
             {
                 new object[] { "Case encyclopædia Archæology", new string[] { "dummy", "dummy", "dummy" }, StringComparison.InvariantCulture },
                 new object[] { "Case encyclopædia Archæology", new List<string>() { "dummy", "dummy", "dummy" }, StringComparison.InvariantCulture },
@@ -979,6 +957,4 @@ public class Remover_Tests
                 new object[] { "Case encyclopædia Archæology", new HashSet<string>() { "dummy", "dummy", "dummy" }, StringComparison.OrdinalIgnoreCase },
                 new object[] { "Case encyclopædia Archæology", new Queue<string>(new string[] { "dummy", "dummy", "dummy" }), StringComparison.OrdinalIgnoreCase }
             };
-        }
-    }
 }

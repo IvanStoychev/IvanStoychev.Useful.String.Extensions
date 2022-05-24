@@ -22,25 +22,15 @@ public class Replacer_Tests
         Assert.Equal(expectedString, actualString);
     }
 
-    public static IEnumerable<object[]> Data_Replace_DefaultComparison_Pass
-    {
-        get
-        {
-            return new[]
+    public static IEnumerable<object[]> Data_Replace_DefaultComparison_Pass => new[]
             {
                 new object[] { "takimata amet erat invidunt diam no vel nonummy", "newWord", new string[] { "amet", "invidunt", "no" }, "takimata newWord erat newWord diam newWord vel newWordnummy" },
                 new object[] { "erat consequat euismod justo exerci sed sea tation", "newWord", new List<string>() { "consequat", "justo", "sed" }, "erat newWord euismod newWord exerci newWord sea tation" },
                 new object[] { "lorem magna eros ea dolore molestie magna rebum", "newWord", new HashSet<string>() { "magna", "ea", "molestie" }, "lorem newWord eros newWord dolore newWord newWord rebum" },
                 new object[] { "duo clita dolore clita clita gubergren diam vel", "newWord", new Queue<string>(new string[] { "clita", "gubergren" }), "duo newWord dolore newWord newWord newWord diam vel" }
             };
-        }
-    }
 
-    public static IEnumerable<object[]> Data_Replace_SetComparison_Pass
-    {
-        get
-        {
-            return new[]
+    public static IEnumerable<object[]> Data_Replace_SetComparison_Pass => new[]
             {
                 new object[] { "case encyclopædia Archæology", "newWord", new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.InvariantCulture, "newWord encyclopædia Archæology" },
                 new object[] { "case encyclopædia Archæology", "newWord", new List<string>() { "Case", "encyclopædia", "ARCHÆOLOGY" }, StringComparison.InvariantCulture, "case newWord Archæology" },
@@ -62,6 +52,4 @@ public class Replacer_Tests
                 new object[] { "case encyclopædia Archæology", "newWord", new HashSet<string>() { "kase", "encyclopædia", "Archæology" }, StringComparison.OrdinalIgnoreCase, "case newWord newWord" },
                 new object[] { "case encyclopædia Archæology", "newWord", new Queue<string>(new string[] { "case", "encyclopædia", "Archæology" }), StringComparison.OrdinalIgnoreCase, "newWord newWord newWord" }
             };
-        }
-    }
 }

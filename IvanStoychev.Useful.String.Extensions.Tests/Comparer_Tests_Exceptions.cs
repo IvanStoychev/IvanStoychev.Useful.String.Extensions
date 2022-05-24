@@ -52,11 +52,7 @@ public class Comparer_Tests_Exceptions
 
     #region IEnumerable test data
 
-    public static IEnumerable<object[]> Data_StringComparison_AllValues
-    {
-        get
-        {
-            return new[]
+    public static IEnumerable<object[]> Data_StringComparison_AllValues => new[]
             {
                 new object[] { StringComparison.CurrentCulture },
                 new object[] { StringComparison.CurrentCultureIgnoreCase },
@@ -65,8 +61,6 @@ public class Comparer_Tests_Exceptions
                 new object[] { StringComparison.Ordinal },
                 new object[] { StringComparison.OrdinalIgnoreCase }
             };
-        }
-    }
-    
+
     #endregion IEnumerable test data
 }
