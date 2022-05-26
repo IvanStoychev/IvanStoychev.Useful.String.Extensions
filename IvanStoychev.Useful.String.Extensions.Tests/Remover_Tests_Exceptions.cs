@@ -21,8 +21,8 @@ public class Remover_Tests_Exceptions
         Assert.Equal(expectedMessage, exception.Message);
     }
 
-    [Theory, MemberData(nameof(Data_Remove_DefaultComparison_IEnumNotEmpty))]
-    public void Remove_DefaultComparison_IEnumNotEmpty(IEnumerable<string> removeStrings)
+    [Theory, MemberData(nameof(Data_Remove_DefaultComparison_IEnumEmpty))]
+    public void Remove_DefaultComparison_IEnumEmpty(IEnumerable<string> removeStrings)
     {
         string testString = "testString";
         string expectedMessage = "The collection argument given for parameter \"removeStrings\" of method \"Remove\" contains no elements. (Parameter 'removeStrings')";
@@ -114,7 +114,7 @@ public class Remover_Tests_Exceptions
 
     #region Data
 
-    public static IEnumerable<object[]> Data_Remove_DefaultComparison_IEnumNotEmpty => new[]
+    public static IEnumerable<object[]> Data_Remove_DefaultComparison_IEnumEmpty => new[]
             {
                 new object[] { new string[] { } },
                 new object[] { new List<string>() { } },
