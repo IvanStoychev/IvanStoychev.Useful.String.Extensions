@@ -12,6 +12,32 @@ namespace IvanStoychev.Useful.String.Extensions;
 public static class Remover
 {
     /// <summary>
+    /// Returns a new string in which all occurrences of the given <paramref name="removeString"/> in the current instance are replaced with <see cref="string.Empty"/>.
+    /// </summary>
+    /// <param name="str">The instance to remove strings from.</param>
+    /// <param name="removeString">Substring to be removed.</param>
+    /// <param name="stringComparison">Comparison rules to use.</param>
+    /// <returns>
+    /// A string that is equivalent to the current string except that all instances of <paramref name="removeString"/> are removed.
+    /// </returns>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="removeString"/> is the empty string ("").
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// <paramref name="removeString"/> is <see langword="null"/>.
+    /// </exception>
+    [Pure]
+    public static string Remove(this string str, string removeString, StringComparison stringComparison = StringComparison.CurrentCulture)
+    {
+        Validate.EmptyString(removeString);
+        Validate.NullArgument(removeString);
+
+        str = str.Replace(removeString, string.Empty, stringComparison);
+
+        return str;
+    }
+
+    /// <summary>
     /// Returns a new string in which all occurrences of all members of the given <paramref name="removeStrings"/> in the current instance are removed.
     /// Occurrences are removed in the same order as the IEnumerable's members, using the provided <paramref name="stringComparison"/> rules.
     /// </summary>
