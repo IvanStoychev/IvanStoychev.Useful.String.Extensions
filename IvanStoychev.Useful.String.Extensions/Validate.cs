@@ -37,7 +37,7 @@ static class Validate
     internal static void EmptyStringMember(string collectionMember, string collectionParameterName, [CallerMemberName] string callingMethodName = null)
     {
         if (collectionMember == "")
-            ExceptionThrower.Throw_ArgumentException_EmptyString(collectionParameterName, callingMethodName);
+            ExceptionThrower.Throw_ArgumentException_EmptyStringMember(collectionParameterName, callingMethodName);
     }
 
     /// <summary>

@@ -22,7 +22,7 @@ static class ExceptionThrower
     /// <exception cref="ArgumentException">
     /// A member of <paramref name="collectionParameterName"/> is the empty string ("").
     /// </exception>
-    internal static void Throw_ArgumentException_EmptyString(string collectionParameterName, string callingMethodName)
+    internal static void Throw_ArgumentException_EmptyStringMember(string collectionParameterName, string callingMethodName)
         => throw new ArgumentException($"A member of the collection given for parameter \"{collectionParameterName}\" of method \"{callingMethodName}\" is the empty string (\"\").", collectionParameterName);
 
     /// <summary>
