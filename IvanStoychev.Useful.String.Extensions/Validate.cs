@@ -159,8 +159,7 @@ static class Validate
     }
 
     /// <summary>
-    /// Checks if the given <paramref name="argument"/> of parameter "<paramref name="parameterName"/>" is null.
-    /// And if it is, throws an <see cref="ArgumentNullException"/>.
+    /// Checks if the given <paramref name="argument"/> is null. And if it is, throws an <see cref="ArgumentNullException"/>.
     /// </summary>
     /// <param name="argument">Value passed as the argument for a method's parameter.</param>
     /// <param name="parameterName">Name of the parameter in the method that does this validation.</param>
