@@ -13,6 +13,18 @@ static class ExceptionThrower
     /// </summary>
     const int MAX_LENGTH = 10;
 
+
+    /// <summary>
+    /// Throws an <see cref="ArgumentException"/> that informs the user <paramref name="parameterName"/> is the empty string.
+    /// </summary>
+    /// <param name="parameterName">Name of the parameter in the original calling method.</param>
+    /// <param name="callingMethodName">Name of the method that throws this exception.</param>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="parameterName"/> is the empty string ("").
+    /// </exception>
+    internal static void Throw_ArgumentException_EmptyString(string parameterName, string callingMethodName)
+        => throw new ArgumentException(parameterName, $"The argument given for parameter \"{parameterName}\" of method \"{callingMethodName}\" is the empty string (\"\").");
+
     /// <summary>
     /// Throws an <see cref="ArgumentException"/> that informs the user a member of the collection provided for parameter
     /// "<paramref name="collectionParameterName"/>" was the empty string.
