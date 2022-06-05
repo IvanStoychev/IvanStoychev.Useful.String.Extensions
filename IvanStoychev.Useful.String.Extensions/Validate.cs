@@ -41,6 +41,21 @@ static class Validate
     }
 
     /// <summary>
+    /// Checks if the given <paramref name="argument"/> is the empty string (""). And if it is, throws an <see cref="ArgumentException"/>.
+    /// </summary>
+    /// <param name="argument">Value passed as the argument for a method's parameter.</param>
+    /// <param name="parameterName">Name of the parameter in the method that does this validation.</param>
+    /// <param name="callingMethodName">Name of the method that does this validation.</param>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="argument"/> is the empty string ("").
+    /// </exception>
+    internal static void EmptyString(string argument, [CallerArgumentExpression("argument")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
+    {
+        if (argument == string.Empty)
+            ExceptionThrower.Throw_ArgumentException_EmptyString(parameterName, callingMethodName);
+    }
+
+    /// <summary>
     /// Checks if <paramref name="startString"/> occurs in <paramref name="originalString"/> and if it doesn't, throws an <see cref="ArgumentOutOfRangeException"/>.
     /// If it does occur, then checks if <paramref name="endString"/> occurs in the part of <paramref name="originalString"/> that is after <paramref name="startString"/>
     /// and if it doesn't, throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value of <paramref name="endString"/> was
