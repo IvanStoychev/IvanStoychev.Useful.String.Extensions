@@ -11,18 +11,18 @@ namespace IvanStoychev.Useful.String.Extensions;
 static class Validate
 {
     /// <summary>
-    /// Checks if the given <paramref name="ienum"/> contains any members and throws an <see cref="ArgumentException"/> if it doesn't.
+    /// Checks if the given <paramref name="argument"/> is the empty string (""). And if it is, throws an <see cref="ArgumentException"/>.
     /// </summary>
-    /// <param name="ienum">An <see cref="IEnumerable{T}"/> to be checked if it is empty or not.</param>
+    /// <param name="argument">Value passed as the argument for a method's parameter.</param>
     /// <param name="parameterName">Name of the parameter in the method that does this validation.</param>
     /// <param name="callingMethodName">Name of the method that does this validation.</param>
     /// <exception cref="ArgumentException">
-    /// <paramref name="ienum"/> has no elements.
+    /// <paramref name="argument"/> is the empty string ("").
     /// </exception>
-    internal static void IEnumNotEmpty(IEnumerable<string> ienum, [CallerArgumentExpression("ienum")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
+    internal static void EmptyString(string argument, [CallerArgumentExpression("argument")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
     {
-        if (!ienum.Any())
-            ExceptionThrower.Throw_ArgumentException_EmptyCollection(parameterName, callingMethodName);
+        if (argument == string.Empty)
+            ExceptionThrower.Throw_ArgumentException_EmptyString(parameterName, callingMethodName);
     }
 
     /// <summary>
@@ -38,21 +38,6 @@ static class Validate
     {
         if (collectionMember == "")
             ExceptionThrower.Throw_ArgumentException_EmptyStringMember(collectionParameterName, callingMethodName);
-    }
-
-    /// <summary>
-    /// Checks if the given <paramref name="argument"/> is the empty string (""). And if it is, throws an <see cref="ArgumentException"/>.
-    /// </summary>
-    /// <param name="argument">Value passed as the argument for a method's parameter.</param>
-    /// <param name="parameterName">Name of the parameter in the method that does this validation.</param>
-    /// <param name="callingMethodName">Name of the method that does this validation.</param>
-    /// <exception cref="ArgumentException">
-    /// <paramref name="argument"/> is the empty string ("").
-    /// </exception>
-    internal static void EmptyString(string argument, [CallerArgumentExpression("argument")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
-    {
-        if (argument == string.Empty)
-            ExceptionThrower.Throw_ArgumentException_EmptyString(parameterName, callingMethodName);
     }
 
     /// <summary>
@@ -125,6 +110,21 @@ static class Validate
 
         if (endStringIndex == -1)
             ExceptionThrower.Throw_ArgumentOutOfRangeException_Endstring(startString, endString, callingMethodName);
+    }
+
+    /// <summary>
+    /// Checks if the given <paramref name="ienum"/> contains any members and throws an <see cref="ArgumentException"/> if it doesn't.
+    /// </summary>
+    /// <param name="ienum">An <see cref="IEnumerable{T}"/> to be checked if it is empty or not.</param>
+    /// <param name="parameterName">Name of the parameter in the method that does this validation.</param>
+    /// <param name="callingMethodName">Name of the method that does this validation.</param>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="ienum"/> has no elements.
+    /// </exception>
+    internal static void IEnumNotEmpty(IEnumerable<string> ienum, [CallerArgumentExpression("ienum")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
+    {
+        if (!ienum.Any())
+            ExceptionThrower.Throw_ArgumentException_EmptyCollection(parameterName, callingMethodName);
     }
 
     /// <summary>
