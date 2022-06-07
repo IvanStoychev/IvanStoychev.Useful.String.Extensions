@@ -7,34 +7,100 @@ namespace IvanStoychev.Useful.String.Extensions.Tests;
 
 public class Remover_Tests
 {
+    #region public static string Remove(this string str, string removeString, StringComparison stringComparison = StringComparison.CurrentCulture)
+
+    #region Pass
+
+    [Theory]
+    #region Data
+    [InlineData("Case encyclopædia Archæology", "Case", " encyclopædia Archæology")]
+    [InlineData("Case encyclopædia Archæology", "encyclopædia ", "Case Archæology")]
+    [InlineData("Case encyclopædia Archæology", " Archæology", "Case encyclopædia")]
+    #endregion Data
+    public void Remove_String_DefaultComparison_Pass(string testString, string removeString, string expectedString)
+    {
+        string actualString = testString.Remove(removeString);
+
+        Assert.Equal(expectedString, actualString);
+    }
+
+    [Theory]
+    #region Data
+    [InlineData("Case encyclopædia Archæology", "Case", StringComparison.Ordinal, " encyclopædia Archæology")]
+    [InlineData("Case encyclopædia Archæology", "Encyclopædia ", StringComparison.OrdinalIgnoreCase, "Case Archæology")]
+    [InlineData("Case encyclopædia Archæology", " Archæology", StringComparison.InvariantCulture, "Case encyclopædia")]
+    [InlineData("Case encyclopædia Archæology", " archæology", StringComparison.InvariantCultureIgnoreCase, "Case encyclopædia")]
+    #endregion Data
+    public void Remove_String_SetComparison_Pass(string testString, string removeString, StringComparison stringComparison, string expectedString)
+    {
+        string actualString = testString.Remove(removeString, stringComparison);
+
+        Assert.Equal(expectedString, actualString);
+    }
+
+    #endregion Pass
+
+    #region Fail
+
+    [Theory]
+    #region Data
+    [InlineData("Case encyclopædia Archæology", "dummy")]
+    [InlineData("Case encyclopædia Archæology", "empty")]
+    [InlineData("Case encyclopædia Archæology", "miss")]
+    #endregion Data
+    public void Remove_String_DefaultComparison_Fail(string testString, string removeString)
+    {
+        string actualString = testString.Remove(removeString);
+
+        Assert.Equal(testString, actualString);
+    }
+
+    [Theory]
+    #region Data
+    [InlineData("Case encyclopædia Archæology", "case", StringComparison.Ordinal)]
+    [InlineData("Case encyclopædia Archæology", "encyclopaedia ", StringComparison.OrdinalIgnoreCase)]
+    [InlineData("Case encyclopædia Archæology", "archæology", StringComparison.InvariantCulture)]
+    [InlineData("Case encyclopædia Archæology", "archaeology", StringComparison.InvariantCultureIgnoreCase)]
+    #endregion Data
+    public void Remove_String_SetComparison_Fail(string testString, string removeString, StringComparison stringComparison)
+    {
+        string actualString = testString.Remove(removeString, stringComparison);
+
+        Assert.Equal(testString, actualString);
+    }
+
+    #endregion Fail
+
+    #endregion public static string Remove(this string str, IEnumerable<string> removeStrings, StringComparison stringComparison = StringComparison.CurrentCulture)
+
     #region public static string Remove(this string str, IEnumerable<string> removeStrings, StringComparison stringComparison = StringComparison.CurrentCulture)
 
-    [Theory, MemberData(nameof(Data_Remove_DefaultComparison_Pass))]
-    public void Remove_DefaultComparison_Pass(string testString, IEnumerable<string> removeStrings, string expectedString)
+    [Theory, MemberData(nameof(Data_Remove_IEnumString_DefaultComparison_Pass))]
+    public void Remove_IEnumString_DefaultComparison_Pass(string testString, IEnumerable<string> removeStrings, string expectedString)
     {
         string actualString = testString.Remove(removeStrings);
 
         Assert.Equal(expectedString, actualString);
     }
 
-    [Theory, MemberData(nameof(Data_Remove_SetComparison_Pass))]
-    public void Remove_SetComparison_Pass(string testString, IEnumerable<string> removeStrings, StringComparison stringComparison, string expectedString)
+    [Theory, MemberData(nameof(Data_Remove_IEnumString_SetComparison_Pass))]
+    public void Remove_IEnumString_SetComparison_Pass(string testString, IEnumerable<string> removeStrings, StringComparison stringComparison, string expectedString)
     {
         string actualString = testString.Remove(removeStrings, stringComparison);
 
         Assert.Equal(expectedString, actualString);
     }
 
-    [Theory, MemberData(nameof(Data_Remove_DefaultComparison_Fail))]
-    public void Remove_DefaultComparison_Fail(string testString, IEnumerable<string> removeStrings)
+    [Theory, MemberData(nameof(Data_Remove_IEnumString_DefaultComparison_Fail))]
+    public void Remove_IEnumString_DefaultComparison_Fail(string testString, IEnumerable<string> removeStrings)
     {
         string actualString = testString.Remove(removeStrings);
 
         Assert.Equal(testString, actualString);
     }
 
-    [Theory, MemberData(nameof(Data_Remove_SetComparison_Fail))]
-    public void Remove_SetComparison_Fail(string testString, IEnumerable<string> removeStrings, StringComparison stringComparison)
+    [Theory, MemberData(nameof(Data_Remove_IEnumString_SetComparison_Fail))]
+    public void Remove_IEnumString_SetComparison_Fail(string testString, IEnumerable<string> removeStrings, StringComparison stringComparison)
     {
         string actualString = testString.Remove(removeStrings, stringComparison);
 
@@ -896,7 +962,7 @@ public class Remover_Tests
 
     #endregion TrimEnd
 
-    public static IEnumerable<object[]> Data_Remove_DefaultComparison_Pass => new[]
+    public static IEnumerable<object[]> Data_Remove_IEnumString_DefaultComparison_Pass => new[]
             {
                 new object[] { "I would have gotten the promotion, but my attendance wasn’t good enough.", new string[] { "gotten", "attendance", "would", "enough" }, "I  have  the promotion, but my  wasn’t good ." },
                 new object[] { "This is the last random sentence I will be writing and I am going to stop mid-sent", new List<string>() { "random ", "writing ", " sentence" }, "This is the last I will be and I am going to stop mid-sent" },
@@ -904,7 +970,7 @@ public class Remover_Tests
                 new object[] { "Rock music approaches at high velocity.", new Queue<string>(new string[] { "Rock ", "music", " approaches", "velocity" }), " at high ." }
             };
 
-    public static IEnumerable<object[]> Data_Remove_SetComparison_Pass => new[]
+    public static IEnumerable<object[]> Data_Remove_IEnumString_SetComparison_Pass => new[]
             {
                 new object[] { "Case encyclopædia Archæology", new string[] { "case", "encyclopædia", "ARCHÆOLOGY" }, StringComparison.InvariantCulture, "Case  Archæology" },
                 new object[] { "Case encyclopædia Archæology", new List<string>() { "Case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.InvariantCulture, " encyclopædia Archæology" },
@@ -927,7 +993,7 @@ public class Remover_Tests
                 new object[] { "Case encyclopædia Archæology", new Queue<string>(new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }), StringComparison.OrdinalIgnoreCase, " encyclopædia " }
             };
 
-    public static IEnumerable<object[]> Data_Remove_DefaultComparison_Fail => new[]
+    public static IEnumerable<object[]> Data_Remove_IEnumString_DefaultComparison_Fail => new[]
             {
                 new object[] { "I would have gotten the promotion, but my attendance wasn’t good enough.", new string[] { "dummy", "dummy", "dummy", "dummy" } },
                 new object[] { "This is the last random sentence I will be writing and I am going to stop mid-sent", new List<string>() { "dummy ", "dummy ", "dummy" } },
@@ -935,7 +1001,7 @@ public class Remover_Tests
                 new object[] { "Rock music approaches at high velocity.", new Queue<string>(new string[] { "dummy", "dummy", "dummy", "dummy" }) }
             };
 
-    public static IEnumerable<object[]> Data_Remove_SetComparison_Fail => new[]
+    public static IEnumerable<object[]> Data_Remove_IEnumString_SetComparison_Fail => new[]
             {
                 new object[] { "Case encyclopædia Archæology", new string[] { "dummy", "dummy", "dummy" }, StringComparison.InvariantCulture },
                 new object[] { "Case encyclopædia Archæology", new List<string>() { "dummy", "dummy", "dummy" }, StringComparison.InvariantCulture },
