@@ -17,6 +17,7 @@ This file's format is based on [Keep a Changelog](https://keepachangelog.com/en/
 <br>🟢 Added NuGet README.
 <br>🟢 Improved all method validation and thrown exception messages. Now any problems will be caught better and any exceptions caused will contain more useful information.
 <br>🟢 Embedded debug symbols, so that the library source code can be stepped through during debugging.
+<br>🟢 Added `Remove(string removeString, StringComparison stringComparison = StringComparison.CurrentCulture)` method that removes all occurrences of the given `removeString`.
 <br>🟢 Added `Trim(string trimString, StringComparison stringComparison = StringComparison.CurrentCulture, bool trimWhitespace = false)` and `Trim(string trimString, bool ignoreCase, CultureInfo? culture, bool trimWhitespace = false)` methods that remove leading and tailing occurrences of the given `trimString`.
 
 ### Changes
