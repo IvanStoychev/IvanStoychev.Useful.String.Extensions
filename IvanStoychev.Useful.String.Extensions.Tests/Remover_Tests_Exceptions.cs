@@ -6,6 +6,64 @@ namespace IvanStoychev.Useful.String.Extensions.Tests;
 
 public class Remover_Tests_Exceptions
 {
+    #region Remove(this string str, string removeString, StringComparison stringComparison = StringComparison.CurrentCulture)
+
+    [Fact]
+    public void Remove_String_DefaultComparison_EmptyString()
+    {
+        string expectedMessage = "The argument given for parameter \"removeString\" of method \"Remove\" is the empty string (\"\"). (Parameter 'removeString')";
+
+        static void testAction() => "test".Remove("");
+
+        var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Fact]
+    public void Remove_String_DefaultComparison_NullArgument()
+    {
+        string expectedMessage = "The argument given for parameter \"removeString\" of method \"Remove\" was null. (Parameter 'removeString')";
+
+        string nullString = null;
+        void testAction() => "test".Remove(nullString);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Theory]
+    [InlineData(StringComparison.Ordinal)]
+    [InlineData(StringComparison.OrdinalIgnoreCase)]
+    [InlineData(StringComparison.InvariantCulture)]
+    [InlineData(StringComparison.InvariantCultureIgnoreCase)]
+    public void Remove_String_SetComparison_EmptyString(StringComparison stringComparison)
+    {
+        string expectedMessage = "The argument given for parameter \"removeString\" of method \"Remove\" is the empty string (\"\"). (Parameter 'removeString')";
+
+        void testAction() => "test".Remove("", stringComparison);
+
+        var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Theory]
+    [InlineData(StringComparison.Ordinal)]
+    [InlineData(StringComparison.OrdinalIgnoreCase)]
+    [InlineData(StringComparison.InvariantCulture)]
+    [InlineData(StringComparison.InvariantCultureIgnoreCase)]
+    public void Remove_String_SetComparison_NullArgument(StringComparison stringComparison)
+    {
+        string expectedMessage = "The argument given for parameter \"removeString\" of method \"Remove\" was null. (Parameter 'removeString')";
+
+        string nullString = null;
+        void testAction() => "test".Remove(nullString, stringComparison);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    #endregion Remove(this string str, IEnumerable<string> removeStrings, StringComparison stringComparison = StringComparison.CurrentCulture)
+
     #region Remove(this string str, IEnumerable<string> removeStrings, StringComparison stringComparison = StringComparison.CurrentCulture)
 
     [Fact]
