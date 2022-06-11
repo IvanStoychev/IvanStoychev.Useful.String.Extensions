@@ -23,7 +23,7 @@ static class ExceptionThrower
     /// <paramref name="parameterName"/> is the empty string ("").
     /// </exception>
     internal static void Throw_ArgumentException_EmptyString(string parameterName, string callingMethodName)
-        => throw new ArgumentException(parameterName, $"The argument given for parameter \"{parameterName}\" of method \"{callingMethodName}\" is the empty string (\"\").");
+        => throw new ArgumentException($"The argument given for parameter \"{parameterName}\" of method \"{callingMethodName}\" is the empty string (\"\").", parameterName);
 
     /// <summary>
     /// Throws an <see cref="ArgumentException"/> that informs the user a member of the collection provided for parameter
