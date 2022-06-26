@@ -1,28 +1,27 @@
-﻿namespace IvanStoychev.Useful.String.Extensions
+﻿namespace IvanStoychev.Useful.String.Extensions;
+
+/// <summary>
+/// Provides options for determining which of the strings should be included in the final result.
+/// </summary>
+public enum StringInclusionOptions
 {
     /// <summary>
-    /// Provides options for determining which of the strings should be included in the final result.
+    /// Do not include neither the start nor end strings.
     /// </summary>
-    public enum StringInclusionOptions
-    {
-        /// <summary>
-        /// Do not include neither the start nor end strings.
-        /// </summary>
-        IncludeNone,
+    IncludeNone,
 
-        /// <summary>
-        /// Include only the start string.
-        /// </summary>
-        IncludeStart,
+    /// <summary>
+    /// Include only the start string.
+    /// </summary>
+    IncludeStart,
 
-        /// <summary>
-        /// Include only the end string.
-        /// </summary>
-        IncludeEnd,
+    /// <summary>
+    /// Include only the end string.
+    /// </summary>
+    IncludeEnd,
 
-        /// <summary>
-        /// Include both the start and end strings.
-        /// </summary>
-        IncludeAll
-    }
+    /// <summary>
+    /// Include both the start and end strings.
+    /// </summary>
+    IncludeAll
 }

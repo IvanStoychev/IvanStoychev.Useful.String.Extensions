@@ -2,350 +2,328 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Globalization;
-using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace IvanStoychev.Useful.String.Extensions
+namespace IvanStoychev.Useful.String.Extensions;
+
+/// <summary>
+/// Contains methods that remove substrings.
+/// </summary>
+public static class Remover
 {
     /// <summary>
-    /// Contains methods that remove substrings.
+    /// Returns a new string in which all occurrences of the given <paramref name="removeString"/> in the current instance are replaced with <see cref="string.Empty"/>.
     /// </summary>
-    public static class Remover
+    /// <param name="str">The instance to remove strings from.</param>
+    /// <param name="removeString">Substring to be removed.</param>
+    /// <param name="stringComparison">Comparison rules to use.</param>
+    /// <returns>
+    /// A string that is equivalent to the current string except that all instances of <paramref name="removeString"/> are removed.
+    /// </returns>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="removeString"/> is the empty string ("").
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// <paramref name="removeString"/> is <see langword="null"/>.
+    /// </exception>
+    [Pure]
+    public static string Remove(this string str, string removeString, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
-        /// <summary>
-        /// Returns a new string in which all occurrences of all members of a given IEnumerable in the current instance are removed.
-        /// Occurrences are removed in the same order as the IEnumerable's members. The removal is case-sensitive.
-        /// </summary>
-        /// <param name="str">The instance to remove strings from.</param>
-        /// <param name="removeStrings">Collection of values to be removed.</param>
-        /// <returns>
-        /// A string that is equivalent to the current string except that all instances of all members of the given collection are removed.
-        /// If none of the members are found in the current instance, the method returns it unchanged.
-        /// </returns>
-        /// <exception cref="ArgumentException">
-        /// Thrown if any of the "removeStrings" members are the empty string.
-        /// </exception>
-        /// <exception cref="ArgumentNullException">
-        /// The "removeStrings" collection or any of its members are null.
-        /// </exception>
-        [Pure]
-        public static string Remove(this string str, IEnumerable<string> removeStrings)
+        Validate.EmptyString(removeString);
+        Validate.NullArgument(removeString);
+
+        str = str.Replace(removeString, string.Empty, stringComparison);
+
+        return str;
+    }
+
+    /// <summary>
+    /// Returns a new string in which all occurrences of all members of the given <paramref name="removeStrings"/> in the current instance are removed.
+    /// Occurrences are removed in the same order as the IEnumerable's members, using the provided <paramref name="stringComparison"/> rules.
+    /// </summary>
+    /// <param name="str">The instance to remove strings from.</param>
+    /// <param name="removeStrings">Collection of values to be removed.</param>
+    /// <param name="stringComparison">Comparison rules to use.</param>
+    /// <returns>
+    /// A string that is equivalent to the current string except that all instances of all members of the given collection are removed.
+    /// If none of the members are found in the current instance, the method returns it unchanged.
+    /// </returns>
+    /// <exception cref="ArgumentException">
+    /// Any of the <paramref name="removeStrings"/> members are the empty string ("").
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="removeStrings"/> collection or any of its members are <see langword="null"/>.
+    /// </exception>
+    [Pure]
+    public static string Remove(this string str, IEnumerable<string> removeStrings, StringComparison stringComparison = StringComparison.CurrentCulture)
+    {
+        Validate.NullArgument(removeStrings);
+        Validate.IEnumNotEmpty(removeStrings);
+
+        foreach (var item in removeStrings)
         {
-            return RemoveStringConsiderCase(str, removeStrings.ToArray());
+            Validate.NullMember(item, nameof(removeStrings));
+            Validate.EmptyStringMember(item, nameof(removeStrings));
+            str = str.Replace(item, string.Empty, stringComparison);
         }
 
-        /// <summary>
-        /// Returns a new string in which all occurrences of all given strings in the current instance are removed.
-        /// Occurrences are removed in the same order as they are given. The removal is case-sensitive.
-        /// </summary>
-        /// <param name="str">The instance to remove strings from.</param>
-        /// <param name="removeStrings">Values to be removed.</param>
-        /// <returns>
-        /// A string that is equivalent to the current string except that all instances of all members of the given collection are removed.
-        /// If none of the members are found in the current instance, the method returns it unchanged.
-        /// </returns>
-        /// <exception cref="ArgumentException">
-        /// Thrown if any of the "removeStrings" parameters are the empty string.
-        /// </exception>
-        /// <exception cref="ArgumentNullException">
-        /// The "removeStrings" collection or any of its members are null.
-        /// </exception>
-        [Pure]
-        public static string Remove(this string str, params string[] removeStrings)
-        {
-            return RemoveStringConsiderCase(str, removeStrings);
-        }
+        return str;
+    }
 
-        /// <summary>
-        /// Returns a new string in which all occurrences of all members of a given IEnumerable in the current instance are removed.
-        /// Occurrences are removed in the same order as the IEnumerable's members, using the specified case-sensitivity.
-        /// If case is ignored a regular expression is used internally.
-        /// </summary>
-        /// <param name="str">The instance to remove strings from.</param>
-        /// <param name="ignoreCase">"true" to ignore casing when trimming, "false" otherwise.</param>
-        /// <param name="removeStrings">Array of values to be removed.</param>
-        /// <returns>
-        /// A string that is equivalent to the current string except that all instances of all members of the given collection are removed.
-        /// If none of the members are found in the current instance, the method returns it unchanged.
-        /// </returns>
-        /// <exception cref="ArgumentException">
-        /// A regular expression parsing error occurred.
-        /// </exception>
-        /// <exception cref="ArgumentNullException">
-        /// The "removeStrings" collection or any of its members are null.
-        /// </exception>
-        /// <exception cref="RegexMatchTimeoutException">
-        /// The execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
-        /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
-        /// </exception>
-        [Pure]
-        public static string Remove(this string str, bool ignoreCase, IEnumerable<string> removeStrings)
-        {
-            if (ignoreCase)
-                return RemoveStringIgnoreCase(str, removeStrings.ToArray());
-            else
-                return RemoveStringConsiderCase(str, removeStrings.ToArray());
-        }
+    /// <summary>
+    /// Uses a regular expression to return a new string in which all occurrences of all unicode digits (in any script) in the current instance are removed.
+    /// </summary>
+    /// <param name="originalString">The instance to remove digits from.</param>
+    /// <returns>
+    /// A string that is equivalent to the current string except that all instances of all unicode digits (in any script) are removed.
+    /// If no digits are found in the current instance, the method returns it unchanged.
+    /// </returns>
+    /// <exception cref="RegexMatchTimeoutException">
+    /// The execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
+    /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
+    /// </exception>
+    [Pure]
+    public static string RemoveNumbers(this string originalString)
+        => Regex.Replace(originalString, @"[\d-]", string.Empty);
 
-        /// <summary>
-        /// Returns a new string in which all occurrences of all given strings in the current instance are removed.
-        /// Occurrences are removed in the same order as they are given, using the specified case-sensitivity.
-        /// If case is ignored a regular expression is used internally.
-        /// </summary>
-        /// <param name="str">The instance to remove strings from.</param>
-        /// <param name="ignoreCase">"true" to ignore casing when trimming, "false" otherwise.</param>
-        /// <param name="removeStrings">Values to be removed.</param>
-        /// <returns>
-        /// A string that is equivalent to the current string except that all instances of all members of the given collection are removed.
-        /// If none of the members are found in the current instance, the method returns it unchanged.
-        /// </returns>
-        /// <exception cref="ArgumentException">
-        /// A regular expression parsing error occurred.
-        /// </exception>
-        /// <exception cref="ArgumentNullException">
-        /// The "removeStrings" collection or any of its members are null.
-        /// </exception>
-        /// <exception cref="RegexMatchTimeoutException">
-        /// The execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
-        /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
-        /// </exception>
-        [Pure]
-        public static string Remove(this string str, bool ignoreCase, params string[] removeStrings)
-        {
-            if (ignoreCase)
-                return RemoveStringIgnoreCase(str, removeStrings);
-            else
-                return RemoveStringConsiderCase(str, removeStrings);
-        }
+    /// <summary>
+    /// Uses a regular expression to return a new string in which all occurrences of all special characters in the current instance are removed.
+    /// </summary>
+    /// <param name="originalString">The instance to remove special characters from.</param>
+    /// <returns>
+    /// A string that is equivalent to the current string except that all instances of all special characters are removed.
+    /// If no special characters are found in the current instance, the method returns it unchanged.
+    /// </returns>
+    /// <exception cref="RegexMatchTimeoutException">
+    /// The execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
+    /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
+    /// </exception>
+    [Pure]
+    public static string RemoveSpecialCharacters(this string originalString)
+        => Regex.Replace(originalString, "[^0-9A-Za-z]+", string.Empty);
 
-        /// <summary>
-        /// Uses a regular expression to return a new string in which all occurrences of all unicode digits (in any script) in the current instance are removed.
-        /// </summary>
-        /// <param name="originalString">The instance to remove digits from.</param>
-        /// <returns>
-        /// A string that is equivalent to the current string except that all instances of all unicode digits (in any script) are removed.
-        /// If no digits are found in the current instance, the method returns it unchanged.
-        /// </returns>
-        /// <exception cref="RegexMatchTimeoutException">
-        /// The execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
-        /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
-        /// </exception>
-        [Pure]
-        public static string RemoveNumbers(this string originalString)
-        {
-            return Regex.Replace(originalString, @"[\d-]", string.Empty);
-        }
+    /// <summary>
+    /// Uses a regular expression to return a new string in which all occurrences of all latin letters in the current instance are removed.
+    /// </summary>
+    /// <param name="originalString">The instance to remove latin letters from.</param>
+    /// <returns>
+    /// A string that is equivalent to the current string except that all instances of all latin letters are removed.
+    /// If no latin letters are found in the current instance, the method returns it unchanged.
+    /// </returns>
+    /// <exception cref="RegexMatchTimeoutException">
+    /// The execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
+    /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
+    /// </exception>
+    [Pure]
+    public static string RemoveLetters(this string originalString)
+        => Regex.Replace(originalString, "[A-Za-z]", string.Empty);
 
-        /// <summary>
-        /// Uses a regular expression to return a new string in which all occurrences of all special characters in the current instance are removed.
-        /// </summary>
-        /// <param name="originalString">The instance to remove special characters from.</param>
-        /// <returns>
-        /// A string that is equivalent to the current string except that all instances of all special characters are removed.
-        /// If no special characters are found in the current instance, the method returns it unchanged.
-        /// </returns>
-        /// <exception cref="RegexMatchTimeoutException">
-        /// The execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
-        /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
-        /// </exception>
-        [Pure]
-        public static string RemoveSpecialCharacters(this string originalString)
-        {
-            return Regex.Replace(originalString, "[^0-9A-Za-z]+", string.Empty);
-        }
+    /// <summary>
+    /// Removes the leading and trailing occurrences of a specified string from the current instance, using the provided string comparison option.
+    /// </summary>
+    /// <param name="str">The instance to remove the string from.</param>
+    /// <param name="trimString">The string to remove.</param>
+    /// <param name="stringComparison">One of the enumeration values that determines how the start of the current instance and <paramref name="trimString"/> are compared.</param>
+    /// <param name="trimWhitespace">
+    /// <see langword="true"/> to remove any whitespace characters remaining at the start and end of the original instance after <paramref name="trimString"/> is removed.
+    /// If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance starts and/or ends with <paramref name="trimString"/>.
+    /// </param>
+    /// <returns>
+    /// The string that remains after the occurrence of "trimString" is removed from the start and end of the current instance. If "trimString" is <see langword="null"/>,
+    /// the empty string or not found at the start or end of the current instance the method returns the current instance unchanged.
+    /// </returns>
+    [Pure]
+    public static string Trim(this string str, string trimString, StringComparison stringComparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
+    {
+        if (string.IsNullOrEmpty(trimString))
+            return str;
 
-        /// <summary>
-        /// Uses a regular expression to return a new string in which all occurrences of all latin letters in the current instance are removed.
-        /// </summary>
-        /// <param name="originalString">The instance to remove latin letters from.</param>
-        /// <returns>
-        /// A string that is equivalent to the current string except that all instances of all latin letters are removed.
-        /// If no latin letters are found in the current instance, the method returns it unchanged.
-        /// </returns>
-        /// <exception cref="RegexMatchTimeoutException">
-        /// The execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
-        /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
-        /// </exception>
-        [Pure]
-        public static string RemoveLetters(this string originalString)
-        {
-            return Regex.Replace(originalString, "[A-Za-z]", string.Empty);
-        }
+        int startIndex = 0;
+        int tailLength = 0;
 
-        /// <summary>
-        /// Removes the leading occurrence of a specified string from the current instance.
-        /// </summary>
-        /// <param name="target">The instance to remove the string from.</param>
-        /// <param name="trimString">The string to remove or null.</param>
-        /// <returns>
-        /// The string that remains after the occurrence of "trimString" is removed from the start of
-        /// the current instance. If "trimString" is null, the empty string or not found at the start of the
-        /// current instance the method returns the current instance unchanged.
-        /// </returns>
-        [Pure]
-        public static string TrimStart(this string target, string trimString)
-        {
-            if (string.IsNullOrEmpty(trimString)) return target;
+        if (str.StartsWith(trimString, stringComparison))
+            startIndex = trimString.Length;
 
-            string result = target;
-            if (target.StartsWith(trimString))
-                result = result.Substring(trimString.Length);
+        if (str.EndsWith(trimString, stringComparison))
+            tailLength = trimString.Length;
 
-            return result;
-        }
+        int length = str.Length - startIndex - tailLength;
+        str = str.Substring(startIndex, length);
 
-        /// <summary>
-        /// Removes the leading occurrence of a specified string from the current instance, using the provided string comparison option.
-        /// </summary>
-        /// <param name="target">The instance to remove the string from.</param>
-        /// <param name="trimString">The string to remove.</param>
-        /// <param name="stringComparison">One of the enumeration values that determines how the start of the current instance and "trimString" are compared.</param>
-        /// <returns>
-        /// The string that remains after the occurrence of "trimString" is removed from the start of
-        /// the current instance. If "trimString" is null, the empty string or not found at the start of the
-        /// current instance the method returns the current instance unchanged.
-        /// </returns>
-        [Pure]
-        public static string TrimStart(this string target, string trimString, StringComparison stringComparison)
-        {
-            if (string.IsNullOrEmpty(trimString)) return target;
+        if (trimWhitespace)
+            str = str.Trim();
 
-            string result = target;
-            if (result.StartsWith(trimString, stringComparison))
-                result = result.Substring(trimString.Length);
+        return str;
+    }
 
-            return result;
-        }
+    /// <summary>
+    /// Removes the leading and trailing occurrences of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
+    /// </summary>
+    /// <param name="str">The string to remove occurrences from.</param>
+    /// <param name="trimString">The string to remove.</param>
+    /// <param name="ignoreCase"><see langword="true"/> to ignore casing when trimming, <see langword="false"/> otherwise.</param>
+    /// <param name="culture">
+    /// Cultural information that determines how the start and end of this instance and <paramref name="trimString"/> are compared.
+    /// If culture is <see langword="null"/>, the current culture is used.
+    /// </param>
+    /// <param name="trimWhitespace">
+    /// <see langword="true"/> to remove any whitespace characters remaining at the start and end of the original instance after <paramref name="trimString"/> is removed.
+    /// If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance starts and/or ends with <paramref name="trimString"/>.
+    /// </param>
+    /// <returns>
+    /// The string that remains after the occurrence of <paramref name="trimString"/> is removed from the start and end of the current instance.
+    /// If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the start of the current instance the method returns
+    /// the current instance unchanged.
+    /// </returns>
+    [Pure]
+    public static string Trim(this string str, string trimString, bool ignoreCase, CultureInfo? culture, bool trimWhitespace = false)
+    {
+        if (string.IsNullOrEmpty(trimString))
+            return str;
 
-        /// <summary>
-        /// Removes the leading occurrence of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
-        /// </summary>
-        /// <param name="target">The string to remove occurrences from.</param>
-        /// <param name="trimString">The string to remove.</param>
-        /// <param name="ignoreCase">"true" to ignore casing when trimming, "false" otherwise.</param>
-        /// <param name="culture">
-        /// Cultural information that determines how the start of this instance and "trimString" are compared.
-        /// If culture is null, the current culture is used.
-        /// </param>
-        /// <returns>
-        /// The string that remains after the occurrence of "trimString" is removed from the start of
-        /// the current instance. If "trimString" is null, the empty string or not found at the start of the
-        /// current instance the method returns the current instance unchanged.
-        /// </returns>
-        [Pure]
-        public static string TrimStart(this string target, string trimString, bool ignoreCase, CultureInfo culture)
-        {
-            if (string.IsNullOrEmpty(trimString)) return target;
+        int startIndex = 0;
+        int tailLength = 0;
 
-            string result = target;
-            if (result.StartsWith(trimString, ignoreCase, culture))
-                result = result.Substring(trimString.Length);
+        if (str.StartsWith(trimString, ignoreCase, culture))
+            startIndex = trimString.Length;
 
-            return result;
-        }
+        if (str.EndsWith(trimString, ignoreCase, culture))
+            tailLength = trimString.Length;
 
-        /// <summary>
-        /// Removes the trailing occurrence of a specified string from the current instance.
-        /// </summary>
-        /// <param name="target">The string to remove occurrences from.</param>
-        /// <param name="trimString">The string to remove.</param>
-        /// <returns>
-        /// The string that remains after the occurrence of "trimString" is removed from the end of
-        /// the current instance. If "trimString" is null, the empty string or not found at the end of the
-        /// current instance the method returns the current instance unchanged.
-        /// </returns>
-        [Pure]
-        public static string TrimEnd(this string target, string trimString)
-        {
-            if (string.IsNullOrEmpty(trimString)) return target;
+        int length = str.Length - startIndex - tailLength;
+        str = str.Substring(startIndex, length);
 
-            string result = target;
-            if (result.EndsWith(trimString))
-                result = result.Substring(0, result.Length - trimString.Length);
+        if (trimWhitespace)
+            str = str.Trim();
 
-            return result;
-        }
+        return str;
+    }
 
-        /// <summary>
-        /// Removes the trailing occurrence of a specified string from the current instance, using the provided string comparison option.
-        /// </summary>
-        /// <param name="target">The string to remove occurrences from.</param>
-        /// <param name="trimString">The string to remove.</param>
-        /// <param name="stringComparison">One of the enumeration values that determines how the end of the current instance and "trimString" are compared.</param>
-        /// <returns>
-        /// The string that remains after the occurrence of "trimString" is removed from the end of
-        /// the current instance. If "trimString" is null, the empty string or not found at the end of the
-        /// current instance the method returns the current instance unchanged.
-        /// </returns>
-        [Pure]
-        public static string TrimEnd(this string target, string trimString, StringComparison stringComparison)
-        {
-            if (string.IsNullOrEmpty(trimString)) return target;
+    /// <summary>
+    /// Removes the leading occurrence of a specified string from the current instance, using the provided string comparison option.
+    /// </summary>
+    /// <param name="str">The instance to remove the string from.</param>
+    /// <param name="trimString">The string to remove.</param>
+    /// <param name="stringComparison">One of the enumeration values that determines how the start of the current instance and <paramref name="trimString"/> are compared.</param>
+    /// <param name="trimWhitespace">
+    /// <see langword="true"/> to remove any whitespace characters remaining at the start of the original instance after <paramref name="trimString"/> is removed.
+    /// If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance starts with <paramref name="trimString"/>.
+    /// </param>
+    /// <returns>
+    /// The string that remains after the occurrence of "trimString" is removed from the start of
+    /// the current instance. If "trimString" is null, the empty string or not found at the start of the
+    /// current instance the method returns the current instance unchanged.
+    /// </returns>
+    [Pure]
+    public static string TrimStart(this string str, string trimString, StringComparison stringComparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
+    {
+        if (string.IsNullOrEmpty(trimString))
+            return str;
 
-            string result = target;
-            if (result.EndsWith(trimString, stringComparison))
-                result = result.Substring(0, result.Length - trimString.Length);
+        if (str.StartsWith(trimString, stringComparison))
+            str = str.Substring(trimString.Length);
 
-            return result;
-        }
+        if (trimWhitespace)
+            str = str.TrimStart();
 
-        /// <summary>
-        /// Removes the trailing occurrence of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
-        /// </summary>
-        /// <param name="target">The string to remove occurrences from.</param>
-        /// <param name="trimString">The string to remove.</param>
-        /// <param name="ignoreCase">"true" to ignore casing when trimming, "false" otherwise.</param>
-        /// <param name="culture">
-        /// Cultural information that determines how the end of this instance and "trimString" are compared.
-        /// If culture is null, the current culture is used.
-        /// </param>
-        /// <returns>
-        /// The string that remains after the occurrence of "trimString" is removed from the end of
-        /// the current instance. If "trimString" is null, the empty string or not found at the end of the
-        /// current instance the method returns the current instance unchanged.
-        /// </returns>
-        [Pure]
-        public static string TrimEnd(this string target, string trimString, bool ignoreCase, CultureInfo culture)
-        {
-            if (string.IsNullOrEmpty(trimString)) return target;
+        return str;
+    }
 
-            string result = target;
-            if (result.EndsWith(trimString, ignoreCase, culture))
-                result = result.Substring(0, result.Length - trimString.Length);
+    /// <summary>
+    /// Removes the leading occurrence of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
+    /// </summary>
+    /// <param name="str">The string to remove occurrences from.</param>
+    /// <param name="trimString">The string to remove.</param>
+    /// <param name="ignoreCase"><see langword="true"/> to ignore casing when trimming, <see langword="false"/> otherwise.</param>
+    /// <param name="culture">
+    /// Cultural information that determines how the start of this instance and <paramref name="trimString"/> are compared.
+    /// If culture is null, the current culture is used.
+    /// </param>
+    /// <param name="trimWhitespace">
+    /// <see langword="true"/> to remove any whitespace characters remaining at the start of the original instance after <paramref name="trimString"/> is removed.
+    /// If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance starts with <paramref name="trimString"/>.
+    /// </param>
+    /// <returns>
+    /// The string that remains after the occurrence of <paramref name="trimString"/> is removed from the start of
+    /// the current instance. If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the start of the
+    /// current instance the method returns the current instance unchanged.
+    /// </returns>
+    [Pure]
+    public static string TrimStart(this string str, string trimString, bool ignoreCase, CultureInfo? culture, bool trimWhitespace = false)
+    {
+        if (string.IsNullOrEmpty(trimString))
+            return str;
 
-            return result;
-        }
+        if (str.StartsWith(trimString, ignoreCase, culture))
+            str = str.Substring(trimString.Length);
 
-        /// <exception cref="ArgumentException">
-        /// Thrown if any of the "toRemove" members are the empty string.
-        /// </exception>
-        /// <exception cref="ArgumentNullException">
-        /// Thrown when either "value", the "toRemove" array or any of its memebers are null.
-        /// </exception>
-        private static string RemoveStringConsiderCase(this string value, string[] toRemove)
-        {
-            foreach (var item in toRemove)
-                value = value.Replace(item, string.Empty);
+        if (trimWhitespace)
+            str = str.TrimStart();
 
-            return value;
-        }
+        return str;
+    }
 
-        /// <exception cref="ArgumentException">
-        /// A regular expression parsing error occurred.
-        /// </exception>
-        /// <exception cref="ArgumentNullException">
-        /// Thrown when either "value", the "toRemove" array or any of its memebers are null.
-        /// </exception>
-        /// <exception cref="RegexMatchTimeoutException">
-        /// Thrown if the execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
-        /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
-        /// </exception>
-        private static string RemoveStringIgnoreCase(this string value, string[] toRemove)
-        {
-            foreach (var item in toRemove)
-                value = Regex.Replace(value, Regex.Escape(item), string.Empty, RegexOptions.IgnoreCase);
+    /// <summary>
+    /// Removes the trailing occurrence of a specified string from the current instance, using the provided string comparison option.
+    /// </summary>
+    /// <param name="str">The string to remove occurrences from.</param>
+    /// <param name="trimString">The string to remove.</param>
+    /// <param name="stringComparison">One of the enumeration values that determines how the end of the current instance and <paramref name="trimString"/> are compared.</param>
+    /// <param name="trimWhitespace">
+    /// <see langword="true"/> to remove any whitespace characters remaining at the end of the original instance after <paramref name="trimString"/> is removed.
+    /// If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance ends with <paramref name="trimString"/>.
+    /// </param>
+    /// <returns>
+    /// The string that remains after the occurrence of <paramref name="trimString"/> is removed from the end of
+    /// the current instance. If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the end of the
+    /// current instance the method returns the current instance unchanged.
+    /// </returns>
+    [Pure]
+    public static string TrimEnd(this string str, string trimString, StringComparison stringComparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
+    {
+        if (string.IsNullOrEmpty(trimString))
+            return str;
 
-            return value;
-        }
+        if (str.EndsWith(trimString, stringComparison))
+            str = str.Substring(0, str.Length - trimString.Length);
+
+        if (trimWhitespace)
+            str = str.TrimEnd();
+
+        return str;
+    }
+
+    /// <summary>
+    /// Removes the trailing occurrence of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
+    /// </summary>
+    /// <param name="str">The string to remove occurrences from.</param>
+    /// <param name="trimString">The string to remove.</param>
+    /// <param name="ignoreCase"><see langword="true"/> to ignore casing when trimming, <see langword="false"/> otherwise.</param>
+    /// <param name="culture">
+    /// Cultural information that determines how the end of this instance and <paramref name="trimString"/> are compared.
+    /// If culture is null, the current culture is used.
+    /// </param>
+    /// <param name="trimWhitespace">
+    /// <see langword="true"/> to remove any whitespace characters remaining at the end of the original instance after <paramref name="trimString"/> is removed.
+    /// If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance ends with <paramref name="trimString"/>.
+    /// </param>
+    /// <returns>
+    /// The string that remains after the occurrence of <paramref name="trimString"/> is removed from the end of
+    /// the current instance. If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the end of the
+    /// current instance the method returns the current instance unchanged.
+    /// </returns>
+    [Pure]
+    public static string TrimEnd(this string str, string trimString, bool ignoreCase, CultureInfo? culture, bool trimWhitespace = false)
+    {
+        if (string.IsNullOrEmpty(trimString))
+            return str;
+
+        if (str.EndsWith(trimString, ignoreCase, culture))
+            str = str.Substring(0, str.Length - trimString.Length);
+
+        if (trimWhitespace)
+            str = str.TrimEnd();
+
+        return str;
     }
 }

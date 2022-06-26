@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://www.nuget.org/packages/IvanStoychev.Useful.String.Extensions"><img src="https://i.imgur.com/uQp2iZk.png" alt="IvanStoychev.Useful.String.Extensions"></a>
+  <a href="https://www.nuget.org/packages/IvanStoychev.Useful.String.Extensions"><img src="Project logo.png" alt="IvanStoychev.Useful.String.Extensions"></a>
   <br>
   IvanStoychev.Useful.String.Extensions
   <br>
@@ -72,6 +72,13 @@ This is a collection of string extension methods that I have been in need of man
 
 <br/>
 
+# ![YouTube](https://i.imgur.com/GqXgzqn.png) Demo
+#### *(Will open in YouTube)*
+
+[![Demonstration video](https://imgur.com/uTeJ65b.jpg)](https://youtu.be/4M2UeSJhI-o)
+
+<br/>
+
 📰 Features
 ------------
 * [`Substring`][9] methods that use string arguments to determine a substring's position, instead of a starting index.
@@ -139,7 +146,48 @@ __*Install manually*__
 ----------
 Since the functionality, added by this project, is all extension methods, it would be best to add the using statment "`using IvanStoychev.Useful.String.Extensions;`" to your code, as Intellisense usually doesn't pick it up.
 
-After that simply call any desired method on any string.
+Here are some examples ([using top-level statements][6]):
+
+##### Select an amount of characters from a string
+
+    using IvanStoychev.Useful.String.Extensions;
+    
+    string original = "A-1 B-2 C-3";
+    string result = original.Substring("B", 2);
+    Console.WriteLine(result);
+    
+    // output:
+    //
+    // -2
+
+
+##### Select the start/end of a string
+
+    using IvanStoychev.Useful.String.Extensions;
+    
+    string original = "Press any button";
+    string beginning = original.SubstringStart(" any ");
+    string ending = original.SubstringEnd(" any ");
+    Console.WriteLine(beginning);
+    Console.WriteLine(ending);
+    
+    // output:
+    //
+    // Press
+    // button
+
+
+##### Select everything between two substrings
+
+    using IvanStoychev.Useful.String.Extensions;
+    
+    string original = "Press any button";
+    string result = original.Substring("Press ", " button");
+    Console.WriteLine(result);
+    
+    // output:
+    //
+    // any
 
 <br/>
 
