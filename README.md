@@ -75,6 +75,8 @@ This is a collection of string extension methods that I have been in need of man
 # ![YouTube](https://i.imgur.com/GqXgzqn.png) Demo
 #### *(Will open in YouTube)*
 
+[![Demonstration video](https://imgur.com/uTeJ65b.jpg)](https://youtu.be/4M2UeSJhI-o)
+
 <br/>
 
 📰 Features

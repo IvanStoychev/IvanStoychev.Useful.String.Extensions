@@ -19,7 +19,7 @@ And call methods on any string.
 ### Video Demonstration
 #### *(Will open in YouTube)*
 
-...
+[![Demonstration video](https://i.imgur.com/uTeJ65b.jpg)](https://youtu.be/4M2UeSJhI-o)
 
 ### Examples:
 
