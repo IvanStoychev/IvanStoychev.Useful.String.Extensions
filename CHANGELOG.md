@@ -5,6 +5,11 @@ The changes each version of this project brings are documented here.
 This file's format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 <br>This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 27th June 2022
+
+### Fixes
+💜 Fixed debug symbols not being embedded in the package.
+
 ## [2.0.0] - 26th June 2022
 
 ### Fixes
@@ -59,6 +64,6 @@ These methods' functionality can be easily achieved with [indices and ranges](ht
 
 Added default value for parameter `stringComparison` of methods `TrimStart(string trimString, StringComparison stringComparison)` and `TrimEnd(string trimString, StringComparison stringComparison)`, thus the same functionality can be achieved with them.
 
-## [1.0.0] - 14 June 2021
+## [1.0.0] - 14th June 2021
 
 Rebranded from `IvanStoychev.StringExtensions`.
