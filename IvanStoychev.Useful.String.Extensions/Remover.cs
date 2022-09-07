@@ -136,7 +136,7 @@ public static class Remover
     public static string Trim(this string str, string trimString, StringComparison stringComparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
     {
         if (string.IsNullOrEmpty(trimString))
-            return str;
+            return trimWhitespace ? str.Trim() : str;
 
         str = str.TrimStart(trimString, stringComparison, trimWhitespace);
         str = str.TrimEnd(trimString, stringComparison, trimWhitespace);
@@ -167,7 +167,7 @@ public static class Remover
     public static string Trim(this string str, string trimString, bool ignoreCase, CultureInfo? culture, bool trimWhitespace = false)
     {
         if (string.IsNullOrEmpty(trimString))
-            return str;
+            return trimWhitespace ? str.Trim() : str;
 
         str = str.TrimStart(trimString, ignoreCase, culture, trimWhitespace);
         str = str.TrimEnd(trimString, ignoreCase, culture, trimWhitespace);
@@ -194,7 +194,7 @@ public static class Remover
     public static string TrimStart(this string str, string trimString, StringComparison stringComparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
     {
         if (string.IsNullOrEmpty(trimString))
-            return str;
+            return trimWhitespace ? str.TrimStart() : str;
 
         while (str.StartsWith(trimString, stringComparison))
             str = str.Substring(trimString.Length);
@@ -228,7 +228,7 @@ public static class Remover
     public static string TrimStart(this string str, string trimString, bool ignoreCase, CultureInfo? culture, bool trimWhitespace = false)
     {
         if (string.IsNullOrEmpty(trimString))
-            return str;
+            return trimWhitespace ? str.TrimStart() : str;
 
         while (str.StartsWith(trimString, ignoreCase, culture))
             str = str.Substring(trimString.Length);
@@ -258,7 +258,7 @@ public static class Remover
     public static string TrimEnd(this string str, string trimString, StringComparison stringComparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
     {
         if (string.IsNullOrEmpty(trimString))
-            return str;
+            return trimWhitespace ? str.TrimEnd() : str;
 
         while (str.EndsWith(trimString, stringComparison))
             str = str.Substring(0, str.Length - trimString.Length);
@@ -292,7 +292,7 @@ public static class Remover
     public static string TrimEnd(this string str, string trimString, bool ignoreCase, CultureInfo? culture, bool trimWhitespace = false)
     {
         if (string.IsNullOrEmpty(trimString))
-            return str;
+            return trimWhitespace ? str.TrimEnd() : str;
 
         while (str.EndsWith(trimString, ignoreCase, culture))
             str = str.Substring(0, str.Length - trimString.Length);
