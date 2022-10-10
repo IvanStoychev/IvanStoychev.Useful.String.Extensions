@@ -161,9 +161,9 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData("encyclopædia Case Archæology encyclopædia", "encyclopædia", " Case Archæology ")]
-    [InlineData("Case encyclopædia Archæology", "Case", " encyclopædia Archæology")]
-    [InlineData("encyclopædia Case Archæology", "Archæology", "encyclopædia Case ")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology encyclopædiaencyclopædia", "encyclopædia", " Case Archæology ")]
+    [InlineData("CaseCase encyclopædia Archæology", "Case", " encyclopædia Archæology")]
+    [InlineData("encyclopædia Case ArchæologyArchæology", "Archæology", "encyclopædia Case ")]
 
     #endregion Data
 	public void Trim_DefaultComparison_DefaultWhitespaceTrim_Pass(string testString, string stringToRemove, string expectedString)
@@ -257,9 +257,9 @@ public class Remover_Tests
     #region Data
 
 	[Theory]
-    [InlineData("RemoveMe text RemoveMe", "Removeme", " text ")]
-    [InlineData("RemoveMe text", "removeMe", " text")]
-    [InlineData("text RemoveMe", "removeme", "text ")]
+    [InlineData("RemovemeRemoveme text RemovemeRemoveme", "Removeme", " text ")]
+    [InlineData("RemoveMeremoveMe text", "removeMe", " text")]
+    [InlineData("text removemeRemoveMe", "removeme", "text ")]
     
 	#endregion Data
 	public void Trim_CultureInfo_IgnoreCase_DefaultWhitespaceTrim_Pass(string testString, string stringToRemove, string expectedString)
@@ -272,9 +272,9 @@ public class Remover_Tests
     #region Data
 
 	[Theory]
-    [InlineData("RemoveMe text RemoveMe", "Removeme", " text ")]
-    [InlineData("RemoveMe text", "removeMe", " text")]
-    [InlineData("text RemoveMe", "removeme", "text ")]
+    [InlineData("RemovemeRemoveMe text RemovemeRemoveMe", "Removeme", " text ")]
+    [InlineData("RemoveMeremoveMe text", "removeMe", " text")]
+    [InlineData("text RemoveMeremoveme", "removeme", "text ")]
     
 	#endregion Data
 	public void Trim_CultureInfo_IgnoreCase_DontTrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
@@ -287,9 +287,9 @@ public class Remover_Tests
     #region Data
 
 	[Theory]
-    [InlineData("RemoveMe text RemoveMe", "Removeme", "text")]
-    [InlineData("RemoveMe text", "removeMe", "text")]
-    [InlineData("text RemoveMe", "removeme", "text")]
+    [InlineData("RemoveMeRemoveme text RemoveMeRemoveme", "Removeme", "text")]
+    [InlineData("RemoveMeremoveMe text", "removeMe", "text")]
+    [InlineData("text RemoveMeremoveme", "removeme", "text")]
     
 	#endregion Data
 	public void Trim_CultureInfo_IgnoreCase_TrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
@@ -302,9 +302,9 @@ public class Remover_Tests
     #region Data
 
 	[Theory]
-    [InlineData("RemoveMe text RemoveMe", "RemoveMe", " text ")]
-    [InlineData("RemoveMe text Removeme", "RemoveMe", " text Removeme")]
-    [InlineData("removeme text RemoveMe", "RemoveMe", "removeme text ")]
+    [InlineData("RemoveMeRemoveMe text RemoveMeRemoveMe", "RemoveMe", " text ")]
+    [InlineData("RemoveMeRemoveMe text Removeme", "RemoveMe", " text Removeme")]
+    [InlineData("removeme text RemoveMeRemoveMe", "RemoveMe", "removeme text ")]
     
 	#endregion Data
 	public void Trim_CultureInfo_ConsiderCase_DefaultWhitespaceTrim_Pass(string testString, string stringToRemove, string expectedString)
@@ -317,9 +317,9 @@ public class Remover_Tests
     #region Data
 
 	[Theory]
-    [InlineData("RemoveMe text RemoveMe", "RemoveMe", " text ")]
-    [InlineData("RemoveMe text Removeme", "RemoveMe", " text Removeme")]
-    [InlineData("removeme text RemoveMe", "RemoveMe", "removeme text ")]
+    [InlineData("RemoveMeRemoveMe text RemoveMeRemoveMe", "RemoveMe", " text ")]
+    [InlineData("RemoveMeRemoveMe text Removeme", "RemoveMe", " text Removeme")]
+    [InlineData("removeme text RemoveMeRemoveMe", "RemoveMe", "removeme text ")]
     
 	#endregion Data
 	public void Trim_CultureInfo_ConsiderCase_DontTrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
@@ -332,9 +332,9 @@ public class Remover_Tests
     #region Data
 
 	[Theory]
-    [InlineData("RemoveMe text RemoveMe", "RemoveMe", "text")]
-    [InlineData("RemoveMe text Removeme", "RemoveMe", "text Removeme")]
-    [InlineData("removeme text RemoveMe", "RemoveMe", "removeme text")]
+    [InlineData("RemoveMeRemoveMe text RemoveMeRemoveMe", "RemoveMe", "text")]
+    [InlineData("RemoveMeRemoveMe text Removeme", "RemoveMe", "text Removeme")]
+    [InlineData("removeme text RemoveMeRemoveMe", "RemoveMe", "removeme text")]
 
     #endregion Data
     public void Trim_CultureInfo_ConsiderCase_TrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
@@ -352,9 +352,8 @@ public class Remover_Tests
 
     [Theory]
     [InlineData(" encyclopædia Case Archæology", "dummy")]
-    [InlineData("Case encyclopædia Archæology ", "dummy")]
-    [InlineData(" Archæology encyclopædia Case", "dummy")]
-    [InlineData("archæology encyclopædia Case ", "dummy")]
+    [InlineData("Case encyclopædia Archæology ", "")]
+    [InlineData("archæology encyclopædia Case ", null)]
     
 	#endregion Data
 	public void Trim_DefaultComparison_DefaultWhitespaceTrim_Fail(string testString, string stringToRemove)
@@ -368,12 +367,20 @@ public class Remover_Tests
 
 	[Theory]
     [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.InvariantCulture)]
-    [InlineData("Case encyclopædia Archæology ", "dummy", StringComparison.InvariantCultureIgnoreCase)]
-    [InlineData(" Archæology encyclopædia Case", "dummy", StringComparison.Ordinal)]
-    [InlineData("archæology encyclopædia Case ", "dummy", StringComparison.OrdinalIgnoreCase)]
-    
-	#endregion Data
-	public void Trim_SetComparison_DefaultWhitespaceTrim_Fail(string testString, string stringToRemove, StringComparison stringComparison)
+    [InlineData("Case encyclopædia Archæology ", "", StringComparison.InvariantCulture)]
+    [InlineData("archæology encyclopædia Case ", null, StringComparison.InvariantCulture)]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("Case encyclopædia Archæology ", "", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("archæology encyclopædia Case ", null, StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.Ordinal)]
+    [InlineData("Case encyclopædia Archæology ", "", StringComparison.Ordinal)]
+    [InlineData("archæology encyclopædia Case ", null, StringComparison.Ordinal)]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.OrdinalIgnoreCase)]
+    [InlineData("Case encyclopædia Archæology ", "", StringComparison.OrdinalIgnoreCase)]
+    [InlineData("archæology encyclopædia Case ", null, StringComparison.OrdinalIgnoreCase)]
+
+    #endregion Data
+    public void Trim_SetComparison_DefaultWhitespaceTrim_Fail(string testString, string stringToRemove, StringComparison stringComparison)
     {
         string actual = testString.Trim(stringToRemove, stringComparison);
 
@@ -384,12 +391,20 @@ public class Remover_Tests
 
 	[Theory]
     [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.InvariantCulture)]
-    [InlineData("Case encyclopædia Archæology ", "dummy", StringComparison.InvariantCultureIgnoreCase)]
-    [InlineData(" Archæology encyclopædia Case", "dummy", StringComparison.Ordinal)]
-    [InlineData("archæology encyclopædia Case ", "dummy", StringComparison.OrdinalIgnoreCase)]
-    
-	#endregion Data
-	public void Trim_SetComparison_DontTrimWhitespace_Fail(string testString, string stringToRemove, StringComparison stringComparison)
+    [InlineData("Case encyclopædia Archæology ", "", StringComparison.InvariantCulture)]
+    [InlineData("archæology encyclopædia Case ", null, StringComparison.InvariantCulture)]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("Case encyclopædia Archæology ", "", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("archæology encyclopædia Case ", null, StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.Ordinal)]
+    [InlineData("Case encyclopædia Archæology ", "", StringComparison.Ordinal)]
+    [InlineData("archæology encyclopædia Case ", null, StringComparison.Ordinal)]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.OrdinalIgnoreCase)]
+    [InlineData("Case encyclopædia Archæology ", "", StringComparison.OrdinalIgnoreCase)]
+    [InlineData("archæology encyclopædia Case ", null, StringComparison.OrdinalIgnoreCase)]
+
+    #endregion Data
+    public void Trim_SetComparison_DontTrimWhitespace_Fail(string testString, string stringToRemove, StringComparison stringComparison)
     {
         string actual = testString.Trim(stringToRemove, stringComparison, false);
 
@@ -400,12 +415,20 @@ public class Remover_Tests
 
 	[Theory]
     [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.InvariantCulture, "encyclopædia Case Archæology")]
-    [InlineData("Case encyclopædia Archæology ", "dummy", StringComparison.InvariantCultureIgnoreCase, "Case encyclopædia Archæology")]
-    [InlineData(" Archæology encyclopædia Case", "dummy", StringComparison.Ordinal, "Archæology encyclopædia Case")]
-    [InlineData("archæology encyclopædia Case ", "dummy", StringComparison.OrdinalIgnoreCase, "archæology encyclopædia Case")]
-    
-	#endregion Data
-	public void Trim_SetComparison_TrimWhitespace_Fail(string testString, string stringToRemove, StringComparison stringComparison, string expectedString)
+    [InlineData("Case encyclopædia Archæology ", "", StringComparison.InvariantCulture, "Case encyclopædia Archæology")]
+    [InlineData("archæology encyclopædia Case ", null, StringComparison.InvariantCulture, "archæology encyclopædia Case")]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.InvariantCultureIgnoreCase, "encyclopædia Case Archæology")]
+    [InlineData("Case encyclopædia Archæology ", "", StringComparison.InvariantCultureIgnoreCase, "Case encyclopædia Archæology")]
+    [InlineData("archæology encyclopædia Case ", null, StringComparison.InvariantCultureIgnoreCase, "archæology encyclopædia Case")]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.Ordinal, "encyclopædia Case Archæology")]
+    [InlineData("Case encyclopædia Archæology ", "", StringComparison.Ordinal, "Case encyclopædia Archæology")]
+    [InlineData("archæology encyclopædia Case ", null, StringComparison.Ordinal, "archæology encyclopædia Case")]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.OrdinalIgnoreCase, "encyclopædia Case Archæology")]
+    [InlineData("Case encyclopædia Archæology ", "", StringComparison.OrdinalIgnoreCase, "Case encyclopædia Archæology")]
+    [InlineData("archæology encyclopædia Case ", null, StringComparison.OrdinalIgnoreCase, "archæology encyclopædia Case")]
+
+    #endregion Data
+    public void Trim_SetComparison_TrimWhitespace_Fail(string testString, string stringToRemove, StringComparison stringComparison, string expectedString)
     {
         string actual = testString.Trim(stringToRemove, stringComparison, true);
 
@@ -416,8 +439,8 @@ public class Remover_Tests
 
 	[Theory]
     [InlineData(" RemoveMe text RemoveMe", "dummy")]
-    [InlineData("RemoveMe text ", "dummy")]
-    [InlineData(" text RemoveMe ", "dummy")]
+    [InlineData("RemoveMe text ", "")]
+    [InlineData(" text RemoveMe ", null)]
     
 	#endregion Data
 	public void Trim_CultureInfo_IgnoreCase_DefaultWhitespaceTrim_Fail(string testString, string stringToRemove)
@@ -431,8 +454,8 @@ public class Remover_Tests
 
 	[Theory]
     [InlineData(" RemoveMe text RemoveMe", "dummy")]
-    [InlineData("RemoveMe text ", "dummy")]
-    [InlineData(" text RemoveMe ", "dummy")]
+    [InlineData("RemoveMe text ", "")]
+    [InlineData(" text RemoveMe ", null)]
     
 	#endregion Data
 	public void Trim_CultureInfo_IgnoreCase_DontTrimWhitespace_Fail(string testString, string stringToRemove)
@@ -446,8 +469,8 @@ public class Remover_Tests
 
 	[Theory]
     [InlineData(" RemoveMe text RemoveMe", "dummy", "RemoveMe text RemoveMe")]
-    [InlineData("RemoveMe text ", "dummy", "RemoveMe text")]
-    [InlineData(" text RemoveMe ", "dummy", "text RemoveMe")]
+    [InlineData("RemoveMe text ", "", "RemoveMe text")]
+    [InlineData(" text RemoveMe ", null, "text RemoveMe")]
     
 	#endregion Data
 	public void Trim_CultureInfo_IgnoreCase_TrimWhitespace_Fail(string testString, string stringToRemove, string expectedString)
@@ -461,8 +484,8 @@ public class Remover_Tests
 
 	[Theory]
     [InlineData(" RemoveMe text RemoveMe", "dummy")]
-    [InlineData("RemoveMe text ", "dummy")]
-    [InlineData(" text RemoveMe ", "dummy")]
+    [InlineData("RemoveMe text ", "")]
+    [InlineData(" text RemoveMe ", null)]
     
 	#endregion Data
 	public void Trim_CultureInfo_ConsiderCase_DefaultWhitespaceTrim_Fail(string testString, string stringToRemove)
@@ -476,8 +499,8 @@ public class Remover_Tests
 
 	[Theory]
     [InlineData(" RemoveMe text RemoveMe", "dummy")]
-    [InlineData("RemoveMe text ", "dummy")]
-    [InlineData(" text RemoveMe ", "dummy")]
+    [InlineData("RemoveMe text ", "")]
+    [InlineData(" text RemoveMe ", null)]
     
 	#endregion Data
 	public void Trim_CultureInfo_ConsiderCase_DontTrimWhitespace_Fail(string testString, string stringToRemove)
@@ -491,8 +514,8 @@ public class Remover_Tests
 
 	[Theory]
     [InlineData(" RemoveMe text RemoveMe", "dummy", "RemoveMe text RemoveMe")]
-    [InlineData("RemoveMe text ", "dummy", "RemoveMe text")]
-    [InlineData(" text RemoveMe ", "dummy", "text RemoveMe")]
+    [InlineData("RemoveMe text ", "", "RemoveMe text")]
+    [InlineData(" text RemoveMe ", null, "text RemoveMe")]
     
 	#endregion Data
 	public void Trim_CultureInfo_ConsiderCase_TrimWhitespace_Fail(string testString, string stringToRemove, string expectedString)
@@ -513,9 +536,9 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData("encyclopædia Case Archæology ", "encyclopædia", " Case Archæology ")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology ", "encyclopædia", " Case Archæology ")]
     [InlineData("Case encyclopædia Archæology", "Case", " encyclopædia Archæology")]
-    [InlineData("Archæology encyclopædia Case ", "Archæology ", "encyclopædia Case ")]
+    [InlineData("Archæology Archæology encyclopædia Case ", "Archæology ", "encyclopædia Case ")]
 
     #endregion Data
     public void TrimStart_DefaultComparison_DefaultWhitespaceTrim_Pass(string testString, string stringToRemove, string expectedString)
@@ -528,13 +551,25 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData("encyclopædia Case Archæology", "encyclopædia", StringComparison.InvariantCulture, " Case Archæology")]
-    [InlineData("Case encyclopædia Archæology", "case", StringComparison.InvariantCultureIgnoreCase, " encyclopædia Archæology")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology", "encyclopædia", StringComparison.InvariantCulture, " Case Archæology")]
+    [InlineData("CaseCase encyclopædia Archæology", "Case", StringComparison.InvariantCulture, " encyclopædia Archæology")]
+    [InlineData("Archæology encyclopædia Case ", "Archæology", StringComparison.InvariantCulture, " encyclopædia Case ")]
+    [InlineData("ArchæologyArchæology encyclopædia Case ", "Archæology", StringComparison.InvariantCulture, " encyclopædia Case ")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology", "encyclopædia", StringComparison.InvariantCultureIgnoreCase, " Case Archæology")]
+    [InlineData("Casecase encyclopædia Archæology", "case", StringComparison.InvariantCultureIgnoreCase, " encyclopædia Archæology")]
+    [InlineData("Archæology encyclopædia Case ", "Archæology", StringComparison.InvariantCultureIgnoreCase, " encyclopædia Case ")]
+    [InlineData("Archæologyarchæology encyclopædia Case ", "archæology", StringComparison.InvariantCultureIgnoreCase, " encyclopædia Case ")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology", "encyclopædia", StringComparison.Ordinal, " Case Archæology")]
+    [InlineData("CaseCase encyclopædia Archæology", "Case", StringComparison.Ordinal, " encyclopædia Archæology")]
     [InlineData("Archæology encyclopædia Case ", "Archæology", StringComparison.Ordinal, " encyclopædia Case ")]
-    [InlineData("Archæology encyclopædia Case ", "archæology", StringComparison.OrdinalIgnoreCase, " encyclopædia Case ")]
-    
-	#endregion Data
-	public void TrimStart_SetComparison_DefaultWhitespaceTrim_Pass(string testString, string stringToRemove, StringComparison stringComparison, string expectedString)
+    [InlineData("Archæology archæology encyclopædia Case ", "Archæology ", StringComparison.Ordinal, "archæology encyclopædia Case ")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology", "encyclopædia", StringComparison.OrdinalIgnoreCase, " Case Archæology")]
+    [InlineData("Casecase encyclopædia Archæology", "case", StringComparison.OrdinalIgnoreCase, " encyclopædia Archæology")]
+    [InlineData("Archæology encyclopædia Case ", "Archæology", StringComparison.OrdinalIgnoreCase, " encyclopædia Case ")]
+    [InlineData("Archæologyarchæology encyclopædia Case ", "archæology", StringComparison.OrdinalIgnoreCase, " encyclopædia Case ")]
+
+    #endregion Data
+    public void TrimStart_SetComparison_DefaultWhitespaceTrim_Pass(string testString, string stringToRemove, StringComparison stringComparison, string expectedString)
     {
         string actual = testString.TrimStart(stringToRemove, stringComparison);
 
@@ -544,10 +579,22 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData("encyclopædia Case Archæology", "encyclopædia", StringComparison.InvariantCulture, " Case Archæology")]
-    [InlineData("Case encyclopædia Archæology", "case", StringComparison.InvariantCultureIgnoreCase, " encyclopædia Archæology")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology", "encyclopædia", StringComparison.InvariantCulture, " Case Archæology")]
+    [InlineData("CaseCase encyclopædia Archæology", "Case", StringComparison.InvariantCulture, " encyclopædia Archæology")]
+    [InlineData("Archæology encyclopædia Case ", "Archæology", StringComparison.InvariantCulture, " encyclopædia Case ")]
+    [InlineData("ArchæologyArchæology encyclopædia Case ", "Archæology", StringComparison.InvariantCulture, " encyclopædia Case ")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology", "encyclopædia", StringComparison.InvariantCultureIgnoreCase, " Case Archæology")]
+    [InlineData("Casecase encyclopædia Archæology", "case", StringComparison.InvariantCultureIgnoreCase, " encyclopædia Archæology")]
+    [InlineData("Archæology encyclopædia Case ", "Archæology", StringComparison.InvariantCultureIgnoreCase, " encyclopædia Case ")]
+    [InlineData("Archæology archæology encyclopædia Case ", "archæology ", StringComparison.InvariantCultureIgnoreCase, "encyclopædia Case ")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology", "encyclopædia", StringComparison.Ordinal, " Case Archæology")]
+    [InlineData("CaseCase encyclopædia Archæology", "Case", StringComparison.Ordinal, " encyclopædia Archæology")]
     [InlineData("Archæology encyclopædia Case ", "Archæology", StringComparison.Ordinal, " encyclopædia Case ")]
-    [InlineData("Archæology encyclopædia Case ", "archæology", StringComparison.OrdinalIgnoreCase, " encyclopædia Case ")]
+    [InlineData("Archæology Archæology encyclopædia Case ", "Archæology ", StringComparison.Ordinal, "encyclopædia Case ")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology", "encyclopædia", StringComparison.OrdinalIgnoreCase, " Case Archæology")]
+    [InlineData("Casecase encyclopædia Archæology", "case", StringComparison.OrdinalIgnoreCase, " encyclopædia Archæology")]
+    [InlineData("Archæology encyclopædia Case ", "Archæology", StringComparison.OrdinalIgnoreCase, " encyclopædia Case ")]
+    [InlineData("Archæology archæology encyclopædia Case ", "archæology ", StringComparison.OrdinalIgnoreCase, "encyclopædia Case ")]
 
     #endregion Data
     public void TrimStart_SetComparison_DontTrimWhitespace_Pass(string testString, string stringToRemove, StringComparison stringComparison, string expectedString)
@@ -560,10 +607,22 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData("encyclopædia Case Archæology", "encyclopædia", StringComparison.InvariantCulture, "Case Archæology")]
-    [InlineData("Case encyclopædia Archæology", "case", StringComparison.InvariantCultureIgnoreCase, "encyclopædia Archæology")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology", "encyclopædia", StringComparison.InvariantCulture, "Case Archæology")]
+    [InlineData("CaseCase encyclopædia Archæology", "Case", StringComparison.InvariantCulture, "encyclopædia Archæology")]
+    [InlineData("Archæology encyclopædia Case ", "Archæology", StringComparison.InvariantCulture, "encyclopædia Case ")]
+    [InlineData("Archæology Archæology encyclopædia Case ", "Archæology ", StringComparison.InvariantCulture, "encyclopædia Case ")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology", "encyclopædia", StringComparison.InvariantCultureIgnoreCase, "Case Archæology")]
+    [InlineData("Casecase encyclopædia Archæology", "case", StringComparison.InvariantCultureIgnoreCase, "encyclopædia Archæology")]
+    [InlineData("Archæology encyclopædia Case ", "Archæology", StringComparison.InvariantCultureIgnoreCase, "encyclopædia Case ")]
+    [InlineData("Archæology archæology encyclopædia Case ", "archæology ", StringComparison.InvariantCultureIgnoreCase, "encyclopædia Case ")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology", "encyclopædia", StringComparison.Ordinal, "Case Archæology")]
+    [InlineData("CaseCase encyclopædia Archæology", "Case", StringComparison.Ordinal, "encyclopædia Archæology")]
     [InlineData("Archæology encyclopædia Case ", "Archæology", StringComparison.Ordinal, "encyclopædia Case ")]
-    [InlineData("Archæology encyclopædia Case ", "archæology", StringComparison.OrdinalIgnoreCase, "encyclopædia Case ")]
+    [InlineData("Archæology Archæology encyclopædia Case ", "Archæology ", StringComparison.Ordinal, "encyclopædia Case ")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology", "encyclopædia", StringComparison.OrdinalIgnoreCase, "Case Archæology")]
+    [InlineData("Casecase encyclopædia Archæology", "case", StringComparison.OrdinalIgnoreCase, "encyclopædia Archæology")]
+    [InlineData("Archæology encyclopædia Case ", "Archæology", StringComparison.OrdinalIgnoreCase, "encyclopædia Case ")]
+    [InlineData("Archæology archæology encyclopædia Case ", "archæology ", StringComparison.OrdinalIgnoreCase, "encyclopædia Case ")]
 
     #endregion Data
     public void TrimStart_SetComparison_TrimWhitespace_Pass(string testString, string stringToRemove, StringComparison stringComparison, string expectedString)
@@ -576,9 +635,9 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData("encyclopædia Case Archæology ", "encyclopædia", " Case Archæology ")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology ", "encyclopædia", " Case Archæology ")]
     [InlineData("Case encyclopædia Archæology", "Case", " encyclopædia Archæology")]
-    [InlineData("Archæology encyclopædia Case ", "Archæology ", "encyclopædia Case ")]
+    [InlineData("Archæology Archæology encyclopædia Case ", "Archæology ", "encyclopædia Case ")]
 
     #endregion Data
     public void TrimStart_CultureInfo_DefaultWhitespaceTrim_Pass(string testString, string stringToRemove, string expectedString)
@@ -591,9 +650,9 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData("encyclopædia Case Archæology ", "encyclopædia", " Case Archæology ")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology ", "encyclopædia", " Case Archæology ")]
     [InlineData("Case encyclopædia Archæology", "Case", " encyclopædia Archæology")]
-    [InlineData("Archæology encyclopædia Case ", "Archæology ", "encyclopædia Case ")]
+    [InlineData("Archæology Archæology encyclopædia Case ", "Archæology ", "encyclopædia Case ")]
 
     #endregion Data
     public void TrimStart_CultureInfo_DontTrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
@@ -606,9 +665,9 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData("encyclopædia Case Archæology ", "encyclopædia", "Case Archæology ")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology ", "encyclopædia", "Case Archæology ")]
     [InlineData("Case encyclopædia Archæology", "Case", "encyclopædia Archæology")]
-    [InlineData("Archæology encyclopædia Case ", "Archæology ", "encyclopædia Case ")]
+    [InlineData("Archæology Archæology encyclopædia Case ", "Archæology ", "encyclopædia Case ")]
 
     #endregion Data
     public void TrimStart_CultureInfo_TrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
@@ -626,8 +685,8 @@ public class Remover_Tests
 
     [Theory]
     [InlineData("encyclopædia Case Archæology ", "dummy")]
-    [InlineData(" Case encyclopædia Archæology", "dummy")]
-    [InlineData(" Archæology encyclopædia Case ", "dummy")]
+    [InlineData(" Case encyclopædia Archæology", "")]
+    [InlineData(" Archæology encyclopædia Case ", null)]
 
     #endregion Data
     public void TrimStart_DefaultComparison_DefaultWhitespaceTrim_Fail(string testString, string stringToRemove)
@@ -641,9 +700,17 @@ public class Remover_Tests
 
     [Theory]
     [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.InvariantCulture)]
-    [InlineData(" Case encyclopædia Archæology", "dummy", StringComparison.InvariantCultureIgnoreCase)]
-    [InlineData("Archæology encyclopædia Case ", "dummy", StringComparison.Ordinal)]
-    [InlineData(" Archæology encyclopædia Case ", "dummy", StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.InvariantCulture)]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.InvariantCulture)]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.Ordinal)]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.Ordinal)]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.Ordinal)]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.OrdinalIgnoreCase)]
 
     #endregion Data
     public void TrimStart_SetComparison_DefaultWhitespaceTrim_Fail(string testString, string stringToRemove, StringComparison stringComparison)
@@ -657,9 +724,17 @@ public class Remover_Tests
 
     [Theory]
     [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.InvariantCulture)]
-    [InlineData(" Case encyclopædia Archæology", "dummy", StringComparison.InvariantCultureIgnoreCase)]
-    [InlineData("Archæology encyclopædia Case ", "dummy", StringComparison.Ordinal)]
-    [InlineData(" Archæology encyclopædia Case ", "dummy", StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.InvariantCulture)]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.InvariantCulture)]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.Ordinal)]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.Ordinal)]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.Ordinal)]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.OrdinalIgnoreCase)]
 
     #endregion Data
     public void TrimStart_SetComparison_DontTrimWhitespace_Fail(string testString, string stringToRemove, StringComparison stringComparison)
@@ -673,9 +748,17 @@ public class Remover_Tests
 
     [Theory]
     [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.InvariantCulture, "encyclopædia Case Archæology")]
-    [InlineData(" Case encyclopædia Archæology", "dummy", StringComparison.InvariantCultureIgnoreCase, "Case encyclopædia Archæology")]
-    [InlineData("Archæology encyclopædia Case ", "dummy", StringComparison.Ordinal, "Archæology encyclopædia Case ")]
-    [InlineData(" Archæology encyclopædia Case ", "dummy", StringComparison.OrdinalIgnoreCase, "Archæology encyclopædia Case ")]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.InvariantCulture, "Case encyclopædia Archæology")]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.InvariantCulture, "Archæology encyclopædia Case ")]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.InvariantCultureIgnoreCase, "encyclopædia Case Archæology")]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.InvariantCultureIgnoreCase, "Case encyclopædia Archæology")]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.InvariantCultureIgnoreCase, "Archæology encyclopædia Case ")]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.Ordinal, "encyclopædia Case Archæology")]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.Ordinal, "Case encyclopædia Archæology")]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.Ordinal, "Archæology encyclopædia Case ")]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.OrdinalIgnoreCase, "encyclopædia Case Archæology")]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.OrdinalIgnoreCase, "Case encyclopædia Archæology")]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.OrdinalIgnoreCase, "Archæology encyclopædia Case ")]
 
     #endregion Data
     public void TrimStart_SetComparison_TrimWhitespace_Fail(string testString, string stringToRemove, StringComparison stringComparison, string expectedString)
@@ -689,8 +772,8 @@ public class Remover_Tests
 
     [Theory]
     [InlineData("encyclopædia Case Archæology ", "dummy")]
-    [InlineData(" Case encyclopædia Archæology", "dummy")]
-    [InlineData(" Archæology encyclopædia Case ", "dummy")]
+    [InlineData(" Case encyclopædia Archæology", "")]
+    [InlineData(" Archæology encyclopædia Case ", null)]
 
     #endregion Data
     public void TrimStart_CultureInfo_DefaultWhitespaceTrim_Fail(string testString, string stringToRemove)
@@ -704,8 +787,8 @@ public class Remover_Tests
 
     [Theory]
     [InlineData("encyclopædia Case Archæology ", "dummy")]
-    [InlineData(" Case encyclopædia Archæology", "dummy")]
-    [InlineData(" Archæology encyclopædia Case ", "dummy")]
+    [InlineData(" Case encyclopædia Archæology", "")]
+    [InlineData(" Archæology encyclopædia Case ", null)]
 
     #endregion Data
     public void TrimStart_CultureInfo_DontTrimWhitespace_Fail(string testString, string stringToRemove)
@@ -718,16 +801,16 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData("encyclopædia Case Archæology ", "encyclopædia", "Case Archæology ")]
-    [InlineData("Case encyclopædia Archæology", "Case", "encyclopædia Archæology")]
-    [InlineData(" Archæology encyclopædia Case ", " Archæology", "encyclopædia Case ")]
+    [InlineData("encyclopædia Case Archæology ", "dummy")]
+    [InlineData("Case encyclopædia Archæology", "")]
+    [InlineData("Archæology encyclopædia Case ", null)]
 
     #endregion Data
-    public void TrimStart_CultureInfo_TrimWhitespace_Fail(string testString, string stringToRemove, string expectedString)
+    public void TrimStart_CultureInfo_TrimWhitespace_Fail(string testString, string stringToRemove)
     {
         string actual = testString.TrimStart(stringToRemove, true, CultureInfo.InvariantCulture, true);
 
-        Assert.Equal(expectedString, actual);
+        Assert.Equal(testString, actual);
     }
 
     #endregion Fail
@@ -741,8 +824,8 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData(" encyclopædia Case Archæology", "Archæology", " encyclopædia Case ")]
-    [InlineData("encyclopædia Archæology Case", " Case", "encyclopædia Archæology")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", " encyclopædia Case ")]
+    [InlineData("encyclopædia Archæology Case Case", " Case", "encyclopædia Archæology")]
     [InlineData(" Archæology Case encyclopædia", "encyclopædia", " Archæology Case ")]
 
     #endregion Data
@@ -756,9 +839,21 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData(" encyclopædia Case Archæology", "Archæology", StringComparison.InvariantCulture, " encyclopædia Case ")]
-    [InlineData("encyclopædia Archæology Case", " Case", StringComparison.InvariantCultureIgnoreCase, "encyclopædia Archæology")]
-    [InlineData(" Archæology Case encyclopædia", "encyclopædia", StringComparison.Ordinal, " Archæology Case ")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", StringComparison.InvariantCulture, " encyclopædia Case ")]
+    [InlineData("encyclopædia Archæology Case Case", " Case", StringComparison.InvariantCulture, "encyclopædia Archæology")]
+    [InlineData(" Archæology Case encyclopædiaencyclopædia", "encyclopædia", StringComparison.InvariantCulture, " Archæology Case ")]
+    [InlineData(" Archæology Case encyclopædia", " encyclopædia", StringComparison.InvariantCulture, " Archæology Case")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", StringComparison.InvariantCultureIgnoreCase, " encyclopædia Case ")]
+    [InlineData("encyclopædia Archæology Case Case", " Case", StringComparison.InvariantCultureIgnoreCase, "encyclopædia Archæology")]
+    [InlineData(" Archæology Case encyclopædiaencyclopædia", "encyclopædia", StringComparison.InvariantCultureIgnoreCase, " Archæology Case ")]
+    [InlineData(" Archæology Case encyclopædia", " encyclopædia", StringComparison.InvariantCultureIgnoreCase, " Archæology Case")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", StringComparison.Ordinal, " encyclopædia Case ")]
+    [InlineData("encyclopædia Archæology Case Case", " Case", StringComparison.Ordinal, "encyclopædia Archæology")]
+    [InlineData(" Archæology Case encyclopædiaencyclopædia", "encyclopædia", StringComparison.Ordinal, " Archæology Case ")]
+    [InlineData(" Archæology Case encyclopædia", " encyclopædia", StringComparison.Ordinal, " Archæology Case")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", StringComparison.OrdinalIgnoreCase, " encyclopædia Case ")]
+    [InlineData("encyclopædia Archæology Case Case", " Case", StringComparison.OrdinalIgnoreCase, "encyclopædia Archæology")]
+    [InlineData(" Archæology Case encyclopædiaencyclopædia", "encyclopædia", StringComparison.OrdinalIgnoreCase, " Archæology Case ")]
     [InlineData(" Archæology Case encyclopædia", " encyclopædia", StringComparison.OrdinalIgnoreCase, " Archæology Case")]
 
     #endregion Data
@@ -772,9 +867,21 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData(" encyclopædia Case Archæology", "Archæology", StringComparison.InvariantCulture, " encyclopædia Case ")]
-    [InlineData("encyclopædia Archæology Case", " Case", StringComparison.InvariantCultureIgnoreCase, "encyclopædia Archæology")]
-    [InlineData(" Archæology Case encyclopædia", "encyclopædia", StringComparison.Ordinal, " Archæology Case ")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", StringComparison.InvariantCulture, " encyclopædia Case ")]
+    [InlineData("encyclopædia Archæology Case Case", " Case", StringComparison.InvariantCulture, "encyclopædia Archæology")]
+    [InlineData(" Archæology Case encyclopædiaencyclopædia", "encyclopædia", StringComparison.InvariantCulture, " Archæology Case ")]
+    [InlineData(" Archæology Case encyclopædia", " encyclopædia", StringComparison.InvariantCulture, " Archæology Case")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", StringComparison.InvariantCultureIgnoreCase, " encyclopædia Case ")]
+    [InlineData("encyclopædia Archæology Case Case", " Case", StringComparison.InvariantCultureIgnoreCase, "encyclopædia Archæology")]
+    [InlineData(" Archæology Case encyclopædiaencyclopædia", "encyclopædia", StringComparison.InvariantCultureIgnoreCase, " Archæology Case ")]
+    [InlineData(" Archæology Case encyclopædia", " encyclopædia", StringComparison.InvariantCultureIgnoreCase, " Archæology Case")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", StringComparison.Ordinal, " encyclopædia Case ")]
+    [InlineData("encyclopædia Archæology Case Case", " Case", StringComparison.Ordinal, "encyclopædia Archæology")]
+    [InlineData(" Archæology Case encyclopædiaencyclopædia", "encyclopædia", StringComparison.Ordinal, " Archæology Case ")]
+    [InlineData(" Archæology Case encyclopædia", " encyclopædia", StringComparison.Ordinal, " Archæology Case")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", StringComparison.OrdinalIgnoreCase, " encyclopædia Case ")]
+    [InlineData("encyclopædia Archæology Case Case", " Case", StringComparison.OrdinalIgnoreCase, "encyclopædia Archæology")]
+    [InlineData(" Archæology Case encyclopædiaencyclopædia", "encyclopædia", StringComparison.OrdinalIgnoreCase, " Archæology Case ")]
     [InlineData(" Archæology Case encyclopædia", " encyclopædia", StringComparison.OrdinalIgnoreCase, " Archæology Case")]
 
     #endregion Data
@@ -788,9 +895,21 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData(" encyclopædia Case Archæology", "Archæology", StringComparison.InvariantCulture, " encyclopædia Case")]
-    [InlineData("encyclopædia Archæology Case", " Case", StringComparison.InvariantCultureIgnoreCase, "encyclopædia Archæology")]
-    [InlineData(" Archæology Case encyclopædia", "encyclopædia", StringComparison.Ordinal, " Archæology Case")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", StringComparison.InvariantCulture, " encyclopædia Case")]
+    [InlineData("encyclopædia Archæology Case Case", " Case", StringComparison.InvariantCulture, "encyclopædia Archæology")]
+    [InlineData(" Archæology Case encyclopædiaencyclopædia", "encyclopædia", StringComparison.InvariantCulture, " Archæology Case")]
+    [InlineData(" Archæology Case encyclopædia", " encyclopædia", StringComparison.InvariantCulture, " Archæology Case")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", StringComparison.InvariantCultureIgnoreCase, " encyclopædia Case")]
+    [InlineData("encyclopædia Archæology Case Case", " Case", StringComparison.InvariantCultureIgnoreCase, "encyclopædia Archæology")]
+    [InlineData(" Archæology Case encyclopædiaencyclopædia", "encyclopædia", StringComparison.InvariantCultureIgnoreCase, " Archæology Case")]
+    [InlineData(" Archæology Case encyclopædia", " encyclopædia", StringComparison.InvariantCultureIgnoreCase, " Archæology Case")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", StringComparison.Ordinal, " encyclopædia Case")]
+    [InlineData("encyclopædia Archæology Case Case", " Case", StringComparison.Ordinal, "encyclopædia Archæology")]
+    [InlineData(" Archæology Case encyclopædiaencyclopædia", "encyclopædia", StringComparison.Ordinal, " Archæology Case")]
+    [InlineData(" Archæology Case encyclopædia", " encyclopædia", StringComparison.Ordinal, " Archæology Case")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", StringComparison.OrdinalIgnoreCase, " encyclopædia Case")]
+    [InlineData("encyclopædia Archæology Case Case", " Case", StringComparison.OrdinalIgnoreCase, "encyclopædia Archæology")]
+    [InlineData(" Archæology Case encyclopædiaencyclopædia", "encyclopædia", StringComparison.OrdinalIgnoreCase, " Archæology Case")]
     [InlineData(" Archæology Case encyclopædia", " encyclopædia", StringComparison.OrdinalIgnoreCase, " Archæology Case")]
 
     #endregion Data
@@ -804,8 +923,8 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData(" encyclopædia Case Archæology", "Archæology", " encyclopædia Case ")]
-    [InlineData("encyclopædia Archæology Case", " Case", "encyclopædia Archæology")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", " encyclopædia Case ")]
+    [InlineData("encyclopædia Archæology Case Case", " Case", "encyclopædia Archæology")]
     [InlineData(" Archæology Case encyclopædia", "encyclopædia", " Archæology Case ")]
 
     #endregion Data
@@ -819,8 +938,8 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData(" encyclopædia Case Archæology", "Archæology", " encyclopædia Case ")]
-    [InlineData("encyclopædia Archæology Case", " Case", "encyclopædia Archæology")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", " encyclopædia Case ")]
+    [InlineData("encyclopædia Archæology Case Case", " Case", "encyclopædia Archæology")]
     [InlineData(" Archæology Case encyclopædia", "encyclopædia", " Archæology Case ")]
 
     #endregion Data
@@ -834,8 +953,8 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData(" encyclopædia Case Archæology", "Archæology", " encyclopædia Case")]
-    [InlineData("encyclopædia Archæology Case", " Case", "encyclopædia Archæology")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", " encyclopædia Case")]
+    [InlineData("encyclopædia Archæology Case Case", " Case", "encyclopædia Archæology")]
     [InlineData(" Archæology Case encyclopædia", "encyclopædia", " Archæology Case")]
 
     #endregion Data
@@ -854,8 +973,8 @@ public class Remover_Tests
 
     [Theory]
     [InlineData("encyclopædia Case Archæology ", "dummy")]
-    [InlineData(" Case encyclopædia Archæology", "dummy")]
-    [InlineData(" Archæology encyclopædia Case ", "dummy")]
+    [InlineData(" Case encyclopædia Archæology", "")]
+    [InlineData(" Archæology encyclopædia Case ", null)]
 
     #endregion Data
     public void TrimEnd_DefaultComparison_DefaultWhitespaceTrim_Fail(string testString, string stringToRemove)
@@ -869,9 +988,17 @@ public class Remover_Tests
 
     [Theory]
     [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.InvariantCulture)]
-    [InlineData(" Case encyclopædia Archæology", "dummy", StringComparison.InvariantCultureIgnoreCase)]
-    [InlineData("Archæology encyclopædia Case ", "dummy", StringComparison.Ordinal)]
-    [InlineData(" Archæology encyclopædia Case ", "dummy", StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.InvariantCulture)]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.InvariantCulture)]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.Ordinal)]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.Ordinal)]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.Ordinal)]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.OrdinalIgnoreCase)]
 
     #endregion Data
     public void TrimEnd_SetComparison_DefaultWhitespaceTrim_Fail(string testString, string stringToRemove, StringComparison stringComparison)
@@ -885,9 +1012,17 @@ public class Remover_Tests
 
     [Theory]
     [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.InvariantCulture)]
-    [InlineData(" Case encyclopædia Archæology", "dummy", StringComparison.InvariantCultureIgnoreCase)]
-    [InlineData("Archæology encyclopædia Case ", "dummy", StringComparison.Ordinal)]
-    [InlineData(" Archæology encyclopædia Case ", "dummy", StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.InvariantCulture)]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.InvariantCulture)]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.Ordinal)]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.Ordinal)]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.Ordinal)]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.OrdinalIgnoreCase)]
 
     #endregion Data
     public void TrimEnd_SetComparison_DontTrimWhitespace_Fail(string testString, string stringToRemove, StringComparison stringComparison)
@@ -901,9 +1036,17 @@ public class Remover_Tests
 
     [Theory]
     [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.InvariantCulture, " encyclopædia Case Archæology")]
-    [InlineData(" Case encyclopædia Archæology", "dummy", StringComparison.InvariantCultureIgnoreCase, " Case encyclopædia Archæology")]
-    [InlineData("Archæology encyclopædia Case ", "dummy", StringComparison.Ordinal, "Archæology encyclopædia Case")]
-    [InlineData(" Archæology encyclopædia Case ", "dummy", StringComparison.OrdinalIgnoreCase, " Archæology encyclopædia Case")]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.InvariantCulture, " Case encyclopædia Archæology")]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.InvariantCulture, " Archæology encyclopædia Case")]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.InvariantCultureIgnoreCase, " encyclopædia Case Archæology")]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.InvariantCultureIgnoreCase, " Case encyclopædia Archæology")]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.InvariantCultureIgnoreCase, " Archæology encyclopædia Case")]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.Ordinal, " encyclopædia Case Archæology")]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.Ordinal, " Case encyclopædia Archæology")]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.Ordinal, " Archæology encyclopædia Case")]
+    [InlineData(" encyclopædia Case Archæology", "dummy", StringComparison.OrdinalIgnoreCase, " encyclopædia Case Archæology")]
+    [InlineData(" Case encyclopædia Archæology", "", StringComparison.OrdinalIgnoreCase, " Case encyclopædia Archæology")]
+    [InlineData(" Archæology encyclopædia Case ", null, StringComparison.OrdinalIgnoreCase, " Archæology encyclopædia Case")]
 
     #endregion Data
     public void TrimEnd_SetComparison_TrimWhitespace_Fail(string testString, string stringToRemove, StringComparison stringComparison, string expectedString)
@@ -917,8 +1060,8 @@ public class Remover_Tests
 
     [Theory]
     [InlineData("encyclopædia Case Archæology ", "dummy")]
-    [InlineData(" Case encyclopædia Archæology", "dummy")]
-    [InlineData(" Archæology encyclopædia Case ", "dummy")]
+    [InlineData(" Case encyclopædia Archæology", "")]
+    [InlineData(" Archæology encyclopædia Case ", null)]
 
     #endregion Data
     public void TrimEnd_CultureInfo_DefaultWhitespaceTrim_Fail(string testString, string stringToRemove)
@@ -932,8 +1075,8 @@ public class Remover_Tests
 
     [Theory]
     [InlineData("encyclopædia Case Archæology ", "dummy")]
-    [InlineData(" Case encyclopædia Archæology", "dummy")]
-    [InlineData(" Archæology encyclopædia Case ", "dummy")]
+    [InlineData(" Case encyclopædia Archæology", "")]
+    [InlineData(" Archæology encyclopædia Case ", null)]
 
     #endregion Data
     public void TrimEnd_CultureInfo_DontTrimWhitespace_Fail(string testString, string stringToRemove)
@@ -947,8 +1090,8 @@ public class Remover_Tests
 
     [Theory]
     [InlineData("encyclopædia Case Archæology ", "dummy", "encyclopædia Case Archæology")]
-    [InlineData(" Case encyclopædia Archæology", "dummy", " Case encyclopædia Archæology")]
-    [InlineData(" Archæology encyclopædia Case ", " dummy", " Archæology encyclopædia Case")]
+    [InlineData(" Case encyclopædia Archæology", "", " Case encyclopædia Archæology")]
+    [InlineData(" Archæology encyclopædia Case ", null, " Archæology encyclopædia Case")]
 
     #endregion Data
     public void TrimEnd_CultureInfo_TrimWhitespace_Fail(string testString, string stringToRemove, string expectedString)

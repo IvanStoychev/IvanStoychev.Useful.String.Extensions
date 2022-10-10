@@ -119,7 +119,7 @@ public static class Remover
         => Regex.Replace(originalString, "[A-Za-z]", string.Empty);
 
     /// <summary>
-    /// Removes the leading and trailing occurrences of a specified string from the current instance, using the provided string comparison option.
+    /// Removes all leading and trailing occurrences of a specified string from the current instance, using the provided string comparison option.
     /// </summary>
     /// <param name="str">The instance to remove the string from.</param>
     /// <param name="trimString">The string to remove.</param>
@@ -136,28 +136,16 @@ public static class Remover
     public static string Trim(this string str, string trimString, StringComparison stringComparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
     {
         if (string.IsNullOrEmpty(trimString))
-            return str;
+            return trimWhitespace ? str.Trim() : str;
 
-        int startIndex = 0;
-        int tailLength = 0;
-
-        if (str.StartsWith(trimString, stringComparison))
-            startIndex = trimString.Length;
-
-        if (str.EndsWith(trimString, stringComparison))
-            tailLength = trimString.Length;
-
-        int length = str.Length - startIndex - tailLength;
-        str = str.Substring(startIndex, length);
-
-        if (trimWhitespace)
-            str = str.Trim();
+        str = str.TrimStart(trimString, stringComparison, trimWhitespace);
+        str = str.TrimEnd(trimString, stringComparison, trimWhitespace);
 
         return str;
     }
 
     /// <summary>
-    /// Removes the leading and trailing occurrences of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
+    /// Removes all leading and trailing occurrences of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
     /// </summary>
     /// <param name="str">The string to remove occurrences from.</param>
     /// <param name="trimString">The string to remove.</param>
@@ -179,28 +167,16 @@ public static class Remover
     public static string Trim(this string str, string trimString, bool ignoreCase, CultureInfo? culture, bool trimWhitespace = false)
     {
         if (string.IsNullOrEmpty(trimString))
-            return str;
+            return trimWhitespace ? str.Trim() : str;
 
-        int startIndex = 0;
-        int tailLength = 0;
-
-        if (str.StartsWith(trimString, ignoreCase, culture))
-            startIndex = trimString.Length;
-
-        if (str.EndsWith(trimString, ignoreCase, culture))
-            tailLength = trimString.Length;
-
-        int length = str.Length - startIndex - tailLength;
-        str = str.Substring(startIndex, length);
-
-        if (trimWhitespace)
-            str = str.Trim();
+        str = str.TrimStart(trimString, ignoreCase, culture, trimWhitespace);
+        str = str.TrimEnd(trimString, ignoreCase, culture, trimWhitespace);
 
         return str;
     }
 
     /// <summary>
-    /// Removes the leading occurrence of a specified string from the current instance, using the provided string comparison option.
+    /// Removes all leading occurrences of a specified string from the current instance, using the provided string comparison option.
     /// </summary>
     /// <param name="str">The instance to remove the string from.</param>
     /// <param name="trimString">The string to remove.</param>
@@ -218,9 +194,9 @@ public static class Remover
     public static string TrimStart(this string str, string trimString, StringComparison stringComparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
     {
         if (string.IsNullOrEmpty(trimString))
-            return str;
+            return trimWhitespace ? str.TrimStart() : str;
 
-        if (str.StartsWith(trimString, stringComparison))
+        while (str.StartsWith(trimString, stringComparison))
             str = str.Substring(trimString.Length);
 
         if (trimWhitespace)
@@ -230,7 +206,7 @@ public static class Remover
     }
 
     /// <summary>
-    /// Removes the leading occurrence of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
+    /// Removes all leading occurrences of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
     /// </summary>
     /// <param name="str">The string to remove occurrences from.</param>
     /// <param name="trimString">The string to remove.</param>
@@ -252,9 +228,9 @@ public static class Remover
     public static string TrimStart(this string str, string trimString, bool ignoreCase, CultureInfo? culture, bool trimWhitespace = false)
     {
         if (string.IsNullOrEmpty(trimString))
-            return str;
+            return trimWhitespace ? str.TrimStart() : str;
 
-        if (str.StartsWith(trimString, ignoreCase, culture))
+        while (str.StartsWith(trimString, ignoreCase, culture))
             str = str.Substring(trimString.Length);
 
         if (trimWhitespace)
@@ -264,7 +240,7 @@ public static class Remover
     }
 
     /// <summary>
-    /// Removes the trailing occurrence of a specified string from the current instance, using the provided string comparison option.
+    /// Removes all trailing occurrences of a specified string from the current instance, using the provided string comparison option.
     /// </summary>
     /// <param name="str">The string to remove occurrences from.</param>
     /// <param name="trimString">The string to remove.</param>
@@ -282,9 +258,9 @@ public static class Remover
     public static string TrimEnd(this string str, string trimString, StringComparison stringComparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
     {
         if (string.IsNullOrEmpty(trimString))
-            return str;
+            return trimWhitespace ? str.TrimEnd() : str;
 
-        if (str.EndsWith(trimString, stringComparison))
+        while (str.EndsWith(trimString, stringComparison))
             str = str.Substring(0, str.Length - trimString.Length);
 
         if (trimWhitespace)
@@ -294,7 +270,7 @@ public static class Remover
     }
 
     /// <summary>
-    /// Removes the trailing occurrence of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
+    /// Removes all trailing occurrences of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
     /// </summary>
     /// <param name="str">The string to remove occurrences from.</param>
     /// <param name="trimString">The string to remove.</param>
@@ -316,9 +292,9 @@ public static class Remover
     public static string TrimEnd(this string str, string trimString, bool ignoreCase, CultureInfo? culture, bool trimWhitespace = false)
     {
         if (string.IsNullOrEmpty(trimString))
-            return str;
+            return trimWhitespace ? str.TrimEnd() : str;
 
-        if (str.EndsWith(trimString, ignoreCase, culture))
+        while (str.EndsWith(trimString, ignoreCase, culture))
             str = str.Substring(0, str.Length - trimString.Length);
 
         if (trimWhitespace)

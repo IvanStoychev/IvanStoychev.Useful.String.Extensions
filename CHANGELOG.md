@@ -5,6 +5,19 @@ The changes each version of this project brings are documented here.
 This file's format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 <br>This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
+Legend:
+<br>💜 - Bug fix
+<br>🟢 - New feature
+<br>🔴 - Removed feature
+<br>🟡 - Altered existing feature
+
+## [3.0.0] - 10th October 2022
+
+### Fixes
+🟡 All "Trim", "TrimStart" and "TrimEnd" methods now remove all leading/trailing occurrences of the given string, instead of just the first, as this is more in line with the existing .NET methods.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;While this could more be regarded as a "bug fix" it significantly changes the way those methods work and, thus, this is a new major version release.
+
 ## [2.0.1] - 27th June 2022
 
 ### Fixes
@@ -33,8 +46,8 @@ This file's format is based on [Keep a Changelog](https://keepachangelog.com/en/
 <br>🟡 Consolidated the `Remove(IEnumerable<string> removeStrings)` and `Remove(bool ignoreCase, IEnumerable<string> removeStrings)` methods into `Remove(IEnumerable<string> removeStrings, StringComparison stringComparison = StringComparison.CurrentCulture)`.
 <br>🟡 Changed signature of method `Replace(bool ignoreCase, string newString, params string[] oldStrings)` to `Replace(string newString, bool ignoreCase = false, params string[] oldStrings)`.
 <br>🟡 Added additional information in ArgumentNullExceptions about the name of the method the exception occurred in.
-<br>      Before the message would be akin to "The argument given for 'keychars' was null.", now the message will be akin to "The argument given for parameter "keychars" of method "Contains" was null.".
-<br>      This was done to give more details to developers trying to debug the source of such an exception, as many different methods can have parameters with the same name.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Before the message would be akin to "The argument given for 'keychars' was null.", now the message will be akin to "The argument given for parameter "keychars" of method "Contains" was null.".
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This was done to give more details to developers trying to debug the source of such an exception, as many different methods can have parameters with the same name.
 <br>🟡 Added boolean "trimWhitespace" parameter and changed parameter "culture" of methods `TrimStart(string trimString, bool ignoreCase, CultureInfo culture)` and `TrimEnd(string trimString, bool ignoreCase, CultureInfo culture)` to be nullable. The signatures are now `TrimStart(string trimString, bool ignoreCase, CultureInfo? culture, bool trimWhitespace = false)` and `TrimEnd(string trimString, bool ignoreCase, CultureInfo? culture, bool trimWhitespace = false)`.
 
 ### Removals
