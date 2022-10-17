@@ -34,8 +34,8 @@
   </a>
 </p>
 
-<h4 align="center">A collection of methods designed to make your life easier.</h4>
-<h5 align="center">This repo uses <a href="https://semver.org/#semantic-versioning-200">Semantic Versioning 2.0.0</a></h5>
+<p align="center">A collection of methods designed to make your life easier.</p>
+<p align="center">This repo uses <a href="https://semver.org/#semantic-versioning-200">Semantic Versioning 2.0.0</a></p>
 
 <p align="center">
   <a href="#-join-the-community">Community</a> •
@@ -72,8 +72,9 @@ This is a collection of string extension methods that I have been in need of man
 
 <br/>
 
-# ![YouTube](https://i.imgur.com/GqXgzqn.png) Demo
-#### *(Will open in YouTube)*
+![YouTube](https://i.imgur.com/GqXgzqn.png) Demo
+------------
+*(Will open in YouTube)*
 
 [![Demonstration video](https://imgur.com/uTeJ65b.jpg)](https://youtu.be/4M2UeSJhI-o)
 
