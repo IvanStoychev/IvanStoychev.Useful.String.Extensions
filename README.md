@@ -1,10 +1,7 @@
-<h1 align="center">
+<p align="center">
   <br>
   <a href="https://www.nuget.org/packages/IvanStoychev.Useful.String.Extensions"><img src="Project logo.png" alt="IvanStoychev.Useful.String.Extensions"></a>
-  <br>
-  IvanStoychev.Useful.String.Extensions
-  <br>
-</h1>
+</p>
 
 <p align="center">
   <a href="https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/graphs/commit-activity">
