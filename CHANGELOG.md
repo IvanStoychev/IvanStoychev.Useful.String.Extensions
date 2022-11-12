@@ -14,7 +14,8 @@ Legend:
 
 ## [3.0.0] - 10th October 2022
 
-### Fixes
+### Changes
+
 🟡 All "Trim", "TrimStart" and "TrimEnd" methods now remove all leading/trailing occurrences of the given string, instead of just the first, as this is more in line with the existing .NET methods.
 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;While this could more be regarded as a "bug fix" it significantly changes the way those methods work and, thus, this is a new major version release.
 
