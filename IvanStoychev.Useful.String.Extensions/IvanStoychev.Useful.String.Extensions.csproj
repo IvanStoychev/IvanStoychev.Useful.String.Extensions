@@ -15,11 +15,19 @@
     <Copyright>Copyright (c) 2022 Ivan Stoychev. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <NeutralLanguage>en</NeutralLanguage>
-    <PackageReleaseNotes>🟡 All "Trim", "TrimStart" and "TrimEnd" methods now remove all leading/trailing occurrences of the given string, instead of just the first, as this is more in line with the existing .NET methods.</PackageReleaseNotes>
-    <Version>3.0.0</Version>
+    <PackageReleaseNotes>
+		Legend:
+		💜 - Bug fix
+		🟢 - New feature
+		🔴 - Removed feature
+		🟡 - Altered existing feature
+
+		🟢 Added legend to release notes.
+	</PackageReleaseNotes>
+    <Version>3.0.1</Version>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <AssemblyVersion>3.0.0.0</AssemblyVersion>
-    <FileVersion>3.0.0.0</FileVersion>
+    <AssemblyVersion>3.0.1.0</AssemblyVersion>
+    <FileVersion>3.0.1.0</FileVersion>
     <PackageIconUrl />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>IvanStoychev.Useful.String.Extensions</PackageId>
