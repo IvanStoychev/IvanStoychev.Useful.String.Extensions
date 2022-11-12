@@ -10,6 +10,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E03DBB67-8478-4658-A295-B8C9E23C9D3E}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		CHANGELOG.md = CHANGELOG.md
+		Nuget Icon.png = Nuget Icon.png
+		NUGET README.MD = NUGET README.MD
+		Project logo.png = Project logo.png
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
