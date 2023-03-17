@@ -11,6 +11,13 @@ Legend:
 <br>🟢 - New feature
 <br>🔴 - Removed feature
 <br>🟡 - Altered existing feature
+<br>⚪ - Note, not directly relating to the project functionality
+
+## [4.0.0] - 17th March 2023
+
+🟢 Updated to .Net 7
+
+⚪ Inconsequently, from this point onwards changelog sections names (such as "Changes", "Fixes", etc.) will be omnitted, as there is a visual legend present.
 
 ## [3.0.0] - 10th October 2022
 
