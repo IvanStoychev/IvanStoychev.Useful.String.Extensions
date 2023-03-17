@@ -16,12 +16,13 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageReleaseNotes>
-		Legend:
+		L͟e͟g͟e͟n͟d͟:
 		💜 - Bug fix
 		🟢 - New feature
 		🔴 - Removed feature
 		🟡 - Altered existing feature
-
+		
+		______________________________________
 		🟢 Updated to .Net 7.
 	</PackageReleaseNotes>
     <Version>4.0.0</Version>
