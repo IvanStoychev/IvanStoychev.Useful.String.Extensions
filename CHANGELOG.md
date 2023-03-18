@@ -17,7 +17,7 @@ Legend:
 
 🟢 Updated to .Net 7
 
-⚪ Inconsequently, from this point onwards changelog sections names (such as "Changes", "Fixes", etc.) will be omnitted, as there is a visual legend present.
+⚪ Inconsequently, from this point onwards changelog sections names (such as "Changes", "Fixes", etc.) will be omitted, as there is a visual legend present.
 
 ## [3.0.0] - 10th October 2022
 
