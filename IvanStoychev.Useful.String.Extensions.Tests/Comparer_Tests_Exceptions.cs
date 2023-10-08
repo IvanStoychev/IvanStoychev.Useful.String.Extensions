@@ -54,12 +54,12 @@ public class Comparer_Tests_Exceptions
 
     public static IEnumerable<object[]> Data_StringComparison_AllValues => new[]
             {
-                new object[] { StringComparison.CurrentCulture },
-                new object[] { StringComparison.CurrentCultureIgnoreCase },
-                new object[] { StringComparison.InvariantCulture },
-                new object[] { StringComparison.InvariantCultureIgnoreCase },
-                new object[] { StringComparison.Ordinal },
-                new object[] { StringComparison.OrdinalIgnoreCase }
+                new object[] { GlobalVariables.CurrentCulture },
+                new object[] { GlobalVariables.CurrentCultureIgnoreCase },
+                new object[] { GlobalVariables.InvariantCulture },
+                new object[] { GlobalVariables.InvariantCultureIgnoreCase },
+                new object[] { GlobalVariables.Ordinal },
+                new object[] { GlobalVariables.OrdinalIgnoreCase }
             };
 
     #endregion IEnumerable test data

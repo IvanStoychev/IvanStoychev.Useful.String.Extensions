@@ -32,24 +32,24 @@ public class Replacer_Tests
 
     public static IEnumerable<object[]> Data_Replace_SetComparison_Pass => new[]
             {
-                new object[] { "case encyclopædia Archæology", "newWord", new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.InvariantCulture, "newWord encyclopædia Archæology" },
-                new object[] { "case encyclopædia Archæology", "newWord", new List<string>() { "Case", "encyclopædia", "ARCHÆOLOGY" }, StringComparison.InvariantCulture, "case newWord Archæology" },
-                new object[] { "case encyclopædia Archæology", "newWord", new HashSet<string>() { "Case", "encyclopaedia", "Archæology" }, StringComparison.InvariantCulture, "case encyclopædia newWord" },
-                new object[] { "case encyclopædia Archæology", "newWord", new Queue<string>(new string[] { "case", "encyclopædia", "Archæology" }), StringComparison.InvariantCulture, "newWord newWord newWord" },
+                new object[] { "case encyclopædia Archæology", "newWord", new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }, GlobalVariables.InvariantCulture, "newWord encyclopædia Archæology" },
+                new object[] { "case encyclopædia Archæology", "newWord", new List<string>() { "Case", "encyclopædia", "ARCHÆOLOGY" }, GlobalVariables.InvariantCulture, "case newWord Archæology" },
+                new object[] { "case encyclopædia Archæology", "newWord", new HashSet<string>() { "Case", "encyclopaedia", "Archæology" }, GlobalVariables.InvariantCulture, "case encyclopædia newWord" },
+                new object[] { "case encyclopædia Archæology", "newWord", new Queue<string>(new string[] { "case", "encyclopædia", "Archæology" }), GlobalVariables.InvariantCulture, "newWord newWord newWord" },
 
-                new object[] { "case encyclopædia Archæology", "newWord", new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.InvariantCultureIgnoreCase, "newWord encyclopædia newWord" },
-                new object[] { "case encyclopædia Archæology", "newWord", new List<string>() { "Case", "encyclopædia", "ARCHÆOLOGY" }, StringComparison.InvariantCultureIgnoreCase, "newWord newWord newWord" },
-                new object[] { "case encyclopædia Archæology", "newWord", new HashSet<string>() { "Case", "encyclopaedia", "Archæology" }, StringComparison.InvariantCultureIgnoreCase, "newWord encyclopædia newWord" },
-                new object[] { "case encyclopædia Archæology", "newWord", new Queue<string>(new string[] { "case", "encyclopædia", "Archæology" }), StringComparison.InvariantCultureIgnoreCase, "newWord newWord newWord" },
+                new object[] { "case encyclopædia Archæology", "newWord", new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }, GlobalVariables.InvariantCultureIgnoreCase, "newWord encyclopædia newWord" },
+                new object[] { "case encyclopædia Archæology", "newWord", new List<string>() { "Case", "encyclopædia", "ARCHÆOLOGY" }, GlobalVariables.InvariantCultureIgnoreCase, "newWord newWord newWord" },
+                new object[] { "case encyclopædia Archæology", "newWord", new HashSet<string>() { "Case", "encyclopaedia", "Archæology" }, GlobalVariables.InvariantCultureIgnoreCase, "newWord encyclopædia newWord" },
+                new object[] { "case encyclopædia Archæology", "newWord", new Queue<string>(new string[] { "case", "encyclopædia", "Archæology" }), GlobalVariables.InvariantCultureIgnoreCase, "newWord newWord newWord" },
 
-                new object[] { "case encyclopædia Archæology", "newWord", new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.Ordinal, "newWord encyclopædia Archæology" },
-                new object[] { "case encyclopædia Archæology", "newWord", new List<string>() { "Case", "encyclopædia", "ARCHÆOLOGY" }, StringComparison.Ordinal, "case newWord Archæology" },
-                new object[] { "case encyclopædia Archæology", "newWord", new HashSet<string>() { "Case", "encyclopaedia", "Archæology" }, StringComparison.Ordinal, "case encyclopædia newWord" },
-                new object[] { "case encyclopædia Archæology", "newWord", new Queue<string>(new string[] { "case", "encyclopædia", "Archæology" }), StringComparison.Ordinal, "newWord newWord newWord" },
+                new object[] { "case encyclopædia Archæology", "newWord", new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }, GlobalVariables.Ordinal, "newWord encyclopædia Archæology" },
+                new object[] { "case encyclopædia Archæology", "newWord", new List<string>() { "Case", "encyclopædia", "ARCHÆOLOGY" }, GlobalVariables.Ordinal, "case newWord Archæology" },
+                new object[] { "case encyclopædia Archæology", "newWord", new HashSet<string>() { "Case", "encyclopaedia", "Archæology" }, GlobalVariables.Ordinal, "case encyclopædia newWord" },
+                new object[] { "case encyclopædia Archæology", "newWord", new Queue<string>(new string[] { "case", "encyclopædia", "Archæology" }), GlobalVariables.Ordinal, "newWord newWord newWord" },
 
-                new object[] { "case encyclopædia Archæology", "newWord", new string[] { "kase", "encyclopaedia", "ARCHÆOLOGY" }, StringComparison.OrdinalIgnoreCase, "case encyclopædia newWord" },
-                new object[] { "case encyclopædia Archæology", "newWord", new List<string>() { "Case", "encyclopædia", "ARCHAEOLOGY" }, StringComparison.OrdinalIgnoreCase, "newWord newWord Archæology" },
-                new object[] { "case encyclopædia Archæology", "newWord", new HashSet<string>() { "kase", "encyclopædia", "Archæology" }, StringComparison.OrdinalIgnoreCase, "case newWord newWord" },
-                new object[] { "case encyclopædia Archæology", "newWord", new Queue<string>(new string[] { "case", "encyclopædia", "Archæology" }), StringComparison.OrdinalIgnoreCase, "newWord newWord newWord" }
+                new object[] { "case encyclopædia Archæology", "newWord", new string[] { "kase", "encyclopaedia", "ARCHÆOLOGY" }, GlobalVariables.OrdinalIgnoreCase, "case encyclopædia newWord" },
+                new object[] { "case encyclopædia Archæology", "newWord", new List<string>() { "Case", "encyclopædia", "ARCHAEOLOGY" }, GlobalVariables.OrdinalIgnoreCase, "newWord newWord Archæology" },
+                new object[] { "case encyclopædia Archæology", "newWord", new HashSet<string>() { "kase", "encyclopædia", "Archæology" }, GlobalVariables.OrdinalIgnoreCase, "case newWord newWord" },
+                new object[] { "case encyclopædia Archæology", "newWord", new Queue<string>(new string[] { "case", "encyclopædia", "Archæology" }), GlobalVariables.OrdinalIgnoreCase, "newWord newWord newWord" }
             };
 }
