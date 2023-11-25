@@ -71,7 +71,7 @@ This is a collection of string extension methods that I have been in need of man
 
 <br/>
 
-![YouTube](https://i.imgur.com/GqXgzqn.png) Demo
+🎬 Demo
 ------------
 *(Will open in YouTube)*
 
