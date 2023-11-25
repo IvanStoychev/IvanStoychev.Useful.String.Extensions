@@ -34,16 +34,22 @@
 <p align="center">A collection of methods designed to make your life easier.</p>
 <p align="center">This repo uses <a href="https://semver.org/#semantic-versioning-200">Semantic Versioning 2.0.0</a></p>
 
-<p align="center">
-  <a href="#-join-the-community">Community</a> •
-  <a href="#sparkling_heart-support-the-project">Support</a> •
-  <a href="#-introduction">Introduction</a> •
-  <a href="#-features">Features</a> •
-  <a href="#-installation">Installation</a> •
-  <a href="#ℹ-how-to-use">How to use</a> •
-  <a href="#-documentation">Documentation</a> •
-  <a href="#-contribution">Contribution</a>
-</p>
+<br>
+
+  <div align="center" id="user-content-toc">
+    
+  **Table of Contents**
+    <ul>
+      <li><a href="#-join-the-community">Community</a>
+      <li><a href="#sparkling_heart-support-the-project">Support</a>
+      <li><a href="#-introduction">Introduction</a>
+      <li><a href="#-features">Features</a>
+      <li><a href="#-installation">Installation</a>
+      <li><a href="#ℹ-how-to-use">How to use</a>
+      <li><a href="#-documentation">Documentation</a>
+      <li><a href="#-contribution">Contribution</a>
+    </ul>
+  </div>
 
 <br/>
 
