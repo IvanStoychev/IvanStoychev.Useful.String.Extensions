@@ -47,6 +47,7 @@
   | <a href="#-features">🚀 Features</a> |
   | <a href="#-installation">🏗 Installation</a> |
   | <a href="#ℹ-how-to-use">ℹ How to use</a> |
+  | <a href="#-examples">🧨 Examples</a> |
   | <a href="#-documentation">📖 Documentation</a> |
   | <a href="#-contribution">🧙‍ Contribution</a> |
 </div>
@@ -158,22 +159,29 @@ __*Install manually*__
 ----------
 Since the functionality, added by this project, is all extension methods, it would be best to add the using statment "`using IvanStoychev.Useful.String.Extensions;`" to your code, as Intellisense usually doesn't pick it up.
 
-Here are some examples ([using top-level statements][6]):
+<br/>
 
-##### Select an amount of characters from a string
+🧨 Examples
+----------
+
+The following examples use [top-level statements][6].
+
+<br>
+
+<ins>Select an amount of characters from a string, using a substring as a reference</ins>
 
     using IvanStoychev.Useful.String.Extensions;
     
-    string original = "A-1 B-2 C-3";
-    string result = original.Substring("B", 2);
+    string original = "Alice-A Bob-B Clayton-C";
+    string result = original.Substring("Bob", 2);
     Console.WriteLine(result);
     
     // output:
     //
-    // -2
+    // -B
 
 
-##### Select the start/end of a string
+<ins>Select everything up to/after a substring</ins>
 
     using IvanStoychev.Useful.String.Extensions;
     
@@ -189,7 +197,7 @@ Here are some examples ([using top-level statements][6]):
     // button
 
 
-##### Select everything between two substrings
+<ins>Select everything between two substrings</ins>
 
     using IvanStoychev.Useful.String.Extensions;
     
