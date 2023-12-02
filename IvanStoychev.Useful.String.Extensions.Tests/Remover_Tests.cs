@@ -302,7 +302,7 @@ public class Remover_Tests
     #region Data
 
 	[Theory]
-    [InlineData("RemoveMeRemoveMe text RemoveMeRemoveMe", "RemoveMe", " text ")]
+    [InlineData("RemoveMe removeMe text removeMe RemoveMe", "RemoveMe", " removeMe text removeMe ")]
     [InlineData("RemoveMeRemoveMe text Removeme", "RemoveMe", " text Removeme")]
     [InlineData("removeme text RemoveMeRemoveMe", "RemoveMe", "removeme text ")]
     
@@ -317,12 +317,12 @@ public class Remover_Tests
     #region Data
 
 	[Theory]
-    [InlineData("RemoveMeRemoveMe text RemoveMeRemoveMe", "RemoveMe", " text ")]
+    [InlineData("RemoveMe removeMe text removeMe RemoveMe", "RemoveMe", " removeMe text removeMe ")]
     [InlineData("RemoveMeRemoveMe text Removeme", "RemoveMe", " text Removeme")]
     [InlineData("removeme text RemoveMeRemoveMe", "RemoveMe", "removeme text ")]
-    
-	#endregion Data
-	public void Trim_CultureInfo_ConsiderCase_DontTrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
+
+    #endregion Data
+    public void Trim_CultureInfo_ConsiderCase_DontTrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
     {
         string actual = testString.Trim(stringToRemove, false, CultureInfo.InvariantCulture, false);
 
@@ -332,7 +332,7 @@ public class Remover_Tests
     #region Data
 
 	[Theory]
-    [InlineData("RemoveMeRemoveMe text RemoveMeRemoveMe", "RemoveMe", "text")]
+    [InlineData("RemoveMe removeMe text removeMe RemoveMe", "RemoveMe", "removeMe text removeMe")]
     [InlineData("RemoveMeRemoveMe text Removeme", "RemoveMe", "text Removeme")]
     [InlineData("removeme text RemoveMeRemoveMe", "RemoveMe", "removeme text")]
 
@@ -513,16 +513,16 @@ public class Remover_Tests
     #region Data
 
 	[Theory]
-    [InlineData(" RemoveMe text RemoveMe", "dummy", "RemoveMe text RemoveMe")]
-    [InlineData("RemoveMe text ", "", "RemoveMe text")]
-    [InlineData(" text RemoveMe ", null, "text RemoveMe")]
-    
-	#endregion Data
-	public void Trim_CultureInfo_ConsiderCase_TrimWhitespace_Fail(string testString, string stringToRemove, string expectedString)
+    [InlineData("RemoveMe text RemoveMe", "dummy")]
+    [InlineData("RemoveMe text", "")]
+    [InlineData("text RemoveMe", null)]
+
+    #endregion Data
+    public void Trim_CultureInfo_ConsiderCase_TrimWhitespace_Fail(string testString, string stringToRemove)
     {
         string actual = testString.Trim(stringToRemove, false, CultureInfo.InvariantCulture, true);
 
-        Assert.Equal(expectedString, actual);
+        Assert.Equal(testString, actual);
     }
 
     #endregion Fail
@@ -635,12 +635,12 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData("encyclopædiaencyclopædia Case Archæology ", "encyclopædia", " Case Archæology ")]
-    [InlineData("Case encyclopædia Archæology", "Case", " encyclopædia Archæology")]
-    [InlineData("Archæology Archæology encyclopædia Case ", "Archæology ", "encyclopædia Case ")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology ", "EncycLopædia", " Case Archæology ")]
+    [InlineData("Case encyclopædia Archæology", "casE", " encyclopædia Archæology")]
+    [InlineData("Archæology Archæology encyclopædia Case ", "archæoLOgy ", "encyclopædia Case ")]
 
     #endregion Data
-    public void TrimStart_CultureInfo_DefaultWhitespaceTrim_Pass(string testString, string stringToRemove, string expectedString)
+    public void TrimStart_CultureInfo_IgnoreCase_DefaultWhitespaceTrim_Pass(string testString, string stringToRemove, string expectedString)
     {
         string actual = testString.TrimStart(stringToRemove, true, CultureInfo.InvariantCulture);
 
@@ -650,12 +650,12 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData("encyclopædiaencyclopædia Case Archæology ", "encyclopædia", " Case Archæology ")]
-    [InlineData("Case encyclopædia Archæology", "Case", " encyclopædia Archæology")]
-    [InlineData("Archæology Archæology encyclopædia Case ", "Archæology ", "encyclopædia Case ")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology ", "EncyclOpædia", " Case Archæology ")]
+    [InlineData("Case encyclopædia Archæology", "cAse", " encyclopædia Archæology")]
+    [InlineData("Archæology Archæology encyclopædia Case ", "archæoloGy ", "encyclopædia Case ")]
 
     #endregion Data
-    public void TrimStart_CultureInfo_DontTrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
+    public void TrimStart_CultureInfo_IgnoreCase_DontTrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
     {
         string actual = testString.TrimStart(stringToRemove, true, CultureInfo.InvariantCulture, false);
 
@@ -665,20 +665,65 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData("encyclopædiaencyclopædia Case Archæology ", "encyclopædia", "Case Archæology ")]
-    [InlineData("Case encyclopædia Archæology", "Case", "encyclopædia Archæology")]
-    [InlineData("Archæology Archæology encyclopædia Case ", "Archæology ", "encyclopædia Case ")]
+    [InlineData("encyclopædiaencyclopædia Case Archæology ", "enCYclopædia", "Case Archæology ")]
+    [InlineData("Case encyclopædia Archæology", "caSe", "encyclopædia Archæology")]
+    [InlineData("Archæology Archæology encyclopædia Case ", "aRchæolOgy ", "encyclopædia Case ")]
 
     #endregion Data
-    public void TrimStart_CultureInfo_TrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
+    public void TrimStart_CultureInfo_IgnoreCase_TrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
     {
         string actual = testString.TrimStart(stringToRemove, true, CultureInfo.InvariantCulture, true);
 
         Assert.Equal(expectedString, actual);
     }
 
+    #region Data
+
+    [Theory]
+    [InlineData("encyclopædiaEncyclopædia Case Archæology ", "encyclopædia", "Encyclopædia Case Archæology ")]
+    [InlineData("Case case encyclopædia Archæology", "Case", " case encyclopædia Archæology")]
+    [InlineData("Archæology archæology encyclopædia Case ", "Archæology ", "archæology encyclopædia Case ")]
+
+    #endregion Data
+    public void TrimStart_CultureInfo_ConsiderCase_DefaultWhitespaceTrim_Pass(string testString, string stringToRemove, string expectedString)
+    {
+        string actual = testString.TrimStart(stringToRemove, false, CultureInfo.InvariantCulture);
+
+        Assert.Equal(expectedString, actual);
+    }
+
+    #region Data
+
+    [Theory]
+    [InlineData("encyclopædiaEncyclopædia Case Archæology ", "encyclopædia", "Encyclopædia Case Archæology ")]
+    [InlineData("Case case encyclopædia Archæology", "Case", " case encyclopædia Archæology")]
+    [InlineData("Archæology archæology encyclopædia Case ", "Archæology ", "archæology encyclopædia Case ")]
+
+    #endregion Data
+    public void TrimStart_CultureInfo_ConsiderCase_DontTrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
+    {
+        string actual = testString.TrimStart(stringToRemove, false, CultureInfo.InvariantCulture, false);
+
+        Assert.Equal(expectedString, actual);
+    }
+
+    #region Data
+
+    [Theory]
+    [InlineData("encyclopædiaEncyclopædia Case Archæology ", "encyclopædia", "Encyclopædia Case Archæology ")]
+    [InlineData("Case case encyclopædia Archæology", "Case", "case encyclopædia Archæology")]
+    [InlineData("Archæology archæology encyclopædia Case ", "Archæology", "archæology encyclopædia Case ")]
+
+    #endregion Data
+    public void TrimStart_CultureInfo_ConsiderCase_TrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
+    {
+        string actual = testString.TrimStart(stringToRemove, false, CultureInfo.InvariantCulture, true);
+
+        Assert.Equal(expectedString, actual);
+    }
+
     #endregion Pass
-    
+
     #region Fail
 
     #region Data
@@ -776,7 +821,7 @@ public class Remover_Tests
     [InlineData(" Archæology encyclopædia Case ", null)]
 
     #endregion Data
-    public void TrimStart_CultureInfo_DefaultWhitespaceTrim_Fail(string testString, string stringToRemove)
+    public void TrimStart_CultureInfo_IgnoreCase_DefaultWhitespaceTrim_Fail(string testString, string stringToRemove)
     {
         string actual = testString.TrimStart(stringToRemove, true, CultureInfo.InvariantCulture);
 
@@ -791,7 +836,7 @@ public class Remover_Tests
     [InlineData(" Archæology encyclopædia Case ", null)]
 
     #endregion Data
-    public void TrimStart_CultureInfo_DontTrimWhitespace_Fail(string testString, string stringToRemove)
+    public void TrimStart_CultureInfo_IgnoreCase_DontTrimWhitespace_Fail(string testString, string stringToRemove)
     {
         string actual = testString.TrimStart(stringToRemove, true, CultureInfo.InvariantCulture, false);
 
@@ -806,9 +851,54 @@ public class Remover_Tests
     [InlineData("Archæology encyclopædia Case ", null)]
 
     #endregion Data
-    public void TrimStart_CultureInfo_TrimWhitespace_Fail(string testString, string stringToRemove)
+    public void TrimStart_CultureInfo_IgnoreCase_TrimWhitespace_Fail(string testString, string stringToRemove)
     {
         string actual = testString.TrimStart(stringToRemove, true, CultureInfo.InvariantCulture, true);
+
+        Assert.Equal(testString, actual);
+    }
+
+    #region Data
+
+    [Theory]
+    [InlineData("encyclopædia Case Archæology ", "dummy")]
+    [InlineData(" Case encyclopædia Archæology", "")]
+    [InlineData(" Archæology encyclopædia Case ", null)]
+
+    #endregion Data
+    public void TrimStart_CultureInfo_ConsiderCase_DefaultWhitespaceTrim_Fail(string testString, string stringToRemove)
+    {
+        string actual = testString.TrimStart(stringToRemove, false, CultureInfo.InvariantCulture);
+
+        Assert.Equal(testString, actual);
+    }
+
+    #region Data
+
+    [Theory]
+    [InlineData("encyclopædia Case Archæology ", "dummy")]
+    [InlineData(" Case encyclopædia Archæology", "")]
+    [InlineData(" Archæology encyclopædia Case ", null)]
+
+    #endregion Data
+    public void TrimStart_CultureInfo_ConsiderCase_DontTrimWhitespace_Fail(string testString, string stringToRemove)
+    {
+        string actual = testString.TrimStart(stringToRemove, false, CultureInfo.InvariantCulture, false);
+
+        Assert.Equal(testString, actual);
+    }
+
+    #region Data
+
+    [Theory]
+    [InlineData("encyclopædia Case Archæology ", "dummy")]
+    [InlineData("Case encyclopædia Archæology", "")]
+    [InlineData("Archæology encyclopædia Case ", null)]
+
+    #endregion Data
+    public void TrimStart_CultureInfo_ConsiderCase_TrimWhitespace_Fail(string testString, string stringToRemove)
+    {
+        string actual = testString.TrimStart(stringToRemove, false, CultureInfo.InvariantCulture, true);
 
         Assert.Equal(testString, actual);
     }
@@ -923,12 +1013,12 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", " encyclopædia Case ")]
-    [InlineData("encyclopædia Archæology Case Case", " Case", "encyclopædia Archæology")]
-    [InlineData(" Archæology Case encyclopædia", "encyclopædia", " Archæology Case ")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "archæology", " encyclopædia Case ")]
+    [InlineData("encyclopædia Archæology Case Case", " case", "encyclopædia Archæology")]
+    [InlineData(" Archæology Case encyclopædia", "Encyclopædia", " Archæology Case ")]
 
     #endregion Data
-    public void TrimEnd_CultureInfo_DefaultWhitespaceTrim_Pass(string testString, string stringToRemove, string expectedString)
+    public void TrimEnd_CultureInfo_IgnoreCase_DefaultWhitespaceTrim_Pass(string testString, string stringToRemove, string expectedString)
     {
         string actual = testString.TrimEnd(stringToRemove, true, CultureInfo.InvariantCulture);
 
@@ -938,12 +1028,12 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", " encyclopædia Case ")]
-    [InlineData("encyclopædia Archæology Case Case", " Case", "encyclopædia Archæology")]
-    [InlineData(" Archæology Case encyclopædia", "encyclopædia", " Archæology Case ")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "archæology", " encyclopædia Case ")]
+    [InlineData("encyclopædia Archæology Case Case", " case", "encyclopædia Archæology")]
+    [InlineData(" Archæology Case encyclopædia", "Encyclopædia", " Archæology Case ")]
 
     #endregion Data
-    public void TrimEnd_CultureInfo_DontTrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
+    public void TrimEnd_CultureInfo_IgnoreCase_DontTrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
     {
         string actual = testString.TrimEnd(stringToRemove, true, CultureInfo.InvariantCulture, false);
 
@@ -953,14 +1043,59 @@ public class Remover_Tests
     #region Data
 
     [Theory]
-    [InlineData(" encyclopædia Case ArchæologyArchæology", "Archæology", " encyclopædia Case")]
-    [InlineData("encyclopædia Archæology Case Case", " Case", "encyclopædia Archæology")]
-    [InlineData(" Archæology Case encyclopædia", "encyclopædia", " Archæology Case")]
+    [InlineData(" encyclopædia Case ArchæologyArchæology", "archæology", " encyclopædia Case")]
+    [InlineData("encyclopædia Archæology Case Case", " case", "encyclopædia Archæology")]
+    [InlineData(" Archæology Case encyclopædia", "Encyclopædia", " Archæology Case")]
 
     #endregion Data
-    public void TrimEnd_CultureInfo_TrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
+    public void TrimEnd_CultureInfo_IgnoreCase_TrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
     {
         string actual = testString.TrimEnd(stringToRemove, true, CultureInfo.InvariantCulture, true);
+
+        Assert.Equal(expectedString, actual);
+    }
+
+    #region Data
+
+    [Theory]
+    [InlineData(" encyclopædia Case archæologyArchæology", "Archæology", " encyclopædia Case archæology")]
+    [InlineData("encyclopædia Archæology case  Case", " Case", "encyclopædia Archæology case ")]
+    [InlineData(" Archæology Case Encyclopædia encyclopædia", "encyclopædia", " Archæology Case Encyclopædia ")]
+
+    #endregion Data
+    public void TrimEnd_CultureInfo_ConsiderCase_DefaultWhitespaceTrim_Pass(string testString, string stringToRemove, string expectedString)
+    {
+        string actual = testString.TrimEnd(stringToRemove, false, CultureInfo.InvariantCulture);
+
+        Assert.Equal(expectedString, actual);
+    }
+
+    #region Data
+
+    [Theory]
+    [InlineData(" encyclopædia Case archæologyArchæology", "Archæology", " encyclopædia Case archæology")]
+    [InlineData("encyclopædia Archæology case  Case", " Case", "encyclopædia Archæology case ")]
+    [InlineData(" Archæology Case Encyclopædia encyclopædia", "encyclopædia", " Archæology Case Encyclopædia ")]
+
+    #endregion Data
+    public void TrimEnd_CultureInfo_ConsiderCase_DontTrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
+    {
+        string actual = testString.TrimEnd(stringToRemove, false, CultureInfo.InvariantCulture, false);
+
+        Assert.Equal(expectedString, actual);
+    }
+
+    #region Data
+
+    [Theory]
+    [InlineData(" encyclopædia Case archæologyArchæology", "Archæology", " encyclopædia Case archæology")]
+    [InlineData("encyclopædia Archæology case  Case", " Case", "encyclopædia Archæology case")]
+    [InlineData(" Archæology Case Encyclopædia encyclopædia", "encyclopædia", " Archæology Case Encyclopædia")]
+
+    #endregion Data
+    public void TrimEnd_CultureInfo_ConsiderCase_TrimWhitespace_Pass(string testString, string stringToRemove, string expectedString)
+    {
+        string actual = testString.TrimEnd(stringToRemove, false, CultureInfo.InvariantCulture, true);
 
         Assert.Equal(expectedString, actual);
     }
@@ -1064,7 +1199,7 @@ public class Remover_Tests
     [InlineData(" Archæology encyclopædia Case ", null)]
 
     #endregion Data
-    public void TrimEnd_CultureInfo_DefaultWhitespaceTrim_Fail(string testString, string stringToRemove)
+    public void TrimEnd_CultureInfo_IgnoreCase_DefaultWhitespaceTrim_Fail(string testString, string stringToRemove)
     {
         string actual = testString.TrimEnd(stringToRemove, true, CultureInfo.InvariantCulture);
 
@@ -1079,7 +1214,7 @@ public class Remover_Tests
     [InlineData(" Archæology encyclopædia Case ", null)]
 
     #endregion Data
-    public void TrimEnd_CultureInfo_DontTrimWhitespace_Fail(string testString, string stringToRemove)
+    public void TrimEnd_CultureInfo_IgnoreCase_DontTrimWhitespace_Fail(string testString, string stringToRemove)
     {
         string actual = testString.TrimEnd(stringToRemove, true, CultureInfo.InvariantCulture, false);
 
@@ -1094,11 +1229,56 @@ public class Remover_Tests
     [InlineData(" Archæology encyclopædia Case ", null, " Archæology encyclopædia Case")]
 
     #endregion Data
-    public void TrimEnd_CultureInfo_TrimWhitespace_Fail(string testString, string stringToRemove, string expectedString)
+    public void TrimEnd_CultureInfo_IgnoreCase_TrimWhitespace_Fail(string testString, string stringToRemove, string expectedString)
     {
         string actual = testString.TrimEnd(stringToRemove, true, CultureInfo.InvariantCulture, true);
 
         Assert.Equal(expectedString, actual);
+    }
+
+    #region Data
+
+    [Theory]
+    [InlineData("encyclopædia Case Archæology ", "dummy")]
+    [InlineData(" Case encyclopædia Archæology", "")]
+    [InlineData(" Archæology encyclopædia Case ", null)]
+
+    #endregion Data
+    public void TrimEnd_CultureInfo_ConsiderCase_DefaultWhitespaceTrim_Fail(string testString, string stringToRemove)
+    {
+        string actual = testString.TrimEnd(stringToRemove, false, CultureInfo.InvariantCulture);
+
+        Assert.Equal(testString, actual);
+    }
+
+    #region Data
+
+    [Theory]
+    [InlineData("encyclopædia Case Archæology ", "dummy")]
+    [InlineData(" Case encyclopædia Archæology", "")]
+    [InlineData(" Archæology encyclopædia Case ", null)]
+
+    #endregion Data
+    public void TrimEnd_CultureInfo_ConsiderCase_DontTrimWhitespace_Fail(string testString, string stringToRemove)
+    {
+        string actual = testString.TrimEnd(stringToRemove, false, CultureInfo.InvariantCulture, false);
+
+        Assert.Equal(testString, actual);
+    }
+
+    #region Data
+
+    [Theory]
+    [InlineData("encyclopædia Case Archæology", "dummy")]
+    [InlineData(" Case encyclopædia Archæology", "")]
+    [InlineData(" Archæology encyclopædia Case", null)]
+
+    #endregion Data
+    public void TrimEnd_CultureInfo_ConsiderCase_TrimWhitespace_Fail(string testString, string stringToRemove)
+    {
+        string actual = testString.TrimEnd(stringToRemove, false, CultureInfo.InvariantCulture, true);
+
+        Assert.Equal(testString, actual);
     }
 
     #endregion Fail
