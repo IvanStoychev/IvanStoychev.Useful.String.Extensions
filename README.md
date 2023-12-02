@@ -34,34 +34,47 @@
 <p align="center">A collection of methods designed to make your life easier.</p>
 <p align="center">This repo uses <a href="https://semver.org/#semantic-versioning-200">Semantic Versioning 2.0.0</a></p>
 
-<p align="center">
-  <a href="#-join-the-community">Community</a> •
-  <a href="#sparkling_heart-support-the-project">Support</a> •
-  <a href="#-introduction">Introduction</a> •
-  <a href="#-features">Features</a> •
-  <a href="#-installation">Installation</a> •
-  <a href="#ℹ-how-to-use">How to use</a> •
-  <a href="#-documentation">Documentation</a> •
-  <a href="#-contribution">Contribution</a>
-</p>
+<br>
+
+<div align="center" id="user-content-toc">
+  
+  | **Table of Contents** |
+  | --------------------- |
+  | <a href="#-join-the-community">💬 Community</a> |
+  | <a href="#sparkling_heart-support-the-project">:sparkling_heart: Support</a> |
+  | <a href="#-introduction">📣 Introduction</a> |
+  | <a href="#-demo">🎬 Demo</a> |
+  | <a href="#-features">🚀 Features</a> |
+  | <a href="#-installation">🏗 Installation</a> |
+  | <a href="#ℹ-how-to-use">ℹ How to use</a> |
+  | <a href="#-examples">🧨 Examples</a> |
+  | <a href="#-documentation">📖 Documentation</a> |
+  | <a href="#-contribution">🧙‍ Contribution</a> |
+</div>
 
 <br/>
 
 💬 Join the community
 ------------
+<div align="center">
+
 [![Follow @ivan_stoychev](https://img.shields.io/twitter/url?label=Follow%20%40ivan_stoychev&style=social&url=https%3A%2F%2Ftwitter.com%2Fintent%2Ffollow%3Fscreen_name%3Divan_stoychev)](https://twitter.com/intent/follow?screen_name=ivan_stoychev)
 <br>[![GitQ](https://gitq.com/badge.svg)](https://gitq.com/IvanStoychev/IvanStoychev.Useful.String.Extensions)
 <br>[![Join the chat at https://gitter.im/IvanStoychev-Useful-String-Extensions/community](https://badges.gitter.im/IvanStoychev-Useful-String-Extensions/community.svg)](https://gitter.im/IvanStoychev-Useful-String-Extensions/)
 <br>[![Share your thoughts in https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/discussions](https://img.shields.io/badge/GitHub-Discussions-white.svg?style=social&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMTIgMTIgNDAgNDAiPjxwYXRoIGZpbGw9IiMzMzMzMzMiIGQ9Ik0zMiwxMy40Yy0xMC41LDAtMTksOC41LTE5LDE5YzAsOC40LDUuNSwxNS41LDEzLDE4YzEsMC4yLDEuMy0wLjQsMS4zLTAuOWMwLTAuNSwwLTEuNywwLTMuMiBjLTUuMywxLjEtNi40LTIuNi02LjQtMi42QzIwLDQxLjYsMTguOCw0MSwxOC44LDQxYy0xLjctMS4yLDAuMS0xLjEsMC4xLTEuMWMxLjksMC4xLDIuOSwyLDIuOSwyYzEuNywyLjksNC41LDIuMSw1LjUsMS42IGMwLjItMS4yLDAuNy0yLjEsMS4yLTIuNmMtNC4yLTAuNS04LjctMi4xLTguNy05LjRjMC0yLjEsMC43LTMuNywyLTUuMWMtMC4yLTAuNS0wLjgtMi40LDAuMi01YzAsMCwxLjYtMC41LDUuMiwyIGMxLjUtMC40LDMuMS0wLjcsNC44LTAuN2MxLjYsMCwzLjMsMC4yLDQuNywwLjdjMy42LTIuNCw1LjItMiw1LjItMmMxLDIuNiwwLjQsNC42LDAuMiw1YzEuMiwxLjMsMiwzLDIsNS4xYzAsNy4zLTQuNSw4LjktOC43LDkuNCBjMC43LDAuNiwxLjMsMS43LDEuMywzLjVjMCwyLjYsMCw0LjYsMCw1LjJjMCwwLjUsMC40LDEuMSwxLjMsMC45YzcuNS0yLjYsMTMtOS43LDEzLTE4LjFDNTEsMjEuOSw0Mi41LDEzLjQsMzIsMTMuNHoiLz48L3N2Zz4%3D)](https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/discussions)
+</div>
 
 <br/>
 
 :sparkling_heart: Support the project
 ------------
+<div align="center">
+
 [![Support me on Patreon](https://img.shields.io/badge/Patreon-support-orange)](https://www.patreon.com/IvanStoychev)
 <br>[![Buy me a ko-fi](https://img.shields.io/badge/Buy%20me%20a-Ko--fi-green)](https://ko-fi.com/U7U31XQ28)
 <br>[![Sponsor me with PayPal](https://img.shields.io/badge/PayPal-sponsor-blue)](https://www.paypal.com/paypalme/IvanStoychevProjects)
 <br>[![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a-coffee-brown)](https://www.buymeacoffee.com/IvanStoychev)
+</div>
 
 <br/>
 
@@ -71,7 +84,7 @@ This is a collection of string extension methods that I have been in need of man
 
 <br/>
 
-![YouTube](https://i.imgur.com/GqXgzqn.png) Demo
+🎬 Demo
 ------------
 *(Will open in YouTube)*
 
@@ -79,7 +92,7 @@ This is a collection of string extension methods that I have been in need of man
 
 <br/>
 
-📰 Features
+🚀 Features
 ------------
 * [`Substring`][9] methods that use string arguments to determine a substring's position, instead of a starting index.
   * Ex. `"This is the start bla bladdy blah.".Substring("start ", false)` will return `"bla bladdy blah."`, while `"This is the start bla bladdy blah and this is the end.".Substring("start ", "blah", StringInclusionOptions.IncludeNone)` will return `"bla bladdy "`.
@@ -146,22 +159,29 @@ __*Install manually*__
 ----------
 Since the functionality, added by this project, is all extension methods, it would be best to add the using statment "`using IvanStoychev.Useful.String.Extensions;`" to your code, as Intellisense usually doesn't pick it up.
 
-Here are some examples ([using top-level statements][6]):
+<br/>
 
-##### Select an amount of characters from a string
+🧨 Examples
+----------
+
+The following examples use [top-level statements][6].
+
+<br>
+
+<ins>Select an amount of characters from a string, using a substring as a reference</ins>
 
     using IvanStoychev.Useful.String.Extensions;
     
-    string original = "A-1 B-2 C-3";
-    string result = original.Substring("B", 2);
+    string original = "Alice-A Bob-B Clayton-C";
+    string result = original.Substring("Bob", 2);
     Console.WriteLine(result);
     
     // output:
     //
-    // -2
+    // -B
 
 
-##### Select the start/end of a string
+<ins>Select everything up to/after a substring</ins>
 
     using IvanStoychev.Useful.String.Extensions;
     
@@ -177,7 +197,7 @@ Here are some examples ([using top-level statements][6]):
     // button
 
 
-##### Select everything between two substrings
+<ins>Select everything between two substrings</ins>
 
     using IvanStoychev.Useful.String.Extensions;
     
