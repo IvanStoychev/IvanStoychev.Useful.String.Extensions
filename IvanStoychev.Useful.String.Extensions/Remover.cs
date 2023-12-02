@@ -9,7 +9,7 @@ namespace IvanStoychev.Useful.String.Extensions;
 /// <summary>
 /// Contains methods that remove substrings.
 /// </summary>
-public static class Remover
+public static partial class StringExtensions
 {
     /// <summary>
     /// Returns a new string in which all occurrences of the given <paramref name="removeString"/> in the current instance are replaced with <see cref="string.Empty"/>.

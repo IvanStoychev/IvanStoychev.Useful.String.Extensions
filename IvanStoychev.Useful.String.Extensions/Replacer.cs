@@ -7,7 +7,7 @@ namespace IvanStoychev.Useful.String.Extensions;
 /// <summary>
 /// Contains methods that replace given substrings with a new, specified string.
 /// </summary>
-public static class Replacer
+public static partial class StringExtensions
 {
     /// <summary>
     /// Returns a new string in which all occurrences of all members of <paramref name="oldStrings"/>

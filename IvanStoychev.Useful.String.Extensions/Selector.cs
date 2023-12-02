@@ -6,7 +6,7 @@ namespace IvanStoychev.Useful.String.Extensions;
 /// <summary>
 /// Contains methods that select substrings and charaters from strings.
 /// </summary>
-public static class Selector
+public static partial class StringExtensions
 {
     /// <summary>
     /// Retrieves the substring from the start of this instance to the first occurrence of the given <paramref name="endString"/>.

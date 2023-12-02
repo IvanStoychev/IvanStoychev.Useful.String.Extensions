@@ -7,7 +7,7 @@ namespace IvanStoychev.Useful.String.Extensions;
 /// <summary>
 /// Contains methods that remove all but a specified set of characters from a string.
 /// </summary>
-public static class Keeper
+public static partial class StringExtensions
 {
     /// <summary>
     /// Uses a regular expression to return a new string containing all occurrences of all unicode digits (in any script) in the current instance.
