@@ -12,7 +12,7 @@
     <PackageTags>c#, useful, string, extension, efficient</PackageTags>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>Nuget Icon.png</PackageIcon>
-    <Copyright>Copyright (c) 2022 Ivan Stoychev. All rights reserved.</Copyright>
+    <Copyright>Copyright (c) 2023 Ivan Stoychev. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageReleaseNotes>
@@ -23,12 +23,14 @@
 		🟡 - Altered existing feature
 		
 		______________________________________
-		🟢 Updated to .Net 7.
+		💜 Fixed some test names, test data and added missing tests for "TrimStart" and "TrimEnd" methods.
+        🟢 Updated library to .Net 8.
+        🟡 Changed library class structure to additionally facilitate users. Now all classes are partial and named "StringExtensions" to allow users to have their own classes using the old class names. File names remain unchanged for ease of structural navigation.
 	</PackageReleaseNotes>
-    <Version>4.0.0</Version>
+    <Version>5.0.0</Version>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <AssemblyVersion>4.0.0.0</AssemblyVersion>
-    <FileVersion>4.0.0.0</FileVersion>
+    <AssemblyVersion>5.0.0.0</AssemblyVersion>
+    <FileVersion>5.0.0.0</FileVersion>
     <PackageIconUrl />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>IvanStoychev.Useful.String.Extensions</PackageId>
