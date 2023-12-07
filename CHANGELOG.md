@@ -13,6 +13,15 @@ Legend:
 <br>🟡 - Altered existing feature
 <br>⚪ - Note, not directly relating to the project functionality
 
+---
+
+## [5.0.0] - 2nd Dec 2023
+
+💜 Fixed some test names, test data and added missing tests for "TrimStart" and "TrimEnd" methods.
+🟢 Updated library to .Net 8.
+
+🟡 Changed library class structure to additionally facilitate users. Now all classes are partial and named "StringExtensions" to allow users to have their own classes using the old class names. File names remain unchanged for ease of structural navigation.
+
 ## [4.0.0] - 17th March 2023
 
 🟢 Updated to .Net 7
