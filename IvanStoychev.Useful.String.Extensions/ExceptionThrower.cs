@@ -50,6 +50,19 @@ static class ExceptionThrower
         => throw new ArgumentException($"The collection argument given for parameter \"{collectionParameterName}\" of method \"{callingMethodName}\" contains no elements.", collectionParameterName);
 
     /// <summary>
+    /// Throws an <see cref="ArgumentException"/> that informs the user that the value of <paramref name="argument"/> does not exist in enum <paramref name="enumName"/>.
+    /// </summary>
+    /// <param name="argument">Value not found in enum <paramref name="enumName"/>.</param>
+    /// <param name="parameterName">Name of the parameter whose argument is <paramref name="argument"/>.</param>
+    /// <param name="enumName">Name of the enum that does not contain <paramref name="argument"/>.</param>
+    /// <param name="callingMethodName">Name of the method that throws this exception.</param>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="argument"/> does not exist in <paramref name="enumName"/>.
+    /// </exception>
+    internal static void Throw_ArgumentException_EnumValueInvalid(object argument, string parameterName, string enumName, string callingMethodName)
+        => throw new ArgumentException($"The argument \"{argument}\" given for parameter \"{parameterName}\" of method \"{callingMethodName}\" does not exist in enum \"{enumName}\"");
+
+    /// <summary>
     /// Throws an <see cref="ArgumentNullException"/> that informs the user the argument of <paramref name="parameterName"/> was <see langword="null"/>.
     /// </summary>
     /// <param name="parameterName">Name of the parameter in the original calling method.</param>
