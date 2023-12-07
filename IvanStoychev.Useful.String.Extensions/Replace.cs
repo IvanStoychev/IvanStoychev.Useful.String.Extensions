@@ -4,15 +4,13 @@ using System.Diagnostics.Contracts;
 
 namespace IvanStoychev.Useful.String.Extensions;
 
-/// <summary>
-/// Contains methods that replace given substrings with a new, specified string.
-/// </summary>
 public static partial class StringExtensions
 {
     /// <summary>
     /// Returns a new string in which all occurrences of all members of <paramref name="oldStrings"/>
     /// in the current instance are replaced with the given <paramref name="newString"/>, using the provided comparison type.
     /// </summary>
+    /// <param name="str">String to operate on.</param>
     /// <param name="newString">The string to replace all occurances of all members of <paramref name="oldStrings"/>.</param>
     /// <param name="oldStrings">Collection of strings to be replaced.</param>
     /// <param name="stringComparison">Comparison rules to use for the replacement.</param>
@@ -22,12 +20,12 @@ public static partial class StringExtensions
     [Pure]
     public static string Replace(this string str, string newString, IEnumerable<string> oldStrings, StringComparison stringComparison = StringComparison.CurrentCulture)
     {
-        Validate.NullArgument(oldStrings);
+        Validate.NotNull(oldStrings);
         Validate.IEnumNotEmpty(oldStrings);
 
         foreach (var item in oldStrings)
         {
-            Validate.NullMember(item, nameof(oldStrings));
+            Validate.NotNullMember(item, nameof(oldStrings));
             Validate.EmptyStringMember(item, nameof(oldStrings));
             str = str.Replace(item, newString, stringComparison);
         }
