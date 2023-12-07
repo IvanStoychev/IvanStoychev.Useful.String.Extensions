@@ -68,7 +68,7 @@ static class ExceptionThrower
     /// <exception cref="ArgumentNullException">
     /// <paramref name="parameterName"/> is <see langword="null"/>.
     /// </exception>
-    internal static void Throw_ArgumentNullMemberException(string parameterName, string callingMethodName)
+    internal static void Throw_ArgumentNullException_CollectionMember(string parameterName, string callingMethodName)
         => throw new ArgumentNullException(parameterName, $"A member of the collection argument given for parameter \"{parameterName}\" of method \"{callingMethodName}\" was null.");
 
     /// <summary>

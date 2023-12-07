@@ -185,7 +185,7 @@ static class Validate
     internal static void NullMember(object collectionMember, string collectionParameterName, [CallerMemberName] string callingMethodName = null)
     {
         if (collectionMember is null)
-            ExceptionThrower.Throw_ArgumentNullMemberException(collectionParameterName, callingMethodName);
+            ExceptionThrower.Throw_ArgumentNullException_CollectionMember(collectionParameterName, callingMethodName);
     }
 
     /// <summary>
