@@ -113,6 +113,24 @@ static class Validate
     }
 
     /// <summary>
+    /// Checks if the given <paramref name="value"/> exists in the <typeparamref name="T"/> enum.
+    /// </summary>
+    /// <typeparam name="T">Enum against whom to perform the check.</typeparam>
+    /// <param name="value">Value believed to be one of the members of <typeparamref name="T"/>.</param>
+    /// <param name="parameterName">Name of the parameter in the method that does this validation.</param>
+    /// <param name="callingMethodName">Name of the method that does this validation.</param>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="value"/> does not exist in <typeparamref name="T"/>.
+    /// </exception>
+    internal static void EnumContainsValue<T>(object value, [CallerArgumentExpression("value")] string parameterName = null, [CallerMemberName] string callingMethodName = null) where T: Enum
+    {
+        var valueIsValid = Enum.IsDefined(typeof(T), value);
+
+        if (!valueIsValid)
+            ExceptionThrower.Throw_ArgumentException_EnumValueInvalid(value, parameterName, typeof(T).Name, callingMethodName);
+    }
+
+    /// <summary>
     /// Checks if the given <paramref name="ienum"/> contains any members and throws an <see cref="ArgumentException"/> if it doesn't.
     /// </summary>
     /// <param name="ienum">An <see cref="IEnumerable{T}"/> to be checked if it is empty or not.</param>
