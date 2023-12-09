@@ -19,7 +19,7 @@ static class Validate
     /// <exception cref="ArgumentException">
     /// <paramref name="argument"/> is the empty string ("").
     /// </exception>
-    internal static void EmptyString(string argument, [CallerArgumentExpression("argument")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
+    internal static void NotEmptyString(string argument, [CallerArgumentExpression("argument")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
     {
         if (argument == string.Empty)
             ExceptionThrower.Throw_ArgumentException_EmptyString(parameterName, callingMethodName);
@@ -139,7 +139,7 @@ static class Validate
     /// <exception cref="ArgumentException">
     /// <paramref name="ienum"/> has no elements.
     /// </exception>
-    internal static void IEnumNotEmpty(IEnumerable<string> ienum, [CallerArgumentExpression("ienum")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
+    internal static void IEnumNotEmpty<T>(IEnumerable<T> ienum, [CallerArgumentExpression("ienum")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
     {
         if (!ienum.Any())
             ExceptionThrower.Throw_ArgumentException_EmptyCollection(parameterName, callingMethodName);
@@ -185,7 +185,7 @@ static class Validate
     /// <exception cref="ArgumentNullException">
     /// <paramref name="argument"/> is null.
     /// </exception>
-    internal static void NullArgument(object argument, [CallerArgumentExpression("argument")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
+    internal static void NotNull(object argument, [CallerArgumentExpression("argument")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
     {
         if (argument is null)
             ExceptionThrower.Throw_ArgumentNullException(parameterName, callingMethodName);
@@ -200,7 +200,7 @@ static class Validate
     /// <exception cref="ArgumentNullException">
     /// <paramref name="collectionMember"/> is null.
     /// </exception>
-    internal static void NullMember(object collectionMember, string collectionParameterName, [CallerMemberName] string callingMethodName = null)
+    internal static void NotNullMember(object collectionMember, string collectionParameterName, [CallerMemberName] string callingMethodName = null)
     {
         if (collectionMember is null)
             ExceptionThrower.Throw_ArgumentNullException_CollectionMember(collectionParameterName, callingMethodName);
