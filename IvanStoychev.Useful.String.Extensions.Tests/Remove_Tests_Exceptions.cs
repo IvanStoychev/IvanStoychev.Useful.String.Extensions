@@ -4,7 +4,7 @@ using Xunit;
 
 namespace IvanStoychev.Useful.String.Extensions.Tests;
 
-public class Remover_Tests_Exceptions
+public class Remove_Tests_Exceptions
 {
     #region Remove(this string str, string removeString, StringComparison stringComparison = StringComparison.CurrentCulture)
 
