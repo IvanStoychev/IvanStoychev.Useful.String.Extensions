@@ -2,7 +2,7 @@
 
 namespace IvanStoychev.Useful.String.Extensions.Tests;
 
-public class Selector_Tests
+public class Substring_Tests
 {
     [Theory]
     [InlineData("His true character is starting to show through.", "His true character is ")]
