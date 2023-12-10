@@ -4,7 +4,7 @@ using Xunit;
 
 namespace IvanStoychev.Useful.String.Extensions.Tests;
 
-public class Replacer_Tests
+public class Replace_Tests
 {
     [Theory, MemberData(nameof(Data_Replace_DefaultComparison_Pass))]
     public void Replace_DefaultComparison_Pass(string testString, string newString, IEnumerable<string> oldStrings, string expectedString)
