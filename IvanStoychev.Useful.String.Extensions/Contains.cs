@@ -23,6 +23,7 @@ public static partial class StringExtensions
     public static bool Contains(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
     {
         Validate.NotNull(keywords);
+        Validate.IEnumNotEmpty(keywords);
 
         foreach (var word in keywords)
         {
@@ -50,6 +51,7 @@ public static partial class StringExtensions
     public static bool Contains(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
     {
         Validate.NotNull(keychars);
+        Validate.IEnumNotEmpty(keychars);
 
         foreach (var character in keychars)
             if (str.Contains(character, comparison))
@@ -77,6 +79,7 @@ public static partial class StringExtensions
     public static bool ContainsAll(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
     {
         Validate.NotNull(keywords);
+        Validate.IEnumNotEmpty(keywords);
 
         foreach (var word in keywords)
         {
@@ -104,6 +107,7 @@ public static partial class StringExtensions
     public static bool ContainsAll(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
     {
         Validate.NotNull(keychars);
+        Validate.IEnumNotEmpty(keychars);
 
         foreach (var character in keychars)
             if (!str.Contains(character, comparison))
