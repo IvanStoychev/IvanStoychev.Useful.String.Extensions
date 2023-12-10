@@ -3,7 +3,7 @@ using Xunit;
 
 namespace IvanStoychev.Useful.String.Extensions.Tests;
 
-public class Replacer_Tests_Exceptions
+public class Replace_Tests_Exceptions
 {
     [Fact]
     public void Replace_ArgumentException()
