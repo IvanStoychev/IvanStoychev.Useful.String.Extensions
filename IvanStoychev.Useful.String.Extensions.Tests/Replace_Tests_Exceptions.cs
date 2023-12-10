@@ -8,7 +8,7 @@ public class Replace_Tests_Exceptions
     [Fact]
     public void Replace_ArgumentException()
     {
-        string[] oldStrings = new[] { "asd", "", "asd" };
+        string[] oldStrings = ["asd", "", "asd"];
         string expectedMessage = "A member of the collection given for parameter \"oldStrings\" of method \"Replace\" is the empty string (\"\"). (Parameter 'oldStrings')";
 
         void testAction() => "".Replace("", oldStrings);
@@ -32,7 +32,7 @@ public class Replace_Tests_Exceptions
     [Fact]
     public void Replace_ArgumentNullException_Member()
     {
-        string[] oldStrings = { "asd", null };
+        string[] oldStrings = ["asd", null];
         string expectedMessage = "A member of the collection argument given for parameter \"oldStrings\" of method \"Replace\" was null. (Parameter 'oldStrings')";
 
         void testAction() => "".Replace("", oldStrings);

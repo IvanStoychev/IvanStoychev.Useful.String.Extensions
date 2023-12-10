@@ -23,7 +23,7 @@ public class Contains_Tests_Exceptions
     [Theory, MemberData(nameof(Data_StringComparison_AllValues))]
     public void Contains_IEnumString_NullMember(StringComparison stringComparison)
     {
-        string[] keywords = { "asd", null };
+        string[] keywords = ["asd", null];
         string expectedMessage = "A member of the collection argument given for parameter \"keywords\" of method \"Contains\" was null. (Parameter 'keywords')";
 
         void testAction() => "".ContainsAny(keywords, stringComparison);
@@ -55,11 +55,11 @@ public class Contains_Tests_Exceptions
     public static IEnumerable<object[]> Data_StringComparison_AllValues => new[]
             {
                 new object[] { GlobalVariables.CurrentCulture },
-                new object[] { GlobalVariables.CurrentCultureIgnoreCase },
-                new object[] { GlobalVariables.InvariantCulture },
-                new object[] { GlobalVariables.InvariantCultureIgnoreCase },
-                new object[] { GlobalVariables.Ordinal },
-                new object[] { GlobalVariables.OrdinalIgnoreCase }
+                [GlobalVariables.CurrentCultureIgnoreCase],
+                [GlobalVariables.InvariantCulture],
+                [GlobalVariables.InvariantCultureIgnoreCase],
+                [GlobalVariables.Ordinal],
+                [GlobalVariables.OrdinalIgnoreCase]
             };
 
     #endregion IEnumerable test data
