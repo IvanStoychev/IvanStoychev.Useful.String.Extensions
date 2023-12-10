@@ -4,7 +4,7 @@ using Xunit;
 
 namespace IvanStoychev.Useful.String.Extensions.Tests;
 
-public class Comparer_Tests_Exceptions
+public class Contains_Tests_Exceptions
 {
     #region bool Contains(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
 
