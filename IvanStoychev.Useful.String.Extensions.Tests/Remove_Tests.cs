@@ -5,7 +5,7 @@ using Xunit;
 
 namespace IvanStoychev.Useful.String.Extensions.Tests;
 
-public class Remover_Tests
+public class Remove_Tests
 {
     #region public static string Remove(this string str, string removeString, StringComparison stringComparison = StringComparison.CurrentCulture)
 
