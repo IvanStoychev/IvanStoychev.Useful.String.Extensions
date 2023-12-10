@@ -24,6 +24,7 @@ public static partial class StringExtensions
     {
         Validate.NotNull(keywords);
         Validate.IEnumNotEmpty(keywords);
+        Validate.EnumContainsValue<StringComparison>(comparison);
 
         foreach (var word in keywords)
         {
@@ -52,6 +53,7 @@ public static partial class StringExtensions
     {
         Validate.NotNull(keychars);
         Validate.IEnumNotEmpty(keychars);
+        Validate.EnumContainsValue<StringComparison>(comparison);
 
         foreach (var character in keychars)
             if (str.Contains(character, comparison))
@@ -80,6 +82,7 @@ public static partial class StringExtensions
     {
         Validate.NotNull(keywords);
         Validate.IEnumNotEmpty(keywords);
+        Validate.EnumContainsValue<StringComparison>(comparison);
 
         foreach (var word in keywords)
         {
@@ -108,6 +111,7 @@ public static partial class StringExtensions
     {
         Validate.NotNull(keychars);
         Validate.IEnumNotEmpty(keychars);
+        Validate.EnumContainsValue<StringComparison>(comparison);
 
         foreach (var character in keychars)
             if (!str.Contains(character, comparison))

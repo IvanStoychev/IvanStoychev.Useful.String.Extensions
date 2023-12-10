@@ -14,7 +14,7 @@ public static partial class StringExtensions
     /// </summary>
     /// <param name="str">The instance to remove the string from.</param>
     /// <param name="trimString">The string to remove.</param>
-    /// <param name="stringComparison">One of the enumeration values that determines how the start of the current instance and <paramref name="trimString"/> are compared.</param>
+    /// <param name="comparison">One of the enumeration values that determines how the start of the current instance and <paramref name="trimString"/> are compared.</param>
     /// <param name="trimWhitespace">
     /// <see langword="true"/> to remove any whitespace characters remaining at the start and end of the original instance after <paramref name="trimString"/> is removed.
     /// If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance starts and/or ends with <paramref name="trimString"/>.
@@ -24,13 +24,15 @@ public static partial class StringExtensions
     /// the empty string or not found at the start or end of the current instance the method returns the current instance unchanged.
     /// </returns>
     [Pure]
-    public static string Trim(this string str, string trimString, StringComparison stringComparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
+    public static string Trim(this string str, string trimString, StringComparison comparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
     {
+        Validate.EnumContainsValue<StringComparison>(comparison);
+
         if (string.IsNullOrEmpty(trimString))
             return trimWhitespace ? str.Trim() : str;
 
-        str = str.TrimStart(trimString, stringComparison, trimWhitespace);
-        str = str.TrimEnd(trimString, stringComparison, trimWhitespace);
+        str = str.TrimStart(trimString, comparison, trimWhitespace);
+        str = str.TrimEnd(trimString, comparison, trimWhitespace);
 
         return str;
     }
@@ -71,7 +73,7 @@ public static partial class StringExtensions
     /// </summary>
     /// <param name="str">The instance to remove the string from.</param>
     /// <param name="trimString">The string to remove.</param>
-    /// <param name="stringComparison">One of the enumeration values that determines how the start of the current instance and <paramref name="trimString"/> are compared.</param>
+    /// <param name="comparison">One of the enumeration values that determines how the start of the current instance and <paramref name="trimString"/> are compared.</param>
     /// <param name="trimWhitespace">
     /// <see langword="true"/> to remove any whitespace characters remaining at the start of the original instance after <paramref name="trimString"/> is removed.
     /// If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance starts with <paramref name="trimString"/>.
@@ -82,12 +84,14 @@ public static partial class StringExtensions
     /// current instance the method returns the current instance unchanged.
     /// </returns>
     [Pure]
-    public static string TrimStart(this string str, string trimString, StringComparison stringComparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
+    public static string TrimStart(this string str, string trimString, StringComparison comparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
     {
+        Validate.EnumContainsValue<StringComparison>(comparison);
+        
         if (string.IsNullOrEmpty(trimString))
             return trimWhitespace ? str.TrimStart() : str;
 
-        while (str.StartsWith(trimString, stringComparison))
+        while (str.StartsWith(trimString, comparison))
             str = str.Substring(trimString.Length);
 
         if (trimWhitespace)
@@ -135,7 +139,7 @@ public static partial class StringExtensions
     /// </summary>
     /// <param name="str">The string to remove occurrences from.</param>
     /// <param name="trimString">The string to remove.</param>
-    /// <param name="stringComparison">One of the enumeration values that determines how the end of the current instance and <paramref name="trimString"/> are compared.</param>
+    /// <param name="comparison">One of the enumeration values that determines how the end of the current instance and <paramref name="trimString"/> are compared.</param>
     /// <param name="trimWhitespace">
     /// <see langword="true"/> to remove any whitespace characters remaining at the end of the original instance after <paramref name="trimString"/> is removed.
     /// If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance ends with <paramref name="trimString"/>.
@@ -146,12 +150,14 @@ public static partial class StringExtensions
     /// current instance the method returns the current instance unchanged.
     /// </returns>
     [Pure]
-    public static string TrimEnd(this string str, string trimString, StringComparison stringComparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
+    public static string TrimEnd(this string str, string trimString, StringComparison comparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
     {
+        Validate.EnumContainsValue<StringComparison>(comparison);
+
         if (string.IsNullOrEmpty(trimString))
             return trimWhitespace ? str.TrimEnd() : str;
 
-        while (str.EndsWith(trimString, stringComparison))
+        while (str.EndsWith(trimString, comparison))
             str = str.Substring(0, str.Length - trimString.Length);
 
         if (trimWhitespace)

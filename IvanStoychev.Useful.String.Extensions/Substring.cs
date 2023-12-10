@@ -16,7 +16,7 @@ public static partial class StringExtensions
     /// The number of characters to return. If <paramref name="inclusive"/> is <see langword="true"/> characters will be counted from the end of <paramref name="startString"/>.
     /// </param>
     /// <param name="inclusive">A boolean indicating whether the substring should include the given <paramref name="startString"/>.</param>
-    /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
+    /// <param name="comparison">The comparison rules to use when looking for the strings.</param>
     /// <returns>
     /// A string that is equivalent to the substring of length <paramref name="length"/> that begins at
     /// the first instance of <paramref name="startString"/> in this string instance.
@@ -29,11 +29,12 @@ public static partial class StringExtensions
     /// <paramref name="startString"/> is null.
     /// </exception>
     [Pure]
-    public static string Substring(this string str, string startString, int length, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
+    public static string Substring(this string str, string startString, int length, bool inclusive = false, StringComparison comparison = StringComparison.CurrentCulture)
     {
         Validate.NotNull(startString);
         Validate.LengthIsPositive(length);
-        Validate.SubstringIndex(str, startString, out int startStringIndex, stringComparison);
+        Validate.EnumContainsValue<StringComparison>(comparison);
+        Validate.SubstringIndex(str, startString, out int startStringIndex, comparison);
 
         int availableLength = str.Length - startStringIndex - startString.Length;
         Validate.LengthIsWithinBounds(availableLength, length);
@@ -55,7 +56,7 @@ public static partial class StringExtensions
     /// <param name="stringInclusionOptions">
     /// A <see cref="StringInclusionOptions"/> enum, indicating whether <paramref name="startString"/> and/or <paramref name="endString"/> should be included in the result.
     /// </param>
-    /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
+    /// <param name="comparison">The comparison rules to use when looking for the strings.</param>
     /// <returns>
     /// A string representing the part of the original instance, located between <paramref name="startString"/> and <paramref name="endString"/>.
     /// </returns>
@@ -66,11 +67,12 @@ public static partial class StringExtensions
     /// <paramref name="startString"/> or <paramref name="endString"/> are null.
     /// </exception>
     [Pure]
-    public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions = StringInclusionOptions.IncludeNone, StringComparison stringComparison = StringComparison.CurrentCulture)
+    public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions = StringInclusionOptions.IncludeNone, StringComparison comparison = StringComparison.CurrentCulture)
     {
         Validate.NotNull(startString);
         Validate.NotNull(endString);
-        Validate.EndStringIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, stringComparison);
+        Validate.EnumContainsValue<StringComparison>(comparison);
+        Validate.EndStringIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, comparison);
 
         // This logic is because of how the "endStringIndex" is being calculated.
         switch (stringInclusionOptions)
@@ -106,7 +108,7 @@ public static partial class StringExtensions
     /// <param name="stringInclusionOptions">
     /// A <see cref="StringInclusionOptions"/> enum, indicating whether <paramref name="startString"/> and/or <paramref name="endString"/> should be included in the result.
     /// </param>
-    /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
+    /// <param name="comparison">The comparison rules to use when looking for the strings.</param>
     /// <returns>
     /// A string representing the part of the original instance, located between <paramref name="startString"/> and <paramref name="endString"/>.
     /// </returns>
@@ -117,11 +119,12 @@ public static partial class StringExtensions
     /// <paramref name="startString"/> or <paramref name="endString"/> are null.
     /// </exception>
     [Pure]
-    public static string SubstringLast(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions = StringInclusionOptions.IncludeNone, StringComparison stringComparison = StringComparison.CurrentCulture)
+    public static string SubstringLast(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions = StringInclusionOptions.IncludeNone, StringComparison comparison = StringComparison.CurrentCulture)
     {
         Validate.NotNull(startString);
         Validate.NotNull(endString);
-        Validate.EndStringLastIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, stringComparison);
+        Validate.EnumContainsValue<StringComparison>(comparison);
+        Validate.EndStringLastIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, comparison);
 
         // This logic is because of how the "endStringIndex" is being calculated.
         switch (stringInclusionOptions)
@@ -152,7 +155,7 @@ public static partial class StringExtensions
     /// <param name="str">The instance from which to extract a substring.</param>
     /// <param name="endString">The string which marks the end of the substring.</param>
     /// <param name="inclusive">A boolean indicating whether the substring should include the given <paramref name="endString"/>.</param>
-    /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
+    /// <param name="comparison">The comparison rules to use when looking for the strings.</param>
     /// <returns>
     /// A string representing the part of the original string, located from the start of the original instance to the first occurrence of <paramref name="endString"/>.
     /// </returns>
@@ -163,10 +166,11 @@ public static partial class StringExtensions
     /// <paramref name="endString"/> is null.
     /// </exception>
     [Pure]
-    public static string SubstringStart(this string str, string endString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
+    public static string SubstringStart(this string str, string endString, bool inclusive = false, StringComparison comparison = StringComparison.CurrentCulture)
     {
         Validate.NotNull(endString);
-        Validate.SubstringIndex(str, endString, out int endStringIndex, stringComparison);
+        Validate.EnumContainsValue<StringComparison>(comparison);
+        Validate.SubstringIndex(str, endString, out int endStringIndex, comparison);
 
         endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
 
@@ -179,7 +183,7 @@ public static partial class StringExtensions
     /// <param name="str">The instance from which to extract a substring.</param>
     /// <param name="endString">The string which marks the end of the substring.</param>
     /// <param name="inclusive">A boolean indicating whether the substring should include the given <paramref name="endString"/>.</param>
-    /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
+    /// <param name="comparison">The comparison rules to use when looking for the strings.</param>
     /// <returns>Substring starting from the first occurrence of <paramref name="endString"/> to the end of the original string.</returns>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="endString"/> is not found in the original instance.
@@ -188,10 +192,11 @@ public static partial class StringExtensions
     /// <paramref name="endString"/> is null.
     /// </exception>
     [Pure]
-    public static string SubstringStartLast(this string str, string endString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
+    public static string SubstringStartLast(this string str, string endString, bool inclusive = false, StringComparison comparison = StringComparison.CurrentCulture)
     {
         Validate.NotNull(endString);
-        Validate.SubstringLastIndex(str, endString, nameof(endString), out int endStringIndex, stringComparison);
+        Validate.EnumContainsValue<StringComparison>(comparison);
+        Validate.SubstringLastIndex(str, endString, nameof(endString), out int endStringIndex, comparison);
 
         endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
 
@@ -204,7 +209,7 @@ public static partial class StringExtensions
     /// <param name="str">The instance from which to extract a substring.</param>
     /// <param name="startString">The string which marks the start of the substring.</param>
     /// <param name="inclusive">A boolean indicating whether the substring should include the given <paramref name="startString"/>.</param>
-    /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
+    /// <param name="comparison">The comparison rules to use when looking for the strings.</param>
     /// <returns>A string representing the part of the original string, located from <paramref name="startString"/> to the end of the original instance.</returns>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="startString"/> is not found in the original instance.
@@ -213,10 +218,11 @@ public static partial class StringExtensions
     /// <paramref name="startString"/> is null.
     /// </exception>
     [Pure]
-    public static string SubstringEnd(this string str, string startString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
+    public static string SubstringEnd(this string str, string startString, bool inclusive = false, StringComparison comparison = StringComparison.CurrentCulture)
     {
         Validate.NotNull(startString);
-        Validate.SubstringIndex(str, startString, out int startStringIndex, stringComparison);
+        Validate.EnumContainsValue<StringComparison>(comparison);
+        Validate.SubstringIndex(str, startString, out int startStringIndex, comparison);
 
         startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 
@@ -229,7 +235,7 @@ public static partial class StringExtensions
     /// <param name="str">The instance from which to extract a substring.</param>
     /// <param name="startString">The string which marks the start of the substring.</param>
     /// <param name="inclusive">A boolean indicating whether the substring should include the given <paramref name="startString"/>.</param>
-    /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
+    /// <param name="comparison">The comparison rules to use when looking for the strings.</param>
     /// <returns>Substring of the original string, starting from the last occurrence of <paramref name="startString"/> to the end of the original string.</returns>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="startString"/> is not found in the original instance.
@@ -238,10 +244,11 @@ public static partial class StringExtensions
     /// <paramref name="startString"/> is null.
     /// </exception>
     [Pure]
-    public static string SubstringEndLast(this string str, string startString, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
+    public static string SubstringEndLast(this string str, string startString, bool inclusive = false, StringComparison comparison = StringComparison.CurrentCulture)
     {
         Validate.NotNull(startString);
-        Validate.SubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
+        Validate.EnumContainsValue<StringComparison>(comparison);
+        Validate.SubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, comparison);
 
         startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 
@@ -257,7 +264,7 @@ public static partial class StringExtensions
     /// <param name="startString">The string which marks the start of the substring.</param>
     /// <param name="length">The number of characters to return.</param>
     /// <param name="inclusive">A boolean indicating whether the substring should include the given <paramref name="startString"/>.</param>
-    /// <param name="stringComparison">The comparison rules to use when looking for the strings.</param>
+    /// <param name="comparison">The comparison rules to use when looking for the strings.</param>
     /// <returns>A substring of length "<paramref name="length"/>" that begins at the last occurrence of <paramref name="startString"/> in this instance.</returns>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="startString"/> is not found in the original instance or <paramref name="length"/> is less than zero or the index of <paramref name="startString"/> plus "length" indicates
@@ -267,11 +274,12 @@ public static partial class StringExtensions
     /// <paramref name="startString"/> is null.
     /// </exception>
     [Pure]
-    public static string SubstringEndLast(this string str, string startString, int length, bool inclusive = false, StringComparison stringComparison = StringComparison.CurrentCulture)
+    public static string SubstringEndLast(this string str, string startString, int length, bool inclusive = false, StringComparison comparison = StringComparison.CurrentCulture)
     {
         Validate.NotNull(startString);
         Validate.LengthIsPositive(length);
-        Validate.SubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, stringComparison);
+        Validate.EnumContainsValue<StringComparison>(comparison);
+        Validate.SubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, comparison);
 
         int availableLength = str.Length - startStringIndex - startString.Length;
         Validate.LengthIsWithinBounds(availableLength, length);
