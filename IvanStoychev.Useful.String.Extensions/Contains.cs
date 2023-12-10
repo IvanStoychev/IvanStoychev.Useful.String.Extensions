@@ -16,6 +16,9 @@ public static partial class StringExtensions
     /// <see langword="true"/> if any of the <paramref name="keywords"/> members occur within this string, or if any of them
     /// are the empty string (""); otherwise, <see langword="false"/>.
     /// </returns>
+    /// <exception cref="ArgumentException">
+    /// The <paramref name="keywords"/> collection is empty or the value given for <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
+    /// </exception>
     /// <exception cref="ArgumentNullException">
     /// The <paramref name="keywords"/> collection or any of its memebers are null.
     /// </exception>
@@ -45,6 +48,9 @@ public static partial class StringExtensions
     /// <returns>
     /// <see langword="true"/> if any of the <paramref name="keychars"/> members occur within this string; otherwise, <see langword="false"/>.
     /// </returns>
+    /// <exception cref="ArgumentException">
+    /// The <paramref name="keychars"/> collection is empty or the value given for <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
+    /// </exception>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="keychars"/> is null.
     /// </exception>
