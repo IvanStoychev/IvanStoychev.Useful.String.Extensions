@@ -14,7 +14,7 @@ public class Comparer_Tests_Exceptions
         string[] keywords = null;
         string expectedMessage = "The argument given for parameter \"keywords\" of method \"Contains\" was null. (Parameter 'keywords')";
 
-        void testAction() => "".Contains(keywords, stringComparison);
+        void testAction() => "".ContainsAny(keywords, stringComparison);
 
         var exception = Assert.Throws<ArgumentNullException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
@@ -26,7 +26,7 @@ public class Comparer_Tests_Exceptions
         string[] keywords = { "asd", null };
         string expectedMessage = "A member of the collection argument given for parameter \"keywords\" of method \"Contains\" was null. (Parameter 'keywords')";
 
-        void testAction() => "".Contains(keywords, stringComparison);
+        void testAction() => "".ContainsAny(keywords, stringComparison);
 
         var exception = Assert.Throws<ArgumentNullException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
@@ -42,7 +42,7 @@ public class Comparer_Tests_Exceptions
         char[] keychars = null;
         string expectedMessage = "The argument given for parameter \"keychars\" of method \"Contains\" was null. (Parameter 'keychars')";
 
-        void testAction() => "".Contains(keychars, stringComparison);
+        void testAction() => "".ContainsAny(keychars, stringComparison);
 
         var exception = Assert.Throws<ArgumentNullException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);

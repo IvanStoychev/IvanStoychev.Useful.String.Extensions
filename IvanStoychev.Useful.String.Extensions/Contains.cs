@@ -20,7 +20,7 @@ public static partial class StringExtensions
     /// The <paramref name="keywords"/> collection or any of its memebers are null.
     /// </exception>
     [Pure]
-    public static bool Contains(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
+    public static bool ContainsAny(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
     {
         Validate.NotNull(keywords);
         Validate.IEnumNotEmpty(keywords);
@@ -48,7 +48,7 @@ public static partial class StringExtensions
     /// <paramref name="keychars"/> is null.
     /// </exception>
     [Pure]
-    public static bool Contains(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
+    public static bool ContainsAny(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
     {
         Validate.NotNull(keychars);
         Validate.IEnumNotEmpty(keychars);

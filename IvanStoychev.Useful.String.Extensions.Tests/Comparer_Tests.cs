@@ -11,7 +11,7 @@ public class Comparer_Tests
     [Theory, MemberData(nameof(Data_Contains_IEnumString_DefaultComparison_Pass))]
     public void Contains_IEnumString_DefaultComparison_Pass(string testString, IEnumerable<string> keywords)
     {
-        bool actual = testString.Contains(keywords);
+        bool actual = testString.ContainsAny(keywords);
 
         Assert.True(actual);
     }
@@ -19,7 +19,7 @@ public class Comparer_Tests
     [Theory, MemberData(nameof(Data_Contains_IEnumString_DefaultComparison_Fail))]
     public void Contains_IEnumString_DefaultComparison_Fail(string testString, IEnumerable<string> keywords)
     {
-        bool actual = testString.Contains(keywords);
+        bool actual = testString.ContainsAny(keywords);
 
         Assert.False(actual);
     }
@@ -27,7 +27,7 @@ public class Comparer_Tests
     [Theory, MemberData(nameof(Data_Contains_IEnumString_SetComparison_Pass))]
     public void Contains_IEnumString_SetComparison_Pass(string testString, IEnumerable<string> keywords, StringComparison stringComparison)
     {
-        bool actual = testString.Contains(keywords, stringComparison);
+        bool actual = testString.ContainsAny(keywords, stringComparison);
 
         Assert.True(actual);
     }
@@ -35,7 +35,7 @@ public class Comparer_Tests
     [Theory, MemberData(nameof(Data_Contains_IEnumString_SetComparison_Fail))]
     public void Contains_IEnumString_SetComparison_Fail(string testString, IEnumerable<string> keywords, StringComparison stringComparison)
     {
-        bool actual = testString.Contains(keywords, stringComparison);
+        bool actual = testString.ContainsAny(keywords, stringComparison);
 
         Assert.False(actual);
     }
@@ -47,7 +47,7 @@ public class Comparer_Tests
     [Theory, MemberData(nameof(Data_Contains_IEnumChar_DefaultComparison_Pass))]
     public void Contains_IEnumChar_DefaultComparison_Pass(string testString, IEnumerable<char> keychars)
     {
-        bool actual = testString.Contains(keychars);
+        bool actual = testString.ContainsAny(keychars);
 
         Assert.True(actual);
     }
@@ -55,7 +55,7 @@ public class Comparer_Tests
     [Theory, MemberData(nameof(Data_Contains_IEnumChar_DefaultComparison_Fail))]
     public void Contains_IEnumChar_DefaultComparison_Fail(string testString, IEnumerable<char> keychars)
     {
-        bool actual = testString.Contains(keychars);
+        bool actual = testString.ContainsAny(keychars);
 
         Assert.False(actual);
     }
@@ -63,7 +63,7 @@ public class Comparer_Tests
     [Theory, MemberData(nameof(Data_Contains_IEnumChar_SetComparison_Pass))]
     public void Contains_IEnumChar_SetComparison_Pass(string testString, IEnumerable<char> keychars, StringComparison stringComparison)
     {
-        bool actual = testString.Contains(keychars, stringComparison);
+        bool actual = testString.ContainsAny(keychars, stringComparison);
 
         Assert.True(actual);
     }
@@ -71,7 +71,7 @@ public class Comparer_Tests
     [Theory, MemberData(nameof(Data_Contains_IEnumChar_SetComparison_Fail))]
     public void Contains_IEnumChar_SetComparison_Fail(string testString, IEnumerable<char> keychars, StringComparison stringComparison)
     {
-        bool actual = testString.Contains(keychars, stringComparison);
+        bool actual = testString.ContainsAny(keychars, stringComparison);
 
         Assert.False(actual);
     }
