@@ -21,12 +21,15 @@ public static partial class StringExtensions
     /// A string that is equivalent to the substring of length <paramref name="length"/> that begins at
     /// the first instance of <paramref name="startString"/> in this string instance.
     /// </returns>
-    /// <exception cref="ArgumentOutOfRangeException">
-    /// <paramref name="startString"/> is not found in the original instance or the index of <paramref name="startString"/> plus <paramref name="length"/> indicates
-    /// a position not within this instance.
+    /// <exception cref="ArgumentException">
+    /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="startString"/> is null.
+    /// </exception>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="startString"/> is not found in the original instance or the index of <paramref name="startString"/> plus <paramref name="length"/> indicates
+    /// a position not within this instance.
     /// </exception>
     [Pure]
     public static string Substring(this string str, string startString, int length, bool inclusive = false, StringComparison comparison = StringComparison.CurrentCulture)
@@ -60,11 +63,14 @@ public static partial class StringExtensions
     /// <returns>
     /// A string representing the part of the original instance, located between <paramref name="startString"/> and <paramref name="endString"/>.
     /// </returns>
-    /// <exception cref="ArgumentOutOfRangeException">
-    /// <paramref name="startString"/> was not found in the original instance or <paramref name="endString"/> was not found in the part of the original instance after <paramref name="startString"/>.
+    /// <exception cref="ArgumentException">
+    /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="startString"/> or <paramref name="endString"/> are null.
+    /// </exception>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="startString"/> was not found in the original instance or <paramref name="endString"/> was not found in the part of the original instance after <paramref name="startString"/>.
     /// </exception>
     [Pure]
     public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions = StringInclusionOptions.IncludeNone, StringComparison comparison = StringComparison.CurrentCulture)
@@ -96,7 +102,7 @@ public static partial class StringExtensions
 
         return str.Substring(startStringIndex, selectLength);
     }
-    
+
     /// <summary>
     /// Locates he first occurrence of <paramref name="startString"/> in the original instance and returns the string situated between it and the last occurrence
     /// of <paramref name="endString"/>, located after <paramref name="startString"/>. Whether <paramref name="startString"/> and/or <paramref name="endString"/>,
@@ -112,11 +118,14 @@ public static partial class StringExtensions
     /// <returns>
     /// A string representing the part of the original instance, located between <paramref name="startString"/> and <paramref name="endString"/>.
     /// </returns>
-    /// <exception cref="ArgumentOutOfRangeException">
-    /// <paramref name="startString"/> was not found in the original instance or <paramref name="endString"/> was not found in the part of the original instance after <paramref name="startString"/>.
+    /// <exception cref="ArgumentException">
+    /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="startString"/> or <paramref name="endString"/> are null.
+    /// </exception>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="startString"/> was not found in the original instance or <paramref name="endString"/> was not found in the part of the original instance after <paramref name="startString"/>.
     /// </exception>
     [Pure]
     public static string SubstringLast(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions = StringInclusionOptions.IncludeNone, StringComparison comparison = StringComparison.CurrentCulture)
@@ -159,11 +168,14 @@ public static partial class StringExtensions
     /// <returns>
     /// A string representing the part of the original string, located from the start of the original instance to the first occurrence of <paramref name="endString"/>.
     /// </returns>
-    /// <exception cref="ArgumentOutOfRangeException">
-    /// <paramref name="endString"/> is not found in the original instance.
+    /// <exception cref="ArgumentException">
+    /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="endString"/> is null.
+    /// </exception>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="endString"/> is not found in the original instance.
     /// </exception>
     [Pure]
     public static string SubstringStart(this string str, string endString, bool inclusive = false, StringComparison comparison = StringComparison.CurrentCulture)
@@ -184,12 +196,17 @@ public static partial class StringExtensions
     /// <param name="endString">The string which marks the end of the substring.</param>
     /// <param name="inclusive">A boolean indicating whether the substring should include the given <paramref name="endString"/>.</param>
     /// <param name="comparison">The comparison rules to use when looking for the strings.</param>
-    /// <returns>Substring starting from the first occurrence of <paramref name="endString"/> to the end of the original string.</returns>
-    /// <exception cref="ArgumentOutOfRangeException">
-    /// <paramref name="endString"/> is not found in the original instance.
+    /// <returns>
+    /// Substring starting from the first occurrence of <paramref name="endString"/> to the end of the original string.
+    /// </returns>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="endString"/> is null.
+    /// </exception>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="endString"/> is not found in the original instance.
     /// </exception>
     [Pure]
     public static string SubstringStartLast(this string str, string endString, bool inclusive = false, StringComparison comparison = StringComparison.CurrentCulture)
@@ -210,12 +227,17 @@ public static partial class StringExtensions
     /// <param name="startString">The string which marks the start of the substring.</param>
     /// <param name="inclusive">A boolean indicating whether the substring should include the given <paramref name="startString"/>.</param>
     /// <param name="comparison">The comparison rules to use when looking for the strings.</param>
-    /// <returns>A string representing the part of the original string, located from <paramref name="startString"/> to the end of the original instance.</returns>
-    /// <exception cref="ArgumentOutOfRangeException">
-    /// <paramref name="startString"/> is not found in the original instance.
+    /// <returns>
+    /// A string representing the part of the original string, located from <paramref name="startString"/> to the end of the original instance.
+    /// </returns>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="startString"/> is null.
+    /// </exception>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="startString"/> is not found in the original instance.
     /// </exception>
     [Pure]
     public static string SubstringEnd(this string str, string startString, bool inclusive = false, StringComparison comparison = StringComparison.CurrentCulture)
@@ -236,12 +258,17 @@ public static partial class StringExtensions
     /// <param name="startString">The string which marks the start of the substring.</param>
     /// <param name="inclusive">A boolean indicating whether the substring should include the given <paramref name="startString"/>.</param>
     /// <param name="comparison">The comparison rules to use when looking for the strings.</param>
-    /// <returns>Substring of the original string, starting from the last occurrence of <paramref name="startString"/> to the end of the original string.</returns>
-    /// <exception cref="ArgumentOutOfRangeException">
-    /// <paramref name="startString"/> is not found in the original instance.
+    /// <returns>
+    /// Substring of the original string, starting from the last occurrence of <paramref name="startString"/> to the end of the original string.
+    /// </returns>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="startString"/> is null.
+    /// </exception>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="startString"/> is not found in the original instance.
     /// </exception>
     [Pure]
     public static string SubstringEndLast(this string str, string startString, bool inclusive = false, StringComparison comparison = StringComparison.CurrentCulture)
@@ -265,13 +292,18 @@ public static partial class StringExtensions
     /// <param name="length">The number of characters to return.</param>
     /// <param name="inclusive">A boolean indicating whether the substring should include the given <paramref name="startString"/>.</param>
     /// <param name="comparison">The comparison rules to use when looking for the strings.</param>
-    /// <returns>A substring of length "<paramref name="length"/>" that begins at the last occurrence of <paramref name="startString"/> in this instance.</returns>
-    /// <exception cref="ArgumentOutOfRangeException">
-    /// <paramref name="startString"/> is not found in the original instance or <paramref name="length"/> is less than zero or the index of <paramref name="startString"/> plus "length" indicates
-    /// a position not within this instance.
+    /// <returns>
+    /// A substring of length "<paramref name="length"/>" that begins at the last occurrence of <paramref name="startString"/> in this instance.
+    /// </returns>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="startString"/> is null.
+    /// </exception>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="startString"/> is not found in the original instance or <paramref name="length"/> is less than zero or the index of <paramref name="startString"/> plus "length" indicates
+    /// a position not within this instance.
     /// </exception>
     [Pure]
     public static string SubstringEndLast(this string str, string startString, int length, bool inclusive = false, StringComparison comparison = StringComparison.CurrentCulture)

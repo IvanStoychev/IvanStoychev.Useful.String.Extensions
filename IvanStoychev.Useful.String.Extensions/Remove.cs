@@ -19,7 +19,7 @@ public static partial class StringExtensions
     /// A string that is equivalent to the current string except that all instances of <paramref name="removeString"/> are removed.
     /// </returns>
     /// <exception cref="ArgumentException">
-    /// <paramref name="removeString"/> is the empty string ("").
+    /// <paramref name="removeString"/> is the empty string ("") or the value given for <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="removeString"/> is <see langword="null"/>.
@@ -48,7 +48,7 @@ public static partial class StringExtensions
     /// If none of the members are found in the current instance, the method returns it unchanged.
     /// </returns>
     /// <exception cref="ArgumentException">
-    /// <paramref name="removeStrings"/> is empty or any of its members are the empty string ("").
+    /// <paramref name="removeStrings"/> is empty, any of its members are the empty string ("") or the value given for <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="removeStrings"/> or any of its members are <see langword="null"/>.
@@ -82,7 +82,7 @@ public static partial class StringExtensions
     /// If none of the members are found in the current instance, the method returns it unchanged.
     /// </returns>
     /// <exception cref="ArgumentException">
-    /// <paramref name="removeChars"/> is empty.
+    /// <paramref name="removeChars"/> is empty or the value given for <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="removeChars"/> is <see langword="null"/>.

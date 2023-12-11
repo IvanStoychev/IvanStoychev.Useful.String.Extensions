@@ -23,6 +23,9 @@ public static partial class StringExtensions
     /// The string that remains after the occurrence of "trimString" is removed from the start and end of the current instance. If "trimString" is <see langword="null"/>,
     /// the empty string or not found at the start or end of the current instance the method returns the current instance unchanged.
     /// </returns>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
+    /// </exception>
     [Pure]
     public static string Trim(this string str, string trimString, StringComparison comparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
     {
@@ -83,6 +86,9 @@ public static partial class StringExtensions
     /// the current instance. If "trimString" is null, the empty string or not found at the start of the
     /// current instance the method returns the current instance unchanged.
     /// </returns>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
+    /// </exception>
     [Pure]
     public static string TrimStart(this string str, string trimString, StringComparison comparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
     {
@@ -149,6 +155,9 @@ public static partial class StringExtensions
     /// the current instance. If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the end of the
     /// current instance the method returns the current instance unchanged.
     /// </returns>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
+    /// </exception>
     [Pure]
     public static string TrimEnd(this string str, string trimString, StringComparison comparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
     {

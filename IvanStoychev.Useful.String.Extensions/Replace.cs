@@ -15,8 +15,12 @@ public static partial class StringExtensions
     /// <param name="oldStrings">Collection of strings to be replaced.</param>
     /// <param name="comparison">Comparison rules to use for the replacement.</param>
     /// <returns>A string with all instances of all members of <paramref name="oldStrings"/> replaced by <paramref name="newString"/>.</returns>
-    /// <exception cref="ArgumentException">A member of <paramref name="oldStrings"/> is the empty string ("").</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="oldStrings"/> or one of its members is <see langword="null"/>.</exception>
+    /// <exception cref="ArgumentException">
+    /// A member of <paramref name="oldStrings"/> is the empty string ("") or the value given for <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// <paramref name="oldStrings"/> or one of its members is <see langword="null"/>.
+    /// </exception>
     [Pure]
     public static string Replace(this string str, string newString, IEnumerable<string> oldStrings, StringComparison comparison = StringComparison.CurrentCulture)
     {
