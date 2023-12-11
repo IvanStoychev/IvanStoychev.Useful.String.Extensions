@@ -6,7 +6,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests;
 
 public class Remove_Tests_Exceptions
 {
-    #region Remove(this string str, string removeString, StringComparison stringComparison = StringComparison.CurrentCulture)
+    #region Remove(this string str, string removeString, StringComparison comparison)
 
     [Fact]
     public void Remove_String_DefaultComparison_EmptyString()
@@ -31,43 +31,59 @@ public class Remove_Tests_Exceptions
         Assert.Equal(expectedMessage, exception.Message);
     }
 
+    #region Data
     [Theory]
     [InlineData(StringComparison.Ordinal)]
     [InlineData(StringComparison.OrdinalIgnoreCase)]
     [InlineData(StringComparison.InvariantCulture)]
     [InlineData(StringComparison.InvariantCultureIgnoreCase)]
-    public void Remove_String_SetComparison_EmptyString(StringComparison stringComparison)
+    #endregion Data
+    public void Remove_String_SetComparison_EmptyString(StringComparison comparison)
     {
         string expectedMessage = "The argument given for parameter \"removeString\" of method \"Remove\" is the empty string (\"\"). (Parameter 'removeString')";
 
-        void testAction() => "test".Remove("", stringComparison);
+        void testAction() => "test".Remove("", comparison);
 
         var exception = Assert.Throws<ArgumentException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 
+    #region Data
     [Theory]
     [InlineData(StringComparison.Ordinal)]
     [InlineData(StringComparison.OrdinalIgnoreCase)]
     [InlineData(StringComparison.InvariantCulture)]
     [InlineData(StringComparison.InvariantCultureIgnoreCase)]
-    public void Remove_String_SetComparison_NullArgument(StringComparison stringComparison)
+    #endregion Data
+    public void Remove_String_SetComparison_NullArgument(StringComparison comparison)
     {
         string expectedMessage = "The argument given for parameter \"removeString\" of method \"Remove\" was null. (Parameter 'removeString')";
 
         string nullString = null;
-        void testAction() => "test".Remove(nullString, stringComparison);
+        void testAction() => "test".Remove(nullString, comparison);
 
         var exception = Assert.Throws<ArgumentNullException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 
-    #endregion Remove(this string str, IEnumerable<string> removeStrings, StringComparison stringComparison = StringComparison.CurrentCulture)
+    [Fact]
+    public void Remove_String_SetComparison_EnumInvalid()
+    {
+        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"Remove\" does not exist in enum \"StringComparison\"";
 
-    #region Remove(this string str, IEnumerable<string> removeStrings, StringComparison stringComparison = StringComparison.CurrentCulture)
+        StringComparison comparison = (StringComparison)99;
+        void testAction() => "test".Remove("asd", comparison);
+
+        var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    #endregion Remove(this string str, string removeString, StringComparison comparison)
+
+    #region Remove(this string str, IEnumerable<string> removeStrings, StringComparison comparison = StringComparison.CurrentCulture)
 
     [Fact]
-    public void Remove_DefaultComparison_NullArgument()
+    public void Remove_IEnumString_DefaultComparison_NullArgument()
     {
         IEnumerable<string> removeStrings = null;
         string testString = "testString";
@@ -80,7 +96,7 @@ public class Remove_Tests_Exceptions
     }
 
     [Theory, MemberData(nameof(Data_Remove_DefaultComparison_IEnumEmpty))]
-    public void Remove_DefaultComparison_IEnumEmpty(IEnumerable<string> removeStrings)
+    public void Remove_IEnumString_DefaultComparison_IEnumEmpty(IEnumerable<string> removeStrings)
     {
         string testString = "testString";
         string expectedMessage = "The collection argument given for parameter \"removeStrings\" of method \"Remove\" contains no elements. (Parameter 'removeStrings')";
@@ -92,7 +108,7 @@ public class Remove_Tests_Exceptions
     }
 
     [Theory, MemberData(nameof(Data_Remove_DefaultComparison_NullMember))]
-    public void Remove_DefaultComparison_NullMember(IEnumerable<string> removeStrings)
+    public void Remove_IEnumString_DefaultComparison_NullMember(IEnumerable<string> removeStrings)
     {
         string testString = "testString";
         string expectedMessage = "A member of the collection argument given for parameter \"removeStrings\" of method \"Remove\" was null. (Parameter 'removeStrings')";
@@ -104,7 +120,7 @@ public class Remove_Tests_Exceptions
     }
 
     [Theory, MemberData(nameof(Data_Remove_DefaultComparison_EmptyStringMember))]
-    public void Remove_DefaultComparison_EmptyStringMember(IEnumerable<string> removeStrings)
+    public void Remove_IEnumString_DefaultComparison_EmptyStringMember(IEnumerable<string> removeStrings)
     {
         string testString = "testString";
         string expectedMessage = "A member of the collection given for parameter \"removeStrings\" of method \"Remove\" is the empty string (\"\"). (Parameter 'removeStrings')";
@@ -115,60 +131,73 @@ public class Remove_Tests_Exceptions
         Assert.Equal(expectedMessage, exception.Message);
     }
 
-    #endregion Remove(this string str, IEnumerable<string> removeStrings, StringComparison stringComparison = StringComparison.CurrentCulture)
+    #endregion Remove(this string str, IEnumerable<string> removeStrings, StringComparison comparison = StringComparison.CurrentCulture)
 
-    #region Remove(this string str, IEnumerable<string> removeStrings, StringComparison stringComparison)
+    #region Remove(this string str, IEnumerable<string> removeStrings, StringComparison comparison)
 
     [Theory, MemberData(nameof(Data_Remove_SetComparison_NullArgument))]
-    public void Remove_SetComparison_NullArgument(StringComparison stringComparison)
+    public void Remove_IEnumString_SetComparison_NullArgument(StringComparison comparison)
     {
         IEnumerable<string> removeStrings = null;
         string testString = "testString";
         string expectedMessage = "The argument given for parameter \"removeStrings\" of method \"Remove\" was null. (Parameter 'removeStrings')";
 
-        void testAction() => testString.Remove(removeStrings, stringComparison);
+        void testAction() => testString.Remove(removeStrings, comparison);
 
         var exception = Assert.Throws<ArgumentNullException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 
     [Theory, MemberData(nameof(Data_Remove_SetComparison_IEnumEmpty))]
-    public void Remove_SetComparison_IEnumEmpty(IEnumerable<string> removeStrings, StringComparison stringComparison)
+    public void Remove_IEnumString_SetComparison_IEnumEmpty(IEnumerable<string> removeStrings, StringComparison comparison)
     {
         string testString = "testString";
         string expectedMessage = "The collection argument given for parameter \"removeStrings\" of method \"Remove\" contains no elements. (Parameter 'removeStrings')";
 
-        void testAction() => testString.Remove(removeStrings, stringComparison);
+        void testAction() => testString.Remove(removeStrings, comparison);
 
         var exception = Assert.Throws<ArgumentException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 
     [Theory, MemberData(nameof(Data_Remove_SetComparison_NullMember))]
-    public void Remove_SetComparison_NullMember(IEnumerable<string> removeStrings, StringComparison stringComparison)
+    public void Remove_IEnumString_SetComparison_NullMember(IEnumerable<string> removeStrings, StringComparison comparison)
     {
         string testString = "testString";
         string expectedMessage = "A member of the collection argument given for parameter \"removeStrings\" of method \"Remove\" was null. (Parameter 'removeStrings')";
 
-        void testAction() => testString.Remove(removeStrings, stringComparison);
+        void testAction() => testString.Remove(removeStrings, comparison);
 
         var exception = Assert.Throws<ArgumentNullException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 
     [Theory, MemberData(nameof(Data_Remove_SetComparison_EmptyStringMember))]
-    public void Remove_SetComparison_EmptyStringMember(IEnumerable<string> removeStrings, StringComparison stringComparison)
+    public void Remove_IEnumString_SetComparison_EmptyStringMember(IEnumerable<string> removeStrings, StringComparison comparison)
     {
         string testString = "testString";
         string expectedMessage = "A member of the collection given for parameter \"removeStrings\" of method \"Remove\" is the empty string (\"\"). (Parameter 'removeStrings')";
 
-        void testAction() => testString.Remove(removeStrings, stringComparison);
+        void testAction() => testString.Remove(removeStrings, comparison);
 
         var exception = Assert.Throws<ArgumentException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 
-    #endregion Remove(this string str, IEnumerable<string> removeStrings, StringComparison stringComparison)
+    [Fact]
+    public void Remove_IEnumString_SetComparison_EnumInvalid()
+    {
+        IEnumerable<string> removeStrings = ["asd"];
+        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"Remove\" does not exist in enum \"StringComparison\"";
+
+        StringComparison comparison = (StringComparison)99;
+        void testAction() => "test".Remove(removeStrings, comparison);
+
+        var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    #endregion Remove(this string str, IEnumerable<string> removeStrings, StringComparison comparison)
 
     #region Data
 
