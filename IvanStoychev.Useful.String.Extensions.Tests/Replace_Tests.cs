@@ -9,7 +9,7 @@ public class Replace_Tests
     [Theory, MemberData(nameof(Data_Replace_DefaultComparison_Pass))]
     public void Replace_DefaultComparison_Pass(string testString, string newString, IEnumerable<string> oldStrings, string expectedString)
     {
-        string actualString = testString.Replace(newString, oldStrings);
+        string actualString = testString.Replace(oldStrings, newString);
 
         Assert.Equal(expectedString, actualString);
     }
@@ -17,7 +17,7 @@ public class Replace_Tests
     [Theory, MemberData(nameof(Data_Replace_SetComparison_Pass))]
     public void Replace_SetComparison_Pass(string testString, string newString, IEnumerable<string> oldStrings, StringComparison stringComparison, string expectedString)
     {
-        string actualString = testString.Replace(newString, oldStrings, stringComparison);
+        string actualString = testString.Replace(oldStrings, newString, stringComparison);
 
         Assert.Equal(expectedString, actualString);
     }
