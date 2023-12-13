@@ -6,7 +6,31 @@ namespace IvanStoychev.Useful.String.Extensions.Tests;
 public class Replace_Tests_Exceptions
 {
     [Fact]
-    public void Replace_ArgumentException_Collection()
+    public void Replace_IEnumString_EnumInvalid()
+    {
+        string[] oldStrings = ["asd"];
+        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"Replace\" does not exist in enum \"StringComparison\"";
+
+        void testAction() => "".Replace(oldStrings, "", (StringComparison)99);
+
+        var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Fact]
+    public void Replace_IEnumString_EmptyStringMember()
+    {
+        string[] oldStrings = ["asd", "", "asd"];
+        string expectedMessage = "A member of the collection given for parameter \"oldStrings\" of method \"Replace\" is the empty string (\"\"). (Parameter 'oldStrings')";
+
+        void testAction() => "".Replace(oldStrings, "");
+
+        var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Fact]
+    public void Replace_IEnumString_IEnumEmpty()
     {
         string[] oldStrings = [];
         string expectedMessage = "The collection argument given for parameter \"oldStrings\" of method \"Replace\" contains no elements. (Parameter 'oldStrings')";
@@ -18,31 +42,7 @@ public class Replace_Tests_Exceptions
     }
 
     [Fact]
-    public void Replace_ArgumentException_EnumValue()
-    {
-        string[] oldStrings = ["asd", "", "asd"];
-        string expectedMessage = "A member of the collection given for parameter \"oldStrings\" of method \"Replace\" is the empty string (\"\"). (Parameter 'oldStrings')";
-
-        void testAction() => "".Replace(oldStrings, "");
-
-        var exception = Assert.Throws<ArgumentException>(testAction);
-        Assert.Equal(expectedMessage, exception.Message);
-    }
-
-    [Fact]
-    public void Replace_ArgumentException_Member()
-    {
-        string[] oldStrings = ["asd", "", "asd"];
-        string expectedMessage = "A member of the collection given for parameter \"oldStrings\" of method \"Replace\" is the empty string (\"\"). (Parameter 'oldStrings')";
-
-        void testAction() => "".Replace(oldStrings, "");
-
-        var exception = Assert.Throws<ArgumentException>(testAction);
-        Assert.Equal(expectedMessage, exception.Message);
-    }
-
-    [Fact]
-    public void Replace_ArgumentNullException_Collection()
+    public void Replace_IEnumString_NullArgument()
     {
         string[] oldStrings = null;
         string expectedMessage = "The argument given for parameter \"oldStrings\" of method \"Replace\" was null. (Parameter 'oldStrings')";
@@ -54,7 +54,7 @@ public class Replace_Tests_Exceptions
     }
 
     [Fact]
-    public void Replace_ArgumentNullException_Member()
+    public void Replace_IEnumString_NullMember()
     {
         string[] oldStrings = ["asd", null];
         string expectedMessage = "A member of the collection argument given for parameter \"oldStrings\" of method \"Replace\" was null. (Parameter 'oldStrings')";
