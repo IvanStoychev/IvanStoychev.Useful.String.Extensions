@@ -25,10 +25,10 @@ public static partial class StringExtensions
     [Pure]
     public static bool ContainsAny(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(keywords);
         Validate.IEnumNotEmpty(keywords);
         Validate.EnumContainsValue<StringComparison>(comparison);
-        Validate.OriginalInstanceNotNull(str);
 
         foreach (var word in keywords)
         {
@@ -58,10 +58,10 @@ public static partial class StringExtensions
     [Pure]
     public static bool ContainsAny(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(keychars);
         Validate.IEnumNotEmpty(keychars);
         Validate.EnumContainsValue<StringComparison>(comparison);
-        Validate.OriginalInstanceNotNull(str);
 
         foreach (var character in keychars)
             if (str.Contains(character, comparison))
@@ -88,10 +88,10 @@ public static partial class StringExtensions
     [Pure]
     public static bool ContainsAll(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(keywords);
         Validate.IEnumNotEmpty(keywords);
         Validate.EnumContainsValue<StringComparison>(comparison);
-        Validate.OriginalInstanceNotNull(str);
 
         foreach (var word in keywords)
         {
@@ -118,10 +118,10 @@ public static partial class StringExtensions
     [Pure]
     public static bool ContainsAll(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(keychars);
         Validate.IEnumNotEmpty(keychars);
         Validate.EnumContainsValue<StringComparison>(comparison);
-        Validate.OriginalInstanceNotNull(str);
 
         foreach (var character in keychars)
             if (!str.Contains(character, comparison))
