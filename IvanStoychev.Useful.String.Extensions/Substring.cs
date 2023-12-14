@@ -35,11 +35,11 @@ public static partial class StringExtensions
     [Pure]
     public static string Substring(this string str, string startString, int length, bool inclusive = false, StringComparison comparison = StringComparison.CurrentCulture)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(startString);
         Validate.LengthIsPositive(length);
         Validate.EnumContainsValue<StringComparison>(comparison);
         Validate.SubstringIndex(str, startString, out int startStringIndex, comparison);
-        Validate.OriginalInstanceNotNull(str);
 
         int availableLength = str.Length - startStringIndex - startString.Length;
         Validate.LengthIsWithinBounds(availableLength, length);
@@ -79,12 +79,12 @@ public static partial class StringExtensions
     [Pure]
     public static string Substring(this string str, string startString, string endString, StringInclusionOptions inclusionOptions = StringInclusionOptions.IncludeNone, StringComparison comparison = StringComparison.CurrentCulture)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(startString);
         Validate.NotNull(endString);
         Validate.EnumContainsValue<StringComparison>(comparison);
         Validate.EnumContainsValue<StringInclusionOptions>(inclusionOptions);
         Validate.EndStringIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, comparison);
-        Validate.OriginalInstanceNotNull(str);
 
         // This logic is because of how the "endStringIndex" is being calculated.
         switch (inclusionOptions)
@@ -138,12 +138,12 @@ public static partial class StringExtensions
     [Pure]
     public static string SubstringLast(this string str, string startString, string endString, StringInclusionOptions inclusionOptions = StringInclusionOptions.IncludeNone, StringComparison comparison = StringComparison.CurrentCulture)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(startString);
         Validate.NotNull(endString);
         Validate.EnumContainsValue<StringComparison>(comparison);
         Validate.EnumContainsValue<StringInclusionOptions>(inclusionOptions);
         Validate.EndStringLastIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, comparison);
-        Validate.OriginalInstanceNotNull(str);
 
         // This logic is because of how the "endStringIndex" is being calculated.
         switch (inclusionOptions)
@@ -191,10 +191,10 @@ public static partial class StringExtensions
     [Pure]
     public static string SubstringStart(this string str, string endString, bool inclusive = false, StringComparison comparison = StringComparison.CurrentCulture)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(endString);
         Validate.EnumContainsValue<StringComparison>(comparison);
         Validate.SubstringIndex(str, endString, out int endStringIndex, comparison);
-        Validate.OriginalInstanceNotNull(str);
 
         endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
 
@@ -224,10 +224,10 @@ public static partial class StringExtensions
     [Pure]
     public static string SubstringStartLast(this string str, string endString, bool inclusive = false, StringComparison comparison = StringComparison.CurrentCulture)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(endString);
         Validate.EnumContainsValue<StringComparison>(comparison);
         Validate.SubstringLastIndex(str, endString, nameof(endString), out int endStringIndex, comparison);
-        Validate.OriginalInstanceNotNull(str);
 
         endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
 
@@ -257,10 +257,10 @@ public static partial class StringExtensions
     [Pure]
     public static string SubstringEnd(this string str, string startString, bool inclusive = false, StringComparison comparison = StringComparison.CurrentCulture)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(startString);
         Validate.EnumContainsValue<StringComparison>(comparison);
         Validate.SubstringIndex(str, startString, out int startStringIndex, comparison);
-        Validate.OriginalInstanceNotNull(str);
 
         startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 
@@ -290,10 +290,10 @@ public static partial class StringExtensions
     [Pure]
     public static string SubstringEndLast(this string str, string startString, bool inclusive = false, StringComparison comparison = StringComparison.CurrentCulture)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(startString);
         Validate.EnumContainsValue<StringComparison>(comparison);
         Validate.SubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, comparison);
-        Validate.OriginalInstanceNotNull(str);
 
         startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 
@@ -327,11 +327,11 @@ public static partial class StringExtensions
     [Pure]
     public static string SubstringEndLast(this string str, string startString, int length, bool inclusive = false, StringComparison comparison = StringComparison.CurrentCulture)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(startString);
         Validate.LengthIsPositive(length);
         Validate.EnumContainsValue<StringComparison>(comparison);
         Validate.SubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, comparison);
-        Validate.OriginalInstanceNotNull(str);
 
         int availableLength = str.Length - startStringIndex - startString.Length;
         Validate.LengthIsWithinBounds(availableLength, length);
