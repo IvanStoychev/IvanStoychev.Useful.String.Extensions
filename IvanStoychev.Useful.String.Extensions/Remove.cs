@@ -27,10 +27,10 @@ public static partial class StringExtensions
     [Pure]
     public static string Remove(this string str, string removeString, StringComparison comparison = StringComparison.CurrentCulture)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(removeString);
         Validate.NotEmptyString(removeString);
         Validate.EnumContainsValue<StringComparison>(comparison);
-        Validate.OriginalInstanceNotNull(str);
 
         str = str.Replace(removeString, string.Empty, comparison);
 
@@ -57,10 +57,10 @@ public static partial class StringExtensions
     [Pure]
     public static string Remove(this string str, IEnumerable<string> removeStrings, StringComparison comparison = StringComparison.CurrentCulture)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(removeStrings);
         Validate.IEnumNotEmpty(removeStrings);
         Validate.EnumContainsValue<StringComparison>(comparison);
-        Validate.OriginalInstanceNotNull(str);
 
         foreach (var item in removeStrings)
         {
@@ -92,10 +92,10 @@ public static partial class StringExtensions
     [Pure]
     public static string Remove(this string str, IEnumerable<char> removeChars, StringComparison comparison = StringComparison.CurrentCulture)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(removeChars);
         Validate.IEnumNotEmpty(removeChars);
         Validate.EnumContainsValue<StringComparison>(comparison);
-        Validate.OriginalInstanceNotNull(str);
 
         foreach (var item in removeChars)
             str = str.Replace(item.ToString(), string.Empty, comparison);
