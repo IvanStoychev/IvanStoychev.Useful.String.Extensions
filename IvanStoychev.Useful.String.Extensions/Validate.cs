@@ -207,6 +207,20 @@ static class Validate
     }
 
     /// <summary>
+    /// Checks if the given <paramref name="stringInstance"/> is null. And if it is, throws an <see cref="ArgumentNullException"/>.
+    /// </summary>
+    /// <param name="stringInstance">String on which <paramref name="callingMethodName"/> was called.</param>
+    /// <param name="callingMethodName">Name of the method that does this validation.</param>
+    /// <exception cref="ArgumentNullException">
+    /// <paramref name="stringInstance"/> is null.
+    /// </exception>
+    internal static void OriginalInstanceNotNull(string stringInstance, [CallerMemberName] string callingMethodName = null)
+    {
+        if (stringInstance is null)
+            ExceptionThrower.Throw_ArgumentNullException_OriginalInstance(callingMethodName);
+    }
+
+    /// <summary>
     /// Checks if <paramref name="substring"/> occurs in <paramref name="originalString"/> and if it doesn't, throws an
     /// <see cref="ArgumentOutOfRangeException"/> that informs the user that the value "<paramref name="substring"/>" of
     /// argument <paramref name="parameterName"/> is not found in said string. If the value of <paramref name="substring"/> is longer
