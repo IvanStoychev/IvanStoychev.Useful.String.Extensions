@@ -225,33 +225,6 @@ static class Validate
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="substring"/> is not found in <paramref name="originalString"/>.
     /// </exception>
-    internal static void SubstringIndex(string originalString, string substring, out int substringIndex, string callingMethodName, StringComparison stringComparison, [CallerArgumentExpression("substring")] string parameterName = null)
-    {
-        substringIndex = originalString.IndexOf(substring, stringComparison);
-
-        if (substringIndex == -1)
-            ExceptionThrower.Throw_ArgumentOutOfRangeException_Substring(substring, parameterName, callingMethodName);
-    }
-
-    /// <summary>
-    /// Checks if <paramref name="substring"/> occurs in <paramref name="originalString"/> and if it doesn't, throws an
-    /// <see cref="ArgumentOutOfRangeException"/> that informs the user that the value "<paramref name="substring"/>" of
-    /// argument <paramref name="parameterName"/> is not found in said string. If the value of <paramref name="substring"/> is longer
-    /// than 10 characters the value displayed in the exception message will be truncated to 10.
-    /// <br/>In all cases the index of the first occurrence of <paramref name="substring"/> in <paramref name="originalString"/> is saved in <paramref name="substringIndex"/>.
-    /// </summary>
-    /// <param name="originalString">The instance which to check for <paramref name="substring"/>.</param>
-    /// <param name="substring">The string to search in <paramref name="originalString"/> for.</param>
-    /// <param name="parameterName">The Name of the parameter in the method that does this validation, the argument of which is <paramref name="substring"/>.</param>
-    /// <param name="substringIndex">
-    /// Contains the index of <paramref name="substring"/> in <paramref name="originalString"/>. If it is not found the index is "-1".
-    /// <br/>This parameter is passed uninitialized.
-    /// </param>
-    /// <param name="stringComparison">The comparison rules to use when looking for <paramref name="substring"/>.</param>
-    /// <param name="callingMethodName">Name of the method that does this validation.</param>
-    /// <exception cref="ArgumentOutOfRangeException">
-    /// <paramref name="substring"/> is not found in <paramref name="originalString"/>.
-    /// </exception>
     internal static void SubstringIndex(string originalString, string substring, out int substringIndex, StringComparison stringComparison, [CallerArgumentExpression("substring")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
     {
         substringIndex = originalString.IndexOf(substring, stringComparison);
@@ -282,6 +255,33 @@ static class Validate
     internal static void SubstringLastIndex(string originalString, string substring, string parameterName, out int substringIndex, StringComparison stringComparison, [CallerMemberName] string callingMethodName = null)
     {
         substringIndex = originalString.LastIndexOf(substring, stringComparison);
+
+        if (substringIndex == -1)
+            ExceptionThrower.Throw_ArgumentOutOfRangeException_Substring(substring, parameterName, callingMethodName);
+    }
+
+    /// <summary>
+    /// Checks if <paramref name="substring"/> occurs in <paramref name="originalString"/> and if it doesn't, throws an
+    /// <see cref="ArgumentOutOfRangeException"/> that informs the user that the value "<paramref name="substring"/>" of
+    /// argument <paramref name="parameterName"/> is not found in said string. If the value of <paramref name="substring"/> is longer
+    /// than 10 characters the value displayed in the exception message will be truncated to 10.
+    /// <br/>In all cases the index of the first occurrence of <paramref name="substring"/> in <paramref name="originalString"/> is saved in <paramref name="substringIndex"/>.
+    /// </summary>
+    /// <param name="originalString">The instance which to check for <paramref name="substring"/>.</param>
+    /// <param name="substring">The string to search in <paramref name="originalString"/> for.</param>
+    /// <param name="parameterName">The Name of the parameter in the method that does this validation, the argument of which is <paramref name="substring"/>.</param>
+    /// <param name="substringIndex">
+    /// Contains the index of <paramref name="substring"/> in <paramref name="originalString"/>. If it is not found the index is "-1".
+    /// <br/>This parameter is passed uninitialized.
+    /// </param>
+    /// <param name="stringComparison">The comparison rules to use when looking for <paramref name="substring"/>.</param>
+    /// <param name="callingMethodName">Name of the method that does this validation.</param>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="substring"/> is not found in <paramref name="originalString"/>.
+    /// </exception>
+    static void SubstringIndex(string originalString, string substring, out int substringIndex, string callingMethodName, StringComparison stringComparison, [CallerArgumentExpression("substring")] string parameterName = null)
+    {
+        substringIndex = originalString.IndexOf(substring, stringComparison);
 
         if (substringIndex == -1)
             ExceptionThrower.Throw_ArgumentOutOfRangeException_Substring(substring, parameterName, callingMethodName);
