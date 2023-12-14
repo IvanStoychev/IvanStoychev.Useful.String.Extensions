@@ -26,9 +26,13 @@ public static partial class StringExtensions
     /// <exception cref="ArgumentException">
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The original instance (<paramref name="str"/>) is <see langword="null"/>.
+    /// </exception>
     [Pure]
     public static string Trim(this string str, string trimString, StringComparison comparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.EnumContainsValue<StringComparison>(comparison);
 
         if (string.IsNullOrEmpty(trimString))
@@ -59,9 +63,14 @@ public static partial class StringExtensions
     /// If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the start of the current instance the method returns
     /// the current instance unchanged.
     /// </returns>
+    /// <exception cref="ArgumentNullException">
+    /// The original instance (<paramref name="str"/>) is <see langword="null"/>.
+    /// </exception>
     [Pure]
     public static string Trim(this string str, string trimString, bool ignoreCase, CultureInfo? culture, bool trimWhitespace = false)
     {
+        Validate.OriginalInstanceNotNull(str);
+
         if (string.IsNullOrEmpty(trimString))
             return trimWhitespace ? str.Trim() : str;
 
@@ -89,9 +98,13 @@ public static partial class StringExtensions
     /// <exception cref="ArgumentException">
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The original instance (<paramref name="str"/>) is <see langword="null"/>.
+    /// </exception>
     [Pure]
     public static string TrimStart(this string str, string trimString, StringComparison comparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.EnumContainsValue<StringComparison>(comparison);
         
         if (string.IsNullOrEmpty(trimString))
@@ -125,9 +138,14 @@ public static partial class StringExtensions
     /// the current instance. If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the start of the
     /// current instance the method returns the current instance unchanged.
     /// </returns>
+    /// <exception cref="ArgumentNullException">
+    /// The original instance (<paramref name="str"/>) is <see langword="null"/>.
+    /// </exception>
     [Pure]
     public static string TrimStart(this string str, string trimString, bool ignoreCase, CultureInfo? culture, bool trimWhitespace = false)
     {
+        Validate.OriginalInstanceNotNull(str);
+
         if (string.IsNullOrEmpty(trimString))
             return trimWhitespace ? str.TrimStart() : str;
 
@@ -158,9 +176,13 @@ public static partial class StringExtensions
     /// <exception cref="ArgumentException">
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The original instance (<paramref name="str"/>) is <see langword="null"/>.
+    /// </exception>
     [Pure]
     public static string TrimEnd(this string str, string trimString, StringComparison comparison = StringComparison.CurrentCulture, bool trimWhitespace = false)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.EnumContainsValue<StringComparison>(comparison);
 
         if (string.IsNullOrEmpty(trimString))
@@ -194,9 +216,14 @@ public static partial class StringExtensions
     /// the current instance. If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the end of the
     /// current instance the method returns the current instance unchanged.
     /// </returns>
+    /// <exception cref="ArgumentNullException">
+    /// The original instance (<paramref name="str"/>) is <see langword="null"/>.
+    /// </exception>
     [Pure]
     public static string TrimEnd(this string str, string trimString, bool ignoreCase, CultureInfo? culture, bool trimWhitespace = false)
     {
+        Validate.OriginalInstanceNotNull(str);
+
         if (string.IsNullOrEmpty(trimString))
             return trimWhitespace ? str.TrimEnd() : str;
 
