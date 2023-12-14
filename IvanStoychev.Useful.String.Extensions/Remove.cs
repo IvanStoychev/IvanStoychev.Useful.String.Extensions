@@ -22,7 +22,7 @@ public static partial class StringExtensions
     /// <paramref name="removeString"/> is the empty string ("") or the value given for <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="removeString"/> is <see langword="null"/>.
+    /// <paramref name="removeString"/> or the original instance (<paramref name="str"/>) are null.
     /// </exception>
     [Pure]
     public static string Remove(this string str, string removeString, StringComparison comparison = StringComparison.CurrentCulture)
@@ -30,6 +30,7 @@ public static partial class StringExtensions
         Validate.NotNull(removeString);
         Validate.NotEmptyString(removeString);
         Validate.EnumContainsValue<StringComparison>(comparison);
+        Validate.OriginalInstanceNotNull(str);
 
         str = str.Replace(removeString, string.Empty, comparison);
 
@@ -51,7 +52,7 @@ public static partial class StringExtensions
     /// <paramref name="removeStrings"/> is empty, any of its members are the empty string ("") or the value given for <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="removeStrings"/> or any of its members are <see langword="null"/>.
+    /// <paramref name="removeStrings"/>, any of its members or the original instance (<paramref name="str"/>) are null.
     /// </exception>
     [Pure]
     public static string Remove(this string str, IEnumerable<string> removeStrings, StringComparison comparison = StringComparison.CurrentCulture)
@@ -59,6 +60,7 @@ public static partial class StringExtensions
         Validate.NotNull(removeStrings);
         Validate.IEnumNotEmpty(removeStrings);
         Validate.EnumContainsValue<StringComparison>(comparison);
+        Validate.OriginalInstanceNotNull(str);
 
         foreach (var item in removeStrings)
         {
@@ -85,7 +87,7 @@ public static partial class StringExtensions
     /// <paramref name="removeChars"/> is empty or the value given for <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="removeChars"/> is <see langword="null"/>.
+    /// <paramref name="removeChars"/> or the original instance (<paramref name="str"/>) are null.
     /// </exception>
     [Pure]
     public static string Remove(this string str, IEnumerable<char> removeChars, StringComparison comparison = StringComparison.CurrentCulture)
@@ -93,6 +95,7 @@ public static partial class StringExtensions
         Validate.NotNull(removeChars);
         Validate.IEnumNotEmpty(removeChars);
         Validate.EnumContainsValue<StringComparison>(comparison);
+        Validate.OriginalInstanceNotNull(str);
 
         foreach (var item in removeChars)
             str = str.Replace(item.ToString(), string.Empty, comparison);
@@ -103,7 +106,7 @@ public static partial class StringExtensions
     /// <summary>
     /// Uses a regular expression to return a new string in which all occurrences of all unicode digits (in any script) in the current instance are removed.
     /// </summary>
-    /// <param name="originalString">The instance to remove digits from.</param>
+    /// <param name="str">The instance to remove digits from.</param>
     /// <returns>
     /// A string that is equivalent to the current string except that all instances of all unicode digits (in any script) are removed.
     /// If no digits are found in the current instance, the method returns it unchanged.
@@ -112,14 +115,21 @@ public static partial class StringExtensions
     /// The execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
     /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
     /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The original instance (<paramref name="str"/>) is null.
+    /// </exception>
     [Pure]
-    public static string RemoveNumbers(this string originalString)
-        => Regex.Replace(originalString, @"[\d-]", string.Empty);
+    public static string RemoveNumbers(this string str)
+    {
+        Validate.OriginalInstanceNotNull(str);
+
+        return Regex.Replace(str, @"[\d-]", string.Empty);
+    }
 
     /// <summary>
     /// Uses a regular expression to return a new string in which all occurrences of all special characters in the current instance are removed.
     /// </summary>
-    /// <param name="originalString">The instance to remove special characters from.</param>
+    /// <param name="str">The instance to remove special characters from.</param>
     /// <returns>
     /// A string that is equivalent to the current string except that all instances of all special characters are removed.
     /// If no special characters are found in the current instance, the method returns it unchanged.
@@ -128,14 +138,21 @@ public static partial class StringExtensions
     /// The execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
     /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
     /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The original instance (<paramref name="str"/>) is null.
+    /// </exception>
     [Pure]
-    public static string RemoveSpecialCharacters(this string originalString)
-        => Regex.Replace(originalString, "[^0-9A-Za-z]+", string.Empty);
+    public static string RemoveSpecialCharacters(this string str)
+    {
+        Validate.OriginalInstanceNotNull(str);
+
+        return Regex.Replace(str, "[^0-9A-Za-z]+", string.Empty);
+    }
 
     /// <summary>
     /// Uses a regular expression to return a new string in which all occurrences of all latin letters in the current instance are removed.
     /// </summary>
-    /// <param name="originalString">The instance to remove latin letters from.</param>
+    /// <param name="str">The instance to remove latin letters from.</param>
     /// <returns>
     /// A string that is equivalent to the current string except that all instances of all latin letters are removed.
     /// If no latin letters are found in the current instance, the method returns it unchanged.
@@ -144,7 +161,14 @@ public static partial class StringExtensions
     /// The execution time of the replacement operation exceeds the time-out interval specified for the application domain in which the method is called.
     /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
     /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The original instance (<paramref name="str"/>) is null.
+    /// </exception>
     [Pure]
-    public static string RemoveLetters(this string originalString)
-        => Regex.Replace(originalString, "[A-Za-z]", string.Empty);
+    public static string RemoveLetters(this string str)
+    {
+        Validate.OriginalInstanceNotNull(str);
+
+        return Regex.Replace(str, "[A-Za-z]", string.Empty);
+    }
 }
