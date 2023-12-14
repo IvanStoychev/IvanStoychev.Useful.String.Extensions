@@ -20,6 +20,7 @@ public static partial class StringExtensions
     /// <returns>
     /// A string that is equivalent to the substring of length <paramref name="length"/> that begins at
     /// the first instance of <paramref name="startString"/> in this string instance.
+    /// <br/>If <paramref name="startString"/> is the empty string ("") the returned substring starts at index 0 of the string instance.
     /// </returns>
     /// <exception cref="ArgumentException">
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
@@ -51,12 +52,12 @@ public static partial class StringExtensions
     /// <summary>
     /// Locates he first occurrence of <paramref name="startString"/> in the original instance and returns the string situated between it and the first occurrence
     /// of <paramref name="endString"/>, located after <paramref name="startString"/>. Whether <paramref name="startString"/> and/or <paramref name="endString"/>,
-    /// themselves, are returned is controlled by the <paramref name="stringInclusionOptions"/> argument.
+    /// themselves, are returned is controlled by the <paramref name="inclusionOptions"/> argument.
     /// </summary>
     /// <param name="str">The instance from which to extract a substring.</param>
     /// <param name="startString">The string which marks the start of the substring to be extracted.</param>
     /// <param name="endString">The string which marks the end of the substring.</param>
-    /// <param name="stringInclusionOptions">
+    /// <param name="inclusionOptions">
     /// A <see cref="StringInclusionOptions"/> enum, indicating whether <paramref name="startString"/> and/or <paramref name="endString"/> should be included in the result.
     /// </param>
     /// <param name="comparison">The comparison rules to use when looking for the strings.</param>
@@ -73,15 +74,16 @@ public static partial class StringExtensions
     /// <paramref name="startString"/> was not found in the original instance or <paramref name="endString"/> was not found in the part of the original instance after <paramref name="startString"/>.
     /// </exception>
     [Pure]
-    public static string Substring(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions = StringInclusionOptions.IncludeNone, StringComparison comparison = StringComparison.CurrentCulture)
+    public static string Substring(this string str, string startString, string endString, StringInclusionOptions inclusionOptions = StringInclusionOptions.IncludeNone, StringComparison comparison = StringComparison.CurrentCulture)
     {
         Validate.NotNull(startString);
         Validate.NotNull(endString);
         Validate.EnumContainsValue<StringComparison>(comparison);
+        Validate.EnumContainsValue<StringInclusionOptions>(inclusionOptions);
         Validate.EndStringIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, comparison);
 
         // This logic is because of how the "endStringIndex" is being calculated.
-        switch (stringInclusionOptions)
+        switch (inclusionOptions)
         {
             case StringInclusionOptions.IncludeNone:
                 startStringIndex += startString.Length;
@@ -106,12 +108,12 @@ public static partial class StringExtensions
     /// <summary>
     /// Locates he first occurrence of <paramref name="startString"/> in the original instance and returns the string situated between it and the last occurrence
     /// of <paramref name="endString"/>, located after <paramref name="startString"/>. Whether <paramref name="startString"/> and/or <paramref name="endString"/>,
-    /// themselves, are returned is controlled by the <paramref name="stringInclusionOptions"/> argument.
+    /// themselves, are returned is controlled by the <paramref name="inclusionOptions"/> argument.
     /// </summary>
     /// <param name="str">The instance from which to extract a substring.</param>
     /// <param name="startString">The string which marks the start of the substring to be extracted.</param>
     /// <param name="endString">The string which marks the end of the substring.</param>
-    /// <param name="stringInclusionOptions">
+    /// <param name="inclusionOptions">
     /// A <see cref="StringInclusionOptions"/> enum, indicating whether <paramref name="startString"/> and/or <paramref name="endString"/> should be included in the result.
     /// </param>
     /// <param name="comparison">The comparison rules to use when looking for the strings.</param>
@@ -128,15 +130,16 @@ public static partial class StringExtensions
     /// <paramref name="startString"/> was not found in the original instance or <paramref name="endString"/> was not found in the part of the original instance after <paramref name="startString"/>.
     /// </exception>
     [Pure]
-    public static string SubstringLast(this string str, string startString, string endString, StringInclusionOptions stringInclusionOptions = StringInclusionOptions.IncludeNone, StringComparison comparison = StringComparison.CurrentCulture)
+    public static string SubstringLast(this string str, string startString, string endString, StringInclusionOptions inclusionOptions = StringInclusionOptions.IncludeNone, StringComparison comparison = StringComparison.CurrentCulture)
     {
         Validate.NotNull(startString);
         Validate.NotNull(endString);
         Validate.EnumContainsValue<StringComparison>(comparison);
+        Validate.EnumContainsValue<StringInclusionOptions>(inclusionOptions);
         Validate.EndStringLastIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, comparison);
 
         // This logic is because of how the "endStringIndex" is being calculated.
-        switch (stringInclusionOptions)
+        switch (inclusionOptions)
         {
             case StringInclusionOptions.IncludeNone:
                 startStringIndex += startString.Length;
