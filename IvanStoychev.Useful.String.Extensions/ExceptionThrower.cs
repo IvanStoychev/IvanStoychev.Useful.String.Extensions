@@ -85,6 +85,16 @@ static class ExceptionThrower
         => throw new ArgumentNullException(parameterName, $"A member of the collection argument given for parameter \"{parameterName}\" of method \"{callingMethodName}\" was null.");
 
     /// <summary>
+    /// Throws an <see cref="ArgumentNullException"/> that informs the user the string on which <paramref name="callingMethodName"/> was called is <see langword="null"/>.
+    /// </summary>
+    /// <param name="callingMethodName">Name of the method that throws this exception.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The string <paramref name="callingMethodName"/> was called on is <see langword="null"/>.
+    /// </exception>
+    internal static void Throw_ArgumentNullException_OriginalInstance(string callingMethodName)
+        => throw new ArgumentNullException("Original string instance", $"The string instance on which \"{callingMethodName}\" was called is null.");
+
+    /// <summary>
     /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value of <paramref name="endString"/> was
     /// not found after <paramref name="startString"/> in the original instance. If the value of either <paramref name="startString"/> or <paramref name="endString"/>
     /// is longer than 10 characters the value displayed in the exception message will be truncated to 10.
