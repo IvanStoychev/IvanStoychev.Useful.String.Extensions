@@ -26,7 +26,7 @@ public static partial class StringExtensions
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="startString"/> is null.
+    /// <paramref name="startString"/> or the original instance (<paramref name="str"/>) are null.
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="startString"/> is not found in the original instance or the index of <paramref name="startString"/> plus <paramref name="length"/> indicates
@@ -39,6 +39,7 @@ public static partial class StringExtensions
         Validate.LengthIsPositive(length);
         Validate.EnumContainsValue<StringComparison>(comparison);
         Validate.SubstringIndex(str, startString, out int startStringIndex, comparison);
+        Validate.OriginalInstanceNotNull(str);
 
         int availableLength = str.Length - startStringIndex - startString.Length;
         Validate.LengthIsWithinBounds(availableLength, length);
@@ -70,7 +71,7 @@ public static partial class StringExtensions
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="startString"/> or <paramref name="endString"/> are null.
+    /// <paramref name="startString"/>, <paramref name="endString"/> or the original instance (<paramref name="str"/>) are null.
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="startString"/> was not found in the original instance or <paramref name="endString"/> was not found in the part of the original instance after <paramref name="startString"/>.
@@ -83,6 +84,7 @@ public static partial class StringExtensions
         Validate.EnumContainsValue<StringComparison>(comparison);
         Validate.EnumContainsValue<StringInclusionOptions>(inclusionOptions);
         Validate.EndStringIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, comparison);
+        Validate.OriginalInstanceNotNull(str);
 
         // This logic is because of how the "endStringIndex" is being calculated.
         switch (inclusionOptions)
@@ -128,7 +130,7 @@ public static partial class StringExtensions
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="startString"/> or <paramref name="endString"/> are null.
+    /// <paramref name="startString"/>, <paramref name="endString"/> or the original instance (<paramref name="str"/>) are null.
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="startString"/> was not found in the original instance or <paramref name="endString"/> was not found in the part of the original instance after <paramref name="startString"/>.
@@ -141,6 +143,7 @@ public static partial class StringExtensions
         Validate.EnumContainsValue<StringComparison>(comparison);
         Validate.EnumContainsValue<StringInclusionOptions>(inclusionOptions);
         Validate.EndStringLastIndex(str, startString, endString, out int startStringIndex, out int endStringIndex, comparison);
+        Validate.OriginalInstanceNotNull(str);
 
         // This logic is because of how the "endStringIndex" is being calculated.
         switch (inclusionOptions)
@@ -180,7 +183,7 @@ public static partial class StringExtensions
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="endString"/> is null.
+    /// <paramref name="endString"/> or the original instance (<paramref name="str"/>) are null.
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="endString"/> is not found in the original instance.
@@ -191,6 +194,7 @@ public static partial class StringExtensions
         Validate.NotNull(endString);
         Validate.EnumContainsValue<StringComparison>(comparison);
         Validate.SubstringIndex(str, endString, out int endStringIndex, comparison);
+        Validate.OriginalInstanceNotNull(str);
 
         endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
 
@@ -212,7 +216,7 @@ public static partial class StringExtensions
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="endString"/> is null.
+    /// <paramref name="endString"/> or the original instance (<paramref name="str"/>) are null.
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="endString"/> is not found in the original instance.
@@ -223,6 +227,7 @@ public static partial class StringExtensions
         Validate.NotNull(endString);
         Validate.EnumContainsValue<StringComparison>(comparison);
         Validate.SubstringLastIndex(str, endString, nameof(endString), out int endStringIndex, comparison);
+        Validate.OriginalInstanceNotNull(str);
 
         endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
 
@@ -244,7 +249,7 @@ public static partial class StringExtensions
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="startString"/> is null.
+    /// <paramref name="startString"/> or the original instance (<paramref name="str"/>) are null.
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="startString"/> is not found in the original instance.
@@ -255,6 +260,7 @@ public static partial class StringExtensions
         Validate.NotNull(startString);
         Validate.EnumContainsValue<StringComparison>(comparison);
         Validate.SubstringIndex(str, startString, out int startStringIndex, comparison);
+        Validate.OriginalInstanceNotNull(str);
 
         startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 
@@ -276,7 +282,7 @@ public static partial class StringExtensions
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="startString"/> is null.
+    /// <paramref name="startString"/> or the original instance (<paramref name="str"/>) are null.
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="startString"/> is not found in the original instance.
@@ -287,6 +293,7 @@ public static partial class StringExtensions
         Validate.NotNull(startString);
         Validate.EnumContainsValue<StringComparison>(comparison);
         Validate.SubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, comparison);
+        Validate.OriginalInstanceNotNull(str);
 
         startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 
@@ -311,7 +318,7 @@ public static partial class StringExtensions
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="startString"/> is null.
+    /// <paramref name="startString"/> or the original instance (<paramref name="str"/>) are null.
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="startString"/> is not found in the original instance or <paramref name="length"/> is less than zero or the index of <paramref name="startString"/> plus "length" indicates
@@ -324,6 +331,7 @@ public static partial class StringExtensions
         Validate.LengthIsPositive(length);
         Validate.EnumContainsValue<StringComparison>(comparison);
         Validate.SubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, comparison);
+        Validate.OriginalInstanceNotNull(str);
 
         int availableLength = str.Length - startStringIndex - startString.Length;
         Validate.LengthIsWithinBounds(availableLength, length);
