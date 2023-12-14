@@ -25,10 +25,10 @@ public static partial class StringExtensions
     [Pure]
     public static string Replace(this string str, IEnumerable<string> oldStrings, string newString, StringComparison comparison = StringComparison.CurrentCulture)
     {
+        Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(oldStrings);
         Validate.IEnumNotEmpty(oldStrings);
         Validate.EnumContainsValue<StringComparison>(comparison);
-        Validate.OriginalInstanceNotNull(str);
 
         foreach (var item in oldStrings)
         {
