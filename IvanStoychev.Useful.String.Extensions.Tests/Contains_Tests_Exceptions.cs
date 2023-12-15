@@ -56,6 +56,19 @@ public class Contains_Tests_Exceptions
         Assert.Equal(expectedMessage, exception.Message);
     }
 
+    [Fact]
+    public void ContainsAny_IEnumString_NullOrigInstance()
+    {
+        string testString = null;
+        string[] keywords = ["asd"];
+        string expectedMessage = "The string instance on which \"ContainsAny\" was called is null. (Parameter 'Original string instance')";
+
+        void testAction() => testString.ContainsAny(keywords);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
     #endregion bool ContainsAny(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
 
     #region bool ContainsAny(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
@@ -93,6 +106,19 @@ public class Contains_Tests_Exceptions
         void testAction() => "".ContainsAny(keychars, (StringComparison)99);
 
         var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Fact]
+    public void ContainsAny_IEnumChar_NullOrigInstance()
+    {
+        string testString = null;
+        char[] keychars = ['c'];
+        string expectedMessage = "The string instance on which \"ContainsAny\" was called is null. (Parameter 'Original string instance')";
+
+        void testAction() => testString.ContainsAny(keychars);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 
