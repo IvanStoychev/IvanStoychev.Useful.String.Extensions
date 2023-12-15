@@ -112,6 +112,21 @@ public class Remove_Tests
     #region Data
 
 	[Theory]
+    [InlineData(@"rMhj5(VirYg<rS7lWuGZ", @"5(<7")]
+    [InlineData(@"gNa/*+Kd($@k+$%8Fj/I", @"/*+($@+$%8/")]
+    [InlineData(@"bJcnmhy7<9-h%]wk[dTc", @"7<9-%][")]
+
+    #endregion Data
+	public void RemoveLetters(string testString, string expectedString)
+    {
+        string actual = testString.RemoveLetters();
+
+        Assert.Equal(expectedString, actual);
+    }
+
+    #region Data
+
+	[Theory]
     [InlineData("b2HGLTxiVJz0cxWacceZ", "bHGLTxiVJzcxWacceZ")]
     [InlineData("S1Rsf3jsE2IPKhIML5kN", "SRsfjsEIPKhIMLkN")]
     [InlineData("xqyao0g2EwQmweZUqy6l", "xqyaogEwQmweZUqyl")]
@@ -135,21 +150,6 @@ public class Remove_Tests
 	public void RemoveSpecialCharacters(string testString, string expectedString)
     {
         string actual = testString.RemoveSpecialCharacters();
-
-        Assert.Equal(expectedString, actual);
-    }
-
-    #region Data
-
-	[Theory]
-    [InlineData(@"rMhj5(VirYg<rS7lWuGZ", @"5(<7")]
-    [InlineData(@"gNa/*+Kd($@k+$%8Fj/I", @"/*+($@+$%8/")]
-    [InlineData(@"bJcnmhy7<9-h%]wk[dTc", @"7<9-%][")]
-
-    #endregion Data
-	public void RemoveLetters(string testString, string expectedString)
-    {
-        string actual = testString.RemoveLetters();
 
         Assert.Equal(expectedString, actual);
     }
