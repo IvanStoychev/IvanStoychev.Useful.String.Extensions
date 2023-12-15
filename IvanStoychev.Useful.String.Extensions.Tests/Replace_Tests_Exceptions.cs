@@ -64,4 +64,17 @@ public class Replace_Tests_Exceptions
         var exception = Assert.Throws<ArgumentNullException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
+
+    [Fact]
+    public void Replace_IEnumString_NullOrigInstance()
+    {
+        string[] oldStrings = ["asd"];
+        string testString = null;
+        string expectedMessage = "The string instance on which \"Replace\" was called is null. (Parameter 'Original string instance')";
+
+        void testAction() => testString.Replace(oldStrings, "a");
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
 }
