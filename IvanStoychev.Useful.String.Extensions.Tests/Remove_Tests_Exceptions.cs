@@ -31,6 +31,19 @@ public class Remove_Tests_Exceptions
         Assert.Equal(expectedMessage, exception.Message);
     }
 
+    [Fact]
+    public void Remove_String_DefaultComparison_NullOrigInstance()
+    {
+        string testString = null;
+        string expectedMessage = "The string instance on which \"Remove\" was called is null. (Parameter 'Original string instance')";
+
+        string nullString = null;
+        void testAction() => testString.Remove(nullString);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
     #region Data
     [Theory]
     [InlineData(StringComparison.Ordinal)]
@@ -66,6 +79,25 @@ public class Remove_Tests_Exceptions
         Assert.Equal(expectedMessage, exception.Message);
     }
 
+    #region Data
+    [Theory]
+    [InlineData(StringComparison.Ordinal)]
+    [InlineData(StringComparison.OrdinalIgnoreCase)]
+    [InlineData(StringComparison.InvariantCulture)]
+    [InlineData(StringComparison.InvariantCultureIgnoreCase)]
+    #endregion Data
+    public void Remove_String_SetComparison_NullOrigInstance(StringComparison comparison)
+    {
+        string testString = null;
+        string expectedMessage = "The string instance on which \"Remove\" was called is null. (Parameter 'Original string instance')";
+
+        string nullString = null;
+        void testAction() => testString.Remove(nullString, comparison);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
     [Fact]
     public void Remove_String_SetComparison_EnumInvalid()
     {
@@ -88,6 +120,19 @@ public class Remove_Tests_Exceptions
         IEnumerable<string> removeStrings = null;
         string testString = "testString";
         string expectedMessage = "The argument given for parameter \"removeStrings\" of method \"Remove\" was null. (Parameter 'removeStrings')";
+
+        void testAction() => testString.Remove(removeStrings);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Fact]
+    public void Remove_IEnumString_DefaultComparison_NullOrigInstance()
+    {
+        IEnumerable<string> removeStrings = null;
+        string testString = null;
+        string expectedMessage = "The string instance on which \"Remove\" was called is null. (Parameter 'Original string instance')";
 
         void testAction() => testString.Remove(removeStrings);
 
@@ -197,7 +242,56 @@ public class Remove_Tests_Exceptions
         Assert.Equal(expectedMessage, exception.Message);
     }
 
+    [Fact]
+    public void Remove_IEnumString_SetComparison_NullOrigInstance()
+    {
+        IEnumerable<string> removeStrings = null;
+        string testString = null;
+        string expectedMessage = "The string instance on which \"Remove\" was called is null. (Parameter 'Original string instance')";
+
+        void testAction() => testString.Remove(removeStrings);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
     #endregion Remove(this string str, IEnumerable<string> removeStrings, StringComparison comparison)
+
+    [Fact]
+    public void RemoveLetters_NullOrigInstance()
+    {
+        string testString = null;
+        string expectedMessage = "The string instance on which \"RemoveLetters\" was called is null. (Parameter 'Original string instance')";
+
+        void testAction() => testString.RemoveLetters();
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Fact]
+    public void RemoveNumbers_NullOrigInstance()
+    {
+        string testString = null;
+        string expectedMessage = "The string instance on which \"RemoveNumbers\" was called is null. (Parameter 'Original string instance')";
+
+        void testAction() => testString.RemoveNumbers();
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Fact]
+    public void RemoveSpecialCharacters_NullOrigInstance()
+    {
+        string testString = null;
+        string expectedMessage = "The string instance on which \"RemoveSpecialCharacters\" was called is null. (Parameter 'Original string instance')";
+
+        void testAction() => testString.RemoveSpecialCharacters();
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
 
     #region Data
 
