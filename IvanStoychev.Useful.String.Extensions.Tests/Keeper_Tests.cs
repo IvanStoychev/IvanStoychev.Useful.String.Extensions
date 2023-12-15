@@ -5,6 +5,17 @@ namespace IvanStoychev.Useful.String.Extensions.Tests;
 public class Keeper_Tests
 {
     [Theory]
+    [InlineData(@"6=XKjumEULTE54j%%W6g", @"XKjumEULTEjWg")]
+    [InlineData(@"bzKGOeQS)+59caKeE#f9", @"bzKGOeQScaKeEf")]
+    [InlineData(@"f(KRiWrbn5sNn8/JHatr", @"fKRiWrbnsNnJHatr")]
+    public void KeepOnlyLetters(string testString, string expected)
+    {
+        string actual = testString.KeepOnlyLetters();
+
+        Assert.Equal(expected, actual);
+    }
+
+    [Theory]
     [InlineData("awd1dkb33aljfo39d109j1082jd", "133391091082")]
     [InlineData("PTwXUV2zFdtYHtUMltxF", "2")]
     [InlineData("0PhTjDt3prG0ixqqmFf5", "0305")]
@@ -22,17 +33,6 @@ public class Keeper_Tests
     public void KeepOnlySpecialCharacters(string testString, string expected)
     {
         string actual = testString.KeepOnlySpecialCharacters();
-
-        Assert.Equal(expected, actual);
-    }
-
-    [Theory]
-    [InlineData(@"6=XKjumEULTE54j%%W6g", @"XKjumEULTEjWg")]
-    [InlineData(@"bzKGOeQS)+59caKeE#f9", @"bzKGOeQScaKeEf")]
-    [InlineData(@"f(KRiWrbn5sNn8/JHatr", @"fKRiWrbnsNnJHatr")]
-    public void KeepOnlyLetters(string testString, string expected)
-    {
-        string actual = testString.KeepOnlyLetters();
 
         Assert.Equal(expected, actual);
     }
