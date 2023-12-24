@@ -266,7 +266,7 @@ static class Validate
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="substring"/> is not found in <paramref name="originalString"/>.
     /// </exception>
-    internal static void SubstringLastIndex(string originalString, string substring, string parameterName, out int substringIndex, StringComparison stringComparison, [CallerMemberName] string callingMethodName = null)
+    internal static void SubstringLastIndex(string originalString, string substring, out int substringIndex, StringComparison stringComparison, [CallerArgumentExpression("substring")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
     {
         substringIndex = originalString.LastIndexOf(substring, stringComparison);
 
