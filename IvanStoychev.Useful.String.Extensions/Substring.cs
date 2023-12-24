@@ -124,7 +124,7 @@ public static partial class StringExtensions
     /// <returns>
     /// A string representing the part of the original instance, located between <paramref name="startString"/> and <paramref name="endString"/>.
     /// <br/>If <paramref name="startString"/> is the empty string ("") the returned substring starts at index 0 of the string instance.
-    /// <br/>If <paramref name="endString"/> is the empty string ("") the returned substring will end right after <paramref name="startString"/>.
+    /// <br/>If <paramref name="endString"/> is the empty string ("") the method returns what remains of the instance after <paramref name="startString"/>.
     /// </returns>
     /// <exception cref="ArgumentException">
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
@@ -210,7 +210,7 @@ public static partial class StringExtensions
     /// <param name="comparison">The comparison rules to use when looking for the strings.</param>
     /// <returns>
     /// Substring starting from the first occurrence of <paramref name="endString"/> to the end of the original string.
-    /// <br/>If <paramref name="endString"/> is the empty string ("") the returned substring starts at index 0 of the string instance.
+    /// <br/>If <paramref name="endString"/> is the empty string ("") the method returns the original instance, unchanged.
     /// </returns>
     /// <exception cref="ArgumentException">
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
@@ -227,7 +227,7 @@ public static partial class StringExtensions
         Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(endString);
         Validate.EnumContainsValue<StringComparison>(comparison);
-        Validate.SubstringLastIndex(str, endString, nameof(endString), out int endStringIndex, comparison);
+        Validate.SubstringLastIndex(str, endString, out int endStringIndex, comparison);
 
         endStringIndex = AddSubstringLengthConditional(endStringIndex, endString, !inclusive);
 
@@ -276,7 +276,7 @@ public static partial class StringExtensions
     /// <param name="comparison">The comparison rules to use when looking for the strings.</param>
     /// <returns>
     /// Substring of the original string, starting from the last occurrence of <paramref name="startString"/> to the end of the original string.
-    /// <br/>If <paramref name="startString"/> is the empty string ("") the returned substring starts at index 0 of the string instance.
+    /// <br/>If <paramref name="startString"/> is the empty string ("") the method returns the original instance, unchanged.
     /// </returns>
     /// <exception cref="ArgumentException">
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
@@ -293,7 +293,7 @@ public static partial class StringExtensions
         Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(startString);
         Validate.EnumContainsValue<StringComparison>(comparison);
-        Validate.SubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, comparison);
+        Validate.SubstringLastIndex(str, startString, out int startStringIndex, comparison);
 
         startStringIndex = AddSubstringLengthConditional(startStringIndex, startString, inclusive);
 
@@ -312,7 +312,8 @@ public static partial class StringExtensions
     /// <param name="comparison">The comparison rules to use when looking for the strings.</param>
     /// <returns>
     /// A substring of length "<paramref name="length"/>" that begins at the last occurrence of <paramref name="startString"/> in this instance.
-    /// <br/>If <paramref name="startString"/> is the empty string ("") the returned substring starts at index 0 of the string instance.
+    /// <br/>If <paramref name="startString"/> is the empty string ("") the returned substring starts at the last index of the string instance and
+    /// any <paramref name="length"/> greater than 0 will cause an exception.
     /// </returns>
     /// <exception cref="ArgumentException">
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
@@ -331,7 +332,7 @@ public static partial class StringExtensions
         Validate.NotNull(startString);
         Validate.LengthIsPositive(length);
         Validate.EnumContainsValue<StringComparison>(comparison);
-        Validate.SubstringLastIndex(str, startString, nameof(startString), out int startStringIndex, comparison);
+        Validate.SubstringLastIndex(str, startString, out int startStringIndex, comparison);
 
         int availableLength = str.Length - startStringIndex - startString.Length;
         Validate.LengthIsWithinBounds(availableLength, length);
