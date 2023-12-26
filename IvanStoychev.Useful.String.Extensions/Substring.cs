@@ -177,7 +177,7 @@ public static partial class StringExtensions
     /// <param name="comparison">The comparison rules to use when looking for the strings.</param>
     /// <returns>
     /// A string representing the part of the original string, located from the start of the original instance to the first occurrence of <paramref name="endString"/>.
-    /// <br/>If <paramref name="endString"/> is the empty string ("") the returned substring starts at index 0 of the string instance.
+    /// <br/>If <paramref name="endString"/> is the empty string ("") the method also returns the empty string ("").
     /// </returns>
     /// <exception cref="ArgumentException">
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
