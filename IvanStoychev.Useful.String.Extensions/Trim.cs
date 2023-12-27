@@ -14,14 +14,15 @@ public static partial class StringExtensions
     /// </summary>
     /// <param name="str">The instance to remove the string from.</param>
     /// <param name="trimString">The string to remove.</param>
-    /// <param name="comparison">One of the enumeration values that determines how the start of the current instance and <paramref name="trimString"/> are compared.</param>
+    /// <param name="comparison">One of the enumeration values that determines how the start and end of the current instance and <paramref name="trimString"/> are compared.</param>
     /// <param name="trimWhitespace">
     /// <see langword="true"/> to remove any whitespace characters remaining at the start and end of the original instance after <paramref name="trimString"/> is removed.
-    /// If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance starts and/or ends with <paramref name="trimString"/>.
+    /// <br/>If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance starts and/or ends with <paramref name="trimString"/>.
     /// </param>
     /// <returns>
-    /// The string that remains after the occurrence of "trimString" is removed from the start and end of the current instance. If "trimString" is <see langword="null"/>,
-    /// the empty string or not found at the start or end of the current instance the method returns the current instance unchanged.
+    /// The string that remains after all occurrences of <paramref name="trimString"/> are removed from the start and end of the current instance.
+    /// <br/>If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the start or end of the current instance
+    /// the method returns the current instance unchanged or, optionally, whitespace trimmed.
     /// </returns>
     /// <exception cref="ArgumentException">
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
@@ -49,19 +50,19 @@ public static partial class StringExtensions
     /// </summary>
     /// <param name="str">The string to remove occurrences from.</param>
     /// <param name="trimString">The string to remove.</param>
-    /// <param name="ignoreCase"><see langword="true"/> to ignore casing when trimming, <see langword="false"/> otherwise.</param>
+    /// <param name="ignoreCase">Whether to consider the start and end of the instance and <paramref name="trimString"/> equal if they have different casings.</param>
     /// <param name="culture">
     /// Cultural information that determines how the start and end of this instance and <paramref name="trimString"/> are compared.
-    /// If culture is <see langword="null"/>, the current culture is used.
+    /// <br/>If <paramref name="culture"/> is <see langword="null"/>, the current culture is used.
     /// </param>
     /// <param name="trimWhitespace">
     /// <see langword="true"/> to remove any whitespace characters remaining at the start and end of the original instance after <paramref name="trimString"/> is removed.
-    /// If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance starts and/or ends with <paramref name="trimString"/>.
+    /// <br/>If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance starts and/or ends with <paramref name="trimString"/>.
     /// </param>
     /// <returns>
-    /// The string that remains after the occurrence of <paramref name="trimString"/> is removed from the start and end of the current instance.
-    /// If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the start of the current instance the method returns
-    /// the current instance unchanged.
+    /// The string that remains after all occurrences of <paramref name="trimString"/> are removed from the start and end of the current instance.
+    /// <br/>If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the start or end of the current instance the method returns
+    /// the current instance unchanged or, optionally, whitespace trimmed.
     /// </returns>
     /// <exception cref="ArgumentNullException">
     /// The original instance (<paramref name="str"/>) is <see langword="null"/>.
@@ -88,12 +89,12 @@ public static partial class StringExtensions
     /// <param name="comparison">One of the enumeration values that determines how the start of the current instance and <paramref name="trimString"/> are compared.</param>
     /// <param name="trimWhitespace">
     /// <see langword="true"/> to remove any whitespace characters remaining at the start of the original instance after <paramref name="trimString"/> is removed.
-    /// If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance starts with <paramref name="trimString"/>.
+    /// <br/>If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance starts with <paramref name="trimString"/>.
     /// </param>
     /// <returns>
-    /// The string that remains after the occurrence of "trimString" is removed from the start of
-    /// the current instance. If "trimString" is null, the empty string or not found at the start of the
-    /// current instance the method returns the current instance unchanged.
+    /// The string that remains after all occurrences of <paramref name="trimString"/> are removed from the start of the current instance.
+    /// <br/>If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the start of the
+    /// current instance the method returns the current instance unchanged or, optionally, whitespace trimmed.
     /// </returns>
     /// <exception cref="ArgumentException">
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
@@ -124,19 +125,19 @@ public static partial class StringExtensions
     /// </summary>
     /// <param name="str">The string to remove occurrences from.</param>
     /// <param name="trimString">The string to remove.</param>
-    /// <param name="ignoreCase"><see langword="true"/> to ignore casing when trimming, <see langword="false"/> otherwise.</param>
+    /// <param name="ignoreCase">Whether to consider the start of the instance and <paramref name="trimString"/> equal if they have different casings.</param>
     /// <param name="culture">
     /// Cultural information that determines how the start of this instance and <paramref name="trimString"/> are compared.
-    /// If culture is null, the current culture is used.
+    /// <br/>If culture is <see langword="null"/>, the current culture is used.
     /// </param>
     /// <param name="trimWhitespace">
     /// <see langword="true"/> to remove any whitespace characters remaining at the start of the original instance after <paramref name="trimString"/> is removed.
-    /// If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance starts with <paramref name="trimString"/>.
+    /// <br/>If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance starts with <paramref name="trimString"/>.
     /// </param>
     /// <returns>
-    /// The string that remains after the occurrence of <paramref name="trimString"/> is removed from the start of
-    /// the current instance. If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the start of the
-    /// current instance the method returns the current instance unchanged.
+    /// The string that remains after all occurrences of <paramref name="trimString"/> are removed from the start of the current instance.
+    /// <br/>If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the start of the current instance
+    /// the method returns the current instance unchanged or, optionally, whitespace trimmed.
     /// </returns>
     /// <exception cref="ArgumentNullException">
     /// The original instance (<paramref name="str"/>) is <see langword="null"/>.
@@ -166,12 +167,12 @@ public static partial class StringExtensions
     /// <param name="comparison">One of the enumeration values that determines how the end of the current instance and <paramref name="trimString"/> are compared.</param>
     /// <param name="trimWhitespace">
     /// <see langword="true"/> to remove any whitespace characters remaining at the end of the original instance after <paramref name="trimString"/> is removed.
-    /// If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance ends with <paramref name="trimString"/>.
+    /// <br/>If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance ends with <paramref name="trimString"/>.
     /// </param>
     /// <returns>
-    /// The string that remains after the occurrence of <paramref name="trimString"/> is removed from the end of
-    /// the current instance. If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the end of the
-    /// current instance the method returns the current instance unchanged.
+    /// The string that remains after all occurrences of <paramref name="trimString"/> are removed from the end of the current instance.
+    /// <br/>If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the end of the current instance
+    /// the method returns the current instance unchanged or, optionally, whitespace trimmed.
     /// </returns>
     /// <exception cref="ArgumentException">
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
@@ -202,19 +203,19 @@ public static partial class StringExtensions
     /// </summary>
     /// <param name="str">The string to remove occurrences from.</param>
     /// <param name="trimString">The string to remove.</param>
-    /// <param name="ignoreCase"><see langword="true"/> to ignore casing when trimming, <see langword="false"/> otherwise.</param>
+    /// <param name="ignoreCase">Whether to consider the end of the instance and <paramref name="trimString"/> equal if they have different casings.</param>
     /// <param name="culture">
     /// Cultural information that determines how the end of this instance and <paramref name="trimString"/> are compared.
-    /// If culture is null, the current culture is used.
+    /// <br/>If culture is <see langword="null"/>, the current culture is used.
     /// </param>
     /// <param name="trimWhitespace">
     /// <see langword="true"/> to remove any whitespace characters remaining at the end of the original instance after <paramref name="trimString"/> is removed.
-    /// If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance ends with <paramref name="trimString"/>.
+    /// <br/>If <see langword="true"/>, whitespace removal will occur regardless of whether the original instance ends with <paramref name="trimString"/>.
     /// </param>
     /// <returns>
-    /// The string that remains after the occurrence of <paramref name="trimString"/> is removed from the end of
-    /// the current instance. If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the end of the
-    /// current instance the method returns the current instance unchanged.
+    /// The string that remains after all occurrences of <paramref name="trimString"/> are removed from the end of the current instance.
+    /// <br/>If <paramref name="trimString"/> is <see langword="null"/>, the empty string or not found at the end of the current instance
+    /// the method returns the current instance unchanged or, optionally, whitespace trimmed.
     /// </returns>
     /// <exception cref="ArgumentNullException">
     /// The original instance (<paramref name="str"/>) is <see langword="null"/>.
