@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using Xunit;
 
 namespace IvanStoychev.Useful.String.Extensions.Tests;
