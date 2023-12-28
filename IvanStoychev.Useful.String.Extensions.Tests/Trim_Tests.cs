@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using Xunit;
 
 namespace IvanStoychev.Useful.String.Extensions.Tests;
@@ -195,6 +196,149 @@ public class Trim_Tests
         string actual = testString.Trim(stringToRemove, false, CultureInfo.InvariantCulture, true);
 
         Assert.Equal(expectedString, actual);
+    }
+
+    [Fact]
+    public void Trim_String_Comparison_DefaultComparison_DefaultSpaceTrim_EmptyString()
+    {
+        string testString = " test ";
+        string expected = testString;
+        string actual = testString.Trim("");
+
+        Assert.Equal(expected, actual);
+    }
+
+    #region Data
+    [Theory]
+    [InlineData(" test ", "test", true)]
+    [InlineData(" test ", " test ", false)]
+    #endregion Data
+    public void Trim_String_Comparison_DefaultComparison_SetSpaceTrim_EmptyString(string testString, string expected, bool trimWhitespace)
+    {
+        string actual = testString.Trim("", trimWhitespace: trimWhitespace);
+
+        Assert.Equal(expected, actual);
+    }
+
+    #region Data
+    [Theory]
+    [InlineData(" test ", StringComparison.InvariantCulture)]
+    [InlineData(" test ", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test ", StringComparison.Ordinal)]
+    [InlineData(" test ", StringComparison.OrdinalIgnoreCase)]
+    #endregion Data
+    public void Trim_String_Comparison_SetComparison_DefaultSpaceTrim_EmptyString(string testString, StringComparison comparison)
+    {
+        string expected = testString;
+        string actual = testString.Trim("", comparison);
+
+        Assert.Equal(expected, actual);
+    }
+
+    #region Data
+    [Theory]
+    [InlineData(" test ",     "test",       true,      StringComparison.InvariantCulture)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.InvariantCulture)]
+    [InlineData("test ",      "test",       true,      StringComparison.InvariantCulture)]
+    [InlineData("test ",      "test ",      false,     StringComparison.InvariantCulture)]
+    [InlineData(" test",      "test",       true,      StringComparison.InvariantCulture)]
+    [InlineData(" test",      " test",      false,     StringComparison.InvariantCulture)]
+    [InlineData(" test ",     "test",       true,      StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("test ",      "test",       true,      StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("test ",      "test ",      false,     StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test",      "test",       true,      StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test",      " test",      false,     StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test ",     "test",       true,      StringComparison.Ordinal)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.Ordinal)]
+    [InlineData("test ",      "test",       true,      StringComparison.Ordinal)]
+    [InlineData("test ",      "test ",      false,     StringComparison.Ordinal)]
+    [InlineData(" test",      "test",       true,      StringComparison.Ordinal)]
+    [InlineData(" test",      " test",      false,     StringComparison.Ordinal)]
+    [InlineData(" test ",     "test",       true,      StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.OrdinalIgnoreCase)]
+    [InlineData("test ",      "test",       true,      StringComparison.OrdinalIgnoreCase)]
+    [InlineData("test ",      "test ",      false,     StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" test",      "test",       true,      StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" test",      " test",      false,     StringComparison.OrdinalIgnoreCase)]
+    #endregion Data
+    public void Trim_String_Comparison_SetComparison_SetSpaceTrim_EmptyString(string testString, string expected, bool trimWhitespace, StringComparison comparison)
+    {
+        string actual = testString.Trim("", comparison, trimWhitespace);
+
+        Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void Trim_String_Comparison_DefaultComparison_DefaultSpaceTrim_NullString()
+    {
+        string testString = " test ";
+        string expected = testString;
+        string nullString = null;
+        string actual = testString.Trim(nullString);
+
+        Assert.Equal(expected, actual);
+    }
+
+    #region Data
+    [Theory]
+    [InlineData(" test ", "test", true)]
+    [InlineData(" test ", " test ", false)]
+    #endregion Data
+    public void Trim_String_Comparison_DefaultComparison_SetSpaceTrim_NullString(string testString, string expected, bool trimWhitespace)
+    {
+        string actual = testString.Trim(null, trimWhitespace: trimWhitespace);
+
+        Assert.Equal(expected, actual);
+    }
+
+    #region Data
+    [Theory]
+    [InlineData(" test ", StringComparison.InvariantCulture)]
+    [InlineData(" test ", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test ", StringComparison.Ordinal)]
+    [InlineData(" test ", StringComparison.OrdinalIgnoreCase)]
+    #endregion Data
+    public void Trim_String_Comparison_SetComparison_DefaultSpaceTrim_NullString(string testString, StringComparison comparison)
+    {
+        string expected = testString;
+        string actual = testString.Trim(null, comparison);
+
+        Assert.Equal(expected, actual);
+    }
+
+    #region Data
+    [Theory]
+    [InlineData(" test ",     "test",       true,      StringComparison.InvariantCulture)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.InvariantCulture)]
+    [InlineData("test ",      "test",       true,      StringComparison.InvariantCulture)]
+    [InlineData("test ",      "test ",      false,     StringComparison.InvariantCulture)]
+    [InlineData(" test",      "test",       true,      StringComparison.InvariantCulture)]
+    [InlineData(" test",      " test",      false,     StringComparison.InvariantCulture)]
+    [InlineData(" test ",     "test",       true,      StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("test ",      "test",       true,      StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("test ",      "test ",      false,     StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test",      "test",       true,      StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test",      " test",      false,     StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test ",     "test",       true,      StringComparison.Ordinal)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.Ordinal)]
+    [InlineData("test ",      "test",       true,      StringComparison.Ordinal)]
+    [InlineData("test ",      "test ",      false,     StringComparison.Ordinal)]
+    [InlineData(" test",      "test",       true,      StringComparison.Ordinal)]
+    [InlineData(" test",      " test",      false,     StringComparison.Ordinal)]
+    [InlineData(" test ",     "test",       true,      StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.OrdinalIgnoreCase)]
+    [InlineData("test ",      "test",       true,      StringComparison.OrdinalIgnoreCase)]
+    [InlineData("test ",      "test ",      false,     StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" test",      "test",       true,      StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" test",      " test",      false,     StringComparison.OrdinalIgnoreCase)]
+    #endregion Data
+    public void Trim_String_Comparison_SetComparison_SetSpaceTrim_NullString(string testString, string expected, bool trimWhitespace, StringComparison comparison)
+    {
+        string actual = testString.Trim(null, comparison, trimWhitespace);
+
+        Assert.Equal(expected, actual);
     }
 
     #endregion Pass
@@ -575,6 +719,149 @@ public class Trim_Tests
         Assert.Equal(expectedString, actual);
     }
 
+    [Fact]
+    public void TrimStart_String_Comparison_DefaultComparison_DefaultSpaceTrim_EmptyString()
+    {
+        string testString = " test ";
+        string expected = testString;
+        string actual = testString.TrimStart("");
+
+        Assert.Equal(expected, actual);
+    }
+
+    #region Data
+    [Theory]
+    [InlineData(" test ", "test ", true)]
+    [InlineData(" test ", " test ", false)]
+    #endregion Data
+    public void TrimStart_String_Comparison_DefaultComparison_SetSpaceTrim_EmptyString(string testString, string expected, bool trimWhitespace)
+    {
+        string actual = testString.TrimStart("", trimWhitespace: trimWhitespace);
+
+        Assert.Equal(expected, actual);
+    }
+
+    #region Data
+    [Theory]
+    [InlineData(" test ", StringComparison.InvariantCulture)]
+    [InlineData(" test ", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test ", StringComparison.Ordinal)]
+    [InlineData(" test ", StringComparison.OrdinalIgnoreCase)]
+    #endregion Data
+    public void TrimStart_String_Comparison_SetComparison_DefaultSpaceTrim_EmptyString(string testString, StringComparison comparison)
+    {
+        string expected = testString;
+        string actual = testString.TrimStart("", comparison);
+
+        Assert.Equal(expected, actual);
+    }
+
+    #region Data
+    [Theory]
+    [InlineData(" test ",     "test ",      true,      StringComparison.InvariantCulture)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.InvariantCulture)]
+    [InlineData("test ",      "test ",      true,      StringComparison.InvariantCulture)]
+    [InlineData("test ",      "test ",      false,     StringComparison.InvariantCulture)]
+    [InlineData(" test",      "test",       true,      StringComparison.InvariantCulture)]
+    [InlineData(" test",      " test",      false,     StringComparison.InvariantCulture)]
+    [InlineData(" test ",     "test ",      true,      StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("test ",      "test ",      true,      StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("test ",      "test ",      false,     StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test",      "test",       true,      StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test",      " test",      false,     StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test ",     "test ",      true,      StringComparison.Ordinal)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.Ordinal)]
+    [InlineData("test ",      "test ",      true,      StringComparison.Ordinal)]
+    [InlineData("test ",      "test ",      false,     StringComparison.Ordinal)]
+    [InlineData(" test",      "test",       true,      StringComparison.Ordinal)]
+    [InlineData(" test",      " test",      false,     StringComparison.Ordinal)]
+    [InlineData(" test ",     "test ",      true,      StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.OrdinalIgnoreCase)]
+    [InlineData("test ",      "test ",      true,      StringComparison.OrdinalIgnoreCase)]
+    [InlineData("test ",      "test ",      false,     StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" test",      "test",       true,      StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" test",      " test",      false,     StringComparison.OrdinalIgnoreCase)]
+    #endregion Data
+    public void TrimStart_String_Comparison_SetComparison_SetSpaceTrim_EmptyString(string testString, string expected, bool trimWhitespace, StringComparison comparison)
+    {
+        string actual = testString.TrimStart("", comparison, trimWhitespace);
+
+        Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void TrimStart_String_Comparison_DefaultComparison_DefaultSpaceTrim_NullString()
+    {
+        string testString = " test ";
+        string expected = testString;
+        string nullString = null;
+        string actual = testString.TrimStart(nullString);
+
+        Assert.Equal(expected, actual);
+    }
+
+    #region Data
+    [Theory]
+    [InlineData(" test ", "test ", true)]
+    [InlineData(" test ", " test ", false)]
+    #endregion Data
+    public void TrimStart_String_Comparison_DefaultComparison_SetSpaceTrim_NullString(string testString, string expected, bool trimWhitespace)
+    {
+        string actual = testString.TrimStart(null, trimWhitespace: trimWhitespace);
+
+        Assert.Equal(expected, actual);
+    }
+
+    #region Data
+    [Theory]
+    [InlineData(" test ", StringComparison.InvariantCulture)]
+    [InlineData(" test ", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test ", StringComparison.Ordinal)]
+    [InlineData(" test ", StringComparison.OrdinalIgnoreCase)]
+    #endregion Data
+    public void TrimStart_String_Comparison_SetComparison_DefaultSpaceTrim_NullString(string testString, StringComparison comparison)
+    {
+        string expected = testString;
+        string actual = testString.TrimStart(null, comparison);
+
+        Assert.Equal(expected, actual);
+    }
+
+    #region Data
+    [Theory]
+    [InlineData(" test ",     "test ",      true,      StringComparison.InvariantCulture)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.InvariantCulture)]
+    [InlineData("test ",      "test ",      true,      StringComparison.InvariantCulture)]
+    [InlineData("test ",      "test ",      false,     StringComparison.InvariantCulture)]
+    [InlineData(" test",      "test",       true,      StringComparison.InvariantCulture)]
+    [InlineData(" test",      " test",      false,     StringComparison.InvariantCulture)]
+    [InlineData(" test ",     "test ",      true,      StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("test ",      "test ",      true,      StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("test ",      "test ",      false,     StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test",      "test",       true,      StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test",      " test",      false,     StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test ",     "test ",      true,      StringComparison.Ordinal)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.Ordinal)]
+    [InlineData("test ",      "test ",      true,      StringComparison.Ordinal)]
+    [InlineData("test ",      "test ",      false,     StringComparison.Ordinal)]
+    [InlineData(" test",      "test",       true,      StringComparison.Ordinal)]
+    [InlineData(" test",      " test",      false,     StringComparison.Ordinal)]
+    [InlineData(" test ",     "test ",      true,      StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.OrdinalIgnoreCase)]
+    [InlineData("test ",      "test ",      true,      StringComparison.OrdinalIgnoreCase)]
+    [InlineData("test ",      "test ",      false,     StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" test",      "test",       true,      StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" test",      " test",      false,     StringComparison.OrdinalIgnoreCase)]
+    #endregion Data
+    public void TrimStart_String_Comparison_SetComparison_SetSpaceTrim_NullString(string testString, string expected, bool trimWhitespace, StringComparison comparison)
+    {
+        string actual = testString.TrimStart(null, comparison, trimWhitespace);
+
+        Assert.Equal(expected, actual);
+    }
+
     #endregion Pass
 
     #region Fail
@@ -951,6 +1238,149 @@ public class Trim_Tests
         string actual = testString.TrimEnd(stringToRemove, false, CultureInfo.InvariantCulture, true);
 
         Assert.Equal(expectedString, actual);
+    }
+
+    [Fact]
+    public void TrimEnd_String_Comparison_DefaultComparison_DefaultSpaceTrim_EmptyString()
+    {
+        string testString = " test ";
+        string expected = testString;
+        string actual = testString.TrimEnd("");
+
+        Assert.Equal(expected, actual);
+    }
+
+    #region Data
+    [Theory]
+    [InlineData(" test ", " test", true)]
+    [InlineData(" test ", " test ", false)]
+    #endregion Data
+    public void TrimEnd_String_Comparison_DefaultComparison_SetSpaceTrim_EmptyString(string testString, string expected, bool trimWhitespace)
+    {
+        string actual = testString.TrimEnd("", trimWhitespace: trimWhitespace);
+
+        Assert.Equal(expected, actual);
+    }
+
+    #region Data
+    [Theory]
+    [InlineData(" test ", StringComparison.InvariantCulture)]
+    [InlineData(" test ", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test ", StringComparison.Ordinal)]
+    [InlineData(" test ", StringComparison.OrdinalIgnoreCase)]
+    #endregion Data
+    public void TrimEnd_String_Comparison_SetComparison_DefaultSpaceTrim_EmptyString(string testString, StringComparison comparison)
+    {
+        string expected = testString;
+        string actual = testString.TrimEnd("", comparison);
+
+        Assert.Equal(expected, actual);
+    }
+
+    #region Data
+    [Theory]
+    [InlineData(" test ",     " test",      true,      StringComparison.InvariantCulture)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.InvariantCulture)]
+    [InlineData("test ",      "test",       true,      StringComparison.InvariantCulture)]
+    [InlineData("test ",      "test ",      false,     StringComparison.InvariantCulture)]
+    [InlineData(" test",      " test",      true,      StringComparison.InvariantCulture)]
+    [InlineData(" test",      " test",      false,     StringComparison.InvariantCulture)]
+    [InlineData(" test ",     " test",      true,      StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("test ",      "test",       true,      StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("test ",      "test ",      false,     StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test",      " test",      true,      StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test",      " test",      false,     StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test ",     " test",      true,      StringComparison.Ordinal)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.Ordinal)]
+    [InlineData("test ",      "test",       true,      StringComparison.Ordinal)]
+    [InlineData("test ",      "test ",      false,     StringComparison.Ordinal)]
+    [InlineData(" test",      " test",      true,      StringComparison.Ordinal)]
+    [InlineData(" test",      " test",      false,     StringComparison.Ordinal)]
+    [InlineData(" test ",     " test",      true,      StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.OrdinalIgnoreCase)]
+    [InlineData("test ",      "test",       true,      StringComparison.OrdinalIgnoreCase)]
+    [InlineData("test ",      "test ",      false,     StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" test",      " test",      true,      StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" test",      " test",      false,     StringComparison.OrdinalIgnoreCase)]
+    #endregion Data
+    public void TrimEnd_String_Comparison_SetComparison_SetSpaceTrim_EmptyString(string testString, string expected, bool trimWhitespace, StringComparison comparison)
+    {
+        string actual = testString.TrimEnd("", comparison, trimWhitespace);
+
+        Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void TrimEnd_String_Comparison_DefaultComparison_DefaultSpaceTrim_NullString()
+    {
+        string testString = " test ";
+        string expected = testString;
+        string nullString = null;
+        string actual = testString.TrimEnd(nullString);
+
+        Assert.Equal(expected, actual);
+    }
+
+    #region Data
+    [Theory]
+    [InlineData(" test ", " test", true)]
+    [InlineData(" test ", " test ", false)]
+    #endregion Data
+    public void TrimEnd_String_Comparison_DefaultComparison_SetSpaceTrim_NullString(string testString, string expected, bool trimWhitespace)
+    {
+        string actual = testString.TrimEnd(null, trimWhitespace: trimWhitespace);
+
+        Assert.Equal(expected, actual);
+    }
+
+    #region Data
+    [Theory]
+    [InlineData(" test ", StringComparison.InvariantCulture)]
+    [InlineData(" test ", StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test ", StringComparison.Ordinal)]
+    [InlineData(" test ", StringComparison.OrdinalIgnoreCase)]
+    #endregion Data
+    public void TrimEnd_String_Comparison_SetComparison_DefaultSpaceTrim_NullString(string testString, StringComparison comparison)
+    {
+        string expected = testString;
+        string actual = testString.TrimEnd(null, comparison);
+
+        Assert.Equal(expected, actual);
+    }
+
+    #region Data
+    [Theory]
+    [InlineData(" test ",     " test",      true,      StringComparison.InvariantCulture)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.InvariantCulture)]
+    [InlineData("test ",      "test",       true,      StringComparison.InvariantCulture)]
+    [InlineData("test ",      "test ",      false,     StringComparison.InvariantCulture)]
+    [InlineData(" test",      " test",      true,      StringComparison.InvariantCulture)]
+    [InlineData(" test",      " test",      false,     StringComparison.InvariantCulture)]
+    [InlineData(" test ",     " test",      true,      StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("test ",      "test",       true,      StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("test ",      "test ",      false,     StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test",      " test",      true,      StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test",      " test",      false,     StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData(" test ",     " test",      true,      StringComparison.Ordinal)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.Ordinal)]
+    [InlineData("test ",      "test",       true,      StringComparison.Ordinal)]
+    [InlineData("test ",      "test ",      false,     StringComparison.Ordinal)]
+    [InlineData(" test",      " test",      true,      StringComparison.Ordinal)]
+    [InlineData(" test",      " test",      false,     StringComparison.Ordinal)]
+    [InlineData(" test ",     " test",      true,      StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" test ",     " test ",     false,     StringComparison.OrdinalIgnoreCase)]
+    [InlineData("test ",      "test",       true,      StringComparison.OrdinalIgnoreCase)]
+    [InlineData("test ",      "test ",      false,     StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" test",      " test",      true,      StringComparison.OrdinalIgnoreCase)]
+    [InlineData(" test",      " test",      false,     StringComparison.OrdinalIgnoreCase)]
+    #endregion Data
+    public void TrimEnd_String_Comparison_SetComparison_SetSpaceTrim_NullString(string testString, string expected, bool trimWhitespace, StringComparison comparison)
+    {
+        string actual = testString.TrimEnd(null, comparison, trimWhitespace);
+
+        Assert.Equal(expected, actual);
     }
 
     #endregion Pass
