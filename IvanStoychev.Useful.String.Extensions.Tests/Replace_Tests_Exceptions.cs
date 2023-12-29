@@ -42,7 +42,7 @@ public class Replace_Tests_Exceptions
     }
 
     [Fact]
-    public void Replace_IEnumString_NullArgument()
+    public void Replace_IEnumString_IEnumNull()
     {
         string[] oldStrings = null;
         string expectedMessage = "The argument given for parameter \"oldStrings\" of method \"Replace\" was null. (Parameter 'oldStrings')";
