@@ -6,7 +6,8 @@ namespace IvanStoychev.Useful.String.Extensions.Tests;
 
 public class Contains_Tests
 {
-    #region bool ContainsAny(this string str, IEnumerable<string> keywords, StringComparison comparison)
+    #region ContainsAny(this string str, IEnumerable<string> keywords, StringComparison comparison)
+
 
     [Theory, MemberData(nameof(Data_Contains_IEnumString_DefaultComparison_Pass))]
     public void ContainsAny_IEnumString_DefaultComparison_Pass(string testString, IEnumerable<string> keywords)
@@ -16,6 +17,7 @@ public class Contains_Tests
         Assert.True(actual);
     }
 
+
     [Theory, MemberData(nameof(Data_Contains_IEnumString_DefaultComparison_Fail))]
     public void ContainsAny_IEnumString_DefaultComparison_Fail(string testString, IEnumerable<string> keywords)
     {
@@ -23,6 +25,7 @@ public class Contains_Tests
 
         Assert.False(actual);
     }
+
 
     [Theory, MemberData(nameof(Data_Contains_IEnumString_SetComparison_Pass))]
     public void ContainsAny_IEnumString_SetComparison_Pass(string testString, IEnumerable<string> keywords, StringComparison stringComparison)
@@ -32,6 +35,7 @@ public class Contains_Tests
         Assert.True(actual);
     }
 
+
     [Theory, MemberData(nameof(Data_Contains_IEnumString_SetComparison_Fail))]
     public void ContainsAny_IEnumString_SetComparison_Fail(string testString, IEnumerable<string> keywords, StringComparison stringComparison)
     {
@@ -40,9 +44,11 @@ public class Contains_Tests
         Assert.False(actual);
     }
 
-    #endregion bool ContainsAny(this string str, IEnumerable<string> keywords, StringComparison comparison)
 
-    #region bool ContainsAny(this string str, IEnumerable<char> keychars, StringComparison comparison)
+    #endregion ContainsAny(this string str, IEnumerable<string> keywords, StringComparison comparison)
+
+    #region ContainsAny(this string str, IEnumerable<char> keychars, StringComparison comparison)
+
 
     [Theory, MemberData(nameof(Data_Contains_IEnumChar_DefaultComparison_Pass))]
     public void ContainsAny_IEnumChar_DefaultComparison_Pass(string testString, IEnumerable<char> keychars)
@@ -52,6 +58,7 @@ public class Contains_Tests
         Assert.True(actual);
     }
 
+
     [Theory, MemberData(nameof(Data_Contains_IEnumChar_DefaultComparison_Fail))]
     public void ContainsAny_IEnumChar_DefaultComparison_Fail(string testString, IEnumerable<char> keychars)
     {
@@ -59,6 +66,7 @@ public class Contains_Tests
 
         Assert.False(actual);
     }
+
 
     [Theory, MemberData(nameof(Data_Contains_IEnumChar_SetComparison_Pass))]
     public void ContainsAny_IEnumChar_SetComparison_Pass(string testString, IEnumerable<char> keychars, StringComparison stringComparison)
@@ -68,6 +76,7 @@ public class Contains_Tests
         Assert.True(actual);
     }
 
+
     [Theory, MemberData(nameof(Data_Contains_IEnumChar_SetComparison_Fail))]
     public void ContainsAny_IEnumChar_SetComparison_Fail(string testString, IEnumerable<char> keychars, StringComparison stringComparison)
     {
@@ -76,7 +85,8 @@ public class Contains_Tests
         Assert.False(actual);
     }
 
-    #endregion bool ContainsAny(this string str, IEnumerable<char> keychars, StringComparison comparison)
+
+    #endregion ContainsAny(this string str, IEnumerable<char> keychars, StringComparison comparison)
 
     #region IEnumerable test data
 
