@@ -23,7 +23,7 @@ public static partial class StringExtensions
     /// <paramref name="oldStrings"/>, one of its members or the original instance (<paramref name="str"/>) are null.
     /// </exception>
     [Pure]
-    public static string Replace(this string str, IEnumerable<string> oldStrings, string newString, StringComparison comparison = StringComparison.CurrentCulture)
+    public static string Replace(this string str, IEnumerable<string> oldStrings, string? newString, StringComparison comparison = StringComparison.CurrentCulture)
     {
         Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(oldStrings);
