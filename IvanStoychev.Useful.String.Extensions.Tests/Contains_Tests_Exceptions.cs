@@ -6,43 +6,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests;
 
 public class Contains_Tests_Exceptions
 {
-    #region bool ContainsAny(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
-
-    [Theory, MemberData(nameof(Data_StringComparison_AllValues))]
-    public void ContainsAny_IEnumString_NullArgument(StringComparison stringComparison)
-    {
-        string[] keywords = null;
-        string expectedMessage = "The argument given for parameter \"keywords\" of method \"ContainsAny\" was null. (Parameter 'keywords')";
-
-        void testAction() => "".ContainsAny(keywords, stringComparison);
-
-        var exception = Assert.Throws<ArgumentNullException>(testAction);
-        Assert.Equal(expectedMessage, exception.Message);
-    }
-
-    [Theory, MemberData(nameof(Data_StringComparison_AllValues))]
-    public void ContainsAny_IEnumString_NullMember(StringComparison stringComparison)
-    {
-        string[] keywords = ["asd", null];
-        string expectedMessage = "A member of the collection argument given for parameter \"keywords\" of method \"ContainsAny\" was null. (Parameter 'keywords')";
-
-        void testAction() => "".ContainsAny(keywords, stringComparison);
-
-        var exception = Assert.Throws<ArgumentNullException>(testAction);
-        Assert.Equal(expectedMessage, exception.Message);
-    }
-
-    [Theory, MemberData(nameof(Data_StringComparison_AllValues))]
-    public void ContainsAny_IEnumString_IEnumEmpty(StringComparison stringComparison)
-    {
-        string[] keywords = [];
-        string expectedMessage = "The collection argument given for parameter \"keywords\" of method \"ContainsAny\" contains no elements. (Parameter 'keywords')";
-
-        void testAction() => "".ContainsAny(keywords, stringComparison);
-
-        var exception = Assert.Throws<ArgumentException>(testAction);
-        Assert.Equal(expectedMessage, exception.Message);
-    }
+    #region ContainsAny(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
 
     [Fact]
     public void ContainsAny_IEnumString_EnumInvalid()
@@ -57,7 +21,7 @@ public class Contains_Tests_Exceptions
     }
 
     [Fact]
-    public void ContainsAny_IEnumString_NullOrigInstance()
+    public void ContainsAny_IEnumString_DefaultComparison_NullOrigInstance()
     {
         string testString = null;
         string[] keywords = ["asd"];
@@ -69,33 +33,99 @@ public class Contains_Tests_Exceptions
         Assert.Equal(expectedMessage, exception.Message);
     }
 
-    #endregion bool ContainsAny(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
-
-    #region bool ContainsAny(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
-
-    [Theory, MemberData(nameof(Data_StringComparison_AllValues))]
-    public void ContainsAny_IEnumChar_NullArgument(StringComparison stringComparison)
+    [Fact]
+    public void ContainsAny_IEnumString_DefaultComparison_IEnumNull()
     {
-        char[] keychars = null;
-        string expectedMessage = "The argument given for parameter \"keychars\" of method \"ContainsAny\" was null. (Parameter 'keychars')";
+        string[] keywords = null;
+        string expectedMessage = "The argument given for parameter \"keywords\" of method \"ContainsAny\" was null. (Parameter 'keywords')";
 
-        void testAction() => "".ContainsAny(keychars, stringComparison);
+        void testAction() => "".ContainsAny(keywords);
 
         var exception = Assert.Throws<ArgumentNullException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 
-    [Theory, MemberData(nameof(Data_StringComparison_AllValues))]
-    public void ContainsAny_IEnumChar_IEnumEmpty(StringComparison stringComparison)
+    [Fact]
+    public void ContainsAny_IEnumString_DefaultComparison_IEnumMemberNull()
     {
-        char[] keychars = [];
-        string expectedMessage = "The collection argument given for parameter \"keychars\" of method \"ContainsAny\" contains no elements. (Parameter 'keychars')";
+        string[] keywords = ["asd", null];
+        string expectedMessage = "A member of the collection argument given for parameter \"keywords\" of method \"ContainsAny\" was null. (Parameter 'keywords')";
 
-        void testAction() => "".ContainsAny(keychars, stringComparison);
+        void testAction() => "".ContainsAny(keywords);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Fact]
+    public void ContainsAny_IEnumString_DefaultComparison_IEnumEmpty()
+    {
+        string[] keywords = [];
+        string expectedMessage = "The collection argument given for parameter \"keywords\" of method \"ContainsAny\" contains no elements. (Parameter 'keywords')";
+
+        void testAction() => "".ContainsAny(keywords);
 
         var exception = Assert.Throws<ArgumentException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
+
+
+    [Theory, MemberData(nameof(Data_StringComparison_AllValues))]
+    public void ContainsAny_IEnumString_SetComparison_IEnumNull(StringComparison stringComparison)
+    {
+        string[] keywords = null;
+        string expectedMessage = "The argument given for parameter \"keywords\" of method \"ContainsAny\" was null. (Parameter 'keywords')";
+
+        void testAction() => "".ContainsAny(keywords, stringComparison);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    [Theory, MemberData(nameof(Data_StringComparison_AllValues))]
+    public void ContainsAny_IEnumString_SetComparison_IEnumMemberNull(StringComparison stringComparison)
+    {
+        string[] keywords = ["asd", null];
+        string expectedMessage = "A member of the collection argument given for parameter \"keywords\" of method \"ContainsAny\" was null. (Parameter 'keywords')";
+
+        void testAction() => "".ContainsAny(keywords, stringComparison);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    [Theory, MemberData(nameof(Data_StringComparison_AllValues))]
+    public void ContainsAny_IEnumString_SetComparison_IEnumEmpty(StringComparison stringComparison)
+    {
+        string[] keywords = [];
+        string expectedMessage = "The collection argument given for parameter \"keywords\" of method \"ContainsAny\" contains no elements. (Parameter 'keywords')";
+
+        void testAction() => "".ContainsAny(keywords, stringComparison);
+
+        var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    [Theory, MemberData(nameof(Data_StringComparison_AllValues))]
+    public void ContainsAny_IEnumString_SetComparison_NullOrigInstance(StringComparison stringComparison)
+    {
+        string testString = null;
+        string[] keywords = ["asd"];
+        string expectedMessage = "The string instance on which \"ContainsAny\" was called is null. (Parameter 'Original string instance')";
+
+        void testAction() => testString.ContainsAny(keywords, stringComparison);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    #endregion ContainsAny(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
+
+    #region ContainsAny(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
 
     [Fact]
     public void ContainsAny_IEnumChar_EnumInvalid()
@@ -110,7 +140,7 @@ public class Contains_Tests_Exceptions
     }
 
     [Fact]
-    public void ContainsAny_IEnumChar_NullOrigInstance()
+    public void ContainsAny_IEnumChar_DefaultComparison_NullOrigInstance()
     {
         string testString = null;
         char[] keychars = ['c'];
@@ -122,11 +152,77 @@ public class Contains_Tests_Exceptions
         Assert.Equal(expectedMessage, exception.Message);
     }
 
-    #endregion bool ContainsAny(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
+    [Fact]
+    public void ContainsAny_IEnumChar_DefaultComparison_IEnumNull()
+    {
+        char[] keychars = null;
+        string expectedMessage = "The argument given for parameter \"keychars\" of method \"ContainsAny\" was null. (Parameter 'keychars')";
+
+        void testAction() => "".ContainsAny(keychars);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Fact]
+    public void ContainsAny_IEnumChar_DefaultComparison_IEnumEmpty()
+    {
+        char[] keychars = [];
+        string expectedMessage = "The collection argument given for parameter \"keychars\" of method \"ContainsAny\" contains no elements. (Parameter 'keychars')";
+
+        void testAction() => "".ContainsAny(keychars);
+
+        var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    [Theory, MemberData(nameof(Data_StringComparison_AllValues))]
+    public void ContainsAny_IEnumChar_SetComparison_IEnumNull(StringComparison stringComparison)
+    {
+        char[] keychars = null;
+        string expectedMessage = "The argument given for parameter \"keychars\" of method \"ContainsAny\" was null. (Parameter 'keychars')";
+
+        void testAction() => "".ContainsAny(keychars, stringComparison);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    [Theory, MemberData(nameof(Data_StringComparison_AllValues))]
+    public void ContainsAny_IEnumChar_SetComparison_IEnumEmpty(StringComparison stringComparison)
+    {
+        char[] keychars = [];
+        string expectedMessage = "The collection argument given for parameter \"keychars\" of method \"ContainsAny\" contains no elements. (Parameter 'keychars')";
+
+        void testAction() => "".ContainsAny(keychars, stringComparison);
+
+        var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    [Theory, MemberData(nameof(Data_StringComparison_AllValues))]
+    public void ContainsAny_IEnumChar_SetComparison_NullOrigInstance(StringComparison stringComparison)
+    {
+        string testString = null;
+        char[] keychars = ['a'];
+        string expectedMessage = "The string instance on which \"ContainsAny\" was called is null. (Parameter 'Original string instance')";
+
+        void testAction() => testString.ContainsAny(keychars, stringComparison);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    #endregion ContainsAny(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
 
     #region IEnumerable test data
 
-    public static IEnumerable<object[]> Data_StringComparison_AllValues => new[]
+    public static IEnumerable<object[]> Data_StringComparison_AllValues
+        => new[]
             {
                 new object[] { GlobalVariables.CurrentCulture },
                 [GlobalVariables.CurrentCultureIgnoreCase],
