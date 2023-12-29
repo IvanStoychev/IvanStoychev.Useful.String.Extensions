@@ -22,17 +22,19 @@ public class Replace_Tests
         Assert.Equal(expectedString, actualString);
     }
 
-    public static IEnumerable<object[]> Data_Replace_DefaultComparison_Pass => new[]
+    public static IEnumerable<object[]> Data_Replace_DefaultComparison_Pass
+        => new[]
             {
-                new object[] { "takimata amet erat invidunt diam no vel nonummy", "newWord", new string[] { "amet", "invidunt", "no" }, "takimata newWord erat newWord diam newWord vel newWordnummy" },
+                new object[] { "takimata amet erat invidunt diam no vel nonummy", "newWord", new[] { "amet", "invidunt", "no" }, "takimata newWord erat newWord diam newWord vel newWordnummy" },
                 ["erat consequat euismod justo exerci sed sea tation", "newWord", new List<string>() { "consequat", "justo", "sed" }, "erat newWord euismod newWord exerci newWord sea tation"],
                 ["lorem magna eros ea dolore molestie magna rebum", "newWord", new HashSet<string>() { "magna", "ea", "molestie" }, "lorem newWord eros newWord dolore newWord newWord rebum"],
                 ["duo clita dolore clita clita gubergren diam vel", "newWord", new Queue<string>(new string[] { "clita", "gubergren" }), "duo newWord dolore newWord newWord newWord diam vel"]
             };
 
-    public static IEnumerable<object[]> Data_Replace_SetComparison_Pass => new[]
+    public static IEnumerable<object[]> Data_Replace_SetComparison_Pass
+        => new[]
             {
-                new object[] { "case encyclopædia Archæology", "newWord", new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }, GlobalVariables.InvariantCulture, "newWord encyclopædia Archæology" },
+                new object[] { "case encyclopædia Archæology", "newWord", new[] { "case", "encyclopaedia", "ARCHÆOLOGY" }, GlobalVariables.InvariantCulture, "newWord encyclopædia Archæology" },
                 ["case encyclopædia Archæology", "newWord", new List<string>() { "Case", "encyclopædia", "ARCHÆOLOGY" }, GlobalVariables.InvariantCulture, "case newWord Archæology"],
                 ["case encyclopædia Archæology", "newWord", new HashSet<string>() { "Case", "encyclopaedia", "Archæology" }, GlobalVariables.InvariantCulture, "case encyclopædia newWord"],
                 ["case encyclopædia Archæology", "newWord", new Queue<string>(new string[] { "case", "encyclopædia", "Archæology" }), GlobalVariables.InvariantCulture, "newWord newWord newWord"],
