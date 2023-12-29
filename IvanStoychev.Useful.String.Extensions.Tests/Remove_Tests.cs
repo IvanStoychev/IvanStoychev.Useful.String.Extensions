@@ -6,7 +6,7 @@ namespace IvanStoychev.Useful.String.Extensions.Tests;
 
 public class Remove_Tests
 {
-    #region public static string Remove(this string str, string removeString, StringComparison stringComparison = StringComparison.CurrentCulture)
+    #region Remove(this string str, string removeString, StringComparison stringComparison = StringComparison.CurrentCulture)
 
     #region Pass
 
@@ -70,9 +70,9 @@ public class Remove_Tests
 
     #endregion Fail
 
-    #endregion public static string Remove(this string str, IEnumerable<string> removeStrings, StringComparison stringComparison = StringComparison.CurrentCulture)
+    #endregion Remove(this string str, IEnumerable<string> removeStrings, StringComparison stringComparison = StringComparison.CurrentCulture)
 
-    #region public static string Remove(this string str, IEnumerable<string> removeStrings, StringComparison stringComparison = StringComparison.CurrentCulture)
+    #region Remove(this string str, IEnumerable<string> removeStrings, StringComparison stringComparison = StringComparison.CurrentCulture)
 
     [Theory, MemberData(nameof(Data_Remove_IEnumString_DefaultComparison_Pass))]
     public void Remove_IEnumString_DefaultComparison_Pass(string testString, IEnumerable<string> removeStrings, string expectedString)
@@ -106,11 +106,52 @@ public class Remove_Tests
         Assert.Equal(testString, actualString);
     }
 
-    #endregion public static string Remove(this string str, IEnumerable<string> removeStrings, StringComparison stringComparison = StringComparison.CurrentCulture)
+    #endregion Remove(this string str, IEnumerable<string> removeStrings, StringComparison stringComparison = StringComparison.CurrentCulture)
+
+    #region Remove(this string str, IEnumerable<char> removeChars, StringComparison comparison = StringComparison.CurrentCulture)
+
+
+    [Theory, MemberData(nameof(Data_Remove_IEnumChar_DefaultComparison_Pass))]
+    public void Remove_IEnumChar_DefaultComparison_Pass(string testString, IEnumerable<char> removeChars, string expectedString)
+    {
+        string actualString = testString.Remove(removeChars);
+
+        Assert.Equal(expectedString, actualString);
+    }
+
+
+    [Theory, MemberData(nameof(Data_Remove_IEnumChar_SetComparison_Pass))]
+    public void Remove_IEnumChar_SetComparison_Pass(string testString, IEnumerable<char> removeChars, StringComparison stringComparison, string expectedString)
+    {
+        string actualString = testString.Remove(removeChars, stringComparison);
+
+        Assert.Equal(expectedString, actualString);
+    }
+
+
+    [Theory, MemberData(nameof(Data_Remove_IEnumChar_DefaultComparison_Fail))]
+    public void Remove_IEnumChar_DefaultComparison_Fail(string testString, IEnumerable<char> removeChars)
+    {
+        string actualString = testString.Remove(removeChars);
+
+        Assert.Equal(testString, actualString);
+    }
+
+
+    [Theory, MemberData(nameof(Data_Remove_IEnumChar_SetComparison_Fail))]
+    public void Remove_IEnumChar_SetComparison_Fail(string testString, IEnumerable<char> removeChars, StringComparison stringComparison)
+    {
+        string actualString = testString.Remove(removeChars, stringComparison);
+
+        Assert.Equal(testString, actualString);
+    }
+
+
+    #endregion Remove(this string str, IEnumerable<char> removeChars, StringComparison comparison = StringComparison.CurrentCulture)
 
     #region Data
 
-	[Theory]
+    [Theory]
     [InlineData(@"rMhj5(VirYg<rS7lWuGZ", @"5(<7")]
     [InlineData(@"gNa/*+Kd($@k+$%8Fj/I", @"/*+($@+$%8/")]
     [InlineData(@"bJcnmhy7<9-h%]wk[dTc", @"7<9-%][")]
@@ -153,7 +194,10 @@ public class Remove_Tests
         Assert.Equal(expectedString, actual);
     }
 
-    public static IEnumerable<object[]> Data_Remove_IEnumString_DefaultComparison_Pass => new[]
+    #region Data
+
+    public static IEnumerable<object[]> Data_Remove_IEnumString_DefaultComparison_Pass
+        => new[]
             {
                 new object[] { "I would have gotten the promotion, but my attendance wasn’t good enough.", new string[] { "gotten", "attendance", "would", "enough" }, "I  have  the promotion, but my  wasn’t good ." },
                 ["This is the last random sentence I will be writing and I am going to stop mid-sent", new List<string>() { "random ", "writing ", " sentence" }, "This is the last I will be and I am going to stop mid-sent"],
@@ -161,7 +205,8 @@ public class Remove_Tests
                 ["Rock music approaches at high velocity.", new Queue<string>(new string[] { "Rock ", "music", " approaches", "velocity" }), " at high ."]
             };
 
-    public static IEnumerable<object[]> Data_Remove_IEnumString_SetComparison_Pass => new[]
+    public static IEnumerable<object[]> Data_Remove_IEnumString_SetComparison_Pass
+        => new[]
             {
                 new object[] { "Case encyclopædia Archæology", new string[] { "case", "encyclopædia", "ARCHÆOLOGY" }, GlobalVariables.InvariantCulture, "Case  Archæology" },
                 ["Case encyclopædia Archæology", new List<string>() { "Case", "encyclopaedia", "ARCHÆOLOGY" }, GlobalVariables.InvariantCulture, " encyclopædia Archæology"],
@@ -184,7 +229,8 @@ public class Remove_Tests
                 ["Case encyclopædia Archæology", new Queue<string>(new string[] { "case", "encyclopaedia", "ARCHÆOLOGY" }), GlobalVariables.OrdinalIgnoreCase, " encyclopædia "]
             };
 
-    public static IEnumerable<object[]> Data_Remove_IEnumString_DefaultComparison_Fail => new[]
+    public static IEnumerable<object[]> Data_Remove_IEnumString_DefaultComparison_Fail
+        => new[]
             {
                 new object[] { "I would have gotten the promotion, but my attendance wasn’t good enough.", new string[] { "dummy", "dummy", "dummy", "dummy" } },
                 ["This is the last random sentence I will be writing and I am going to stop mid-sent", new List<string>() { "dummy ", "dummy ", "dummy" }],
@@ -192,7 +238,8 @@ public class Remove_Tests
                 ["Rock music approaches at high velocity.", new Queue<string>(new string[] { "dummy", "dummy", "dummy", "dummy" })]
             };
 
-    public static IEnumerable<object[]> Data_Remove_IEnumString_SetComparison_Fail => new[]
+    public static IEnumerable<object[]> Data_Remove_IEnumString_SetComparison_Fail
+        => new[]
             {
                 new object[] { "Case encyclopædia Archæology", new string[] { "dummy", "dummy", "dummy" }, GlobalVariables.InvariantCulture },
                 ["Case encyclopædia Archæology", new List<string>() { "dummy", "dummy", "dummy" }, GlobalVariables.InvariantCulture],
@@ -214,4 +261,72 @@ public class Remove_Tests
                 ["Case encyclopædia Archæology", new HashSet<string>() { "dummy", "dummy", "dummy" }, GlobalVariables.OrdinalIgnoreCase],
                 ["Case encyclopædia Archæology", new Queue<string>(new string[] { "dummy", "dummy", "dummy" }), GlobalVariables.OrdinalIgnoreCase]
             };
+
+    public static IEnumerable<object[]> Data_Remove_IEnumChar_DefaultComparison_Pass
+        => new[]
+            {
+                new object[] { "Case encyclopædia Archæology", new[] { 's', 'e', 'o' }, "Ca ncyclpædia Archælgy" },
+                ["Case encyclopædia Archæology", new List<char>() { 's', 'e', 'o' }, "Ca ncyclpædia Archælgy"],
+                ["Case encyclopædia Archæology", new HashSet<char>() { 's', 'e', 'o' }, "Ca ncyclpædia Archælgy"],
+                ["Case encyclopædia Archæology", new Queue<char>(new[] { 's', 'e', 'o' }), "Ca ncyclpædia Archælgy"]
+            };
+
+    public static IEnumerable<object[]> Data_Remove_IEnumChar_SetComparison_Pass
+        => new[]
+            {
+                new object[] { "Case encyclopædia Archæology", new[] { 's', 'e', 'o' }, GlobalVariables.InvariantCulture, "Ca ncyclpædia Archælgy" },
+                ["Case encyclopædia Archæology", new List<char>() { 's', 'e', 'o' }, GlobalVariables.InvariantCulture, "Ca ncyclpædia Archælgy"],
+                ["Case encyclopædia Archæology", new HashSet<char>() { 's', 'e', 'o' }, GlobalVariables.InvariantCulture, "Ca ncyclpædia Archælgy"],
+                ["Case encyclopædia Archæology", new Queue<char>(new[] { 's', 'e', 'o' }), GlobalVariables.InvariantCulture, "Ca ncyclpædia Archælgy"],
+
+                ["Case encyclopædia Archæology", new[] { 's', 'e', 'o' }, GlobalVariables.InvariantCultureIgnoreCase, "Ca ncyclpædia Archælgy"],
+                ["Case encyclopædia Archæology", new List<char>() { 's', 'e', 'o' }, GlobalVariables.InvariantCultureIgnoreCase, "Ca ncyclpædia Archælgy"],
+                ["Case encyclopædia Archæology", new HashSet<char>() { 's', 'e', 'o' }, GlobalVariables.InvariantCultureIgnoreCase, "Ca ncyclpædia Archælgy"],
+                ["Case encyclopædia Archæology", new Queue<char>(new[] { 's', 'e', 'o' }), GlobalVariables.InvariantCultureIgnoreCase, "Ca ncyclpædia Archælgy"],
+
+                ["Case encyclopædia Archæology", new[] { 's', 'e', 'o' }, GlobalVariables.Ordinal, "Ca ncyclpædia Archælgy"],
+                ["Case encyclopædia Archæology", new List<char>() { 's', 'e', 'o' }, GlobalVariables.Ordinal, "Ca ncyclpædia Archælgy"],
+                ["Case encyclopædia Archæology", new HashSet<char>() { 's', 'e', 'o' }, GlobalVariables.Ordinal, "Ca ncyclpædia Archælgy"],
+                ["Case encyclopædia Archæology", new Queue<char>(new[] { 's', 'e', 'o' }), GlobalVariables.Ordinal, "Ca ncyclpædia Archælgy"],
+
+                ["Case encyclopædia Archæology", new[] { 's', 'e', 'o' }, GlobalVariables.OrdinalIgnoreCase, "Ca ncyclpædia Archælgy"],
+                ["Case encyclopædia Archæology", new List<char>() { 's', 'e', 'o' }, GlobalVariables.OrdinalIgnoreCase, "Ca ncyclpædia Archælgy"],
+                ["Case encyclopædia Archæology", new HashSet<char>() { 's', 'e', 'o' }, GlobalVariables.OrdinalIgnoreCase, "Ca ncyclpædia Archælgy"],
+                ["Case encyclopædia Archæology", new Queue<char>(new[] { 's', 'e', 'o' }), GlobalVariables.OrdinalIgnoreCase, "Ca ncyclpædia Archælgy"]
+            };
+
+    public static IEnumerable<object[]> Data_Remove_IEnumChar_DefaultComparison_Fail
+        => new[]
+            {
+                new object[] { "Case encyclopædia Archæology", new[] { 'z', 'z', 'z', 'z' } },
+                ["Case encyclopædia Archæology", new List<char>() { 'z', 'z', 'z' }],
+                ["Case encyclopædia Archæology", new HashSet<char>() { 'z', 'z', 'z' }],
+                ["Case encyclopædia Archæology", new Queue<char>(new[] { 'z', 'z', 'z', 'z' })]
+            };
+
+    public static IEnumerable<object[]> Data_Remove_IEnumChar_SetComparison_Fail
+        => new[]
+            {
+                new object[] { "Case encyclopædia Archæology", new[] { 'z', 'z', 'z' }, GlobalVariables.InvariantCulture },
+                ["Case encyclopædia Archæology", new List<char>() { 'z', 'z', 'z' }, GlobalVariables.InvariantCulture],
+                ["Case encyclopædia Archæology", new HashSet<char>() { 'z', 'z', 'z' }, GlobalVariables.InvariantCulture],
+                ["Case encyclopædia Archæology", new Queue<char>(new[] { 'z', 'z', 'z' }), GlobalVariables.InvariantCulture],
+
+                ["Case encyclopædia Archæology", new[] { 'z', 'z', 'z' }, GlobalVariables.InvariantCultureIgnoreCase],
+                ["Case encyclopædia Archæology", new List<char>() { 'z', 'z', 'z' }, GlobalVariables.InvariantCultureIgnoreCase],
+                ["Case encyclopædia Archæology", new HashSet<char>() { 'z', 'z', 'z' }, GlobalVariables.InvariantCultureIgnoreCase],
+                ["Case encyclopædia Archæology", new Queue<char>(new[] { 'z', 'z', 'z' }), GlobalVariables.InvariantCultureIgnoreCase],
+
+                ["Case encyclopædia Archæology", new[] { 'z', 'z', 'z' }, GlobalVariables.Ordinal],
+                ["Case encyclopædia Archæology", new List<char>() { 'z', 'z', 'z' }, GlobalVariables.Ordinal],
+                ["Case encyclopædia Archæology", new HashSet<char>() { 'z', 'z', 'z' }, GlobalVariables.Ordinal],
+                ["Case encyclopædia Archæology", new Queue<char>(new[] { 'z', 'z', 'z' }), GlobalVariables.Ordinal],
+
+                ["Case encyclopædia Archæology", new[] { 'z', 'z', 'z' }, GlobalVariables.OrdinalIgnoreCase],
+                ["Case encyclopædia Archæology", new List<char>() { 'z', 'z', 'z' }, GlobalVariables.OrdinalIgnoreCase],
+                ["Case encyclopædia Archæology", new HashSet<char>() { 'z', 'z', 'z' }, GlobalVariables.OrdinalIgnoreCase],
+                ["Case encyclopædia Archæology", new Queue<char>(new[] { 'z', 'z', 'z' }), GlobalVariables.OrdinalIgnoreCase]
+            };
+    
+    #endregion Data
 }
