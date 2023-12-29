@@ -130,7 +130,7 @@ public class Remove_Tests_Exceptions
     [Fact]
     public void Remove_IEnumString_DefaultComparison_NullOrigInstance()
     {
-        IEnumerable<string> removeStrings = null;
+        IEnumerable<string> removeStrings = ["asd"];
         string testString = null;
         string expectedMessage = "The string instance on which \"Remove\" was called is null. (Parameter 'Original string instance')";
 
@@ -141,7 +141,7 @@ public class Remove_Tests_Exceptions
     }
 
 
-    [Theory, MemberData(nameof(Data_Remove_DefaultComparison_IEnumEmpty))]
+    [Theory, MemberData(nameof(Data_Remove_IEnumString_DefaultComparison_IEnumEmpty))]
     public void Remove_IEnumString_DefaultComparison_IEnumEmpty(IEnumerable<string> removeStrings)
     {
         string testString = "testString";
@@ -154,7 +154,7 @@ public class Remove_Tests_Exceptions
     }
 
 
-    [Theory, MemberData(nameof(Data_Remove_DefaultComparison_NullMember))]
+    [Theory, MemberData(nameof(Data_Remove_IEnumString_DefaultComparison_NullMember))]
     public void Remove_IEnumString_DefaultComparison_NullMember(IEnumerable<string> removeStrings)
     {
         string testString = "testString";
@@ -167,7 +167,7 @@ public class Remove_Tests_Exceptions
     }
 
 
-    [Theory, MemberData(nameof(Data_Remove_DefaultComparison_EmptyStringMember))]
+    [Theory, MemberData(nameof(Data_Remove_IEnumString_DefaultComparison_EmptyStringMember))]
     public void Remove_IEnumString_DefaultComparison_EmptyStringMember(IEnumerable<string> removeStrings)
     {
         string testString = "testString";
@@ -185,7 +185,7 @@ public class Remove_Tests_Exceptions
     #region Remove(this string str, IEnumerable<string> removeStrings, StringComparison comparison)
 
 
-    [Theory, MemberData(nameof(Data_Remove_SetComparison_NullArgument))]
+    [Theory, MemberData(nameof(Data_Remove_IEnumString_SetComparison_NullArgument))]
     public void Remove_IEnumString_SetComparison_IEnumNull(StringComparison comparison)
     {
         IEnumerable<string> removeStrings = null;
@@ -199,7 +199,7 @@ public class Remove_Tests_Exceptions
     }
 
 
-    [Theory, MemberData(nameof(Data_Remove_SetComparison_IEnumEmpty))]
+    [Theory, MemberData(nameof(Data_Remove_IEnumString_SetComparison_IEnumEmpty))]
     public void Remove_IEnumString_SetComparison_IEnumEmpty(IEnumerable<string> removeStrings, StringComparison comparison)
     {
         string testString = "testString";
@@ -212,7 +212,7 @@ public class Remove_Tests_Exceptions
     }
 
 
-    [Theory, MemberData(nameof(Data_Remove_SetComparison_NullMember))]
+    [Theory, MemberData(nameof(Data_Remove_IEnumString_SetComparison_NullMember))]
     public void Remove_IEnumString_SetComparison_NullMember(IEnumerable<string> removeStrings, StringComparison comparison)
     {
         string testString = "testString";
@@ -225,7 +225,7 @@ public class Remove_Tests_Exceptions
     }
 
 
-    [Theory, MemberData(nameof(Data_Remove_SetComparison_EmptyStringMember))]
+    [Theory, MemberData(nameof(Data_Remove_IEnumString_SetComparison_EmptyStringMember))]
     public void Remove_IEnumString_SetComparison_EmptyStringMember(IEnumerable<string> removeStrings, StringComparison comparison)
     {
         string testString = "testString";
@@ -253,7 +253,7 @@ public class Remove_Tests_Exceptions
     [Fact]
     public void Remove_IEnumString_SetComparison_NullOrigInstance()
     {
-        IEnumerable<string> removeStrings = null;
+        IEnumerable<string> removeStrings = ["asd"];
         string testString = null;
         string expectedMessage = "The string instance on which \"Remove\" was called is null. (Parameter 'Original string instance')";
 
@@ -264,6 +264,108 @@ public class Remove_Tests_Exceptions
     }
 
     #endregion Remove(this string str, IEnumerable<string> removeStrings, StringComparison comparison)
+
+    #region Remove(this string str, IEnumerable<char> removeChars, StringComparison comparison = StringComparison.CurrentCulture)
+
+    [Fact]
+    public void Remove_IEnumChar_DefaultComparison_IEnumNull()
+    {
+        IEnumerable<char> removeChars = null;
+        string testString = "testString";
+        string expectedMessage = "The argument given for parameter \"removeChars\" of method \"Remove\" was null. (Parameter 'removeChars')";
+
+        void testAction() => testString.Remove(removeChars);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Fact]
+    public void Remove_IEnumChar_DefaultComparison_NullOrigInstance()
+    {
+        IEnumerable<char> removeChars = ['d'];
+        string testString = null;
+        string expectedMessage = "The string instance on which \"Remove\" was called is null. (Parameter 'Original string instance')";
+
+        void testAction() => testString.Remove(removeChars);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    [Theory, MemberData(nameof(Data_Remove_IEnumChar_DefaultComparison_IEnumEmpty))]
+    public void Remove_IEnumChar_DefaultComparison_IEnumEmpty(IEnumerable<char> removeChars)
+    {
+        string testString = "testString";
+        string expectedMessage = "The collection argument given for parameter \"removeChars\" of method \"Remove\" contains no elements. (Parameter 'removeChars')";
+
+        void testAction() => testString.Remove(removeChars);
+
+        var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    #endregion Remove(this string str, IEnumerable<char> removeChars, StringComparison comparison = StringComparison.CurrentCulture)
+
+    #region Remove(this string str, IEnumerable<char> removeChars, StringComparison comparison)
+
+
+    [Theory, MemberData(nameof(Data_Remove_IEnumChar_SetComparison_NullArgument))]
+    public void Remove_IEnumChar_SetComparison_IEnumNull(StringComparison comparison)
+    {
+        IEnumerable<char> removeChars = null;
+        string testString = "testString";
+        string expectedMessage = "The argument given for parameter \"removeChars\" of method \"Remove\" was null. (Parameter 'removeChars')";
+
+        void testAction() => testString.Remove(removeChars, comparison);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    [Theory, MemberData(nameof(Data_Remove_IEnumChar_SetComparison_IEnumEmpty))]
+    public void Remove_IEnumChar_SetComparison_IEnumEmpty(IEnumerable<char> removeChars, StringComparison comparison)
+    {
+        string testString = "testString";
+        string expectedMessage = "The collection argument given for parameter \"removeChars\" of method \"Remove\" contains no elements. (Parameter 'removeChars')";
+
+        void testAction() => testString.Remove(removeChars, comparison);
+
+        var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Fact]
+    public void Remove_IEnumChar_SetComparison_EnumInvalid()
+    {
+        IEnumerable<char> removeChars = ['a'];
+        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"Remove\" does not exist in enum \"StringComparison\"";
+
+        StringComparison comparison = (StringComparison)99;
+        void testAction() => "test".Remove(removeChars, comparison);
+
+        var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Fact]
+    public void Remove_IEnumChar_SetComparison_NullOrigInstance()
+    {
+        IEnumerable<char> removeChars = null;
+        string testString = null;
+        string expectedMessage = "The string instance on which \"Remove\" was called is null. (Parameter 'Original string instance')";
+
+        void testAction() => testString.Remove(removeChars);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    #endregion Remove(this string str, IEnumerable<char> removeChars, StringComparison comparison)
 
     [Fact]
     public void RemoveLetters_NullOrigInstance()
@@ -303,7 +405,8 @@ public class Remove_Tests_Exceptions
 
     #region Data
 
-    public static IEnumerable<object[]> Data_Remove_DefaultComparison_IEnumEmpty => new[]
+    public static IEnumerable<object[]> Data_Remove_IEnumString_DefaultComparison_IEnumEmpty
+       => new[]
             {
                 new object[] { new string[] { } },
                 [new List<string>() { }],
@@ -311,7 +414,8 @@ public class Remove_Tests_Exceptions
                 [new Queue<string>(new string[] { })],
             };
 
-    public static IEnumerable<object[]> Data_Remove_DefaultComparison_NullMember => new[]
+    public static IEnumerable<object[]> Data_Remove_IEnumString_DefaultComparison_NullMember
+       => new[]
             {
                 new object[] { new string[] { null, "asd", "asd", "asd" } },
                 [new List<string>() { "asd", null, "asd", "asd" }],
@@ -319,7 +423,8 @@ public class Remove_Tests_Exceptions
                 [new Queue<string>(new string[] { "asd", "asd", "asd", null })],
             };
 
-    public static IEnumerable<object[]> Data_Remove_DefaultComparison_EmptyStringMember => new[]
+    public static IEnumerable<object[]> Data_Remove_IEnumString_DefaultComparison_EmptyStringMember
+       => new[]
             {
                 new object[] { new string[] { "", "asd", "asd", "asd" } },
                 [new List<string>() { "asd", "", "asd", "asd" }],
@@ -327,7 +432,8 @@ public class Remove_Tests_Exceptions
                 [new Queue<string>(new string[] { "asd", "asd", "asd", "" })],
             };
 
-    public static IEnumerable<object[]> Data_Remove_SetComparison_NullArgument => new[]
+    public static IEnumerable<object[]> Data_Remove_IEnumString_SetComparison_NullArgument
+       => new[]
             {
                 new object[] { GlobalVariables.InvariantCulture },
                 [GlobalVariables.InvariantCultureIgnoreCase],
@@ -335,7 +441,8 @@ public class Remove_Tests_Exceptions
                 [GlobalVariables.OrdinalIgnoreCase]
             };
 
-    public static IEnumerable<object[]> Data_Remove_SetComparison_IEnumEmpty => new[]
+    public static IEnumerable<object[]> Data_Remove_IEnumString_SetComparison_IEnumEmpty
+       => new[]
             {
                 new object[] { new string[] {  }, GlobalVariables.InvariantCulture },
                 [new List<string>(), GlobalVariables.InvariantCulture],
@@ -358,7 +465,8 @@ public class Remove_Tests_Exceptions
                 [new Queue<string>(new string[] {  }), GlobalVariables.OrdinalIgnoreCase]
             };
 
-    public static IEnumerable<object[]> Data_Remove_SetComparison_NullMember => new[]
+    public static IEnumerable<object[]> Data_Remove_IEnumString_SetComparison_NullMember
+       => new[]
             {
                 new object[] { new string[] { null, "asd", "asd", "asd" }, GlobalVariables.InvariantCulture },
                 [new List<string>() { "asd", null, "asd", "asd" }, GlobalVariables.InvariantCulture],
@@ -381,7 +489,8 @@ public class Remove_Tests_Exceptions
                 [new Queue<string>(new string[] { "asd", "asd", "asd", null }), GlobalVariables.OrdinalIgnoreCase]
             };
 
-    public static IEnumerable<object[]> Data_Remove_SetComparison_EmptyStringMember => new[]
+    public static IEnumerable<object[]> Data_Remove_IEnumString_SetComparison_EmptyStringMember
+       => new[]
             {
                 new object[] { new string[] { "", "asd", "asd", "asd" }, GlobalVariables.InvariantCulture },
                 [new List<string>() { "asd", "", "asd", "asd" }, GlobalVariables.InvariantCulture],
@@ -402,6 +511,48 @@ public class Remove_Tests_Exceptions
                 [new List<string>() { "asd", "", "asd", "asd" }, GlobalVariables.OrdinalIgnoreCase],
                 [new HashSet<string>() { "asd", "asd", "", "asd" }, GlobalVariables.OrdinalIgnoreCase],
                 [new Queue<string>(new string[] { "asd", "asd", "asd", "" }), GlobalVariables.OrdinalIgnoreCase]
+            };
+
+    public static IEnumerable<object[]> Data_Remove_IEnumChar_DefaultComparison_IEnumEmpty
+       => new[]
+            {
+                new object[] { new char[] { } },
+                [new List<char>() { }],
+                [new HashSet<char>() { }],
+                [new Queue<char>(new char[] { })],
+            };
+
+    public static IEnumerable<object[]> Data_Remove_IEnumChar_SetComparison_NullArgument
+       => new[]
+            {
+                new object[] { GlobalVariables.InvariantCulture },
+                [GlobalVariables.InvariantCultureIgnoreCase],
+                [GlobalVariables.Ordinal],
+                [GlobalVariables.OrdinalIgnoreCase]
+            };
+
+    public static IEnumerable<object[]> Data_Remove_IEnumChar_SetComparison_IEnumEmpty
+       => new[]
+            {
+                new object[] { new char[] {  }, GlobalVariables.InvariantCulture },
+                [new List<char>(), GlobalVariables.InvariantCulture],
+                [new HashSet<char>() {  }, GlobalVariables.InvariantCulture],
+                [new Queue<char>(new char[] {  }), GlobalVariables.InvariantCulture],
+
+                [new char[] {  }, GlobalVariables.InvariantCultureIgnoreCase],
+                [new List<char>() {  }, GlobalVariables.InvariantCultureIgnoreCase],
+                [new HashSet<char>() {  }, GlobalVariables.InvariantCultureIgnoreCase],
+                [new Queue<char>(new char[] {  }), GlobalVariables.InvariantCultureIgnoreCase],
+
+                [new char[] {  }, GlobalVariables.Ordinal],
+                [new List<char>() {  }, GlobalVariables.Ordinal],
+                [new HashSet<char>() {  }, GlobalVariables.Ordinal],
+                [new Queue<char>(new char[] {  }), GlobalVariables.Ordinal],
+
+                [new char[] {  }, GlobalVariables.OrdinalIgnoreCase],
+                [new List<char>() {  }, GlobalVariables.OrdinalIgnoreCase],
+                [new HashSet<char>() {  }, GlobalVariables.OrdinalIgnoreCase],
+                [new Queue<char>(new char[] {  }), GlobalVariables.OrdinalIgnoreCase]
             };
 
     #endregion Data
