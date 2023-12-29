@@ -9,7 +9,7 @@ public class Remove_Tests_Exceptions
     #region Remove(this string str, string removeString, StringComparison comparison)
 
     [Fact]
-    public void Remove_String_DefaultComparison_EmptyString()
+    public void Remove_String_DefaultComparison_StringEmpty()
     {
         string expectedMessage = "The argument given for parameter \"removeString\" of method \"Remove\" is the empty string (\"\"). (Parameter 'removeString')";
 
@@ -20,7 +20,7 @@ public class Remove_Tests_Exceptions
     }
 
     [Fact]
-    public void Remove_String_DefaultComparison_NullArgument()
+    public void Remove_String_DefaultComparison_StringNull()
     {
         string expectedMessage = "The argument given for parameter \"removeString\" of method \"Remove\" was null. (Parameter 'removeString')";
 
@@ -51,7 +51,7 @@ public class Remove_Tests_Exceptions
     [InlineData(StringComparison.InvariantCulture)]
     [InlineData(StringComparison.InvariantCultureIgnoreCase)]
     #endregion Data
-    public void Remove_String_SetComparison_EmptyString(StringComparison comparison)
+    public void Remove_String_SetComparison_StringEmpty(StringComparison comparison)
     {
         string expectedMessage = "The argument given for parameter \"removeString\" of method \"Remove\" is the empty string (\"\"). (Parameter 'removeString')";
 
@@ -68,7 +68,7 @@ public class Remove_Tests_Exceptions
     [InlineData(StringComparison.InvariantCulture)]
     [InlineData(StringComparison.InvariantCultureIgnoreCase)]
     #endregion Data
-    public void Remove_String_SetComparison_NullArgument(StringComparison comparison)
+    public void Remove_String_SetComparison_StringNull(StringComparison comparison)
     {
         string expectedMessage = "The argument given for parameter \"removeString\" of method \"Remove\" was null. (Parameter 'removeString')";
 
@@ -115,7 +115,7 @@ public class Remove_Tests_Exceptions
     #region Remove(this string str, IEnumerable<string> removeStrings, StringComparison comparison = StringComparison.CurrentCulture)
 
     [Fact]
-    public void Remove_IEnumString_DefaultComparison_NullArgument()
+    public void Remove_IEnumString_DefaultComparison_IEnumNull()
     {
         IEnumerable<string> removeStrings = null;
         string testString = "testString";
@@ -140,6 +140,7 @@ public class Remove_Tests_Exceptions
         Assert.Equal(expectedMessage, exception.Message);
     }
 
+
     [Theory, MemberData(nameof(Data_Remove_DefaultComparison_IEnumEmpty))]
     public void Remove_IEnumString_DefaultComparison_IEnumEmpty(IEnumerable<string> removeStrings)
     {
@@ -151,6 +152,7 @@ public class Remove_Tests_Exceptions
         var exception = Assert.Throws<ArgumentException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
+
 
     [Theory, MemberData(nameof(Data_Remove_DefaultComparison_NullMember))]
     public void Remove_IEnumString_DefaultComparison_NullMember(IEnumerable<string> removeStrings)
@@ -164,6 +166,7 @@ public class Remove_Tests_Exceptions
         Assert.Equal(expectedMessage, exception.Message);
     }
 
+
     [Theory, MemberData(nameof(Data_Remove_DefaultComparison_EmptyStringMember))]
     public void Remove_IEnumString_DefaultComparison_EmptyStringMember(IEnumerable<string> removeStrings)
     {
@@ -176,12 +179,14 @@ public class Remove_Tests_Exceptions
         Assert.Equal(expectedMessage, exception.Message);
     }
 
+
     #endregion Remove(this string str, IEnumerable<string> removeStrings, StringComparison comparison = StringComparison.CurrentCulture)
 
     #region Remove(this string str, IEnumerable<string> removeStrings, StringComparison comparison)
 
+
     [Theory, MemberData(nameof(Data_Remove_SetComparison_NullArgument))]
-    public void Remove_IEnumString_SetComparison_NullArgument(StringComparison comparison)
+    public void Remove_IEnumString_SetComparison_IEnumNull(StringComparison comparison)
     {
         IEnumerable<string> removeStrings = null;
         string testString = "testString";
@@ -192,6 +197,7 @@ public class Remove_Tests_Exceptions
         var exception = Assert.Throws<ArgumentNullException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
+
 
     [Theory, MemberData(nameof(Data_Remove_SetComparison_IEnumEmpty))]
     public void Remove_IEnumString_SetComparison_IEnumEmpty(IEnumerable<string> removeStrings, StringComparison comparison)
@@ -205,6 +211,7 @@ public class Remove_Tests_Exceptions
         Assert.Equal(expectedMessage, exception.Message);
     }
 
+
     [Theory, MemberData(nameof(Data_Remove_SetComparison_NullMember))]
     public void Remove_IEnumString_SetComparison_NullMember(IEnumerable<string> removeStrings, StringComparison comparison)
     {
@@ -216,6 +223,7 @@ public class Remove_Tests_Exceptions
         var exception = Assert.Throws<ArgumentNullException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
+
 
     [Theory, MemberData(nameof(Data_Remove_SetComparison_EmptyStringMember))]
     public void Remove_IEnumString_SetComparison_EmptyStringMember(IEnumerable<string> removeStrings, StringComparison comparison)
