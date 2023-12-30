@@ -20,7 +20,7 @@ public static partial class StringExtensions
     /// or the value given for <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="oldStrings"/>, one of its members or the original instance (<paramref name="str"/>) are null.
+    /// <paramref name="oldStrings"/>, one of its members or the original instance (<paramref name="str"/>) are <see langword="null"/>.
     /// </exception>
     [Pure]
     public static string Replace(this string str, IEnumerable<string> oldStrings, string? newString, StringComparison comparison = StringComparison.CurrentCulture)

@@ -177,13 +177,13 @@ static class Validate
     }
 
     /// <summary>
-    /// Checks if the given <paramref name="argument"/> is null. And if it is, throws an <see cref="ArgumentNullException"/>.
+    /// Checks if the given <paramref name="argument"/> is <see langword="null"/>. And if it is, throws an <see cref="ArgumentNullException"/>.
     /// </summary>
     /// <param name="argument">Value passed as the argument for a method's parameter.</param>
     /// <param name="parameterName">Name of the parameter in the method that does this validation.</param>
     /// <param name="callingMethodName">Name of the method that does this validation.</param>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="argument"/> is null.
+    /// <paramref name="argument"/> is <see langword="null"/>.
     /// </exception>
     internal static void NotNull(object argument, [CallerArgumentExpression("argument")] string parameterName = null, [CallerMemberName] string callingMethodName = null)
     {
@@ -192,13 +192,13 @@ static class Validate
     }
 
     /// <summary>
-    /// Checks if the given <paramref name="collectionMember"/> is null. And if it is, throws an <see cref="ArgumentNullException"/>.
+    /// Checks if the given <paramref name="collectionMember"/> is <see langword="null"/>. And if it is, throws an <see cref="ArgumentNullException"/>.
     /// </summary>
     /// <param name="collectionMember">Member of a collection to evaluate.</param>
     /// <param name="collectionParameterName">Name of the parameter, whose argument is the collection, in the original method.</param>
     /// <param name="callingMethodName">Name of the method that does this validation.</param>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="collectionMember"/> is null.
+    /// <paramref name="collectionMember"/> is <see langword="null"/>.
     /// </exception>
     internal static void NotNullMember(object collectionMember, string collectionParameterName, [CallerMemberName] string callingMethodName = null)
     {
@@ -207,12 +207,12 @@ static class Validate
     }
 
     /// <summary>
-    /// Checks if the given <paramref name="stringInstance"/> is null. And if it is, throws an <see cref="ArgumentNullException"/>.
+    /// Checks if the given <paramref name="stringInstance"/> is <see langword="null"/>. And if it is, throws an <see cref="ArgumentNullException"/>.
     /// </summary>
     /// <param name="stringInstance">String on which <paramref name="callingMethodName"/> was called.</param>
     /// <param name="callingMethodName">Name of the method that does this validation.</param>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="stringInstance"/> is null.
+    /// <paramref name="stringInstance"/> is <see langword="null"/>.
     /// </exception>
     internal static void OriginalInstanceNotNull(string stringInstance, [CallerMemberName] string callingMethodName = null)
     {

@@ -20,7 +20,7 @@ public static partial class StringExtensions
     /// The <paramref name="keywords"/> collection is empty or the value given for <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// The <paramref name="keywords"/> collection, any of its memebers or the original instance (<paramref name="str"/>) are null.
+    /// The <paramref name="keywords"/> collection, any of its memebers or the original instance (<paramref name="str"/>) are <see langword="null"/>.
     /// </exception>
     [Pure]
     public static bool ContainsAny(this string str, IEnumerable<string> keywords, StringComparison comparison = StringComparison.Ordinal)
@@ -53,7 +53,7 @@ public static partial class StringExtensions
     /// The <paramref name="keychars"/> collection is empty or the value given for <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="keychars"/> or the original instance (<paramref name="str"/>) are null.
+    /// <paramref name="keychars"/> or the original instance (<paramref name="str"/>) are <see langword="null"/>.
     /// </exception>
     [Pure]
     public static bool ContainsAny(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)
@@ -80,7 +80,7 @@ public static partial class StringExtensions
     /// <see langword="true"/> if all of the <paramref name="keywords"/> members occur within this string; otherwise, <see langword="false"/>.
     /// </returns>
     /// <exception cref="ArgumentNullException">
-    /// The <paramref name="keywords"/> collection, any of its memebers or the original instance (<paramref name="str"/>) are null.
+    /// The <paramref name="keywords"/> collection, any of its memebers or the original instance (<paramref name="str"/>) are <see langword="null"/>.
     /// </exception>
     /// <remarks>
     /// Empty strings ("") count as being present in any string, i.e. any member of <paramref name="keywords"/> which is an empty string will always be "occurring" in the string.
@@ -113,7 +113,7 @@ public static partial class StringExtensions
     /// <see langword="true"/> if all of the <paramref name="keychars"/> members occur within this string; otherwise, <see langword="false"/>.
     /// </returns>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="keychars"/> or the original instance (<paramref name="str"/>) are null.
+    /// <paramref name="keychars"/> or the original instance (<paramref name="str"/>) are <see langword="null"/>.
     /// </exception>
     [Pure]
     public static bool ContainsAll(this string str, IEnumerable<char> keychars, StringComparison comparison = StringComparison.Ordinal)

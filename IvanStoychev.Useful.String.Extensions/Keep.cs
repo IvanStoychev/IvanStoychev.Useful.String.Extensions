@@ -17,7 +17,7 @@ public static partial class StringExtensions
     /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// The original instance (<paramref name="str"/>) is null.
+    /// The original instance (<paramref name="str"/>) is <see langword="null"/>.
     /// </exception>
     [Pure]
     public static string KeepOnlyNumbers(this string str)
@@ -37,7 +37,7 @@ public static partial class StringExtensions
     /// Whitespace is considered a special character.
     /// </remarks>
     /// <exception cref="ArgumentNullException">
-    /// The original instance (<paramref name="str"/>) is null.
+    /// The original instance (<paramref name="str"/>) is <see langword="null"/>.
     /// </exception>
     [Pure]
     public static string KeepOnlySpecialCharacters(this string str)
@@ -58,7 +58,7 @@ public static partial class StringExtensions
     /// If no time-out is defined in the application domain's properties, or if the time-out value is "Regex.InfiniteMatchTimeout", no exception is thrown.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// The original instance (<paramref name="str"/>) is null.
+    /// The original instance (<paramref name="str"/>) is <see langword="null"/>.
     /// </exception>
     [Pure]
     public static string KeepOnlyLetters(this string str)

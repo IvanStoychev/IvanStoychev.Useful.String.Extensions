@@ -26,7 +26,7 @@ public static partial class StringExtensions
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="startString"/> or the original instance (<paramref name="str"/>) are null.
+    /// <paramref name="startString"/> or the original instance (<paramref name="str"/>) are <see langword="null"/>.
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="startString"/> is not found in the original instance or the index of <paramref name="startString"/> plus <paramref name="length"/> indicates
@@ -71,7 +71,7 @@ public static partial class StringExtensions
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="startString"/>, <paramref name="endString"/> or the original instance (<paramref name="str"/>) are null.
+    /// <paramref name="startString"/>, <paramref name="endString"/> or the original instance (<paramref name="str"/>) are <see langword="null"/>.
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="startString"/> was not found in the original instance or <paramref name="endString"/> was not found in the part of the original instance after <paramref name="startString"/>.
@@ -130,7 +130,7 @@ public static partial class StringExtensions
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="startString"/>, <paramref name="endString"/> or the original instance (<paramref name="str"/>) are null.
+    /// <paramref name="startString"/>, <paramref name="endString"/> or the original instance (<paramref name="str"/>) are <see langword="null"/>.
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="startString"/> was not found in the original instance or <paramref name="endString"/> was not found in the part of the original instance after <paramref name="startString"/>.
@@ -183,7 +183,7 @@ public static partial class StringExtensions
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="endString"/> or the original instance (<paramref name="str"/>) are null.
+    /// <paramref name="endString"/> or the original instance (<paramref name="str"/>) are <see langword="null"/>.
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="endString"/> is not found in the original instance.
@@ -216,7 +216,7 @@ public static partial class StringExtensions
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="endString"/> or the original instance (<paramref name="str"/>) are null.
+    /// <paramref name="endString"/> or the original instance (<paramref name="str"/>) are <see langword="null"/>.
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="endString"/> is not found in the original instance.
@@ -249,7 +249,7 @@ public static partial class StringExtensions
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="startString"/> or the original instance (<paramref name="str"/>) are null.
+    /// <paramref name="startString"/> or the original instance (<paramref name="str"/>) are <see langword="null"/>.
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="startString"/> is not found in the original instance.
@@ -282,7 +282,7 @@ public static partial class StringExtensions
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="startString"/> or the original instance (<paramref name="str"/>) are null.
+    /// <paramref name="startString"/> or the original instance (<paramref name="str"/>) are <see langword="null"/>.
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="startString"/> is not found in the original instance.
@@ -319,7 +319,7 @@ public static partial class StringExtensions
     /// <paramref name="comparison"/> is not a valid <see cref="StringComparison"/>.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="startString"/> or the original instance (<paramref name="str"/>) are null.
+    /// <paramref name="startString"/> or the original instance (<paramref name="str"/>) are <see langword="null"/>.
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="startString"/> is not found in the original instance or <paramref name="length"/> is less than zero or the index of <paramref name="startString"/> plus "length" indicates
@@ -357,7 +357,7 @@ public static partial class StringExtensions
     /// <param name="doNotOffset">Whether the length of <paramref name="substring"/> should NOT be added to <paramref name="index"/>.</param>
     /// <returns>Integer, signifying the index in a string where the part, significant to the user, starts.</returns>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="substring"/> is null.
+    /// <paramref name="substring"/> is <see langword="null"/>.
     /// </exception>
     static int AddSubstringLengthConditional(int index, string substring, bool doNotOffset)
         => doNotOffset ? index : index += substring.Length;
