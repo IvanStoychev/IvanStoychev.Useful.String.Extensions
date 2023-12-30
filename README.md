@@ -47,7 +47,7 @@
   | <a href="#-features">🚀 Features</a> |
   | <a href="#-installation">🏗 Installation</a> |
   | <a href="#ℹ-how-to-use">ℹ How to use</a> |
-  | <a href="#-examples">🧨 Examples</a> |
+  | <a href="#-examples">🎞 Examples</a> |
   | <a href="#-documentation">📖 Documentation</a> |
   | <a href="#-contribution">🧙‍ Contribution</a> |
 </div>
@@ -162,7 +162,7 @@ Since the functionality, added by this project, is all extension methods, it wou
 
 <br/>
 
-🧨 Examples
+🎞 Examples
 ----------
 
 The following examples use [top-level statements][6].
