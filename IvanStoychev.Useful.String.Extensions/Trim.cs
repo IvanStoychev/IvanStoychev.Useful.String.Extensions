@@ -125,7 +125,7 @@ public static partial class StringExtensions
     /// <param name="ignoreCase">Whether to consider the start of the instance and <paramref name="trimString"/> equal if they have different casings.</param>
     /// <param name="culture">
     /// Cultural information that determines how the start of this instance and <paramref name="trimString"/> are compared.
-    /// <br/>If culture is <see langword="null"/>, the current culture is used.
+    ///  <br/>If <paramref name="culture"/> is <see langword="null"/>, the current culture is used.
     /// </param>
     /// <param name="trimWhitespace">
     /// <see langword="true"/> to remove any whitespace characters remaining at the start of the original instance after <paramref name="trimString"/> is removed.
@@ -203,7 +203,7 @@ public static partial class StringExtensions
     /// <param name="ignoreCase">Whether to consider the end of the instance and <paramref name="trimString"/> equal if they have different casings.</param>
     /// <param name="culture">
     /// Cultural information that determines how the end of this instance and <paramref name="trimString"/> are compared.
-    /// <br/>If culture is <see langword="null"/>, the current culture is used.
+    ///  <br/>If <paramref name="culture"/> is <see langword="null"/>, the current culture is used.
     /// </param>
     /// <param name="trimWhitespace">
     /// <see langword="true"/> to remove any whitespace characters remaining at the end of the original instance after <paramref name="trimString"/> is removed.

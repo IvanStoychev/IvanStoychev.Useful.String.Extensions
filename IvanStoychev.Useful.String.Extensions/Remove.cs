@@ -44,7 +44,7 @@ public static partial class StringExtensions
     /// <param name="ignoreCase">Whether to consider strings equal if they have different casings.</param>
     /// <param name="culture">
     /// Cultural information that determines how strings are compared.
-    /// <br/>If culture is <see langword="null"/>, the current culture is used.
+    ///  <br/>If <paramref name="culture"/> is <see langword="null"/>, the current culture is used.
     /// </param>
     /// <returns>
     /// A string that is equivalent to the current string except that all instances of <paramref name="removeString"/> are removed.
@@ -111,7 +111,7 @@ public static partial class StringExtensions
     /// <param name="ignoreCase">Whether to consider strings equal if they have different casings.</param>
     /// <param name="culture">
     /// Cultural information that determines how strings are compared.
-    /// <br/>If culture is <see langword="null"/>, the current culture is used.
+    ///  <br/>If <paramref name="culture"/> is <see langword="null"/>, the current culture is used.
     /// </param>
     /// <returns>
     /// A string that is equivalent to the current string except that all instances of all members of the given collection are removed.
@@ -180,7 +180,7 @@ public static partial class StringExtensions
     /// <param name="ignoreCase">Whether to consider strings equal if they have different casings.</param>
     /// <param name="culture">
     /// Cultural information that determines how strings are compared.
-    /// <br/>If culture is <see langword="null"/>, the current culture is used.
+    ///  <br/>If <paramref name="culture"/> is <see langword="null"/>, the current culture is used.
     /// </param>
     /// <returns>
     /// A string that is equivalent to the current string except that all instances of all members of the given collection are removed.
