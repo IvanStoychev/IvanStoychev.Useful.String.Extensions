@@ -43,7 +43,7 @@ public static partial class StringExtensions
     }
 
     /// <summary>
-    /// Removes all leading and trailing occurrences of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
+    /// Removes all leading and trailing occurrences of a specified string from the current instance, using the provided cultural information and case-sensitivity.
     /// </summary>
     /// <param name="str">The string to remove occurrences from.</param>
     /// <param name="trimString">The string to remove.</param>
@@ -118,7 +118,7 @@ public static partial class StringExtensions
     }
 
     /// <summary>
-    /// Removes all leading occurrences of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
+    /// Removes all leading occurrences of a specified string from the current instance, using the provided cultural information and case-sensitivity.
     /// </summary>
     /// <param name="str">The string to remove occurrences from.</param>
     /// <param name="trimString">The string to remove.</param>
@@ -196,7 +196,7 @@ public static partial class StringExtensions
     }
 
     /// <summary>
-    /// Removes all trailing occurrences of a specified string from the current instance, comparing using the provided cultural information and case-sensitivity.
+    /// Removes all trailing occurrences of a specified string from the current instance, using the provided cultural information and case-sensitivity.
     /// </summary>
     /// <param name="str">The string to remove occurrences from.</param>
     /// <param name="trimString">The string to remove.</param>
