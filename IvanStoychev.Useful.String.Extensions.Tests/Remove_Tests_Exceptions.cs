@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using Xunit;
 
 namespace IvanStoychev.Useful.String.Extensions.Tests;
@@ -112,75 +113,51 @@ public class Remove_Tests_Exceptions
 
     #endregion Remove(this string str, string removeString, StringComparison comparison)
 
-    #region Remove(this string str, IEnumerable<string> removeStrings, StringComparison comparison = StringComparison.CurrentCulture)
+    #region Remove(this string str, string removeString, bool ignoreCase, CultureInfo? culture)
 
-    [Fact]
-    public void Remove_IEnumString_DefaultComparison_IEnumNull()
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void Remove_String_CultureInfo_StringEmpty(bool ignoreCase)
     {
-        IEnumerable<string> removeStrings = null;
-        string testString = "testString";
-        string expectedMessage = "The argument given for parameter \"removeStrings\" of method \"Remove\" was null. (Parameter 'removeStrings')";
+        string expectedMessage = "The argument given for parameter \"removeString\" of method \"Remove\" is the empty string (\"\"). (Parameter 'removeString')";
 
-        void testAction() => testString.Remove(removeStrings);
+        void testAction() => "test".Remove("", ignoreCase, CultureInfo.InvariantCulture);
+
+        var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void Remove_String_CultureInfo_StringNull(bool ignoreCase)
+    {
+        string expectedMessage = "The argument given for parameter \"removeString\" of method \"Remove\" was null. (Parameter 'removeString')";
+
+        string nullString = null;
+        void testAction() => "test".Remove(nullString, ignoreCase, CultureInfo.InvariantCulture);
 
         var exception = Assert.Throws<ArgumentNullException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 
-    [Fact]
-    public void Remove_IEnumString_DefaultComparison_NullOrigInstance()
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void Remove_String_CultureInfo_NullOrigInstance(bool ignoreCase)
     {
-        IEnumerable<string> removeStrings = ["asd"];
         string testString = null;
         string expectedMessage = "The string instance on which \"Remove\" was called is null. (Parameter 'Original string instance')";
 
-        void testAction() => testString.Remove(removeStrings);
+        void testAction() => testString.Remove("asd", ignoreCase, CultureInfo.InvariantCulture);
 
         var exception = Assert.Throws<ArgumentNullException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 
 
-    [Theory, MemberData(nameof(Data_Remove_IEnumString_DefaultComparison_IEnumEmpty))]
-    public void Remove_IEnumString_DefaultComparison_IEnumEmpty(IEnumerable<string> removeStrings)
-    {
-        string testString = "testString";
-        string expectedMessage = "The collection argument given for parameter \"removeStrings\" of method \"Remove\" contains no elements. (Parameter 'removeStrings')";
-
-        void testAction() => testString.Remove(removeStrings);
-
-        var exception = Assert.Throws<ArgumentException>(testAction);
-        Assert.Equal(expectedMessage, exception.Message);
-    }
-
-
-    [Theory, MemberData(nameof(Data_Remove_IEnumString_DefaultComparison_NullMember))]
-    public void Remove_IEnumString_DefaultComparison_NullMember(IEnumerable<string> removeStrings)
-    {
-        string testString = "testString";
-        string expectedMessage = "A member of the collection argument given for parameter \"removeStrings\" of method \"Remove\" was null. (Parameter 'removeStrings')";
-
-        void testAction() => testString.Remove(removeStrings);
-
-        var exception = Assert.Throws<ArgumentNullException>(testAction);
-        Assert.Equal(expectedMessage, exception.Message);
-    }
-
-
-    [Theory, MemberData(nameof(Data_Remove_IEnumString_DefaultComparison_EmptyStringMember))]
-    public void Remove_IEnumString_DefaultComparison_EmptyStringMember(IEnumerable<string> removeStrings)
-    {
-        string testString = "testString";
-        string expectedMessage = "A member of the collection given for parameter \"removeStrings\" of method \"Remove\" is the empty string (\"\"). (Parameter 'removeStrings')";
-
-        void testAction() => testString.Remove(removeStrings);
-
-        var exception = Assert.Throws<ArgumentException>(testAction);
-        Assert.Equal(expectedMessage, exception.Message);
-    }
-
-
-    #endregion Remove(this string str, IEnumerable<string> removeStrings, StringComparison comparison = StringComparison.CurrentCulture)
+    #endregion Remove(this string str, string removeString, bool ignoreCase, CultureInfo? culture)
 
     #region Remove(this string str, IEnumerable<string> removeStrings, StringComparison comparison)
 
@@ -265,49 +242,148 @@ public class Remove_Tests_Exceptions
 
     #endregion Remove(this string str, IEnumerable<string> removeStrings, StringComparison comparison)
 
-    #region Remove(this string str, IEnumerable<char> removeChars, StringComparison comparison = StringComparison.CurrentCulture)
+    #region Remove(this string str, IEnumerable<string> removeStrings, StringComparison comparison = StringComparison.CurrentCulture)
 
     [Fact]
-    public void Remove_IEnumChar_DefaultComparison_IEnumNull()
+    public void Remove_IEnumString_DefaultComparison_IEnumNull()
     {
-        IEnumerable<char> removeChars = null;
+        IEnumerable<string> removeStrings = null;
         string testString = "testString";
-        string expectedMessage = "The argument given for parameter \"removeChars\" of method \"Remove\" was null. (Parameter 'removeChars')";
+        string expectedMessage = "The argument given for parameter \"removeStrings\" of method \"Remove\" was null. (Parameter 'removeStrings')";
 
-        void testAction() => testString.Remove(removeChars);
+        void testAction() => testString.Remove(removeStrings);
 
         var exception = Assert.Throws<ArgumentNullException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 
     [Fact]
-    public void Remove_IEnumChar_DefaultComparison_NullOrigInstance()
+    public void Remove_IEnumString_DefaultComparison_NullOrigInstance()
     {
-        IEnumerable<char> removeChars = ['d'];
+        IEnumerable<string> removeStrings = ["asd"];
         string testString = null;
         string expectedMessage = "The string instance on which \"Remove\" was called is null. (Parameter 'Original string instance')";
 
-        void testAction() => testString.Remove(removeChars);
+        void testAction() => testString.Remove(removeStrings);
 
         var exception = Assert.Throws<ArgumentNullException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 
 
-    [Theory, MemberData(nameof(Data_Remove_IEnumChar_DefaultComparison_IEnumEmpty))]
-    public void Remove_IEnumChar_DefaultComparison_IEnumEmpty(IEnumerable<char> removeChars)
+    [Theory, MemberData(nameof(Data_Remove_IEnumString_DefaultComparison_IEnumEmpty))]
+    public void Remove_IEnumString_DefaultComparison_IEnumEmpty(IEnumerable<string> removeStrings)
     {
         string testString = "testString";
-        string expectedMessage = "The collection argument given for parameter \"removeChars\" of method \"Remove\" contains no elements. (Parameter 'removeChars')";
+        string expectedMessage = "The collection argument given for parameter \"removeStrings\" of method \"Remove\" contains no elements. (Parameter 'removeStrings')";
 
-        void testAction() => testString.Remove(removeChars);
+        void testAction() => testString.Remove(removeStrings);
 
         var exception = Assert.Throws<ArgumentException>(testAction);
         Assert.Equal(expectedMessage, exception.Message);
     }
 
 
-    #endregion Remove(this string str, IEnumerable<char> removeChars, StringComparison comparison = StringComparison.CurrentCulture)
+    [Theory, MemberData(nameof(Data_Remove_IEnumString_DefaultComparison_NullMember))]
+    public void Remove_IEnumString_DefaultComparison_NullMember(IEnumerable<string> removeStrings)
+    {
+        string testString = "testString";
+        string expectedMessage = "A member of the collection argument given for parameter \"removeStrings\" of method \"Remove\" was null. (Parameter 'removeStrings')";
+
+        void testAction() => testString.Remove(removeStrings);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    [Theory, MemberData(nameof(Data_Remove_IEnumString_DefaultComparison_EmptyStringMember))]
+    public void Remove_IEnumString_DefaultComparison_EmptyStringMember(IEnumerable<string> removeStrings)
+    {
+        string testString = "testString";
+        string expectedMessage = "A member of the collection given for parameter \"removeStrings\" of method \"Remove\" is the empty string (\"\"). (Parameter 'removeStrings')";
+
+        void testAction() => testString.Remove(removeStrings);
+
+        var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    #endregion Remove(this string str, IEnumerable<string> removeStrings, StringComparison comparison = StringComparison.CurrentCulture)
+
+    #region Remove(this string str, IEnumerable<string> removeStrings, bool ignoreCase, CultureInfo? culture)
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void Remove_IEnumString_CultureInfo_IEnumNull(bool ignoreCase)
+    {
+        IEnumerable<string> removeStrings = null;
+        string testString = "testString";
+        string expectedMessage = "The argument given for parameter \"removeStrings\" of method \"Remove\" was null. (Parameter 'removeStrings')";
+
+        void testAction() => testString.Remove(removeStrings, ignoreCase, CultureInfo.InvariantCulture);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void Remove_IEnumString_CultureInfo_NullOrigInstance(bool ignoreCase)
+    {
+        IEnumerable<string> removeStrings = ["asd"];
+        string testString = null;
+        string expectedMessage = "The string instance on which \"Remove\" was called is null. (Parameter 'Original string instance')";
+
+        void testAction() => testString.Remove(removeStrings, ignoreCase, CultureInfo.InvariantCulture);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    [Theory, MemberData(nameof(Data_Remove_IEnumString_CultureInfo_IEnumEmpty))]
+    public void Remove_IEnumString_CultureInfo_IEnumEmpty(IEnumerable<string> removeStrings, bool ignoreCase)
+    {
+        string testString = "testString";
+        string expectedMessage = "The collection argument given for parameter \"removeStrings\" of method \"Remove\" contains no elements. (Parameter 'removeStrings')";
+
+        void testAction() => testString.Remove(removeStrings, ignoreCase, CultureInfo.InvariantCulture);
+
+        var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    [Theory, MemberData(nameof(Data_Remove_IEnumString_CultureInfo_NullMember))]
+    public void Remove_IEnumString_CultureInfo_NullMember(IEnumerable<string> removeStrings, bool ignoreCase)
+    {
+        string testString = "testString";
+        string expectedMessage = "A member of the collection argument given for parameter \"removeStrings\" of method \"Remove\" was null. (Parameter 'removeStrings')";
+
+        void testAction() => testString.Remove(removeStrings, ignoreCase, CultureInfo.InvariantCulture);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    [Theory, MemberData(nameof(Data_Remove_IEnumString_CultureInfo_EmptyStringMember))]
+    public void Remove_IEnumString_CultureInfo_EmptyStringMember(IEnumerable<string> removeStrings, bool ignoreCase)
+    {
+        string testString = "testString";
+        string expectedMessage = "A member of the collection given for parameter \"removeStrings\" of method \"Remove\" is the empty string (\"\"). (Parameter 'removeStrings')";
+
+        void testAction() => testString.Remove(removeStrings, ignoreCase, CultureInfo.InvariantCulture);
+
+        var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    #endregion Remove(this string str, IEnumerable<string> removeStrings, bool ignoreCase, CultureInfo? culture)
 
     #region Remove(this string str, IEnumerable<char> removeChars, StringComparison comparison)
 
@@ -366,6 +442,97 @@ public class Remove_Tests_Exceptions
 
 
     #endregion Remove(this string str, IEnumerable<char> removeChars, StringComparison comparison)
+
+    #region Remove(this string str, IEnumerable<char> removeChars, StringComparison comparison = StringComparison.CurrentCulture)
+
+    [Fact]
+    public void Remove_IEnumChar_DefaultComparison_IEnumNull()
+    {
+        IEnumerable<char> removeChars = null;
+        string testString = "testString";
+        string expectedMessage = "The argument given for parameter \"removeChars\" of method \"Remove\" was null. (Parameter 'removeChars')";
+
+        void testAction() => testString.Remove(removeChars);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Fact]
+    public void Remove_IEnumChar_DefaultComparison_NullOrigInstance()
+    {
+        IEnumerable<char> removeChars = ['d'];
+        string testString = null;
+        string expectedMessage = "The string instance on which \"Remove\" was called is null. (Parameter 'Original string instance')";
+
+        void testAction() => testString.Remove(removeChars);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    [Theory, MemberData(nameof(Data_Remove_IEnumChar_DefaultComparison_IEnumEmpty))]
+    public void Remove_IEnumChar_DefaultComparison_IEnumEmpty(IEnumerable<char> removeChars)
+    {
+        string testString = "testString";
+        string expectedMessage = "The collection argument given for parameter \"removeChars\" of method \"Remove\" contains no elements. (Parameter 'removeChars')";
+
+        void testAction() => testString.Remove(removeChars);
+
+        var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    #endregion Remove(this string str, IEnumerable<char> removeChars, StringComparison comparison = StringComparison.CurrentCulture)
+
+    #region Remove(this string str, IEnumerable<char> removeChars, bool ignoreCase, CultureInfo? culture)
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void Remove_IEnumChar_CultureInfo_IEnumNull(bool ignoreCase)
+    {
+        IEnumerable<char> removeChars = null;
+        string testString = "testString";
+        string expectedMessage = "The argument given for parameter \"removeChars\" of method \"Remove\" was null. (Parameter 'removeChars')";
+
+        void testAction() => testString.Remove(removeChars, ignoreCase, CultureInfo.InvariantCulture);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void Remove_IEnumChar_CultureInfo_NullOrigInstance(bool ignoreCase)
+    {
+        IEnumerable<char> removeChars = ['a'];
+        string testString = null;
+        string expectedMessage = "The string instance on which \"Remove\" was called is null. (Parameter 'Original string instance')";
+
+        void testAction() => testString.Remove(removeChars, ignoreCase, CultureInfo.InvariantCulture);
+
+        var exception = Assert.Throws<ArgumentNullException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+
+    [Theory, MemberData(nameof(Data_Remove_IEnumChar_CultureInfo_IEnumEmpty))]
+    public void Remove_IEnumChar_CultureInfo_IEnumEmpty(IEnumerable<char> removeChars, bool ignoreCase)
+    {
+        string testString = "testString";
+        string expectedMessage = "The collection argument given for parameter \"removeChars\" of method \"Remove\" contains no elements. (Parameter 'removeChars')";
+
+        void testAction() => testString.Remove(removeChars, ignoreCase, CultureInfo.InvariantCulture);
+
+        var exception = Assert.Throws<ArgumentException>(testAction);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    #endregion Remove(this string str, IEnumerable<char> removeChars, bool ignoreCase, CultureInfo? culture)
 
     [Fact]
     public void RemoveLetters_NullOrigInstance()
@@ -513,6 +680,48 @@ public class Remove_Tests_Exceptions
                 [new Queue<string>(new string[] { "asd", "asd", "asd", "" }), GlobalVariables.OrdinalIgnoreCase]
             };
 
+    public static IEnumerable<object[]> Data_Remove_IEnumString_CultureInfo_IEnumEmpty
+       => new[]
+            {
+                new object[]
+                { new string[] { }, true },
+                [new List<string>() { }, true],
+                [new HashSet<string>() { }, true],
+                [new Queue<string>(new string[] { }), true],
+                [new string[] { }, false],
+                [new List<string>() { }, false],
+                [new HashSet<string>() { }, false],
+                [new Queue<string>(new string[] { }), false],
+            };
+
+    public static IEnumerable<object[]> Data_Remove_IEnumString_CultureInfo_NullMember
+       => new[]
+            {
+                new object[]
+                { new string[] { null, "asd", "asd", "asd" }, true },
+                [new List<string>() { "asd", null, "asd", "asd" }, true],
+                [new HashSet<string>() { "asd", "asd", null, "asd" }, true],
+                [new Queue<string>(new string[] { "asd", "asd", "asd", null }), true],
+                [new string[] { null, "asd", "asd", "asd" }, false],
+                [new List<string>() { "asd", null, "asd", "asd" }, false],
+                [new HashSet<string>() { "asd", "asd", null, "asd" }, false],
+                [new Queue<string>(new string[] { "asd", "asd", "asd", null }), false]
+            };
+
+    public static IEnumerable<object[]> Data_Remove_IEnumString_CultureInfo_EmptyStringMember
+       => new[]
+            {
+                new object[]
+                { new string[] { "", "asd", "asd", "asd" }, true },
+                [new List<string>() { "asd", "", "asd", "asd" }, true],
+                [new HashSet<string>() { "asd", "asd", "", "asd" }, true],
+                [new Queue<string>(new string[] { "asd", "asd", "asd", "" }), true],
+                [new string[] { "", "asd", "asd", "asd" }, false],
+                [new List<string>() { "asd", "", "asd", "asd" }, false],
+                [new HashSet<string>() { "asd", "asd", "", "asd" }, false],
+                [new Queue<string>(new string[] { "asd", "asd", "asd", "" }), false]
+            };
+
     public static IEnumerable<object[]> Data_Remove_IEnumChar_DefaultComparison_IEnumEmpty
        => new[]
             {
@@ -553,6 +762,21 @@ public class Remove_Tests_Exceptions
                 [new List<char>() {  }, GlobalVariables.OrdinalIgnoreCase],
                 [new HashSet<char>() {  }, GlobalVariables.OrdinalIgnoreCase],
                 [new Queue<char>(new char[] {  }), GlobalVariables.OrdinalIgnoreCase]
+            };
+
+    public static IEnumerable<object[]> Data_Remove_IEnumChar_CultureInfo_IEnumEmpty
+       => new[]
+            {
+                new object[]
+                { new char[] {  }, true },
+                [new List<char>(), true],
+                [new HashSet<char>() {  }, true],
+                [new Queue<char>(new char[] {  }), true],
+
+                [new char[] {  }, false],
+                [new List<char>() {  }, false],
+                [new HashSet<char>() {  }, false],
+                [new Queue<char>(new char[] {  }), false]
             };
 
     #endregion Data
