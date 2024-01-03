@@ -34,7 +34,7 @@ static class Validate
     /// <exception cref="ArgumentException">
     /// <paramref name="collectionMember"/> is the empty string ("").
     /// </exception>
-    internal static void EmptyStringMember(string collectionMember, string collectionParameterName, [CallerMemberName] string callingMethodName = null)
+    internal static void NotEmptyString_Member(string collectionMember, string collectionParameterName, [CallerMemberName] string callingMethodName = null)
     {
         if (collectionMember == "")
             ExceptionThrower.Throw_ArgumentException_EmptyStringMember(collectionParameterName, callingMethodName);

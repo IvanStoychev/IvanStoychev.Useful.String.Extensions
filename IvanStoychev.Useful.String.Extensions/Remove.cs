@@ -95,7 +95,7 @@ public static partial class StringExtensions
         foreach (var item in removeStrings)
         {
             Validate.NotNullMember(item, nameof(removeStrings));
-            Validate.EmptyStringMember(item, nameof(removeStrings));
+            Validate.NotEmptyString_Member(item, nameof(removeStrings));
             str = str.Replace(item, string.Empty, comparison);
         }
 
@@ -133,7 +133,7 @@ public static partial class StringExtensions
         foreach (var item in removeStrings)
         {
             Validate.NotNullMember(item, nameof(removeStrings));
-            Validate.EmptyStringMember(item, nameof(removeStrings));
+            Validate.NotEmptyString_Member(item, nameof(removeStrings));
             str = str.Replace(item, string.Empty, ignoreCase, culture);
         }
 
