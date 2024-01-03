@@ -41,6 +41,21 @@ static class Validate
     }
 
     /// <summary>
+    /// Checks if the given <paramref name="dictKey"/> is the empty string (""). And if it is, throws an <see cref="ArgumentException"/>.
+    /// </summary>
+    /// <param name="dictKey">Key of a dictionary to evaluate.</param>
+    /// <param name="collectionParameterName">Name of the parameter, whose argument is the dictionary, in the original method.</param>
+    /// <param name="callingMethodName">Name of the method that does this validation.</param>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="dictKey"/> is the empty string ("").
+    /// </exception>
+    internal static void NotEmptyString_Key(string dictKey, string collectionParameterName, [CallerMemberName] string callingMethodName = null)
+    {
+        if (dictKey == "")
+            ExceptionThrower.Throw_ArgumentException_EmptyString_Key(collectionParameterName, callingMethodName);
+    }
+
+    /// <summary>
     /// Checks if <paramref name="startString"/> occurs in <paramref name="originalString"/> and if it doesn't, throws an <see cref="ArgumentOutOfRangeException"/>.
     /// If it does occur, then checks if <paramref name="endString"/> occurs in the part of <paramref name="originalString"/> that is after <paramref name="startString"/>
     /// and if it doesn't, throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value of <paramref name="endString"/> was
