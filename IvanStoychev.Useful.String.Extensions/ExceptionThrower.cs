@@ -27,15 +27,27 @@ static class ExceptionThrower
 
     /// <summary>
     /// Throws an <see cref="ArgumentException"/> that informs the user a member of the collection provided for parameter
-    /// "<paramref name="collectionParameterName"/>" was the empty string.
+    /// "<paramref name="dictionaryParameterName"/>" was the empty string.
     /// </summary>
-    /// <param name="collectionParameterName">Name of the parameter whose argument is the collection.</param>
+    /// <param name="dictionaryParameterName">Name of the parameter whose argument is the collection.</param>
     /// <param name="callingMethodName">Name of the method that throws this exception.</param>
     /// <exception cref="ArgumentException">
-    /// A member of <paramref name="collectionParameterName"/> is the empty string ("").
+    /// A member of <paramref name="dictionaryParameterName"/> is the empty string ("").
     /// </exception>
-    internal static void Throw_ArgumentException_EmptyString_Member(string collectionParameterName, string callingMethodName)
-        => throw new ArgumentException($"A member of the collection given for parameter \"{collectionParameterName}\" of method \"{callingMethodName}\" is the empty string (\"\").", collectionParameterName);
+    internal static void Throw_ArgumentException_EmptyString_Member(string dictionaryParameterName, string callingMethodName)
+        => throw new ArgumentException($"A member of the collection given for parameter \"{dictionaryParameterName}\" of method \"{callingMethodName}\" is the empty string (\"\").", dictionaryParameterName);
+
+    /// <summary>
+    /// Throws an <see cref="ArgumentException"/> that informs the user a key of the dictionary provided for parameter
+    /// "<paramref name="dictionaryParameterName"/>" was the empty string.
+    /// </summary>
+    /// <param name="dictionaryParameterName">Name of the parameter whose argument is the dictionary.</param>
+    /// <param name="callingMethodName">Name of the method that throws this exception.</param>
+    /// <exception cref="ArgumentException">
+    /// A key of <paramref name="dictionaryParameterName"/> is the empty string ("").
+    /// </exception>
+    internal static void Throw_ArgumentException_EmptyString_Key(string dictionaryParameterName, string callingMethodName)
+        => throw new ArgumentException($"A key of the dictionary given for parameter \"{dictionaryParameterName}\" of method \"{callingMethodName}\" is the empty string (\"\").", dictionaryParameterName);
 
     /// <summary>
     /// Throws an <see cref="ArgumentException"/> that informs the user the collection provided for parameter
