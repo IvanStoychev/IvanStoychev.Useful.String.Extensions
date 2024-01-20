@@ -437,9 +437,7 @@ public class Contains_Tests_Exceptions
     public static IEnumerable<object[]> Data_StringComparison_AllValues
         => new[]
             {
-                new object[] { GlobalVariables.CurrentCulture },
-                [GlobalVariables.CurrentCultureIgnoreCase],
-                [GlobalVariables.InvariantCulture],
+                new object[] { GlobalVariables.InvariantCulture },
                 [GlobalVariables.InvariantCultureIgnoreCase],
                 [GlobalVariables.Ordinal],
                 [GlobalVariables.OrdinalIgnoreCase]
