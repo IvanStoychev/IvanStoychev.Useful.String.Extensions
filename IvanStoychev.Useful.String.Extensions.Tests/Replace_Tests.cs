@@ -6,23 +6,23 @@ namespace IvanStoychev.Useful.String.Extensions.Tests;
 
 public class Replace_Tests
 {
-    [Theory, MemberData(nameof(Data_Replace_DefaultComparison_Pass))]
-    public void Replace_DefaultComparison_Pass(string testString, string newString, IEnumerable<string> oldStrings, string expectedString)
+    [Theory, MemberData(nameof(Data_Replace_DefaultComparison))]
+    public void Replace_DefaultComparison(string testString, string newString, IEnumerable<string> oldStrings, string expectedString)
     {
         string actualString = testString.Replace(oldStrings, newString);
 
         Assert.Equal(expectedString, actualString);
     }
 
-    [Theory, MemberData(nameof(Data_Replace_SetComparison_Pass))]
-    public void Replace_SetComparison_Pass(string testString, string newString, IEnumerable<string> oldStrings, StringComparison stringComparison, string expectedString)
+    [Theory, MemberData(nameof(Data_Replace_SetComparison))]
+    public void Replace_SetComparison(string testString, string newString, IEnumerable<string> oldStrings, StringComparison stringComparison, string expectedString)
     {
         string actualString = testString.Replace(oldStrings, newString, stringComparison);
 
         Assert.Equal(expectedString, actualString);
     }
 
-    public static IEnumerable<object[]> Data_Replace_DefaultComparison_Pass
+    public static IEnumerable<object[]> Data_Replace_DefaultComparison
         => new[]
             {
                 new object[] { "takimata amet erat invidunt diam no vel nonummy", "newWord", new[] { "amet", "invidunt", "no" }, "takimata newWord erat newWord diam newWord vel newWordnummy" },
@@ -31,7 +31,7 @@ public class Replace_Tests
                 ["duo clita dolore clita clita gubergren diam vel", "newWord", new Queue<string>(new string[] { "clita", "gubergren" }), "duo newWord dolore newWord newWord newWord diam vel"]
             };
 
-    public static IEnumerable<object[]> Data_Replace_SetComparison_Pass
+    public static IEnumerable<object[]> Data_Replace_SetComparison
         => new[]
             {
                 new object[] { "case encyclopædia Archæology", "newWord", new[] { "case", "encyclopaedia", "ARCHÆOLOGY" }, GlobalVariables.InvariantCulture, "newWord encyclopædia Archæology" },
