@@ -11,7 +11,7 @@ public class Substring_Tests_Exceptions
     public void Substring_String_Int_EnumInvalid()
     {
         string testString = "asd";
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"Substring\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"Substring\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         void testAction() => testString.Substring("s", 1, false, (StringComparison)99);
 
@@ -71,7 +71,7 @@ public class Substring_Tests_Exceptions
     public void Substring_String_Int_StartStringNotFound()
     {
         string testString = "";
-        string expectedMessage = "The string given for \"startString\" (\"start\") of method \"Substring\" was not found in the original instance. (Parameter 'startString')";
+        string expectedMessage = "The string given for \"startString\" of method \"Substring\" was not found in the original instance. (Parameter 'startString')";
 
         void testAction() => testString.Substring("start", 0);
 
@@ -87,7 +87,7 @@ public class Substring_Tests_Exceptions
     public void Substring_StartEndString_EnumInvalid_StringInclusionOptions()
     {
         string testString = "asd";
-        string expectedMessage = "The argument \"99\" given for parameter \"inclusionOptions\" of method \"Substring\" does not exist in enum \"StringInclusionOptions\"";
+        string expectedMessage = "The argument given for parameter \"inclusionOptions\" of method \"Substring\" does not exist in enum \"StringInclusionOptions\" (Parameter 'inclusionOptions')";
 
         void testAction() => testString.Substring("s", "d", (StringInclusionOptions)99);
 
@@ -99,7 +99,7 @@ public class Substring_Tests_Exceptions
     public void Substring_StartEndString_EnumInvalid_StringComparison()
     {
         string testString = "";
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"Substring\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"Substring\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         void testAction() => testString.Substring("sad", "end", StringInclusionOptions.IncludeNone, (StringComparison)99);
 
@@ -147,7 +147,7 @@ public class Substring_Tests_Exceptions
     public void Substring_StartEndString_StartOutOfRange()
     {
         string testString = "";
-        string expectedMessage = "The string given for \"startString\" (\"start\") of method \"Substring\" was not found in the original instance. (Parameter 'startString')";
+        string expectedMessage = "The string given for \"startString\" of method \"Substring\" was not found in the original instance. (Parameter 'startString')";
 
         void testAction() => testString.Substring("start", "end");
 
@@ -159,7 +159,7 @@ public class Substring_Tests_Exceptions
     public void Substring_StartEndString_EndOutOfRange()
     {
         string testString = "end start";
-        string expectedMessage = "The string given for \"endString\" (\"end\") was not found after the given \"startString\" (\"start\") in the original instance. Name of the method throwing the exception - \"Substring\". (Parameter 'endString')";
+        string expectedMessage = "The string given for parameter \"endString\" was not found after the argument given for \"startString\" in the original instance. Name of the method throwing the exception: \"Substring\". (Parameter 'endString')";
 
         void testAction() => testString.Substring("start", "end");
 
@@ -175,7 +175,7 @@ public class Substring_Tests_Exceptions
     public void SubstringLast_EnumInvalid_StringInclusionOptions()
     {
         string testString = "asd";
-        string expectedMessage = "The argument \"99\" given for parameter \"inclusionOptions\" of method \"SubstringLast\" does not exist in enum \"StringInclusionOptions\"";
+        string expectedMessage = "The argument given for parameter \"inclusionOptions\" of method \"SubstringLast\" does not exist in enum \"StringInclusionOptions\" (Parameter 'inclusionOptions')";
 
         void testAction() => testString.SubstringLast("s", "d", (StringInclusionOptions)99);
 
@@ -187,7 +187,7 @@ public class Substring_Tests_Exceptions
     public void SubstringLast_EnumInvalid_StringComparison()
     {
         string testString = "";
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"SubstringLast\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"SubstringLast\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         void testAction() => testString.SubstringLast("sad", "end", StringInclusionOptions.IncludeNone, (StringComparison)99);
 
@@ -235,7 +235,7 @@ public class Substring_Tests_Exceptions
     public void SubstringLast_StartStringOutOfRange()
     {
         string testString = "";
-        string expectedMessage = "The string given for \"startString\" (\"start\") of method \"SubstringLast\" was not found in the original instance. (Parameter 'startString')";
+        string expectedMessage = "The string given for \"startString\" of method \"SubstringLast\" was not found in the original instance. (Parameter 'startString')";
 
         void testAction() => testString.SubstringLast("start", "end");
 
@@ -247,7 +247,7 @@ public class Substring_Tests_Exceptions
     public void SubstringLast_EndStringOutOfRange()
     {
         string testString = "end start";
-        string expectedMessage = "The string given for \"endString\" (\"end\") was not found after the given \"startString\" (\"start\") in the original instance. Name of the method throwing the exception - \"SubstringLast\". (Parameter 'endString')";
+        string expectedMessage = "The string given for parameter \"endString\" was not found after the argument given for \"startString\" in the original instance. Name of the method throwing the exception: \"SubstringLast\". (Parameter 'endString')";
 
         void testAction() => testString.SubstringLast("start", "end");
 
@@ -263,7 +263,7 @@ public class Substring_Tests_Exceptions
     public void SubstringStart_EnumInvalid()
     {
         string testString = "asd";
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"SubstringStart\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"SubstringStart\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         void testAction() => testString.SubstringStart("s", false, (StringComparison)99);
 
@@ -299,7 +299,7 @@ public class Substring_Tests_Exceptions
     public void SubstringStart_ArgOutOfRange()
     {
         string testString = "";
-        string expectedMessage = "The string given for \"endString\" (\"end\") of method \"SubstringStart\" was not found in the original instance. (Parameter 'endString')";
+        string expectedMessage = "The string given for \"endString\" of method \"SubstringStart\" was not found in the original instance. (Parameter 'endString')";
 
         void testAction() => testString.SubstringStart("end");
 
@@ -315,7 +315,7 @@ public class Substring_Tests_Exceptions
     public void SubstringStartLast_EnumInvalid()
     {
         string testString = "asd";
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"SubstringStartLast\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"SubstringStartLast\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         void testAction() => testString.SubstringStartLast("s", false, (StringComparison)99);
 
@@ -351,7 +351,7 @@ public class Substring_Tests_Exceptions
     public void SubstringStartLast_ArgOutOfRange()
     {
         string testString = "";
-        string expectedMessage = "The string given for \"endString\" (\"end\") of method \"SubstringStartLast\" was not found in the original instance. (Parameter 'endString')";
+        string expectedMessage = "The string given for \"endString\" of method \"SubstringStartLast\" was not found in the original instance. (Parameter 'endString')";
 
         void testAction() => testString.SubstringStartLast("end");
 
@@ -367,7 +367,7 @@ public class Substring_Tests_Exceptions
     public void SubstringEnd_EnumInvalid()
     {
         string testString = "asd";
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"SubstringEnd\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"SubstringEnd\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         void testAction() => testString.SubstringEnd("s", false, (StringComparison)99);
 
@@ -403,7 +403,7 @@ public class Substring_Tests_Exceptions
     public void SubstringEnd_ArgOutOfRange()
     {
         string testString = "";
-        string expectedMessage = "The string given for \"startString\" (\"start\") of method \"SubstringEnd\" was not found in the original instance. (Parameter 'startString')";
+        string expectedMessage = "The string given for \"startString\" of method \"SubstringEnd\" was not found in the original instance. (Parameter 'startString')";
 
         void testAction() => testString.SubstringEnd("start");
 
@@ -419,7 +419,7 @@ public class Substring_Tests_Exceptions
     public void SubstringEndLast_String_EnumInvalid()
     {
         string testString = "asd";
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"SubstringEndLast\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"SubstringEndLast\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         void testAction() => testString.SubstringEndLast("s", false, (StringComparison)99);
 
@@ -455,7 +455,7 @@ public class Substring_Tests_Exceptions
     public void SubstringEndLast_String_ArgOutOfRange()
     {
         string testString = "";
-        string expectedMessage = "The string given for \"startString\" (\"start\") of method \"SubstringEndLast\" was not found in the original instance. (Parameter 'startString')";
+        string expectedMessage = "The string given for \"startString\" of method \"SubstringEndLast\" was not found in the original instance. (Parameter 'startString')";
 
         void testAction() => testString.SubstringEndLast("start");
 
@@ -471,7 +471,7 @@ public class Substring_Tests_Exceptions
     public void SubstringEndLast_String_Int_EnumInvalid()
     {
         string testString = "asd";
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"SubstringEndLast\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"SubstringEndLast\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         void testAction() => testString.SubstringEndLast("s", 0, false, (StringComparison)99);
 
@@ -507,7 +507,7 @@ public class Substring_Tests_Exceptions
     public void SubstringEndLast_String_Int_ArgOutOfRange_String()
     {
         string testString = "";
-        string expectedMessage = "The string given for \"startString\" (\"start\") of method \"SubstringEndLast\" was not found in the original instance. (Parameter 'startString')";
+        string expectedMessage = "The string given for \"startString\" of method \"SubstringEndLast\" was not found in the original instance. (Parameter 'startString')";
 
         void testAction() => testString.SubstringEndLast("start", 0);
 

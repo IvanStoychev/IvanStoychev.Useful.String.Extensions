@@ -12,7 +12,7 @@ public class Contains_Tests_Exceptions
     public void ContainsAny_IEnumString_EnumInvalid()
     {
         string[] keywords = ["asd"];
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"ContainsAny\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"ContainsAny\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         void testAction() => "".ContainsAny(keywords, (StringComparison)99);
 
@@ -131,7 +131,7 @@ public class Contains_Tests_Exceptions
     public void ContainsAny_IEnumChar_EnumInvalid()
     {
         char[] keychars = ['c'];
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"ContainsAny\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"ContainsAny\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         void testAction() => "".ContainsAny(keychars, (StringComparison)99);
 
@@ -225,7 +225,7 @@ public class Contains_Tests_Exceptions
     public void ContainsAll_IEnumString_EnumInvalid()
     {
         string[] keywords = ["asd"];
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"ContainsAll\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"ContainsAll\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         void testAction() => "".ContainsAll(keywords, (StringComparison)99);
 
@@ -344,7 +344,7 @@ public class Contains_Tests_Exceptions
     public void ContainsAll_IEnumChar_EnumInvalid()
     {
         char[] keychars = ['c'];
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"ContainsAll\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"ContainsAll\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         void testAction() => "".ContainsAll(keychars, (StringComparison)99);
 

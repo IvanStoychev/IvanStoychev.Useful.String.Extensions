@@ -102,7 +102,7 @@ public class Remove_Tests_Exceptions
     [Fact]
     public void Remove_String_SetComparison_EnumInvalid()
     {
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"Remove\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"Remove\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         StringComparison comparison = (StringComparison)99;
         void testAction() => "test".Remove("asd", comparison);
@@ -218,7 +218,7 @@ public class Remove_Tests_Exceptions
     public void Remove_IEnumString_SetComparison_EnumInvalid()
     {
         IEnumerable<string> removeStrings = ["asd"];
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"Remove\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"Remove\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         StringComparison comparison = (StringComparison)99;
         void testAction() => "test".Remove(removeStrings, comparison);
@@ -418,7 +418,7 @@ public class Remove_Tests_Exceptions
     public void Remove_IEnumChar_SetComparison_EnumInvalid()
     {
         IEnumerable<char> removeChars = ['a'];
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"Remove\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"Remove\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         StringComparison comparison = (StringComparison)99;
         void testAction() => "test".Remove(removeChars, comparison);

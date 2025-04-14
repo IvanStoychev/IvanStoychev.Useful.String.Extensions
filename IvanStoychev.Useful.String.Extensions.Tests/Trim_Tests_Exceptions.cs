@@ -84,7 +84,7 @@ public class Trim_Tests_Exceptions
     [Fact]
     public void Trim_String_Comparison_DefaultSpaceTrim_EnumInvalid()
     {
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"Trim\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"Trim\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         StringComparison comparison = (StringComparison)99;
         void testAction() => "test".Trim("asd", comparison);
@@ -100,7 +100,7 @@ public class Trim_Tests_Exceptions
     #endregion Data
     public void Trim_String_Comparison_SetSpaceTrim_EnumInvalid(bool whitespaceTrim)
     {
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"Trim\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"Trim\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         StringComparison comparison = (StringComparison)99;
         void testAction() => "test".Trim("asd", comparison, whitespaceTrim);
@@ -224,7 +224,7 @@ public class Trim_Tests_Exceptions
     [Fact]
     public void TrimStart_String_Comparison_DefaultSpaceTrim_EnumInvalid()
     {
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"TrimStart\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"TrimStart\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         StringComparison comparison = (StringComparison)99;
         void testAction() => "test".TrimStart("asd", comparison);
@@ -240,7 +240,7 @@ public class Trim_Tests_Exceptions
     #endregion Data
     public void TrimStart_String_Comparison_SetSpaceTrim_EnumInvalid(bool whitespaceTrim)
     {
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"TrimStart\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"TrimStart\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         StringComparison comparison = (StringComparison)99;
         void testAction() => "test".TrimStart("asd", comparison, whitespaceTrim);
@@ -364,7 +364,7 @@ public class Trim_Tests_Exceptions
     [Fact]
     public void TrimEnd_String_Comparison_DefaultSpaceTrim_EnumInvalid()
     {
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"TrimEnd\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"TrimEnd\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         StringComparison comparison = (StringComparison)99;
         void testAction() => "test".TrimEnd("asd", comparison);
@@ -380,7 +380,7 @@ public class Trim_Tests_Exceptions
     #endregion Data
     public void TrimEnd_String_Comparison_SetSpaceTrim_EnumInvalid(bool whitespaceTrim)
     {
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"TrimEnd\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"TrimEnd\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         StringComparison comparison = (StringComparison)99;
         void testAction() => "test".TrimEnd("asd", comparison, whitespaceTrim);

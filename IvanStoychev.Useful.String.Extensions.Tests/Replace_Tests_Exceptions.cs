@@ -9,7 +9,7 @@ public class Replace_Tests_Exceptions
     public void Replace_IEnumString_EnumInvalid()
     {
         string[] oldStrings = ["asd"];
-        string expectedMessage = "The argument \"99\" given for parameter \"comparison\" of method \"Replace\" does not exist in enum \"StringComparison\"";
+        string expectedMessage = "The argument given for parameter \"comparison\" of method \"Replace\" does not exist in enum \"StringComparison\" (Parameter 'comparison')";
 
         void testAction() => "".Replace(oldStrings, "", (StringComparison)99);
 
