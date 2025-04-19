@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 
 namespace IvanStoychev.Useful.String.Extensions;
 
@@ -8,12 +7,6 @@ namespace IvanStoychev.Useful.String.Extensions;
 /// </summary>
 static class ExceptionThrower
 {
-    /// <summary>
-    /// Maximum amount of characters to display in an exception to the user.
-    /// </summary>
-    const int MAX_LENGTH = 10;
-
-
     /// <summary>
     /// Throws an <see cref="ArgumentException"/> that informs the user <paramref name="parameterName"/> is the empty string.
     /// </summary>
@@ -72,74 +65,52 @@ static class ExceptionThrower
         => throw new ArgumentNullException(parameterName, $"A member of the collection argument given for parameter \"{parameterName}\" of method \"{callingMethodName}\" was null.");
 
     /// <summary>
-    /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value of <paramref name="endString"/> was
-    /// not found after <paramref name="startString"/> in the original instance. If the value of either <paramref name="startString"/> or <paramref name="endString"/>
-    /// is longer than 10 characters the value displayed in the exception message will be truncated to 10.
+    /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value passed for parameter <paramref name="endStringParameterName"/> was
+    /// not found after the value passed for parameter <paramref name="startStringParameterName"/> for the original string instance in <paramref name="callingMethodName"/>.
     /// </summary>
-    /// <param name="startString">Substring that marks the start of a string which does not contain <paramref name="endString"/>.</param>
-    /// <param name="endString">String the user requested but that is not present in a subset of the string the original method was called on.</param>
-    /// <param name="startStringParameterName">Name of the parameter in the original method whose argument is <paramref name="startString"/>.</param>
-    /// <param name="endStringParameterName">Name of the parameter in the original method whose argument is <paramref name="endString"/>.</param>
+    /// <param name="startStringParameterName">Name of the parameter in the original method whose argument is supposed to denote the beginning of a substring.</param>
+    /// <param name="endStringParameterName">Name of the parameter in the original method whose argument is supposed to denote the ending of a substring.</param>
     /// <param name="callingMethodName">Name of the method that throws this exception.</param>
     /// <exception cref="ArgumentOutOfRangeException">
-    /// <paramref name="endString"/> was not found after <paramref name="startString"/>.
+    /// The original string instance does not contain the value passed for <paramref name="endStringParameterName"/>
+    /// after the value passed for <paramref name="startStringParameterName"/>.
     /// </exception>
-    internal static void Throw_ArgumentOutOfRangeException_Endstring(string startString, string endString, string callingMethodName,
-                                                                     [CallerArgumentExpression("startString")] string startStringParameterName = null,
-                                                                     [CallerArgumentExpression("endString")] string endStringParameterName = null)
-    {
-        if (endString.Length > MAX_LENGTH)
-            endString = endString.Substring(0, MAX_LENGTH) + "...";
-
-        if (startString.Length > MAX_LENGTH)
-            startString = startString.Substring(0, MAX_LENGTH) + "...";
-
-        throw new ArgumentOutOfRangeException(endStringParameterName, $"The string given for \"{endStringParameterName}\" (\"{endString}\") was not found after the given \"{startStringParameterName}\" (\"{startString}\") in the original instance. Name of the method throwing the exception - \"{callingMethodName}\".");
-    }
+    internal static void Throw_ArgumentOutOfRangeException_Endstring(string startStringParameterName, string endStringParameterName, string callingMethodName)
+        => throw new ArgumentOutOfRangeException(endStringParameterName, $"The string given for parameter \"{endStringParameterName}\" of method \"{callingMethodName}\" was not found after the argument given for parameter \"{startStringParameterName}\" in the original instance.");
 
     /// <summary>
-    /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value "<paramref name="length"/>" of
-    /// parameter "<paramref name="parameterName"/>" is a negative number.
+    /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value passed for parameter "<paramref name="parameterName"/>" is a negative number.
     /// </summary>
-    /// <param name="length">Integer, less than zero, the user provided for an operation that requires a positive number.</param>
-    /// <param name="parameterName">Name of the parameter in the original method whose argument is <paramref name="length"/>.</param>
+    /// <param name="parameterName">Name of the parameter in the original method whose argument is a negative number.</param>
     /// <param name="callingMethodName">Name of the method that throws this exception.</param>
     /// <exception cref="ArgumentOutOfRangeException">
-    /// <paramref name="length"/> is a negative number.
+    /// Value passed for <paramref name="parameterName"/> is a negative number.
     /// </exception>
-    internal static void Throw_ArgumentOutOfRangeException_Length(int length, string callingMethodName, [CallerArgumentExpression("length")] string parameterName = null)
-        => throw new ArgumentOutOfRangeException(parameterName, $"The value given for \"{parameterName}\" (\"{length}\") of method \"{callingMethodName}\" is less than zero.");
+    internal static void Throw_ArgumentOutOfRangeException_Length(string parameterName, string callingMethodName)
+        => throw new ArgumentOutOfRangeException(parameterName, $"The value given for parameter \"{parameterName}\" of method \"{callingMethodName}\" is less than zero.");
 
     /// <summary>
-    /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value "<paramref name="length"/>" of
-    /// parameter "<paramref name="parameterName"/>" is bigger then the available string by <paramref name="lengthDiff"/>.
+    /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value passed for parameter "<paramref name="parameterName"/>"
+    /// is bigger then the available string by <paramref name="lengthDiff"/>.
     /// </summary>
-    /// <param name="length">Amount of characters the user wanted selected from the available string.</param>
-    /// <param name="parameterName">Name of the parameter in the original method whose argument is <paramref name="length"/>.</param>
-    /// <param name="lengthDiff">The difference between the available length for selection and the length requested by the user.</param>
+    /// <param name="parameterName">Name of the parameter in the original method whose argument is causing the exception.</param>
+    /// <param name="lengthDiff">The absolute difference between the available length for selection and the length requested by the user.</param>
     /// <param name="callingMethodName">Name of the method that throws this exception.</param>
     /// <exception cref="ArgumentOutOfRangeException">
-    /// <paramref name="length"/> is too big by <paramref name="lengthDiff"/>.
+    /// Value of <paramref name="parameterName"/> is too big by <paramref name="lengthDiff"/>.
     /// </exception>
-    internal static void Throw_ArgumentOutOfRangeException_Length(int length, int lengthDiff, string callingMethodName, [CallerArgumentExpression("length")] string parameterName = null)
-        => throw new ArgumentOutOfRangeException(parameterName, $"The value given for \"{parameterName}\" (\"{length}\") of method \"{callingMethodName}\" is longer than the remaining string by {Math.Abs(lengthDiff)}.");
+    internal static void Throw_ArgumentOutOfRangeException_Length(int lengthDiff, string parameterName, string callingMethodName)
+        => throw new ArgumentOutOfRangeException(parameterName, $"The value given for parameter \"{parameterName}\" of method \"{callingMethodName}\" is longer than the remaining string by {lengthDiff}.");
 
     /// <summary>
-    /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value "<paramref name="substring"/>" of
-    /// parameter "<paramref name="parameterName"/>" is not found in the original string. If the value of <paramref name="substring"/> is longer
-    /// than 10 characters the value displayed in the exception message will be truncated to 10.
+    /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value passed for parameter "<paramref name="parameterName"/>"
+    /// is not found in the original string.
     /// </summary>
-    /// <param name="substring">Substring not located in the originalString.</param>
-    /// <param name="parameterName">Name of the parameter in the original method whose argument is <paramref name="substring"/>.</param>
+    /// <param name="parameterName">Name of the parameter in the original method whose argument is causing the exception.</param>
     /// <param name="callingMethodName">Name of the method that throws this exception.</param>
     /// <exception cref="ArgumentOutOfRangeException">
-    /// <paramref name="substring"/> is not found in the original string.
+    /// Value of <paramref name="parameterName"/> is not found in the original string.
     /// </exception>
-    internal static void Throw_ArgumentOutOfRangeException_Substring(string substring, string parameterName, string callingMethodName)
-    {
-        if (substring.Length > MAX_LENGTH)
-            substring = substring.Substring(0, MAX_LENGTH) + "...";
-
-        throw new ArgumentOutOfRangeException(parameterName, $"The string given for \"{parameterName}\" (\"{substring}\") of method \"{callingMethodName}\" was not found in the original instance.");
-    }
+    internal static void Throw_ArgumentOutOfRangeException_Substring(string parameterName, string callingMethodName)
+        => throw new ArgumentOutOfRangeException(parameterName, $"The string given for parameter \"{parameterName}\" of method \"{callingMethodName}\" was not found in the original instance.");
 }
