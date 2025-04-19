@@ -20,7 +20,7 @@ Legend:
 💜 Sanitized exception messages to not include potentially sensitive data, restructure exception messages a bit to be more readable, update method signatures and summaries.
 
 ⚪ Renamed "StringExtensions" classes to "UsefulStringExtensions", as the previous name was too generic and could cause conflicts with user code or other libraries.
-⚪ Changed the CHANGELOG date format.
+<br>⚪ Changed the CHANGELOG date format.
 
 ## [5.0.0] - 02 DEC 2023
 
