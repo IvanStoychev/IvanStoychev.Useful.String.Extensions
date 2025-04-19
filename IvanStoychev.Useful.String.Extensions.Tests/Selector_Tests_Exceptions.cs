@@ -9,7 +9,7 @@ public class Selector_Tests_Exceptions
     public void SubstringStart_ArgumentOutOfRange()
     {
         string testString = "";
-        string expectedMessage = "The string given for \"endString\" (\"end\") of method \"SubstringStart\" was not found in the original instance. (Parameter 'endString')";
+        string expectedMessage = "The string given for parameter \"endString\" of method \"SubstringStart\" was not found in the original instance. (Parameter 'endString')";
 
         void testAction() => testString.SubstringStart("end");
 
@@ -33,7 +33,7 @@ public class Selector_Tests_Exceptions
     public void SubstringStartLast_ArgumentOutOfRange()
     {
         string testString = "";
-        string expectedMessage = "The string given for \"endString\" (\"end\") of method \"SubstringStartLast\" was not found in the original instance. (Parameter 'endString')";
+        string expectedMessage = "The string given for parameter \"endString\" of method \"SubstringStartLast\" was not found in the original instance. (Parameter 'endString')";
 
         void testAction() => testString.SubstringStartLast("end");
 
@@ -57,7 +57,7 @@ public class Selector_Tests_Exceptions
     public void Substring_Length_ArgumentOutOfRange()
     {
         string testString = "";
-        string expectedMessage = "The string given for \"startString\" (\"start\") of method \"Substring\" was not found in the original instance. (Parameter 'startString')";
+        string expectedMessage = "The string given for parameter \"startString\" of method \"Substring\" was not found in the original instance. (Parameter 'startString')";
 
         void testAction() => testString.Substring("start", 0);
 
@@ -69,7 +69,7 @@ public class Selector_Tests_Exceptions
     public void Substring_NegativeLength_ArgumentOutOfRange()
     {
         string testString = "start";
-        string expectedMessage = "The value given for \"length\" (\"-5\") of method \"Substring\" is less than zero. (Parameter 'length')";
+        string expectedMessage = "The value given for parameter \"length\" of method \"Substring\" is less than zero. (Parameter 'length')";
 
         void testAction() => testString.Substring("start", -5);
 
@@ -81,7 +81,7 @@ public class Selector_Tests_Exceptions
     public void Substring_LengthOutOfRange_ArgumentOutOfRange()
     {
         string testString = "start12";
-        string expectedMessage = "The value given for \"length\" (\"11\") of method \"Substring\" is longer than the remaining string by 9. (Parameter 'length')";
+        string expectedMessage = "The value given for parameter \"length\" of method \"Substring\" is longer than the remaining string by 9. (Parameter 'length')";
 
         void testAction() => testString.Substring("start", 11);
 
@@ -105,7 +105,7 @@ public class Selector_Tests_Exceptions
     public void Substring_StartEndString_Start_ArgumentOutOfRange()
     {
         string testString = "";
-        string expectedMessage = "The string given for \"startString\" (\"start\") of method \"Substring\" was not found in the original instance. (Parameter 'startString')";
+        string expectedMessage = "The string given for parameter \"startString\" of method \"Substring\" was not found in the original instance. (Parameter 'startString')";
 
         void testAction() => testString.Substring("start", "end");
 
@@ -117,7 +117,7 @@ public class Selector_Tests_Exceptions
     public void Substring_StartEndString_End_ArgumentOutOfRange()
     {
         string testString = "end start";
-        string expectedMessage = "The string given for \"endString\" (\"end\") was not found after the given \"startString\" (\"start\") in the original instance. Name of the method throwing the exception - \"Substring\". (Parameter 'endString')";
+        string expectedMessage = "The string given for parameter \"endString\" of method \"Substring\" was not found after the argument given for parameter \"startString\" in the original instance. (Parameter 'endString')";
 
         void testAction() => testString.Substring("start", "end");
 
@@ -153,7 +153,7 @@ public class Selector_Tests_Exceptions
     public void SubstringLast_StartString_ArgumentOutOfRange()
     {
         string testString = "";
-        string expectedMessage = "The string given for \"startString\" (\"start\") of method \"SubstringLast\" was not found in the original instance. (Parameter 'startString')";
+        string expectedMessage = "The string given for parameter \"startString\" of method \"SubstringLast\" was not found in the original instance. (Parameter 'startString')";
 
         void testAction() => testString.SubstringLast("start", "end");
 
@@ -165,7 +165,7 @@ public class Selector_Tests_Exceptions
     public void SubstringLast_EndString_ArgumentOutOfRange()
     {
         string testString = "end start";
-        string expectedMessage = "The string given for \"endString\" (\"end\") was not found after the given \"startString\" (\"start\") in the original instance. Name of the method throwing the exception - \"SubstringLast\". (Parameter 'endString')";
+        string expectedMessage = "The string given for parameter \"endString\" of method \"SubstringLast\" was not found after the argument given for parameter \"startString\" in the original instance. (Parameter 'endString')";
 
         void testAction() => testString.SubstringLast("start", "end");
 
@@ -201,7 +201,7 @@ public class Selector_Tests_Exceptions
     public void SubstringEnd_ArgumentOutOfRange()
     {
         string testString = "";
-        string expectedMessage = "The string given for \"startString\" (\"start\") of method \"SubstringEnd\" was not found in the original instance. (Parameter 'startString')";
+        string expectedMessage = "The string given for parameter \"startString\" of method \"SubstringEnd\" was not found in the original instance. (Parameter 'startString')";
 
         void testAction() => testString.SubstringEnd("start");
 
@@ -225,7 +225,7 @@ public class Selector_Tests_Exceptions
     public void SubstringEndLast_ArgumentOutOfRange()
     {
         string testString = "";
-        string expectedMessage = "The string given for \"startString\" (\"start\") of method \"SubstringEndLast\" was not found in the original instance. (Parameter 'startString')";
+        string expectedMessage = "The string given for parameter \"startString\" of method \"SubstringEndLast\" was not found in the original instance. (Parameter 'startString')";
 
         void testAction() => testString.SubstringEndLast("start");
 
@@ -249,7 +249,7 @@ public class Selector_Tests_Exceptions
     public void SubstringEndLast_Length_ArgumentOutOfRange()
     {
         string testString = "";
-        string expectedMessage = "The string given for \"startString\" (\"start\") of method \"SubstringEndLast\" was not found in the original instance. (Parameter 'startString')";
+        string expectedMessage = "The string given for parameter \"startString\" of method \"SubstringEndLast\" was not found in the original instance. (Parameter 'startString')";
 
         void testAction() => testString.SubstringEndLast("start", 0);
 
@@ -261,7 +261,7 @@ public class Selector_Tests_Exceptions
     public void SubstringEndLast_NegativeLength_ArgumentOutOfRange()
     {
         string testString = "start";
-        string expectedMessage = "The value given for \"length\" (\"-5\") of method \"SubstringEndLast\" is less than zero. (Parameter 'length')";
+        string expectedMessage = "The value given for parameter \"length\" of method \"SubstringEndLast\" is less than zero. (Parameter 'length')";
 
         void testAction() => testString.SubstringEndLast("start", -5);
 
@@ -273,7 +273,7 @@ public class Selector_Tests_Exceptions
     public void SubstringEndLast_LengthOutOfRange_ArgumentOutOfRange()
     {
         string testString = "start12";
-        string expectedMessage = "The value given for \"length\" (\"11\") of method \"SubstringEndLast\" is longer than the remaining string by 9. (Parameter 'length')";
+        string expectedMessage = "The value given for parameter \"length\" of method \"SubstringEndLast\" is longer than the remaining string by 9. (Parameter 'length')";
 
         void testAction() => testString.SubstringEndLast("start", 11);
 

@@ -7,7 +7,7 @@ namespace IvanStoychev.Useful.String.Extensions;
 /// <summary>
 /// Contains methods for determining if a substring is contained in another string.
 /// </summary>
-public static partial class StringExtensions
+public static partial class UsefulStringExtensions
 {
     /// <summary>
     /// Returns a <see langword="bool"/> indicating whether any of the strings in <paramref name="keywords"/> occur in this string, using the specified comparison rules.
