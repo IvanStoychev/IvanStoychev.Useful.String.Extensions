@@ -12,7 +12,7 @@
     <PackageTags>c#, useful, string, extension, efficient</PackageTags>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>Nuget Icon.png</PackageIcon>
-    <Copyright>Copyright (c) 2023 Ivan Stoychev. All rights reserved.</Copyright>
+    <Copyright>Copyright (c) 2025 Ivan Stoychev. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageReleaseNotes>
@@ -21,16 +21,18 @@
 		🟢 - New feature
 		🔴 - Removed feature
 		🟡 - Altered existing feature
-		
+		⚪ - Note not directly relating to the project functionality
 		______________________________________
-		💜 Fixed some test names, test data and added missing tests for "TrimStart" and "TrimEnd" methods.
-        🟢 Updated library to .Net 8.
-        🟡 Changed library class structure to additionally facilitate users. Now all classes are partial and named "StringExtensions" to allow users to have their own classes using the old class names. File names remain unchanged for ease of structural navigation.
+
+		💜 Sanitized exception messages to not include potentially sensitive data, restructure exception messages a bit to be more readable, update method signatures and summaries.
+
+		⚪ Renamed "StringExtensions" classes to "UsefulStringExtensions", as the previous name was too generic and could cause conflicts with user code or other libraries.
+		⚪ Changed the CHANGELOG date format.
 	</PackageReleaseNotes>
-    <Version>5.0.0</Version>
+    <Version>5.0.1</Version>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <AssemblyVersion>5.0.0.0</AssemblyVersion>
-    <FileVersion>5.0.0.0</FileVersion>
+    <AssemblyVersion>5.0.1.0</AssemblyVersion>
+    <FileVersion>5.0.1.0</FileVersion>
     <PackageIconUrl />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>IvanStoychev.Useful.String.Extensions</PackageId>
