@@ -3,7 +3,10 @@ using System.Diagnostics.Contracts;
 
 namespace IvanStoychev.Useful.String.Extensions;
 
-public static partial class StringExtensions
+/// <summary>
+/// Contains methods that select substrings and charaters from strings.
+/// </summary>
+public static partial class UsefulStringExtensions
 {
     /// <summary>
     /// Retrieves a substring from this instance. The substring starts at the first occurrence of the given <paramref name="startString"/> and has the specified <paramref name="length"/>.

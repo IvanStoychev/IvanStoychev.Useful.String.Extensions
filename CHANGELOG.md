@@ -11,36 +11,43 @@ Legend:
 <br>🟢 - New feature
 <br>🔴 - Removed feature
 <br>🟡 - Altered existing feature
-<br>⚪ - Note, not directly relating to the project functionality
+<br>⚪ - Note not directly relating to the project functionality
 
 ---
 
-## [5.0.0] - 2nd Dec 2023
+## [5.0.1] - 19 APR 2025
+
+💜 Sanitized exception messages to not include potentially sensitive data, restructure exception messages a bit to be more readable, update method signatures and summaries.
+
+⚪ Renamed "StringExtensions" classes to "UsefulStringExtensions", as the previous name was too generic and could cause conflicts with user code or other libraries.
+<br>⚪ Changed the CHANGELOG date format.
+
+## [5.0.0] - 02 DEC 2023
 
 💜 Fixed some test names, test data and added missing tests for "TrimStart" and "TrimEnd" methods.
 🟢 Updated library to .Net 8.
 
 🟡 Changed library class structure to additionally facilitate users. Now all classes are partial and named "StringExtensions" to allow users to have their own classes using the old class names. File names remain unchanged for ease of structural navigation.
 
-## [4.0.0] - 17th March 2023
+## [4.0.0] - 17 MAR 2023
 
 🟢 Updated to .Net 7
 
 ⚪ Inconsequently, from this point onwards changelog sections names (such as "Changes", "Fixes", etc.) will be omitted, as there is a visual legend present.
 
-## [3.0.0] - 10th October 2022
+## [3.0.0] - 10 OCT 2022
 
 ### Changes
 
 🟡 All "Trim", "TrimStart" and "TrimEnd" methods now remove all leading/trailing occurrences of the given string, instead of just the first, as this is more in line with the existing .NET methods.
 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;While this could more be regarded as a "bug fix" it significantly changes the way those methods work and, thus, this is a new major version release.
 
-## [2.0.1] - 27th June 2022
+## [2.0.1] - 27 JUN 2022
 
 ### Fixes
 💜 Fixed debug symbols not being embedded in the package.
 
-## [2.0.0] - 26th June 2022
+## [2.0.0] - 26 JUN 2022
 
 ### Fixes
 💜 Fixed `KeepOnlySpecialCharacters()` method only keeping a single instance of each special character.
@@ -94,6 +101,6 @@ These methods' functionality can be easily achieved with [indices and ranges](ht
 
 Added default value for parameter `stringComparison` of methods `TrimStart(string trimString, StringComparison stringComparison)` and `TrimEnd(string trimString, StringComparison stringComparison)`, thus the same functionality can be achieved with them.
 
-## [1.0.0] - 14th June 2021
+## [1.0.0] - 14 JUN 2021
 
 Rebranded from `IvanStoychev.StringExtensions`.

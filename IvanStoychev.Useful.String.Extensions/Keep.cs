@@ -4,7 +4,10 @@ using System.Text.RegularExpressions;
 
 namespace IvanStoychev.Useful.String.Extensions;
 
-public static partial class StringExtensions
+/// <summary>
+/// Contains methods that remove all but a specified set of characters from a string.
+/// </summary>
+public static partial class UsefulStringExtensions
 {
     /// <summary>
     /// Uses a regular expression to return a new string containing all occurrences of all unicode digits (in any script) in the current instance.
