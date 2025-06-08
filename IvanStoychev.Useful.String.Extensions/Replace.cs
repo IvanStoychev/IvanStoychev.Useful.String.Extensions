@@ -5,7 +5,7 @@ using System.Globalization;
 
 namespace IvanStoychev.Useful.String.Extensions;
 
-public static partial class StringExtensions
+public static partial class UsefulStringExtensions
 {
     /// <summary>
     /// Returns a new string in which all occurrences of all members of <paramref name="oldStrings"/> in the current instance are replaced with the given

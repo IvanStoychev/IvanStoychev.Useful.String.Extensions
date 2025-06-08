@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace IvanStoychev.Useful.String.Extensions;
 
-public static partial class StringExtensions
+public static partial class UsefulStringExtensions
 {
     /// <summary>
     /// Removes all leading and trailing occurrences of a specified string from the current instance, using the provided string comparison option.

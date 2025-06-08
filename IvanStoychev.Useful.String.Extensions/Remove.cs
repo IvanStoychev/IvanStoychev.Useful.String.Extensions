@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace IvanStoychev.Useful.String.Extensions;
 
-public static partial class StringExtensions
+public static partial class UsefulStringExtensions
 {
     /// <summary>
     /// Returns a new string in which all occurrences of the given <paramref name="removeString"/> in the current instance are replaced with <see cref="string.Empty"/>.
