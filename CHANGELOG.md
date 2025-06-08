@@ -2,8 +2,7 @@
 
 The changes each version of this project brings are documented here.
 
-This file's format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
-<br>This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
 Legend:
@@ -15,39 +14,100 @@ Legend:
 
 ---
 
-## [5.0.1] - 19 APR 2025
+## [[6.0.0] - xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Date xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx](https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/releases/tag/6.0.0)
+
+💜 Removed the summaries that remained from the old class names.
+
+🟢 Added "StringExtensions.cs" file which holds the class summary.
+
+🟢 Added additional validation checks for `enum` arguments. If the user passes an invalid argument to an `enum` parameter an `ArgumentException` will be thrown, alerting him which argument, passed to what parameter in which method is invalid.
+
+🟢 Added new validation check whether the string on which any method is called is `null`.
+
+🟢 Added the following methods:
+- Contains.cs - `ContainsAll`
+- Remove.cs - `Remove` overloads that take `char` collections and/or `CultureInfo?` parameters.
+- Replace.cs - `Replace` overloads that take `char` collections for old values, `char` argument for the new value, `KeyValuePair` collections for old and new values and `CultureInfo?` instead of `StringComparison`.
+- ExceptionThrower.cs - `Throw_ArgumentException_EnumValueInvalid`
+- Validate.cs - `EnumContainsValue`
+
+🟡 Changed the following method signatures:
+
+`Replace(this string str, string newString, IEnumerable<string> oldStrings, StringComparison comparison = StringComparison.CurrentCulture)`
+changed to
+`Replace(this string str, IEnumerable<string> oldStrings, string? newString, StringComparison comparison = StringComparison.CurrentCulture)`
+this change was made to adhere to the signature of standard .Net `Replace` methods. The old signature was a remnant of times long past, when the purpose was to allow the user to pass an arbitraty amount of strings via a last `params string[]` parameter, which evolved into an `IEnumerable<string>` parameter. When that evolution happened a reordering of the parameters didn't occur to me.
+
+🟡 Renamed the following files:
+- <ins>Comparer.cs</ins> to "*Contains.cs*"
+- <ins>Keeper.cs</ins> to "*Keep.cs*"
+- <ins>Remover.cs</ins> to "*Remove.cs*"
+- <ins>Selector.cs</ins> to "*Substring.cs*"
+- <ins>Replacer.cs</ins> to "*Replace.cs*"
+- <ins>Comparer_Tests.cs</ins> to "*Contains_Tests.cs*"
+- <ins>Remover_Tests.cs</ins> to "*Remove_Tests.cs*"
+- <ins>Selector_Tests.cs</ins> to "*Substring_Tests.cs*"
+- <ins>Replacer_Tests.cs</ins> to "*Replace_Tests.cs*"
+- <ins>Comparer_Tests_Exceptions.cs</ins> to "*Contains_Tests_Exceptions.cs*"
+- <ins>Remover_Tests_Exceptions.cs</ins> to "*Remove_Tests_Exceptions.cs*"
+- <ins>Selector_Tests_Exceptions.cs</ins> to "*Substring_Tests_Exceptions.cs*"
+- <ins>Replacer_Tests_Exceptions.cs</ins> to "*Replace_Tests_Exceptions.cs*"
+
+🟡 Renamed the following methods:
+
+`ExceptionThrower.cs`
+- <ins>Throw_ArgumentNullMemberException</ins> to "*Throw_ArgumentNullException_CollectionMember*"
+
+`Validator.cs`
+- <ins>EmptyString</ins> to "*NotEmptyString*"
+- <ins>NullArgument</ins> to "*NotNull*"
+- <ins>NullMember</ins> to "*NotNullMember*"
+
+`Contains.cs`
+- <ins>Contains</ins> to "*ContainsAny*"
+
+🟡 Made `Validator.cs` - `IEnumNotEmpty` method generic.
+
+🟡 Made `Validator.cs` - `SubstringIndex` method private.
+
+🟡 Added "Trim.cs" file and moved "Trim", "TrimEnd" and "TrimStart" methods into it from the old "Remover.cs".
+
+⚪ Updated all tests.
+
+## [[5.0.1] - 19 APR 2025](https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/releases/tag/5.0.1)
 
 💜 Sanitized exception messages to not include potentially sensitive data, restructure exception messages a bit to be more readable, update method signatures and summaries.
 
 ⚪ Renamed "StringExtensions" classes to "UsefulStringExtensions", as the previous name was too generic and could cause conflicts with user code or other libraries.
 <br>⚪ Changed the CHANGELOG date format.
 
-## [5.0.0] - 02 DEC 2023
+## [[5.0.0] - 02 DEC 2023](https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/releases/tag/5.0.0)
 
 💜 Fixed some test names, test data and added missing tests for "TrimStart" and "TrimEnd" methods.
+
 🟢 Updated library to .Net 8.
 
 🟡 Changed library class structure to additionally facilitate users. Now all classes are partial and named "StringExtensions" to allow users to have their own classes using the old class names. File names remain unchanged for ease of structural navigation.
 
-## [4.0.0] - 17 MAR 2023
+## [[4.0.0] - 17 MAR 2023](https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/releases/tag/4.0.0)
 
 🟢 Updated to .Net 7
 
 ⚪ Inconsequently, from this point onwards changelog sections names (such as "Changes", "Fixes", etc.) will be omitted, as there is a visual legend present.
 
-## [3.0.0] - 10 OCT 2022
+## [[3.0.0] - 10 OCT 2022](https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/releases/tag/3.0.0)
 
 ### Changes
 
 🟡 All "Trim", "TrimStart" and "TrimEnd" methods now remove all leading/trailing occurrences of the given string, instead of just the first, as this is more in line with the existing .NET methods.
 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;While this could more be regarded as a "bug fix" it significantly changes the way those methods work and, thus, this is a new major version release.
 
-## [2.0.1] - 27 JUN 2022
+## [[2.0.1] - 27 JUN 2022](https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/releases/tag/2.0.1)
 
 ### Fixes
 💜 Fixed debug symbols not being embedded in the package.
 
-## [2.0.0] - 26 JUN 2022
+## [[2.0.0] - 26 JUN 2022](https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/releases/tag/2.0.0)
 
 ### Fixes
 💜 Fixed `KeepOnlySpecialCharacters()` method only keeping a single instance of each special character.
@@ -101,6 +161,6 @@ These methods' functionality can be easily achieved with [indices and ranges](ht
 
 Added default value for parameter `stringComparison` of methods `TrimStart(string trimString, StringComparison stringComparison)` and `TrimEnd(string trimString, StringComparison stringComparison)`, thus the same functionality can be achieved with them.
 
-## [1.0.0] - 14 JUN 2021
+## [[1.0.0] - 14 JUN 2021](https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/releases/tag/1.0.0)
 
 Rebranded from `IvanStoychev.StringExtensions`.
