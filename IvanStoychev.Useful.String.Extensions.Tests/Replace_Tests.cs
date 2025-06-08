@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Globalization;
 using Xunit;
 
@@ -11,7 +10,7 @@ public class Replace_Tests
 {
     [Theory, MemberData(nameof(Data_Replace_IEnumString_Char_DefaultComparison))]
     public void Replace_IEnumString_Char_DefaultComparison(string testString, char newChar, IEnumerable<string> oldStrings, string expectedString)
-    {        
+    {
         string actualString = testString.Replace(oldStrings, newChar);
 
         Assert.Equal(expectedString, actualString);
