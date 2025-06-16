@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 namespace IvanStoychev.Useful.String.Extensions;
 
 /// <summary>
-/// Performs checks, ensuring program execution proceeds smoothly.
+/// Performs checks ensuring program execution proceeds smoothly.
 /// </summary>
 static class Validate
 {
