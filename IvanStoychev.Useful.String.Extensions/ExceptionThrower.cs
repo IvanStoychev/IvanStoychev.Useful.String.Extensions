@@ -9,12 +9,6 @@ namespace IvanStoychev.Useful.String.Extensions;
 static class ExceptionThrower
 {
     /// <summary>
-    /// Maximum amount of characters to display in an exception to the user.
-    /// </summary>
-    const int MAX_LENGTH = 10;
-
-
-    /// <summary>
     /// Throws an <see cref="ArgumentException"/> that informs the user <paramref name="parameterName"/> is the empty string.
     /// </summary>
     /// <param name="parameterName">Name of the parameter in the original calling method.</param>
