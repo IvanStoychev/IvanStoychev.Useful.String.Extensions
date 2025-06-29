@@ -435,13 +435,13 @@ public class Contains_Tests_Exceptions
     #region IEnumerable test data
 
     public static IEnumerable<object[]> Data_StringComparison_AllValues
-        => new[]
-            {
-                new object[] { GlobalVariables.InvariantCulture },
+        =>
+            [
+                [GlobalVariables.InvariantCulture],
                 [GlobalVariables.InvariantCultureIgnoreCase],
                 [GlobalVariables.Ordinal],
                 [GlobalVariables.OrdinalIgnoreCase]
-            };
+            ];
 
     #endregion IEnumerable test data
 }
