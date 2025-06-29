@@ -3,9 +3,6 @@ using System.Diagnostics.Contracts;
 
 namespace IvanStoychev.Useful.String.Extensions;
 
-/// <summary>
-/// Contains methods that select substrings and charaters from strings.
-/// </summary>
 public static partial class UsefulStringExtensions
 {
     /// <summary>

@@ -4,9 +4,6 @@ using System.Text.RegularExpressions;
 
 namespace IvanStoychev.Useful.String.Extensions;
 
-/// <summary>
-/// Contains methods that remove all but a specified set of characters from a string.
-/// </summary>
 public static partial class UsefulStringExtensions
 {
     /// <summary>
