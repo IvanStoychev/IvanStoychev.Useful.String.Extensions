@@ -261,6 +261,7 @@ public static partial class UsefulStringExtensions
 
         foreach (var item in replaceData)
         {
+            // Keys cannot be "null", so no neeed to validate.
             Validate.NotEmptyString_Key(item.Key, nameof(replaceData));
             str = str.Replace(item.Key, item.Value, comparison);
         }
@@ -295,6 +296,7 @@ public static partial class UsefulStringExtensions
 
         foreach (var item in replaceData)
         {
+            // Keys cannot be "null", so no neeed to validate.
             Validate.NotEmptyString_Key(item.Key, nameof(replaceData));
             str = str.Replace(item.Key, item.Value, ignoreCase, culture);
         }
@@ -327,6 +329,7 @@ public static partial class UsefulStringExtensions
 
         foreach (var item in replaceData)
         {
+            // Keys cannot be "null", so no neeed to validate.
             Validate.NotEmptyString_Key(item.Key, nameof(replaceData));
             string value = item.Value.ToString();
             str = str.Replace(item.Key, value, comparison);
@@ -362,6 +365,7 @@ public static partial class UsefulStringExtensions
 
         foreach (var item in replaceData)
         {
+            // Keys cannot be "null", so no neeed to validate.
             Validate.NotEmptyString_Key(item.Key, nameof(replaceData));
             string value = item.Value.ToString();
             str = str.Replace(item.Key, value, ignoreCase, culture);
