@@ -88,9 +88,8 @@ This is a collection of string extension methods that I have been in need of man
 ------------
 <div align="center">
   
-*(Will open in YouTube)*
+https://github.com/user-attachments/assets/bba2b379-1737-425d-a809-6c57973ea2b9
 
-[![Demonstration video](https://imgur.com/uTeJ65b.jpg)](https://youtu.be/4M2UeSJhI-o)
 </div>
 <br/>
 
