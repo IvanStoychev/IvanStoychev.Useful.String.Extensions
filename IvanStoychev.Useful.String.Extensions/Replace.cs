@@ -252,7 +252,7 @@ public static partial class UsefulStringExtensions
     /// <paramref name="replaceData"/> or the original instance are <see langword="null"/>.
     /// </exception>
     [Pure]
-    public static string Replace(this string str, IEnumerable<KeyValuePair<string, string>> replaceData, StringComparison comparison = StringComparison.CurrentCulture)
+    public static string Replace(this string str, IEnumerable<KeyValuePair<string, string?>> replaceData, StringComparison comparison = StringComparison.CurrentCulture)
     {
         Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(replaceData);
@@ -288,7 +288,7 @@ public static partial class UsefulStringExtensions
     /// <paramref name="replaceData"/> or the original instance are <see langword="null"/>.
     /// </exception>
     [Pure]
-    public static string Replace(this string str, IEnumerable<KeyValuePair<string, string>> replaceData, bool ignoreCase, CultureInfo? culture)
+    public static string Replace(this string str, IEnumerable<KeyValuePair<string, string?>> replaceData, bool ignoreCase, CultureInfo? culture)
     {
         Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(replaceData);
@@ -389,7 +389,7 @@ public static partial class UsefulStringExtensions
     /// <paramref name="replaceData"/> or the original instance are <see langword="null"/>.
     /// </exception>
     [Pure]
-    public static string Replace(this string str, IEnumerable<KeyValuePair<char, string>> replaceData, StringComparison comparison = StringComparison.CurrentCulture)
+    public static string Replace(this string str, IEnumerable<KeyValuePair<char, string?>> replaceData, StringComparison comparison = StringComparison.CurrentCulture)
     {
         Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(replaceData);
@@ -424,7 +424,7 @@ public static partial class UsefulStringExtensions
     /// <paramref name="replaceData"/> or the original instance are <see langword="null"/>.
     /// </exception>
     [Pure]
-    public static string Replace(this string str, IEnumerable<KeyValuePair<char, string>> replaceData, bool ignoreCase, CultureInfo? culture)
+    public static string Replace(this string str, IEnumerable<KeyValuePair<char, string?>> replaceData, bool ignoreCase, CultureInfo? culture)
     {
         Validate.OriginalInstanceNotNull(str);
         Validate.NotNull(replaceData);
