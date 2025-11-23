@@ -16,20 +16,41 @@ Legend:
 
 ## [[6.0.0] - xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Date xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx](https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/releases/tag/6.0.0)
 
+⚪ As of this version the changelog will be separated into "Public API" and "Under the hood" sections.
+	- "Public API" will contain changes to the public methods of the library, which ought to be of most importance to end users.
+	- "Under the hood" section will contain changes that do not directly affect usage of the library, but ought to be interesting to people who wish to delve deeper into the technical details.
+
+# Public API
+
 💜 Removed the summaries that remained from the old class names.
 
-🟢 Added "StringExtensions.cs" file which holds the class summary.
+🟢 Added additional validation checks for `enum` arguments. If the user passes an invalid argument to an `enum` parameter an `ArgumentException` will be thrown, alerting him which argument, passed to which parameter, in which method is invalid.
 
-🟢 Added additional validation checks for `enum` arguments. If the user passes an invalid argument to an `enum` parameter an `ArgumentException` will be thrown, alerting him which argument, passed to what parameter in which method is invalid.
-
-🟢 Added new validation check whether the string on which any method is called is `null`.
+🟢 Added new validation check whether the string on which any method is called is `null`, throwing an `ArgumentNullException` if it is.
 
 🟢 Added the following methods:
-- Contains.cs - `ContainsAll`
-- Remove.cs - `Remove` overloads that take `char` collections and/or `CultureInfo?` parameters.
-- Replace.cs - `Replace` overloads that take `char` collections for old values, `char` argument for the new value, `KeyValuePair` collections for old and new values and `CultureInfo?` instead of `StringComparison`.
-- ExceptionThrower.cs - `Throw_ArgumentException_EnumValueInvalid`
-- Validate.cs - `EnumContainsValue`
+- Contains.cs
+	- `ContainsAll(IEnumerable<char>, StringComparison)`
+	- `ContainsAll(IEnumerable<string>, StringComparison)`
+- Remove.cs
+	- `Remove(string, bool, CultureInfo?)`
+	- `Remove(IEnumerable<char>, StringComparison)`
+	- `Remove(IEnumerable<char>, bool, CultureInfo?)`
+	- `Remove(IEnumerable<string>, bool, CultureInfo?)`
+- Replace.cs
+	- `Replace(IEnumerable<string>, char, StringComparison)`
+	- `Replace(IEnumerable<string>, char, bool, CultureInfo?)`
+	- `Replace(IEnumerable<string>, string?, bool, CultureInfo?)`
+	- `Replace(IEnumerable<char>, char)`
+	- `Replace(IEnumerable<char>, string?, StringComparison)`
+	- `Replace(IEnumerable<char>, string?, bool, CultureInfo?)`
+	- `Replace(IEnumerable<KeyValuePair<string, string?>>, StringComparison)`
+	- `Replace(IEnumerable<KeyValuePair<string, string?>>, bool, CultureInfo?)`
+	- `Replace(IEnumerable<KeyValuePair<string, char>>, StringComparison)`
+	- `Replace(IEnumerable<KeyValuePair<string, char>>, bool, CultureInfo?)`
+	- `Replace(IEnumerable<KeyValuePair<char, string?>>, StringComparison)`
+	- `Replace(IEnumerable<KeyValuePair<char, string?>>, bool, CultureInfo?)`
+	- `Replace(IEnumerable<KeyValuePair<char, char>>)`
 
 🟡 Changed the following method signatures:
 
@@ -37,6 +58,20 @@ Legend:
 changed to
 `Replace(this string str, IEnumerable<string> oldStrings, string? newString, StringComparison comparison = StringComparison.CurrentCulture)`
 this change was made to adhere to the signature of standard .Net `Replace` methods. The old signature was a remnant of times long past, when the purpose was to allow the user to pass an arbitraty amount of strings via a last `params string[]` parameter, which evolved into an `IEnumerable<string>` parameter. When that evolution happened a reordering of the parameters didn't occur to me.
+
+🟡 Added "Trim.cs" file and moved "Trim", "TrimEnd" and "TrimStart" methods into it from the old "Remover.cs".
+
+# Under the hood
+
+🟢 Added "UsefulStringExtensions.cs" file which holds the class summary.
+
+🟢 Added the following methods:
+- ExceptionThrower.cs
+	- `Throw_ArgumentException_EnumValueInvalid` (invoked when an invalid value is passed to an `enum` parameter)
+	- `Throw_ArgumentNullException_OriginalInstance` (invoked when the instance of the string a method is called on is `null`)
+- Validate.cs
+	- `EnumContainsValue` (checks whether an `enum` contains a given value)
+	- `OriginalInstanceNotNull` (checks whether the instance of the string a method is called on is not `null`)
 
 🟡 Renamed the following files:
 - <ins>Comparer.cs</ins> to "*Contains.cs*"
@@ -55,28 +90,25 @@ this change was made to adhere to the signature of standard .Net `Replace` metho
 
 🟡 Renamed the following methods:
 
-`ExceptionThrower.cs`
-- <ins>Throw_ArgumentNullMemberException</ins> to "*Throw_ArgumentNullException_CollectionMember*"
-
-`Validator.cs`
-- <ins>EmptyString</ins> to "*NotEmptyString*"
-- <ins>NullArgument</ins> to "*NotNull*"
-- <ins>NullMember</ins> to "*NotNullMember*"
-
-`Contains.cs`
-- <ins>Contains</ins> to "*ContainsAny*"
-
+- `ExceptionThrower.cs`
+	- <ins>Throw_ArgumentNullMemberException</ins> to "*Throw_ArgumentNullException_CollectionMember*"
+- `Validator.cs`
+	- <ins>EmptyString</ins> to "*NotEmptyString*"
+	- <ins>NullArgument</ins> to "*NotNull*"
+	- <ins>NullMember</ins> to "*NotNullMember*"
+- `Contains.cs`
+	- <ins>Contains</ins> to "*ContainsAny*"
+	
 🟡 Made `Validator.cs` - `IEnumNotEmpty` method generic.
 
 🟡 Made `Validator.cs` - `SubstringIndex` method private.
 
-🟡 Added "Trim.cs" file and moved "Trim", "TrimEnd" and "TrimStart" methods into it from the old "Remover.cs".
-
 ⚪ Updated all tests.
+⚪ Removed `GlobalSuppressions.cs`, as the only warning it suppressed was no longer relevant.
 
 ## [[5.0.1] - 19 APR 2025](https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/releases/tag/5.0.1)
 
-💜 Sanitized exception messages to not include potentially sensitive data, restructure exception messages a bit to be more readable, update method signatures and summaries.
+💜 Sanitized exception messages to not include potentially sensitive data, restructured exception messages a bit to be more readable, updated method signatures and summaries.
 
 ⚪ Renamed "StringExtensions" classes to "UsefulStringExtensions", as the previous name was too generic and could cause conflicts with user code or other libraries.
 <br>⚪ Changed the CHANGELOG date format.
