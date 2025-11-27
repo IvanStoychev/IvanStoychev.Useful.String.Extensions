@@ -104,7 +104,10 @@ this change was made to adhere to the signature of standard .Net `Replace` metho
 🟡 Made `Validator.cs` - `SubstringIndex` method private.
 
 ⚪ Updated all tests.
+⚪ Added more exception tests for the `Replace` methods.
+⚪ Added two missing "Fail" tests for the `ContainsAll` methods.
 ⚪ Removed `GlobalSuppressions.cs`, as the only warning it suppressed was no longer relevant.
+⚪ Removed `GlobalVariables.cs` and updated tests to use the corresponding `StringComparison` values, instead.
 
 ## [[5.0.1] - 19 APR 2025](https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/releases/tag/5.0.1)
 
