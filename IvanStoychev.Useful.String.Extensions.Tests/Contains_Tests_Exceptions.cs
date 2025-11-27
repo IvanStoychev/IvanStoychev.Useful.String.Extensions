@@ -437,10 +437,10 @@ public class Contains_Tests_Exceptions
     public static IEnumerable<object[]> Data_StringComparison_AllValues
         =>
             [
-                [GlobalVariables.InvariantCulture],
-                [GlobalVariables.InvariantCultureIgnoreCase],
-                [GlobalVariables.Ordinal],
-                [GlobalVariables.OrdinalIgnoreCase]
+                [StringComparison.InvariantCulture],
+                [StringComparison.InvariantCultureIgnoreCase],
+                [StringComparison.Ordinal],
+                [StringComparison.OrdinalIgnoreCase]
             ];
 
     #endregion IEnumerable test data

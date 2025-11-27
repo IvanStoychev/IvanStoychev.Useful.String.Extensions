@@ -159,49 +159,49 @@ public class Contains_Tests
     public static TheoryData<string, IEnumerable<string>, StringComparison> Data_ContainsAny_IEnumString_SetComparison_Pass
         => new()
         {
-            { TEST_STRING, ["dummy", "case", "dummy"], GlobalVariables.InvariantCulture },
-            { TEST_STRING, new List<string>() { "dummy", "encyclopædia", "dummy" }, GlobalVariables.InvariantCulture },
-            { TEST_STRING, new HashSet<string>() { "dummy", "Archæology", "dummy" }, GlobalVariables.InvariantCulture },
-            { TEST_STRING, new Queue<string>(["case", "encyclopædia", "Archæology"]), GlobalVariables.InvariantCulture },
+            { TEST_STRING, ["dummy", "case", "dummy"], StringComparison.InvariantCulture },
+            { TEST_STRING, new List<string>() { "dummy", "encyclopædia", "dummy" }, StringComparison.InvariantCulture },
+            { TEST_STRING, new HashSet<string>() { "dummy", "Archæology", "dummy" }, StringComparison.InvariantCulture },
+            { TEST_STRING, new Queue<string>(["case", "encyclopædia", "Archæology"]), StringComparison.InvariantCulture },
 
-            { TEST_STRING, ["dummy", "Case", "dummy"], GlobalVariables.InvariantCultureIgnoreCase },
-            { TEST_STRING, new List<string>() { "dummy", "encyclopædiA", "dummy" }, GlobalVariables.InvariantCultureIgnoreCase },
-            { TEST_STRING, new HashSet<string>() { "dummy", "ARCHÆOLOGY", "dummy" }, GlobalVariables.InvariantCultureIgnoreCase },
-            { TEST_STRING, new Queue<string>(["Case", "encyclopædiA", "ARCHÆOLOGY"]), GlobalVariables.InvariantCultureIgnoreCase },
+            { TEST_STRING, ["dummy", "Case", "dummy"], StringComparison.InvariantCultureIgnoreCase },
+            { TEST_STRING, new List<string>() { "dummy", "encyclopædiA", "dummy" }, StringComparison.InvariantCultureIgnoreCase },
+            { TEST_STRING, new HashSet<string>() { "dummy", "ARCHÆOLOGY", "dummy" }, StringComparison.InvariantCultureIgnoreCase },
+            { TEST_STRING, new Queue<string>(["Case", "encyclopædiA", "ARCHÆOLOGY"]), StringComparison.InvariantCultureIgnoreCase },
 
-            { TEST_STRING, ["dummy", "case", "dummy"], GlobalVariables.Ordinal },
-            { TEST_STRING, new List<string>() { "dummy", "encyclopædia", "dummy" }, GlobalVariables.Ordinal },
-            { TEST_STRING, new HashSet<string>() { "dummy", "Archæology", "dummy" }, GlobalVariables.Ordinal },
-            { TEST_STRING, new Queue<string>(["case", "encyclopædia", "Archæology"]), GlobalVariables.Ordinal },
+            { TEST_STRING, ["dummy", "case", "dummy"], StringComparison.Ordinal },
+            { TEST_STRING, new List<string>() { "dummy", "encyclopædia", "dummy" }, StringComparison.Ordinal },
+            { TEST_STRING, new HashSet<string>() { "dummy", "Archæology", "dummy" }, StringComparison.Ordinal },
+            { TEST_STRING, new Queue<string>(["case", "encyclopædia", "Archæology"]), StringComparison.Ordinal },
 
-            { TEST_STRING, ["dummy", "Case", "dummy"], GlobalVariables.OrdinalIgnoreCase },
-            { TEST_STRING, new List<string>() { "dummy", "encyclopædiA", "dummy" }, GlobalVariables.OrdinalIgnoreCase },
-            { TEST_STRING, new HashSet<string>() { "dummy", "ARCHÆOLOGY", "dummy" }, GlobalVariables.OrdinalIgnoreCase },
-            { TEST_STRING, new Queue<string>(["Case", "encyclopædiA", "ARCHÆOLOGY"]), GlobalVariables.OrdinalIgnoreCase }
+            { TEST_STRING, ["dummy", "Case", "dummy"], StringComparison.OrdinalIgnoreCase },
+            { TEST_STRING, new List<string>() { "dummy", "encyclopædiA", "dummy" }, StringComparison.OrdinalIgnoreCase },
+            { TEST_STRING, new HashSet<string>() { "dummy", "ARCHÆOLOGY", "dummy" }, StringComparison.OrdinalIgnoreCase },
+            { TEST_STRING, new Queue<string>(["Case", "encyclopædiA", "ARCHÆOLOGY"]), StringComparison.OrdinalIgnoreCase }
         };
 
     public static TheoryData<string, IEnumerable<string>, StringComparison> Data_ContainsAny_IEnumString_SetComparison_Fail
         => new()
         {
-            { TEST_STRING, ["dummy", "Case", "dummy"], GlobalVariables.InvariantCulture },
-            { TEST_STRING, new List<string>() { "dummy", "encyclopaedia", "dummy" }, GlobalVariables.InvariantCulture },
-            { TEST_STRING, new HashSet<string>() { "dummy", "ARCHÆOLOGY", "dummy" }, GlobalVariables.InvariantCulture },
-            { TEST_STRING, new Queue<string>(["Case", "encyclopaedia", "ARCHÆOLOGY"]), GlobalVariables.InvariantCulture },
+            { TEST_STRING, ["dummy", "Case", "dummy"], StringComparison.InvariantCulture },
+            { TEST_STRING, new List<string>() { "dummy", "encyclopaedia", "dummy" }, StringComparison.InvariantCulture },
+            { TEST_STRING, new HashSet<string>() { "dummy", "ARCHÆOLOGY", "dummy" }, StringComparison.InvariantCulture },
+            { TEST_STRING, new Queue<string>(["Case", "encyclopaedia", "ARCHÆOLOGY"]), StringComparison.InvariantCulture },
 
-            { TEST_STRING, ["dummy", "Kase", "dummy"], GlobalVariables.InvariantCultureIgnoreCase },
-            { TEST_STRING, new List<string>() { "dummy", "encyclopaedia", "dummy" }, GlobalVariables.InvariantCultureIgnoreCase },
-            { TEST_STRING, new HashSet<string>() { "dummy", "ARCHAEOLOGY", "dummy" }, GlobalVariables.InvariantCultureIgnoreCase },
-            { TEST_STRING, new Queue<string>(["Kase", "encyclopaedia", "ARCHAEOLOGY"]), GlobalVariables.InvariantCultureIgnoreCase },
+            { TEST_STRING, ["dummy", "Kase", "dummy"], StringComparison.InvariantCultureIgnoreCase },
+            { TEST_STRING, new List<string>() { "dummy", "encyclopaedia", "dummy" }, StringComparison.InvariantCultureIgnoreCase },
+            { TEST_STRING, new HashSet<string>() { "dummy", "ARCHAEOLOGY", "dummy" }, StringComparison.InvariantCultureIgnoreCase },
+            { TEST_STRING, new Queue<string>(["Kase", "encyclopaedia", "ARCHAEOLOGY"]), StringComparison.InvariantCultureIgnoreCase },
 
-            { TEST_STRING, ["dummy", "Case", "dummy"], GlobalVariables.Ordinal },
-            { TEST_STRING, new List<string>() { "dummy", "encyclopaedia", "dummy" }, GlobalVariables.Ordinal },
-            { TEST_STRING, new HashSet<string>() { "dummy", "ARCHÆOLOGY", "dummy" }, GlobalVariables.Ordinal },
-            { TEST_STRING, new Queue<string>(["Case", "encyclopaedia", "ARCHÆOLOGY"]), GlobalVariables.Ordinal },
+            { TEST_STRING, ["dummy", "Case", "dummy"], StringComparison.Ordinal },
+            { TEST_STRING, new List<string>() { "dummy", "encyclopaedia", "dummy" }, StringComparison.Ordinal },
+            { TEST_STRING, new HashSet<string>() { "dummy", "ARCHÆOLOGY", "dummy" }, StringComparison.Ordinal },
+            { TEST_STRING, new Queue<string>(["Case", "encyclopaedia", "ARCHÆOLOGY"]), StringComparison.Ordinal },
 
-            { TEST_STRING, ["dummy", "Kase", "dummy"], GlobalVariables.OrdinalIgnoreCase },
-            { TEST_STRING, new List<string>() { "dummy", "encyclopaedia", "dummy" }, GlobalVariables.OrdinalIgnoreCase },
-            { TEST_STRING, new HashSet<string>() { "dummy", "Archaeology", "dummy" }, GlobalVariables.OrdinalIgnoreCase },
-            { TEST_STRING, new Queue<string>(["Kase", "encyclopaedia", "Archaeology"]), GlobalVariables.OrdinalIgnoreCase }
+            { TEST_STRING, ["dummy", "Kase", "dummy"], StringComparison.OrdinalIgnoreCase },
+            { TEST_STRING, new List<string>() { "dummy", "encyclopaedia", "dummy" }, StringComparison.OrdinalIgnoreCase },
+            { TEST_STRING, new HashSet<string>() { "dummy", "Archaeology", "dummy" }, StringComparison.OrdinalIgnoreCase },
+            { TEST_STRING, new Queue<string>(["Kase", "encyclopaedia", "Archaeology"]), StringComparison.OrdinalIgnoreCase }
         };
 
     public static TheoryData<string, IEnumerable<char>> Data_ContainsAny_IEnumChar_DefaultComparison_Pass
@@ -226,50 +226,50 @@ public class Contains_Tests
     public static TheoryData<string, IEnumerable<char>, StringComparison> Data_ContainsAny_IEnumChar_SetComparison_Pass
         => new()
         {
-            { "i" /* (U+0069) */, ['i' /* (U+0069) */, 'z', 'z', 'z'], GlobalVariables.InvariantCulture },
-            { "i" /* (U+0069) */, new List<char>() { 'z', 'i' /* (U+0069) */, 'z', 'z' }, GlobalVariables.InvariantCulture },
-            { "i" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'i' /* (U+0069) */, 'z' }, GlobalVariables.InvariantCulture },
-            { "i" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'i' /* (U+0069) */]), GlobalVariables.InvariantCulture },
+            { "i" /* (U+0069) */, ['i' /* (U+0069) */, 'z', 'z', 'z'], StringComparison.InvariantCulture },
+            { "i" /* (U+0069) */, new List<char>() { 'z', 'i' /* (U+0069) */, 'z', 'z' }, StringComparison.InvariantCulture },
+            { "i" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'i' /* (U+0069) */, 'z' }, StringComparison.InvariantCulture },
+            { "i" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'i' /* (U+0069) */]), StringComparison.InvariantCulture },
 
-            { "i" /* (U+0069) */, ['I' /* (U+0049) */, 'z', 'z', 'z'], GlobalVariables.InvariantCultureIgnoreCase },
-            { "i" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, GlobalVariables.InvariantCultureIgnoreCase },
-            { "i" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'I' /* (U+0049) */, 'z' }, GlobalVariables.InvariantCultureIgnoreCase },
-            { "i" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'I' /* (U+0049) */]), GlobalVariables.InvariantCultureIgnoreCase },
+            { "i" /* (U+0069) */, ['I' /* (U+0049) */, 'z', 'z', 'z'], StringComparison.InvariantCultureIgnoreCase },
+            { "i" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, StringComparison.InvariantCultureIgnoreCase },
+            { "i" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'I' /* (U+0049) */, 'z' }, StringComparison.InvariantCultureIgnoreCase },
+            { "i" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'I' /* (U+0049) */]), StringComparison.InvariantCultureIgnoreCase },
 
-            { "i" /* (U+0069) */, ['i' /* (U+0069) */, 'z', 'z', 'z'], GlobalVariables.Ordinal },
-            { "i" /* (U+0069) */, new List<char>() { 'z', 'i' /* (U+0069) */, 'z', 'z' }, GlobalVariables.Ordinal },
-            { "i" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'i' /* (U+0069) */, 'z' }, GlobalVariables.Ordinal },
-            { "i" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'i' /* (U+0069) */]), GlobalVariables.Ordinal },
+            { "i" /* (U+0069) */, ['i' /* (U+0069) */, 'z', 'z', 'z'], StringComparison.Ordinal },
+            { "i" /* (U+0069) */, new List<char>() { 'z', 'i' /* (U+0069) */, 'z', 'z' }, StringComparison.Ordinal },
+            { "i" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'i' /* (U+0069) */, 'z' }, StringComparison.Ordinal },
+            { "i" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'i' /* (U+0069) */]), StringComparison.Ordinal },
 
-            { "i" /* (U+0069) */, ['I' /* (U+0049) */, 'z', 'z', 'z'], GlobalVariables.OrdinalIgnoreCase },
-            { "i" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, GlobalVariables.OrdinalIgnoreCase },
-            { "i" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'I' /* (U+0049) */, 'z' }, GlobalVariables.OrdinalIgnoreCase },
-            { "i" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'I' /* (U+0049) */]), GlobalVariables.OrdinalIgnoreCase }
+            { "i" /* (U+0069) */, ['I' /* (U+0049) */, 'z', 'z', 'z'], StringComparison.OrdinalIgnoreCase },
+            { "i" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, StringComparison.OrdinalIgnoreCase },
+            { "i" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'I' /* (U+0049) */, 'z' }, StringComparison.OrdinalIgnoreCase },
+            { "i" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'I' /* (U+0049) */]), StringComparison.OrdinalIgnoreCase }
         };
 
     // The comments denote what is the code for the character preceding them as visually they are very similar.
     public static TheoryData<string, IEnumerable<char>, StringComparison> Data_ContainsAny_IEnumChar_SetComparison_Fail
         => new()
         {
-            { "i" /* (U+0069) */, ['ı' /* (U+0131) */, 'z', 'z', 'z'], GlobalVariables.InvariantCulture },
-            { "i" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, GlobalVariables.InvariantCulture },
-            { "I" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'ı' /* (U+0131) */, 'z' }, GlobalVariables.InvariantCulture },
-            { "i" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'I' /* (U+0049) */]), GlobalVariables.InvariantCulture },
+            { "i" /* (U+0069) */, ['ı' /* (U+0131) */, 'z', 'z', 'z'], StringComparison.InvariantCulture },
+            { "i" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, StringComparison.InvariantCulture },
+            { "I" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'ı' /* (U+0131) */, 'z' }, StringComparison.InvariantCulture },
+            { "i" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'I' /* (U+0049) */]), StringComparison.InvariantCulture },
 
-            { "i" /* (U+0069) */, ['ı' /* (U+0131) */, 'z', 'z', 'z'], GlobalVariables.InvariantCultureIgnoreCase },
-            { "i" /* (U+0069) */, new List<char>() { 'z', 'ı' /* (U+0131) */, 'z', 'z' }, GlobalVariables.InvariantCultureIgnoreCase },
-            { "i" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'ı' /* (U+0131) */, 'z' }, GlobalVariables.InvariantCultureIgnoreCase },
-            { "i" /* (U+0049) */, new Queue<char>(['z', 'z', 'z', 'ı' /* (U+0131) */]), GlobalVariables.InvariantCultureIgnoreCase },
+            { "i" /* (U+0069) */, ['ı' /* (U+0131) */, 'z', 'z', 'z'], StringComparison.InvariantCultureIgnoreCase },
+            { "i" /* (U+0069) */, new List<char>() { 'z', 'ı' /* (U+0131) */, 'z', 'z' }, StringComparison.InvariantCultureIgnoreCase },
+            { "i" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'ı' /* (U+0131) */, 'z' }, StringComparison.InvariantCultureIgnoreCase },
+            { "i" /* (U+0049) */, new Queue<char>(['z', 'z', 'z', 'ı' /* (U+0131) */]), StringComparison.InvariantCultureIgnoreCase },
 
-            { "i" /* (U+0069) */, ['ı' /* (U+0131) */, 'z', 'z', 'z'], GlobalVariables.Ordinal },
-            { "i" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, GlobalVariables.Ordinal },
-            { "I" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'ı' /* (U+0131) */, 'z' }, GlobalVariables.Ordinal },
-            { "i" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'I' /* (U+0049) */]), GlobalVariables.Ordinal },
+            { "i" /* (U+0069) */, ['ı' /* (U+0131) */, 'z', 'z', 'z'], StringComparison.Ordinal },
+            { "i" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, StringComparison.Ordinal },
+            { "I" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'ı' /* (U+0131) */, 'z' }, StringComparison.Ordinal },
+            { "i" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'I' /* (U+0049) */]), StringComparison.Ordinal },
 
-            { "i" /* (U+0069) */, ['ı' /* (U+0131) */, 'z', 'z', 'z'], GlobalVariables.OrdinalIgnoreCase },
-            { "i" /* (U+0069) */, new List<char>() { 'z', 'ı' /* (U+0131) */, 'z', 'z' }, GlobalVariables.OrdinalIgnoreCase },
-            { "I" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'ı' /* (U+0131) */, 'z' }, GlobalVariables.OrdinalIgnoreCase },
-            { "I" /* (U+0049) */, new Queue<char>(['z', 'z', 'z', 'ı' /* (U+0131) */]), GlobalVariables.OrdinalIgnoreCase }
+            { "i" /* (U+0069) */, ['ı' /* (U+0131) */, 'z', 'z', 'z'], StringComparison.OrdinalIgnoreCase },
+            { "i" /* (U+0069) */, new List<char>() { 'z', 'ı' /* (U+0131) */, 'z', 'z' }, StringComparison.OrdinalIgnoreCase },
+            { "I" /* (U+0049) */, new HashSet<char>() { 'z', 'z', 'ı' /* (U+0131) */, 'z' }, StringComparison.OrdinalIgnoreCase },
+            { "I" /* (U+0049) */, new Queue<char>(['z', 'z', 'z', 'ı' /* (U+0131) */]), StringComparison.OrdinalIgnoreCase }
         };
 
     public static TheoryData<string, IEnumerable<string>> Data_ContainsAll_IEnumString_DefaultComparison_Pass
@@ -293,49 +293,49 @@ public class Contains_Tests
     public static TheoryData<string, IEnumerable<string>, StringComparison> Data_ContainsAll_IEnumString_SetComparison_Pass
         => new()
         {
-            { TEST_STRING, ["case", "encyclopædia", "Archæology"], GlobalVariables.InvariantCulture },
-            { TEST_STRING, new List<string>() { "case", "encyclopædia", "Archæology" }, GlobalVariables.InvariantCulture },
-            { TEST_STRING, new HashSet<string>() { "case", "encyclopædia", "Archæology" }, GlobalVariables.InvariantCulture },
-            { TEST_STRING, new Queue<string>(["case", "encyclopædia", "Archæology"]), GlobalVariables.InvariantCulture },
+            { TEST_STRING, ["case", "encyclopædia", "Archæology"], StringComparison.InvariantCulture },
+            { TEST_STRING, new List<string>() { "case", "encyclopædia", "Archæology" }, StringComparison.InvariantCulture },
+            { TEST_STRING, new HashSet<string>() { "case", "encyclopædia", "Archæology" }, StringComparison.InvariantCulture },
+            { TEST_STRING, new Queue<string>(["case", "encyclopædia", "Archæology"]), StringComparison.InvariantCulture },
 
-            { TEST_STRING, ["caSe", "Encyclopædia", "archæology"], GlobalVariables.InvariantCultureIgnoreCase },
-            { TEST_STRING, new List<string>() { "caSe", "Encyclopædia", "archæology" }, GlobalVariables.InvariantCultureIgnoreCase },
-            { TEST_STRING, new HashSet<string>() { "caSe", "Encyclopædia", "archæology" }, GlobalVariables.InvariantCultureIgnoreCase },
-            { TEST_STRING, new Queue<string>(["caSe", "Encyclopædia", "archæology"]), GlobalVariables.InvariantCultureIgnoreCase },
+            { TEST_STRING, ["caSe", "Encyclopædia", "archæology"], StringComparison.InvariantCultureIgnoreCase },
+            { TEST_STRING, new List<string>() { "caSe", "Encyclopædia", "archæology" }, StringComparison.InvariantCultureIgnoreCase },
+            { TEST_STRING, new HashSet<string>() { "caSe", "Encyclopædia", "archæology" }, StringComparison.InvariantCultureIgnoreCase },
+            { TEST_STRING, new Queue<string>(["caSe", "Encyclopædia", "archæology"]), StringComparison.InvariantCultureIgnoreCase },
 
-            { TEST_STRING, ["case", "encyclopædia", "Archæology"], GlobalVariables.Ordinal },
-            { TEST_STRING, new List<string>() { "case", "encyclopædia", "Archæology" }, GlobalVariables.Ordinal },
-            { TEST_STRING, new HashSet<string>() { "case", "encyclopædia", "Archæology" }, GlobalVariables.Ordinal },
-            { TEST_STRING, new Queue<string>(["case", "encyclopædia", "Archæology"]), GlobalVariables.Ordinal },
+            { TEST_STRING, ["case", "encyclopædia", "Archæology"], StringComparison.Ordinal },
+            { TEST_STRING, new List<string>() { "case", "encyclopædia", "Archæology" }, StringComparison.Ordinal },
+            { TEST_STRING, new HashSet<string>() { "case", "encyclopædia", "Archæology" }, StringComparison.Ordinal },
+            { TEST_STRING, new Queue<string>(["case", "encyclopædia", "Archæology"]), StringComparison.Ordinal },
 
-            { TEST_STRING, ["caSe", "Encyclopædia", "archæology"], GlobalVariables.OrdinalIgnoreCase },
-            { TEST_STRING, new List<string>() { "caSe", "Encyclopædia", "archæology" }, GlobalVariables.OrdinalIgnoreCase },
-            { TEST_STRING, new HashSet<string>() { "caSe", "Encyclopædia", "archæology" }, GlobalVariables.OrdinalIgnoreCase },
-            { TEST_STRING, new Queue<string>(["caSe", "Encyclopædia", "archæology"]), GlobalVariables.OrdinalIgnoreCase }
+            { TEST_STRING, ["caSe", "Encyclopædia", "archæology"], StringComparison.OrdinalIgnoreCase },
+            { TEST_STRING, new List<string>() { "caSe", "Encyclopædia", "archæology" }, StringComparison.OrdinalIgnoreCase },
+            { TEST_STRING, new HashSet<string>() { "caSe", "Encyclopædia", "archæology" }, StringComparison.OrdinalIgnoreCase },
+            { TEST_STRING, new Queue<string>(["caSe", "Encyclopædia", "archæology"]), StringComparison.OrdinalIgnoreCase }
         };
 
     public static TheoryData<string, IEnumerable<string>, StringComparison> Data_ContainsAll_IEnumString_SetComparison_Fail
         => new()
         {
-            { TEST_STRING, ["case", "Encyclopædia", "Archæology"], GlobalVariables.InvariantCulture },
-            { TEST_STRING, new List<string>() { "Case", "encyclopædia", "Archæology" }, GlobalVariables.InvariantCulture },
-            { TEST_STRING, new HashSet<string>() { "case", "encyclopædia", "archæology" }, GlobalVariables.InvariantCulture },
-            { TEST_STRING, new Queue<string>(["case", "encyclopaedia", "Archaeology"]), GlobalVariables.InvariantCulture },
+            { TEST_STRING, ["case", "Encyclopædia", "Archæology"], StringComparison.InvariantCulture },
+            { TEST_STRING, new List<string>() { "Case", "encyclopædia", "Archæology" }, StringComparison.InvariantCulture },
+            { TEST_STRING, new HashSet<string>() { "case", "encyclopædia", "archæology" }, StringComparison.InvariantCulture },
+            { TEST_STRING, new Queue<string>(["case", "encyclopaedia", "Archaeology"]), StringComparison.InvariantCulture },
 
-            { TEST_STRING, ["caSe", "encyclopaedia", "Archaeology"], GlobalVariables.InvariantCultureIgnoreCase },
-            { TEST_STRING, new List<string>() { "caSe", "encyclopaedia", "Archaeology" }, GlobalVariables.InvariantCultureIgnoreCase },
-            { TEST_STRING, new HashSet<string>() { "caSe", "encyclopaedia", "Archaeology" }, GlobalVariables.InvariantCultureIgnoreCase },
-            { TEST_STRING, new Queue<string>(["caSe", "encyclopaedia", "Archaeology"]), GlobalVariables.InvariantCultureIgnoreCase },
+            { TEST_STRING, ["caSe", "encyclopaedia", "Archaeology"], StringComparison.InvariantCultureIgnoreCase },
+            { TEST_STRING, new List<string>() { "caSe", "encyclopaedia", "Archaeology" }, StringComparison.InvariantCultureIgnoreCase },
+            { TEST_STRING, new HashSet<string>() { "caSe", "encyclopaedia", "Archaeology" }, StringComparison.InvariantCultureIgnoreCase },
+            { TEST_STRING, new Queue<string>(["caSe", "encyclopaedia", "Archaeology"]), StringComparison.InvariantCultureIgnoreCase },
 
-            { TEST_STRING, ["case", "encyclopaedia", "Archaeology"], GlobalVariables.Ordinal },
-            { TEST_STRING, new List<string>() { "case", "encyclopaedia", "Archaeology" }, GlobalVariables.Ordinal },
-            { TEST_STRING, new HashSet<string>() { "case", "encyclopaedia", "Archaeology" }, GlobalVariables.Ordinal },
-            { TEST_STRING, new Queue<string>(["case", "encyclopaedia", "Archaeology"]), GlobalVariables.Ordinal },
+            { TEST_STRING, ["case", "encyclopaedia", "Archaeology"], StringComparison.Ordinal },
+            { TEST_STRING, new List<string>() { "case", "encyclopaedia", "Archaeology" }, StringComparison.Ordinal },
+            { TEST_STRING, new HashSet<string>() { "case", "encyclopaedia", "Archaeology" }, StringComparison.Ordinal },
+            { TEST_STRING, new Queue<string>(["case", "encyclopaedia", "Archaeology"]), StringComparison.Ordinal },
 
-            { TEST_STRING, ["caSe", "Encyclopaedia", "archaeology"], GlobalVariables.OrdinalIgnoreCase },
-            { TEST_STRING, new List<string>() { "caSe", "Encyclopaedia", "archaeology" }, GlobalVariables.OrdinalIgnoreCase },
-            { TEST_STRING, new HashSet<string>() { "caSe", "Encyclopaedia", "archaeology" }, GlobalVariables.OrdinalIgnoreCase },
-            { TEST_STRING, new Queue<string>(["caSe", "Encyclopaedia", "archaeology"]), GlobalVariables.OrdinalIgnoreCase }
+            { TEST_STRING, ["caSe", "Encyclopaedia", "archaeology"], StringComparison.OrdinalIgnoreCase },
+            { TEST_STRING, new List<string>() { "caSe", "Encyclopaedia", "archaeology" }, StringComparison.OrdinalIgnoreCase },
+            { TEST_STRING, new HashSet<string>() { "caSe", "Encyclopaedia", "archaeology" }, StringComparison.OrdinalIgnoreCase },
+            { TEST_STRING, new Queue<string>(["caSe", "Encyclopaedia", "archaeology"]), StringComparison.OrdinalIgnoreCase }
         };
 
     public static TheoryData<string, IEnumerable<char>> Data_ContainsAll_IEnumChar_DefaultComparison_Pass
@@ -360,50 +360,50 @@ public class Contains_Tests
     public static TheoryData<string, IEnumerable<char>, StringComparison> Data_ContainsAll_IEnumChar_SetComparison_Pass
         => new()
         {
-            { "iz" /* (U+0069) */, ['i' /* (U+0069) */, 'z', 'z', 'z'], GlobalVariables.InvariantCulture },
-            { "iz" /* (U+0069) */, new List<char>() { 'z', 'i' /* (U+0069) */, 'z', 'z' }, GlobalVariables.InvariantCulture },
-            { "iz" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'i' /* (U+0069) */, 'z' }, GlobalVariables.InvariantCulture },
-            { "iz" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'i' /* (U+0069) */]), GlobalVariables.InvariantCulture },
+            { "iz" /* (U+0069) */, ['i' /* (U+0069) */, 'z', 'z', 'z'], StringComparison.InvariantCulture },
+            { "iz" /* (U+0069) */, new List<char>() { 'z', 'i' /* (U+0069) */, 'z', 'z' }, StringComparison.InvariantCulture },
+            { "iz" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'i' /* (U+0069) */, 'z' }, StringComparison.InvariantCulture },
+            { "iz" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'i' /* (U+0069) */]), StringComparison.InvariantCulture },
 
-            { "iz" /* (U+0069) */, ['I' /* (U+0049) */, 'z', 'z', 'z'], GlobalVariables.InvariantCultureIgnoreCase },
-            { "iz" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, GlobalVariables.InvariantCultureIgnoreCase },
-            { "iz" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'I' /* (U+0049) */, 'z' }, GlobalVariables.InvariantCultureIgnoreCase },
-            { "iz" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'I' /* (U+0049) */]), GlobalVariables.InvariantCultureIgnoreCase },
+            { "iz" /* (U+0069) */, ['I' /* (U+0049) */, 'z', 'z', 'z'], StringComparison.InvariantCultureIgnoreCase },
+            { "iz" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, StringComparison.InvariantCultureIgnoreCase },
+            { "iz" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'I' /* (U+0049) */, 'z' }, StringComparison.InvariantCultureIgnoreCase },
+            { "iz" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'I' /* (U+0049) */]), StringComparison.InvariantCultureIgnoreCase },
 
-            { "iz" /* (U+0069) */, ['i' /* (U+0069) */, 'z', 'z', 'z'], GlobalVariables.Ordinal },
-            { "iz" /* (U+0069) */, new List<char>() { 'z', 'i' /* (U+0069) */, 'z', 'z' }, GlobalVariables.Ordinal },
-            { "iz" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'i' /* (U+0069) */, 'z' }, GlobalVariables.Ordinal },
-            { "iz" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'i' /* (U+0069) */]), GlobalVariables.Ordinal },
+            { "iz" /* (U+0069) */, ['i' /* (U+0069) */, 'z', 'z', 'z'], StringComparison.Ordinal },
+            { "iz" /* (U+0069) */, new List<char>() { 'z', 'i' /* (U+0069) */, 'z', 'z' }, StringComparison.Ordinal },
+            { "iz" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'i' /* (U+0069) */, 'z' }, StringComparison.Ordinal },
+            { "iz" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'i' /* (U+0069) */]), StringComparison.Ordinal },
 
-            { "iz" /* (U+0069) */, ['I' /* (U+0049) */, 'z', 'z', 'z'], GlobalVariables.OrdinalIgnoreCase },
-            { "iz" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, GlobalVariables.OrdinalIgnoreCase },
-            { "iz" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'I' /* (U+0049) */, 'z' }, GlobalVariables.OrdinalIgnoreCase },
-            { "iz" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'I' /* (U+0049) */]), GlobalVariables.OrdinalIgnoreCase }
+            { "iz" /* (U+0069) */, ['I' /* (U+0049) */, 'z', 'z', 'z'], StringComparison.OrdinalIgnoreCase },
+            { "iz" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, StringComparison.OrdinalIgnoreCase },
+            { "iz" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'I' /* (U+0049) */, 'z' }, StringComparison.OrdinalIgnoreCase },
+            { "iz" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'I' /* (U+0049) */]), StringComparison.OrdinalIgnoreCase }
         };
 
     // The comments denote what is the code for the character preceding them as visually they are very similar.
     public static TheoryData<string, IEnumerable<char>, StringComparison> Data_ContainsAll_IEnumChar_SetComparison_Fail
         => new()
         {
-            { "iz" /* (U+0069) */, ['I' /* (U+0049) */, 'z', 'z', 'z'], GlobalVariables.InvariantCulture },
-            { "iz" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, GlobalVariables.InvariantCulture },
-            { "iz" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'I' /* (U+0049) */, 'z' }, GlobalVariables.InvariantCulture },
-            { "iz" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'I' /* (U+0049) */]), GlobalVariables.InvariantCulture },
+            { "iz" /* (U+0069) */, ['I' /* (U+0049) */, 'z', 'z', 'z'], StringComparison.InvariantCulture },
+            { "iz" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, StringComparison.InvariantCulture },
+            { "iz" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'I' /* (U+0049) */, 'z' }, StringComparison.InvariantCulture },
+            { "iz" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'I' /* (U+0049) */]), StringComparison.InvariantCulture },
 
-            { "iz" /* (U+0069) */, ['ı' /* (U+0131) */, 'z', 'z', 'z'], GlobalVariables.InvariantCultureIgnoreCase },
-            { "iz" /* (U+0069) */, new List<char>() { 'z', 'ı' /* (U+0131) */, 'z', 'z' }, GlobalVariables.InvariantCultureIgnoreCase },
-            { "iz" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'ı' /* (U+0131) */, 'z' }, GlobalVariables.InvariantCultureIgnoreCase },
-            { "iz" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'ı' /* (U+0131) */]), GlobalVariables.InvariantCultureIgnoreCase },
+            { "iz" /* (U+0069) */, ['ı' /* (U+0131) */, 'z', 'z', 'z'], StringComparison.InvariantCultureIgnoreCase },
+            { "iz" /* (U+0069) */, new List<char>() { 'z', 'ı' /* (U+0131) */, 'z', 'z' }, StringComparison.InvariantCultureIgnoreCase },
+            { "iz" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'ı' /* (U+0131) */, 'z' }, StringComparison.InvariantCultureIgnoreCase },
+            { "iz" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'ı' /* (U+0131) */]), StringComparison.InvariantCultureIgnoreCase },
 
-            { "iz" /* (U+0069) */, ['I' /* (U+0049) */, 'z', 'z', 'z'], GlobalVariables.Ordinal },
-            { "iz" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, GlobalVariables.Ordinal },
-            { "iz" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'I' /* (U+0049) */, 'z' }, GlobalVariables.Ordinal },
-            { "iz" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'I' /* (U+0049) */]), GlobalVariables.Ordinal },
+            { "iz" /* (U+0069) */, ['I' /* (U+0049) */, 'z', 'z', 'z'], StringComparison.Ordinal },
+            { "iz" /* (U+0069) */, new List<char>() { 'z', 'I' /* (U+0049) */, 'z', 'z' }, StringComparison.Ordinal },
+            { "iz" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'I' /* (U+0049) */, 'z' }, StringComparison.Ordinal },
+            { "iz" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'I' /* (U+0049) */]), StringComparison.Ordinal },
 
-            { "iz" /* (U+0069) */, ['ı' /* (U+0131) */, 'z', 'z', 'z'], GlobalVariables.OrdinalIgnoreCase },
-            { "iz" /* (U+0069) */, new List<char>() { 'z', 'ı' /* (U+0131) */, 'z', 'z' }, GlobalVariables.OrdinalIgnoreCase },
-            { "iz" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'ı' /* (U+0131) */, 'z' }, GlobalVariables.OrdinalIgnoreCase },
-            { "iz" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'ı' /* (U+0131) */]), GlobalVariables.OrdinalIgnoreCase }
+            { "iz" /* (U+0069) */, ['ı' /* (U+0131) */, 'z', 'z', 'z'], StringComparison.OrdinalIgnoreCase },
+            { "iz" /* (U+0069) */, new List<char>() { 'z', 'ı' /* (U+0131) */, 'z', 'z' }, StringComparison.OrdinalIgnoreCase },
+            { "iz" /* (U+0069) */, new HashSet<char>() { 'z', 'z', 'ı' /* (U+0131) */, 'z' }, StringComparison.OrdinalIgnoreCase },
+            { "iz" /* (U+0069) */, new Queue<char>(['z', 'z', 'z', 'ı' /* (U+0131) */]), StringComparison.OrdinalIgnoreCase }
         };
 
     #endregion IEnumerable test data

@@ -602,82 +602,82 @@ public class Remove_Tests_Exceptions
     public static IEnumerable<object[]> Data_Remove_IEnumString_SetComparison_NullArgument
        =>
             [
-                [GlobalVariables.InvariantCulture],
-                [GlobalVariables.InvariantCultureIgnoreCase],
-                [GlobalVariables.Ordinal],
-                [GlobalVariables.OrdinalIgnoreCase]
+                [StringComparison.InvariantCulture],
+                [StringComparison.InvariantCultureIgnoreCase],
+                [StringComparison.Ordinal],
+                [StringComparison.OrdinalIgnoreCase]
             ];
 
     public static IEnumerable<object[]> Data_Remove_IEnumString_SetComparison_IEnumEmpty
        =>
             [
-                [new string[] {  }, GlobalVariables.InvariantCulture],
-                [new List<string>(), GlobalVariables.InvariantCulture],
-                [new HashSet<string>() {  }, GlobalVariables.InvariantCulture],
-                [new Queue<string>([]), GlobalVariables.InvariantCulture],
+                [new string[] {  }, StringComparison.InvariantCulture],
+                [new List<string>(), StringComparison.InvariantCulture],
+                [new HashSet<string>() {  }, StringComparison.InvariantCulture],
+                [new Queue<string>([]), StringComparison.InvariantCulture],
 
-                [new string[] {  }, GlobalVariables.InvariantCultureIgnoreCase],
-                [new List<string>() {  }, GlobalVariables.InvariantCultureIgnoreCase],
-                [new HashSet<string>() {  }, GlobalVariables.InvariantCultureIgnoreCase],
-                [new Queue<string>([]), GlobalVariables.InvariantCultureIgnoreCase],
+                [new string[] {  }, StringComparison.InvariantCultureIgnoreCase],
+                [new List<string>() {  }, StringComparison.InvariantCultureIgnoreCase],
+                [new HashSet<string>() {  }, StringComparison.InvariantCultureIgnoreCase],
+                [new Queue<string>([]), StringComparison.InvariantCultureIgnoreCase],
 
-                [new string[] {  }, GlobalVariables.Ordinal],
-                [new List<string>() {  }, GlobalVariables.Ordinal],
-                [new HashSet<string>() {  }, GlobalVariables.Ordinal],
-                [new Queue<string>([]), GlobalVariables.Ordinal],
+                [new string[] {  }, StringComparison.Ordinal],
+                [new List<string>() {  }, StringComparison.Ordinal],
+                [new HashSet<string>() {  }, StringComparison.Ordinal],
+                [new Queue<string>([]), StringComparison.Ordinal],
 
-                [new string[] {  }, GlobalVariables.OrdinalIgnoreCase],
-                [new List<string>() {  }, GlobalVariables.OrdinalIgnoreCase],
-                [new HashSet<string>() {  }, GlobalVariables.OrdinalIgnoreCase],
-                [new Queue<string>([]), GlobalVariables.OrdinalIgnoreCase]
+                [new string[] {  }, StringComparison.OrdinalIgnoreCase],
+                [new List<string>() {  }, StringComparison.OrdinalIgnoreCase],
+                [new HashSet<string>() {  }, StringComparison.OrdinalIgnoreCase],
+                [new Queue<string>([]), StringComparison.OrdinalIgnoreCase]
             ];
 
     public static IEnumerable<object[]> Data_Remove_IEnumString_SetComparison_NullMember
        =>
             [
-                [new string[] { null, "asd", "asd", "asd" }, GlobalVariables.InvariantCulture],
-                [new List<string>() { "asd", null, "asd", "asd" }, GlobalVariables.InvariantCulture],
-                [new HashSet<string>() { "asd", "asd", null, "asd" }, GlobalVariables.InvariantCulture],
-                [new Queue<string>(["asd", "asd", "asd", null]), GlobalVariables.InvariantCulture],
+                [new string[] { null, "asd", "asd", "asd" }, StringComparison.InvariantCulture],
+                [new List<string>() { "asd", null, "asd", "asd" }, StringComparison.InvariantCulture],
+                [new HashSet<string>() { "asd", "asd", null, "asd" }, StringComparison.InvariantCulture],
+                [new Queue<string>(["asd", "asd", "asd", null]), StringComparison.InvariantCulture],
 
-                [new string[] { null, "asd", "asd", "asd" }, GlobalVariables.InvariantCultureIgnoreCase],
-                [new List<string>() { "asd", null, "asd", "asd" }, GlobalVariables.InvariantCultureIgnoreCase],
-                [new HashSet<string>() { "asd", "asd", null, "asd" }, GlobalVariables.InvariantCultureIgnoreCase],
-                [new Queue<string>(["asd", "asd", "asd", null]), GlobalVariables.InvariantCultureIgnoreCase],
+                [new string[] { null, "asd", "asd", "asd" }, StringComparison.InvariantCultureIgnoreCase],
+                [new List<string>() { "asd", null, "asd", "asd" }, StringComparison.InvariantCultureIgnoreCase],
+                [new HashSet<string>() { "asd", "asd", null, "asd" }, StringComparison.InvariantCultureIgnoreCase],
+                [new Queue<string>(["asd", "asd", "asd", null]), StringComparison.InvariantCultureIgnoreCase],
 
-                [new string[] { null, "asd", "asd", "asd" }, GlobalVariables.Ordinal],
-                [new List<string>() { "asd", null, "asd", "asd" }, GlobalVariables.Ordinal],
-                [new HashSet<string>() { "asd", "asd", null, "asd" }, GlobalVariables.Ordinal],
-                [new Queue<string>(["asd", "asd", "asd", null]), GlobalVariables.Ordinal],
+                [new string[] { null, "asd", "asd", "asd" }, StringComparison.Ordinal],
+                [new List<string>() { "asd", null, "asd", "asd" }, StringComparison.Ordinal],
+                [new HashSet<string>() { "asd", "asd", null, "asd" }, StringComparison.Ordinal],
+                [new Queue<string>(["asd", "asd", "asd", null]), StringComparison.Ordinal],
 
-                [new string[] { null, "asd", "asd", "asd" }, GlobalVariables.OrdinalIgnoreCase],
-                [new List<string>() { "asd", null, "asd", "asd" }, GlobalVariables.OrdinalIgnoreCase],
-                [new HashSet<string>() { "asd", "asd", null, "asd" }, GlobalVariables.OrdinalIgnoreCase],
-                [new Queue<string>(["asd", "asd", "asd", null]), GlobalVariables.OrdinalIgnoreCase]
+                [new string[] { null, "asd", "asd", "asd" }, StringComparison.OrdinalIgnoreCase],
+                [new List<string>() { "asd", null, "asd", "asd" }, StringComparison.OrdinalIgnoreCase],
+                [new HashSet<string>() { "asd", "asd", null, "asd" }, StringComparison.OrdinalIgnoreCase],
+                [new Queue<string>(["asd", "asd", "asd", null]), StringComparison.OrdinalIgnoreCase]
             ];
 
     public static IEnumerable<object[]> Data_Remove_IEnumString_SetComparison_EmptyStringMember
        =>
             [
-                [new string[] { "", "asd", "asd", "asd" }, GlobalVariables.InvariantCulture],
-                [new List<string>() { "asd", "", "asd", "asd" }, GlobalVariables.InvariantCulture],
-                [new HashSet<string>() { "asd", "asd", "", "asd" }, GlobalVariables.InvariantCulture],
-                [new Queue<string>(["asd", "asd", "asd", ""]), GlobalVariables.InvariantCulture],
+                [new string[] { "", "asd", "asd", "asd" }, StringComparison.InvariantCulture],
+                [new List<string>() { "asd", "", "asd", "asd" }, StringComparison.InvariantCulture],
+                [new HashSet<string>() { "asd", "asd", "", "asd" }, StringComparison.InvariantCulture],
+                [new Queue<string>(["asd", "asd", "asd", ""]), StringComparison.InvariantCulture],
 
-                [new string[] { "", "asd", "asd", "asd" }, GlobalVariables.InvariantCultureIgnoreCase],
-                [new List<string>() { "asd", "", "asd", "asd" }, GlobalVariables.InvariantCultureIgnoreCase],
-                [new HashSet<string>() { "asd", "asd", "", "asd" }, GlobalVariables.InvariantCultureIgnoreCase],
-                [new Queue<string>(["asd", "asd", "asd", ""]), GlobalVariables.InvariantCultureIgnoreCase],
+                [new string[] { "", "asd", "asd", "asd" }, StringComparison.InvariantCultureIgnoreCase],
+                [new List<string>() { "asd", "", "asd", "asd" }, StringComparison.InvariantCultureIgnoreCase],
+                [new HashSet<string>() { "asd", "asd", "", "asd" }, StringComparison.InvariantCultureIgnoreCase],
+                [new Queue<string>(["asd", "asd", "asd", ""]), StringComparison.InvariantCultureIgnoreCase],
 
-                [new string[] { "", "asd", "asd", "asd" }, GlobalVariables.Ordinal],
-                [new List<string>() { "asd", "", "asd", "asd" }, GlobalVariables.Ordinal],
-                [new HashSet<string>() { "asd", "asd", "", "asd" }, GlobalVariables.Ordinal],
-                [new Queue<string>(["asd", "asd", "asd", ""]), GlobalVariables.Ordinal],
+                [new string[] { "", "asd", "asd", "asd" }, StringComparison.Ordinal],
+                [new List<string>() { "asd", "", "asd", "asd" }, StringComparison.Ordinal],
+                [new HashSet<string>() { "asd", "asd", "", "asd" }, StringComparison.Ordinal],
+                [new Queue<string>(["asd", "asd", "asd", ""]), StringComparison.Ordinal],
 
-                [new string[] { "", "asd", "asd", "asd" }, GlobalVariables.OrdinalIgnoreCase],
-                [new List<string>() { "asd", "", "asd", "asd" }, GlobalVariables.OrdinalIgnoreCase],
-                [new HashSet<string>() { "asd", "asd", "", "asd" }, GlobalVariables.OrdinalIgnoreCase],
-                [new Queue<string>(["asd", "asd", "asd", ""]), GlobalVariables.OrdinalIgnoreCase]
+                [new string[] { "", "asd", "asd", "asd" }, StringComparison.OrdinalIgnoreCase],
+                [new List<string>() { "asd", "", "asd", "asd" }, StringComparison.OrdinalIgnoreCase],
+                [new HashSet<string>() { "asd", "asd", "", "asd" }, StringComparison.OrdinalIgnoreCase],
+                [new Queue<string>(["asd", "asd", "asd", ""]), StringComparison.OrdinalIgnoreCase]
             ];
 
     public static IEnumerable<object[]> Data_Remove_IEnumString_CultureInfo_IEnumEmpty
@@ -731,34 +731,34 @@ public class Remove_Tests_Exceptions
     public static IEnumerable<object[]> Data_Remove_IEnumChar_SetComparison_NullArgument
        =>
             [
-                [GlobalVariables.InvariantCulture],
-                [GlobalVariables.InvariantCultureIgnoreCase],
-                [GlobalVariables.Ordinal],
-                [GlobalVariables.OrdinalIgnoreCase]
+                [StringComparison.InvariantCulture],
+                [StringComparison.InvariantCultureIgnoreCase],
+                [StringComparison.Ordinal],
+                [StringComparison.OrdinalIgnoreCase]
             ];
 
     public static IEnumerable<object[]> Data_Remove_IEnumChar_SetComparison_IEnumEmpty
        =>
             [
-                [new char[] {  }, GlobalVariables.InvariantCulture],
-                [new List<char>(), GlobalVariables.InvariantCulture],
-                [new HashSet<char>() {  }, GlobalVariables.InvariantCulture],
-                [new Queue<char>([]), GlobalVariables.InvariantCulture],
+                [new char[] {  }, StringComparison.InvariantCulture],
+                [new List<char>(), StringComparison.InvariantCulture],
+                [new HashSet<char>() {  }, StringComparison.InvariantCulture],
+                [new Queue<char>([]), StringComparison.InvariantCulture],
 
-                [new char[] {  }, GlobalVariables.InvariantCultureIgnoreCase],
-                [new List<char>() {  }, GlobalVariables.InvariantCultureIgnoreCase],
-                [new HashSet<char>() {  }, GlobalVariables.InvariantCultureIgnoreCase],
-                [new Queue<char>([]), GlobalVariables.InvariantCultureIgnoreCase],
+                [new char[] {  }, StringComparison.InvariantCultureIgnoreCase],
+                [new List<char>() {  }, StringComparison.InvariantCultureIgnoreCase],
+                [new HashSet<char>() {  }, StringComparison.InvariantCultureIgnoreCase],
+                [new Queue<char>([]), StringComparison.InvariantCultureIgnoreCase],
 
-                [new char[] {  }, GlobalVariables.Ordinal],
-                [new List<char>() {  }, GlobalVariables.Ordinal],
-                [new HashSet<char>() {  }, GlobalVariables.Ordinal],
-                [new Queue<char>([]), GlobalVariables.Ordinal],
+                [new char[] {  }, StringComparison.Ordinal],
+                [new List<char>() {  }, StringComparison.Ordinal],
+                [new HashSet<char>() {  }, StringComparison.Ordinal],
+                [new Queue<char>([]), StringComparison.Ordinal],
 
-                [new char[] {  }, GlobalVariables.OrdinalIgnoreCase],
-                [new List<char>() {  }, GlobalVariables.OrdinalIgnoreCase],
-                [new HashSet<char>() {  }, GlobalVariables.OrdinalIgnoreCase],
-                [new Queue<char>([]), GlobalVariables.OrdinalIgnoreCase]
+                [new char[] {  }, StringComparison.OrdinalIgnoreCase],
+                [new List<char>() {  }, StringComparison.OrdinalIgnoreCase],
+                [new HashSet<char>() {  }, StringComparison.OrdinalIgnoreCase],
+                [new Queue<char>([]), StringComparison.OrdinalIgnoreCase]
             ];
 
     public static IEnumerable<object[]> Data_Remove_IEnumChar_CultureInfo_IEnumEmpty
