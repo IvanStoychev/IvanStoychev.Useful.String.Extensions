@@ -17,18 +17,16 @@ Legend:
 ## [[6.0.0] - xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Date xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx](https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/releases/tag/6.0.0)
 
 ⚪ As of this version the changelog will be separated into "Public API" and "Under the hood" sections.
-	- "Public API" will contain changes to the public methods of the library, which ought to be of most importance to end users.
-	- "Under the hood" section will contain changes that do not directly affect usage of the library, but ought to be interesting to people who wish to delve deeper into the technical details.
+- "Public API" will contain changes to the public methods of the library, which ought to be of most importance to end users.
+- "Under the hood" section will contain changes that do not directly affect usage of the library, but ought to be interesting to people who wish to delve deeper into the technical details.
 
 # Public API
 
 💜 Removed the summaries that remained from the old class names.
 
 🟢 Added additional validation checks for `enum` arguments. If the user passes an invalid argument to an `enum` parameter an `ArgumentException` will be thrown, alerting him which argument, passed to which parameter, in which method is invalid.
-
-🟢 Added new validation check whether the string on which any method is called is `null`, throwing an `ArgumentNullException` if it is.
-
-🟢 Added the following methods:
+<br/>🟢 Added new validation check whether the string on which any method is called is `null`, throwing an `ArgumentNullException` if it is.
+<br/>🟢 Added the following methods:
 - Contains.cs
 	- `ContainsAll(IEnumerable<char>, StringComparison)`
 	- `ContainsAll(IEnumerable<string>, StringComparison)`
@@ -55,17 +53,16 @@ Legend:
 🟡 Changed the following method signatures:
 
 `Replace(this string str, string newString, IEnumerable<string> oldStrings, StringComparison comparison = StringComparison.CurrentCulture)`
-changed to
-`Replace(this string str, IEnumerable<string> oldStrings, string? newString, StringComparison comparison = StringComparison.CurrentCulture)`
-this change was made to adhere to the signature of standard .Net `Replace` methods. The old signature was a remnant of times long past, when the purpose was to allow the user to pass an arbitraty amount of strings via a last `params string[]` parameter, which evolved into an `IEnumerable<string>` parameter. When that evolution happened a reordering of the parameters didn't occur to me.
+<br/>changed to
+<br/>`Replace(this string str, IEnumerable<string> oldStrings, string? newString, StringComparison comparison = StringComparison.CurrentCulture)`
+<br/>this change was made to adhere to the signature of standard .Net `Replace` methods. The old signature was a remnant of times long past, when the purpose was to allow the user to pass an arbitraty amount of strings via a last `params string[]` parameter, which evolved into an `IEnumerable<string>` parameter. When that evolution happened a reordering of the parameters didn't occur to me.
 
 🟡 Added "Trim.cs" file and moved "Trim", "TrimEnd" and "TrimStart" methods into it from the old "Remover.cs".
 
 # Under the hood
 
 🟢 Added "UsefulStringExtensions.cs" file which holds the class summary.
-
-🟢 Added the following methods:
+<br/>🟢 Added the following methods:
 - ExceptionThrower.cs
 	- `Throw_ArgumentException_EnumValueInvalid` (invoked when an invalid value is passed to an `enum` parameter)
 	- `Throw_ArgumentNullException_OriginalInstance` (invoked when the instance of the string a method is called on is `null`)
@@ -100,14 +97,13 @@ this change was made to adhere to the signature of standard .Net `Replace` metho
 	- <ins>Contains</ins> to "*ContainsAny*"
 	
 🟡 Made `Validator.cs` - `IEnumNotEmpty` method generic.
-
-🟡 Made `Validator.cs` - `SubstringIndex` method private.
+<br/>🟡 Made `Validator.cs` - `SubstringIndex` method private.
 
 ⚪ Updated all tests.
-⚪ Added more exception tests for the `Replace` methods.
-⚪ Added two missing "Fail" tests for the `ContainsAll` methods.
-⚪ Removed `GlobalSuppressions.cs`, as the only warning it suppressed was no longer relevant.
-⚪ Removed `GlobalVariables.cs` and updated tests to use the corresponding `StringComparison` values, instead.
+<br/>⚪ Added more exception tests for the `Replace` methods.
+<br/>⚪ Added two missing "Fail" tests for the `ContainsAll` methods.
+<br/>⚪ Removed `GlobalSuppressions.cs`, as the only warning it suppressed was no longer relevant.
+<br/>⚪ Removed `GlobalVariables.cs` and updated tests to use the corresponding `StringComparison` values, instead.
 
 ## [[5.0.1] - 19 APR 2025](https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/releases/tag/5.0.1)
 
