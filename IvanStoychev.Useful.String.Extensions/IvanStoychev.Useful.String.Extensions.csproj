@@ -48,14 +48,6 @@
     <ErrorReport>queue</ErrorReport>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\Users\VimesRegicide\Source\Repos\IvanStoychev.Useful.String.Extensions\IvanStoychev.Useful.String.Extensions\bin\Release\net5.0\IvanStoychev.Useful.String.Extensions.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile></DocumentationFile>
-  </PropertyGroup>
-
   <ItemGroup>
     <None Include="..\Nuget Icon.png">
       <Pack>True</Pack>
