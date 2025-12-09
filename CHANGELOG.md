@@ -105,6 +105,8 @@ Legend:
 <br/>⚪ Removed `GlobalSuppressions.cs`, as the only warning it suppressed was no longer relevant.
 <br/>⚪ Removed `GlobalVariables.cs` and updated tests to use the corresponding `StringComparison` values, instead.
 
+💜 Fixed summary for method `Throw_ArgumentOutOfRangeException_Endstring`.
+
 ## [[5.0.1] - 19 APR 2025](https://github.com/IvanStoychev/IvanStoychev.Useful.String.Extensions/releases/tag/5.0.1)
 
 💜 Sanitized exception messages to not include potentially sensitive data, restructured exception messages a bit to be more readable, updated method signatures and summaries.

@@ -103,15 +103,15 @@ static class ExceptionThrower
     /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value passed for parameter <paramref name="endStringParameterName"/> was
     /// not found after the value passed for parameter <paramref name="startStringParameterName"/> for the original string instance in <paramref name="callingMethodName"/>.
     /// </summary>
-    /// <param name="startStringParameterName">Name of the parameter in the original method whose argument is <paramref name="startString"/>.</param>
-    /// <param name="endStringParameterName">Name of the parameter in the original method whose argument is <paramref name="endString"/>.</param>
+    /// <param name="startStringParameterName">Name of the parameter in the original method which denotes the start anchor for substring searching.</param>
+    /// <param name="endStringParameterName">Name of the parameter in the original method which denotes the end anchor for substring searching.</param>
     /// <param name="callingMethodName">Name of the method that throws this exception.</param>
     /// <exception cref="ArgumentOutOfRangeException">
     /// The original string instance does not contain the value passed for <paramref name="endStringParameterName"/>
     /// after the value passed for <paramref name="startStringParameterName"/>.
     /// </exception>
     internal static void Throw_ArgumentOutOfRangeException_Endstring(string callingMethodName, string startStringParameterName, string endStringParameterName)
-        => throw new ArgumentOutOfRangeException(endStringParameterName, $"The string given for parameter \"{endStringParameterName}\" was not found after the argument given for \"{startStringParameterName}\" in the original instance. Name of the method throwing the exception: \"{callingMethodName}\".");
+        => throw new ArgumentOutOfRangeException(endStringParameterName, $"The string given for parameter \"{endStringParameterName}\" was not found after the string given for \"{startStringParameterName}\" in the original instance. Name of the method throwing the exception: \"{callingMethodName}\".");
 
     /// <summary>
     /// Throws an <see cref="ArgumentOutOfRangeException"/> that informs the user the value "<paramref name="length"/>" of
