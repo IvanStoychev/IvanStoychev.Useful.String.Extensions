@@ -22,6 +22,8 @@ Legend:
 
 # Public API
 
+🟢 Updated library to .Net 9.
+
 💜 Removed the summaries that remained from the old class names.
 
 🟢 Added additional validation checks for `enum` arguments. If the user passes an invalid argument to an `enum` parameter an `ArgumentException` will be thrown, alerting him which argument, passed to which parameter, in which method is invalid.
