@@ -12,7 +12,7 @@
     <PackageTags>c#, useful, string, extension, efficient</PackageTags>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>Nuget Icon.png</PackageIcon>
-    <Copyright>Copyright (c) 2025 Ivan Stoychev. All rights reserved.</Copyright>
+    <Copyright>Copyright (c) 2026 Ivan Stoychev. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageReleaseNotes>
@@ -31,8 +31,6 @@
 	</PackageReleaseNotes>
     <Version>6.0.0</Version>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <AssemblyVersion>6.0.0.0</AssemblyVersion>
-    <FileVersion>6.0.0.0</FileVersion>
     <PackageIconUrl />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>IvanStoychev.Useful.String.Extensions</PackageId>

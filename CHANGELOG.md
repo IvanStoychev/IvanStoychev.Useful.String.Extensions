@@ -57,8 +57,6 @@ Legend:
 <br/>`Replace(this string str, IEnumerable<string> oldStrings, string? newString, StringComparison comparison = StringComparison.CurrentCulture)`
 <br/>this change was made to adhere to the signature of standard .Net `Replace` methods. The old signature was a remnant of times long past, when the purpose was to allow the user to pass an arbitraty amount of strings via a last `params string[]` parameter, which evolved into an `IEnumerable<string>` parameter. When that evolution happened a reordering of the parameters didn't occur to me.
 
-🟡 Added "Trim.cs" file and moved "Trim", "TrimEnd" and "TrimStart" methods into it from the old "Remover.cs".
-
 # Under the hood
 
 🟢 Added "UsefulStringExtensions.cs" file which holds the class summary.
@@ -69,6 +67,8 @@ Legend:
 - Validate.cs
 	- `EnumContainsValue` (checks whether an `enum` contains a given value)
 	- `OriginalInstanceNotNull` (checks whether the instance of the string a method is called on is not `null`)
+
+🟡 Added "<ins>Trim.cs</ins>" file and moved `Trim`, `TrimEnd` and `TrimStart` methods into it from the old "<ins>Remover.cs</ins>".
 
 🟡 Renamed the following files:
 - <ins>Comparer.cs</ins> to "*Contains.cs*"
@@ -104,6 +104,8 @@ Legend:
 <br/>⚪ Added two missing "Fail" tests for the `ContainsAll` methods.
 <br/>⚪ Removed `GlobalSuppressions.cs`, as the only warning it suppressed was no longer relevant.
 <br/>⚪ Removed `GlobalVariables.cs` and updated tests to use the corresponding `StringComparison` values, instead.
+
+⚪ Removed `FileVersion` and `AssemblyVersion` properties from the project file, since `Version` is already present and their values do not differ.
 
 💜 Fixed summary for method `Throw_ArgumentOutOfRangeException_Endstring`.
 
